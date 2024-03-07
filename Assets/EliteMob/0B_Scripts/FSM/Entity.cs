@@ -1,56 +1,80 @@
 using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace FSM {
-    public class Entity : MonoBehaviour
+    public abstract class Entity : MonoBehaviour
     {
         [HideInInspector] public bool isDead = false;
 
-        #region Component
+        #region Components
 
-        public Animator Animator;
-        public Rigidbody2D Rigidbody;
-        public SpriteRenderer SpriteRenderer;
-        public Collider2D Collider;
+        public SpriteRenderer SpriteRendererCompo;
+        public Animator AnimatorCompo;
+        public Rigidbody2D RigidbodyCompo;
+        public Collider2D ColliderCompo;
 
         #endregion
-
-        [Header("Collision Info")]
-        [SerializeField] protected LayerMask _groundAndWallLayer;
-        [SerializeField] protected Transform _groundChecker;
-        [SerializeField] protected Vector2 _groundCheckRange;
-        [SerializeField] protected Transform _wallChecker;
-        [SerializeField] protected Vector2 _wallCheckRange;
-
-        [Header("Knock Back Info")]
-        [SerializeField] protected bool _knockBackable = true;
-        [SerializeField] protected float _knockBackDuration;
-        protected Coroutine _knockBackCoroutine = null;
-        [HideInInspector] public bool _isKnockBacked = false;
-
-        [Header("Stun Info")]
-        [SerializeField] protected bool _stunable = true;
-        public float stunDuration;
-        public Vector2 stunPower;
-        protected bool _canBeStun;
-
-        [Space]
-        [Header("Feedback Event")]
-        public UnityEvent HitEvent;
 
         public Action<int> OnFlip;
 
         public int FacingDirection { get; protected set; } = 1;
-        public Vector3 GroundPostion => new Vector3(transform.position.x, _groundChecker.position.y);
         public bool CanStateChangeable { get; set; } = true;
 
         protected virtual void Awake() {
-            Transform visualTrm = transform.Find("Visual");
-            Animator = visualTrm.GetComponent<Animator>();
-            SpriteRenderer = visualTrm.GetComponent<SpriteRenderer>();
-            Rigidbody = GetComponent<Rigidbody2D>();
-            Collider = GetComponent<Collider2D>();
+            Transform visaulTrm = transform.Find("Visual");
+            SpriteRendererCompo = visaulTrm.GetComponent<SpriteRenderer>();
+            AnimatorCompo = visaulTrm.GetComponent<Animator>();
+            RigidbodyCompo = GetComponent<Rigidbody2D>();
+            ColliderCompo = GetComponent<Collider2D>();
         }
+
+        public abstract void Attack();
+        public abstract void ReturnDefaultSpeed();
+
+        #region DelayCallbackCoroutine
+
+        public Coroutine StartDelayCallback(float delayTime, Action callback) {
+            return StartCoroutine(DelayCoroutine(delayTime, callback));
+        }
+
+        private IEnumerator DelayCoroutine(float delayTime, Action callback) {
+            yield return new WaitForSeconds(delayTime);
+            callback?.Invoke();
+        }
+
+        #endregion
+
+        #region VelocityControl
+
+        public void SetVelocity(float x, float y, bool doNotFlip = false) {
+            RigidbodyCompo.velocity = new Vector2(x, y);
+
+            if(!doNotFlip) FlipController(x);
+        }
+
+        public void StopImmediately(bool withYAxis) {
+            if(withYAxis) RigidbodyCompo.velocity = Vector2.zero;
+            else RigidbodyCompo.velocity = new Vector2(0, RigidbodyCompo.velocity.y);
+        }
+
+        #endregion
+
+        #region FlipController
+
+        public virtual void Flip() {
+            FacingDirection = FacingDirection * -1;
+            transform.Rotate(0, 180f, 0);
+            OnFlip?.Invoke(FacingDirection);
+        }
+
+        public virtual void FlipController(float x) {
+            if(Mathf.Abs(x) < 0.05f) return;
+            
+            if(Mathf.Abs(FacingDirection + Mathf.Sign(x)) < 0.5f)
+                Flip();
+        }
+
+        #endregion
     }
 }
