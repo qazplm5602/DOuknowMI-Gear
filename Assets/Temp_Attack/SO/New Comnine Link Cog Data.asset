@@ -15,4 +15,11 @@ MonoBehaviour:
   name: 
   image: {fileID: 0}
   loadMoudle: {fileID: 0}
-  comnineCog: []
+  comnineCog:
+  - {fileID: 11400000, guid: 9fd27694a7c2264449be6fd9650b60bc, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
