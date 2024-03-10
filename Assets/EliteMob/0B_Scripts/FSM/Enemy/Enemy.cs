@@ -10,6 +10,9 @@ namespace FSM {
 
         protected float _defualtMoveSpeed;
 
+        [Header("Check Settings")]
+        [SerializeField] protected float _checkDistance;
+        [SerializeField] protected Transform _checkTransform;
         [SerializeField] protected LayerMask _playerLayer;
 
         [Header("Attack Settings")]
@@ -33,9 +36,17 @@ namespace FSM {
 
         public abstract void AnimationFinishTrigger();
 
+        public virtual RaycastHit2D IsPlayerDetected()
+            => Physics2D.Raycast(_checkTransform.position, Vector2.right * FacingDirection, _checkDistance, _playerLayer);
+
         public override void ReturnDefaultSpeed() {
             moveSpeed = _defualtMoveSpeed;
             AnimatorCompo.speed = 1f;
+        }
+
+        private void OnDrawGizmos() {
+            Gizmos.color = Color.green;
+            Gizmos.DrawRay(_checkTransform.position, Vector3.right * FacingDirection * _checkDistance);
         }
     }
 }
