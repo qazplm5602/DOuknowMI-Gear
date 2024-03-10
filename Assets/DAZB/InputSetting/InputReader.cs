@@ -1,14 +1,16 @@
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Controls;
 
 [CreateAssetMenu(menuName = "SO/InputReader")]
-public class InputReader : ScriptableObject, IPlayerActions
+public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 {
     public event Action<Vector2> MovementEvent;
     public event Action JumpEvent;
     public event Action DashEvent;
+    public event Action StatOpenEvent;
 
     private Controls _controls;
     public Controls GetControl()
@@ -22,9 +24,11 @@ public class InputReader : ScriptableObject, IPlayerActions
         {
             _controls = new Controls();
             _controls.Player.SetCallbacks(this);
+            _controls.UI.SetCallbacks(this);
         }
 
         _controls.Player.Enable();
+        _controls.UI.Enable();
     }
 
     public void OnMovement(InputAction.CallbackContext context)
@@ -45,6 +49,13 @@ public class InputReader : ScriptableObject, IPlayerActions
     {
         if (context.performed) {
             DashEvent?.Invoke();
+        }
+    }
+
+    public void OnStat(InputAction.CallbackContext context)
+    {
+        if (context.performed) {
+            StatOpenEvent?.Invoke();
         }
     }
 }
