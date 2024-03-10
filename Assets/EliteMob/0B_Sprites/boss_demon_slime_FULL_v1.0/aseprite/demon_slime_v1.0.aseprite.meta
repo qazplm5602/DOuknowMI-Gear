@@ -1,0 +1,4532 @@
+fileFormatVersion: 2
+guid: 04249a5e99a3a5c4a94ab5d4f74ab902
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: demon_slime_v1.0_Frame_0
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2015
+      y: 813
+      width: 18
+      height: 27
+    spriteID: ba66981b9edfb834fb0c354aefdf1b46
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2015, y: 813}
+  - name: demon_slime_v1.0_Frame_1
+    originalName: 
+    pivot: {x: 0.5789474, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1330
+      y: 383
+      width: 19
+      height: 29
+    spriteID: a2f33e2003c41874fbbe2592c350cffd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1330, y: 383}
+  - name: demon_slime_v1.0_Frame_2
+    originalName: 
+    pivot: {x: 0.5263156, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1137
+      y: 381
+      width: 19
+      height: 30
+    spriteID: 0016bab4ea554f344986a952bcc074db
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1137, y: 381}
+  - name: demon_slime_v1.0_Frame_3
+    originalName: 
+    pivot: {x: 0.71428543, y: -0.033333335}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 500
+      y: 268
+      width: 14
+      height: 30
+    spriteID: d5794a429ced99847b47f2ad6e913a92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 500, y: 268}
+  - name: demon_slime_v1.0_Frame_4
+    originalName: 
+    pivot: {x: 0.64, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1205
+      y: 385
+      width: 25
+      height: 27
+    spriteID: 789d2d9159cb5364693dc00282d82474
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1205, y: 385}
+  - name: demon_slime_v1.0_Frame_5
+    originalName: 
+    pivot: {x: 0.6315788, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 369
+      y: 269
+      width: 19
+      height: 28
+    spriteID: 0991cec47b4f8e44483a476430e15278
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 369, y: 269}
+  - name: demon_slime_v1.0_Frame_6
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2015
+      y: 848
+      width: 18
+      height: 27
+    spriteID: 066f525db9ae901429a7428ef52cf1f9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2015, y: 848}
+  - name: demon_slime_v1.0_Frame_7
+    originalName: 
+    pivot: {x: 0.64, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1073
+      y: 381
+      width: 25
+      height: 27
+    spriteID: 4ff7f512d44c835458ab28f07bb5b679
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1073, y: 381}
+  - name: demon_slime_v1.0_Frame_8
+    originalName: 
+    pivot: {x: 0.71428543, y: -0.29411766}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 268
+      width: 14
+      height: 34
+    spriteID: c587c2cfd2c0b9b4ca8a6a6a00d200d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 268}
+  - name: demon_slime_v1.0_Frame_9
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.76}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 943
+      y: 662
+      width: 18
+      height: 25
+    spriteID: b58dd34eb18a7bf42a7f43e59d7df06c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 943, y: 662}
+  - name: demon_slime_v1.0_Frame_10
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.67857146}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 423
+      y: 269
+      width: 18
+      height: 28
+    spriteID: b828718f59306de448d9fb45f25e5548
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 423, y: 269}
+  - name: demon_slime_v1.0_Frame_11
+    originalName: 
+    pivot: {x: 0.7692305, y: -0.3125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 522
+      y: 268
+      width: 13
+      height: 32
+    spriteID: 6bd4dce253fb2c346a6337d80ca1bdaf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 522, y: 268}
+  - name: demon_slime_v1.0_Frame_12
+    originalName: 
+    pivot: {x: 0.64, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1297
+      y: 383
+      width: 25
+      height: 28
+    spriteID: f820ed9075fa9594d8634fa34ba10454
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1297, y: 383}
+  - name: demon_slime_v1.0_Frame_13
+    originalName: 
+    pivot: {x: 0.6315788, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 396
+      y: 269
+      width: 19
+      height: 27
+    spriteID: 7e34d293c15a79a4e8d70ac8a518322e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 396, y: 269}
+  - name: demon_slime_v1.0_Frame_14
+    originalName: 
+    pivot: {x: 0.60869557, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1106
+      y: 381
+      width: 23
+      height: 27
+    spriteID: 1ea811d71c0a8a84e9614443c4855c42
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1106, y: 381}
+  - name: demon_slime_v1.0_Frame_15
+    originalName: 
+    pivot: {x: 0.57142854, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1621
+      y: 644
+      width: 28
+      height: 27
+    spriteID: 5e3b92e62a9a81b41b8bd8f408501807
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1621, y: 644}
+  - name: demon_slime_v1.0_Frame_16
+    originalName: 
+    pivot: {x: 0.6538463, y: -0.03846154}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1171
+      y: 385
+      width: 26
+      height: 26
+    spriteID: 13e32aeda8bcda542bbb3cddd9f7071b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1171, y: 385}
+  - name: demon_slime_v1.0_Frame_17
+    originalName: 
+    pivot: {x: 0.5882351, y: -0.040000003}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 969
+      y: 662
+      width: 17
+      height: 25
+    spriteID: 166942184bf09fb408a88887e5dd26a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 969, y: 662}
+  - name: demon_slime_v1.0_Frame_18
+    originalName: 
+    pivot: {x: 0.6470589, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1238
+      y: 385
+      width: 17
+      height: 27
+    spriteID: fbe0ef1ea9cc0e44f92432f549747644
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1238, y: 385}
+  - name: demon_slime_v1.0_Frame_19
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 449
+      y: 269
+      width: 18
+      height: 28
+    spriteID: a76bda2789e539142aa3e4e5e6fbcf03
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 449, y: 269}
+  - name: demon_slime_v1.0_Frame_20
+    originalName: 
+    pivot: {x: 0.61111116, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 2015
+      y: 883
+      width: 18
+      height: 27
+    spriteID: e767f82a75788024797008bebb9d880d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 2015, y: 883}
+  - name: demon_slime_v1.0_Frame_21
+    originalName: 
+    pivot: {x: 0.5769232, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1263
+      y: 383
+      width: 26
+      height: 28
+    spriteID: d7a3a02c085a2514ba329e582055468e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1263, y: 383}
+  - name: demon_slime_v1.0_Frame_22
+    originalName: 
+    pivot: {x: 0.57142866, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1319
+      y: 104
+      width: 35
+      height: 28
+    spriteID: 42b0fbf077774a642a2c377dad62e55c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1319, y: 104}
+  - name: demon_slime_v1.0_Frame_23
+    originalName: 
+    pivot: {x: 0.5510204, y: -0.029411767}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 312
+      y: 269
+      width: 49
+      height: 34
+    spriteID: aeb0c4af742326d4ba26c17407724e75
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 312, y: 269}
+  - name: demon_slime_v1.0_Frame_24
+    originalName: 
+    pivot: {x: 0.5151515, y: -0.025}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1245
+      y: 104
+      width: 66
+      height: 40
+    spriteID: 6dab45a00b4d7e941b88a017f3dc8824
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1245, y: 104}
+  - name: demon_slime_v1.0_Frame_25
+    originalName: 
+    pivot: {x: 0.5151515, y: -0.024390245}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1547
+      y: 644
+      width: 66
+      height: 41
+    spriteID: a0c341f94f0ca7b429c103c45b3a0fd0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1547, y: 644}
+  - name: demon_slime_v1.0_Frame_26
+    originalName: 
+    pivot: {x: 0.54285717, y: -0.026315792}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1167
+      y: 104
+      width: 70
+      height: 38
+    spriteID: 8b3e7638596f30041b578bde103ddfec
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1167, y: 104}
+  - name: demon_slime_v1.0_Frame_27
+    originalName: 
+    pivot: {x: 0.5180723, y: -0.03125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1462
+      y: 377
+      width: 83
+      height: 32
+    spriteID: f34ca0f66e1e994408a3db48b2a18ad4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1462, y: 377}
+  - name: demon_slime_v1.0_Frame_28
+    originalName: 
+    pivot: {x: 0.51648355, y: -0.035714287}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 660
+      width: 91
+      height: 28
+    spriteID: a5a7e0fa92cdd6e4dac4b29b5c878ceb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 660}
+  - name: demon_slime_v1.0_Frame_29
+    originalName: 
+    pivot: {x: 0.51648355, y: -0.037037037}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1050
+      y: 661
+      width: 91
+      height: 27
+    spriteID: 1d90e0f273855bf45af1e7f7bc6b0979
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1050, y: 661}
+  - name: demon_slime_v1.0_Frame_30
+    originalName: 
+    pivot: {x: 0.51612896, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 488
+      y: 659
+      width: 93
+      height: 29
+    spriteID: 5aba40e52f4f676448cd8edee592180b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 488, y: 659}
+  - name: demon_slime_v1.0_Frame_31
+    originalName: 
+    pivot: {x: 0.5157895, y: -0.03448276}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 367
+      y: 659
+      width: 95
+      height: 29
+    spriteID: 4299597995b484547ba1352f40dbe765
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 367, y: 659}
+  - name: demon_slime_v1.0_Frame_32
+    originalName: 
+    pivot: {x: 0.5154639, y: -0.027027026}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1357
+      y: 375
+      width: 97
+      height: 37
+    spriteID: 948f73ef9d6c7ce4c9593d8352c8afdf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1357, y: 375}
+  - name: demon_slime_v1.0_Frame_33
+    originalName: 
+    pivot: {x: 0.51515156, y: -0.020000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1561
+      y: 311
+      width: 99
+      height: 50
+    spriteID: aae41dda9df8a6c4f90a505916d4d11b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1561, y: 311}
+  - name: demon_slime_v1.0_Frame_34
+    originalName: 
+    pivot: {x: 0.5154639, y: -0.017857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1357
+      y: 311
+      width: 97
+      height: 56
+    spriteID: 6a2bc4aa849fd7e418a6a948ab242737
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1357, y: 311}
+  - name: demon_slime_v1.0_Frame_35
+    originalName: 
+    pivot: {x: 0.5111111, y: -0.016129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1073
+      y: 311
+      width: 90
+      height: 62
+    spriteID: c0f719b70eaad6a4da7f7a28f93f1915
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1073, y: 311}
+  - name: demon_slime_v1.0_Frame_36
+    originalName: 
+    pivot: {x: 0.41758242, y: -0.01724138}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1462
+      y: 311
+      width: 91
+      height: 58
+    spriteID: cb15fab2f2a0ec849925ab43b31d4f8f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1462, y: 311}
+  - name: demon_slime_v1.0_Frame_37
+    originalName: 
+    pivot: {x: 0.36046514, y: -0.015625}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1263
+      y: 311
+      width: 86
+      height: 64
+    spriteID: d5582639fd3b4b04f953d6417f38bf59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1263, y: 311}
+  - name: demon_slime_v1.0_Frame_38
+    originalName: 
+    pivot: {x: 0.29761904, y: -0.015151516}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1171
+      y: 311
+      width: 84
+      height: 66
+    spriteID: b24cebab7772dfa4d83a325ee13baa36
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1171, y: 311}
+  - name: demon_slime_v1.0_Frame_39
+    originalName: 
+    pivot: {x: 0.28571433, y: -0.01369863}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 892
+      y: 311
+      width: 84
+      height: 73
+    spriteID: c555de04e616b704a893da6dfb7db8fc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 892, y: 311}
+  - name: demon_slime_v1.0_Frame_40
+    originalName: 
+    pivot: {x: 0.29761904, y: -0.013157896}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 800
+      y: 311
+      width: 84
+      height: 76
+    spriteID: 89046b73b15450c45b5db9a4be902feb
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 800, y: 311}
+  - name: demon_slime_v1.0_Frame_41
+    originalName: 
+    pivot: {x: 0.37894738, y: -0.0125}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1165
+      y: 813
+      width: 95
+      height: 80
+    spriteID: d45c6a081d63da64c83dbe480a15f44b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1165, y: 813}
+  - name: demon_slime_v1.0_Frame_42
+    originalName: 
+    pivot: {x: 0.39175257, y: -0.011764706}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 187
+      y: 813
+      width: 97
+      height: 85
+    spriteID: 0613892253e0f4c4cbe09bbe01828151
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 187, y: 813}
+  - name: demon_slime_v1.0_Frame_43
+    originalName: 
+    pivot: {x: 0.40404043, y: -0.011111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 783
+      y: 696
+      width: 99
+      height: 90
+    spriteID: 3d0b42b17da075a40b5b200b8d954569
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 783, y: 696}
+  - name: demon_slime_v1.0_Frame_44
+    originalName: 
+    pivot: {x: 0.41584164, y: -0.010869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 195
+      y: 696
+      width: 101
+      height: 92
+    spriteID: d1d8ff883d68fc14e8db22319fd05d49
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 195, y: 696}
+  - name: demon_slime_v1.0_Frame_45
+    originalName: 
+    pivot: {x: 0.44247788, y: -0.00990099}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 246
+      y: 551
+      width: 113
+      height: 101
+    spriteID: 28a379d4bef3a6440866ec7c21619aa3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 246, y: 551}
+  - name: demon_slime_v1.0_Frame_46
+    originalName: 
+    pivot: {x: 0.44247788, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 367
+      y: 551
+      width: 113
+      height: 100
+    spriteID: 4e06670aa2daae247b31a38a65dcc15d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 367, y: 551}
+  - name: demon_slime_v1.0_Frame_47
+    originalName: 
+    pivot: {x: 0.44247788, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 488
+      y: 551
+      width: 113
+      height: 100
+    spriteID: 41e2bc60998cdf14b89e1661d4949a74
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 488, y: 551}
+  - name: demon_slime_v1.0_Frame_48
+    originalName: 
+    pivot: {x: 0.44247788, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 609
+      y: 551
+      width: 113
+      height: 100
+    spriteID: 2d79f136070240d488d3e7f5000dff5d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 609, y: 551}
+  - name: demon_slime_v1.0_Frame_49
+    originalName: 
+    pivot: {x: 0.45454547, y: -0.009708738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 943
+      y: 551
+      width: 99
+      height: 103
+    spriteID: a7a336e6a2b756e47a8dbdedd99a9eac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 943, y: 551}
+  - name: demon_slime_v1.0_Frame_50
+    originalName: 
+    pivot: {x: 0.46590906, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 687
+      y: 696
+      width: 88
+      height: 102
+    spriteID: 976b85b731f93424c99c6844fa46481e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 687, y: 696}
+  - name: demon_slime_v1.0_Frame_51
+    originalName: 
+    pivot: {x: 0.475, y: -0.009708738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 292
+      y: 813
+      width: 80
+      height: 103
+    spriteID: d36877083d556234695c6f623ae9d381
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 292, y: 813}
+  - name: demon_slime_v1.0_Frame_52
+    originalName: 
+    pivot: {x: 0.475, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1437
+      y: 696
+      width: 80
+      height: 105
+    spriteID: 698f0c07b4c628e49aaff948e010b827
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1437, y: 696}
+  - name: demon_slime_v1.0_Frame_53
+    originalName: 
+    pivot: {x: 0.47126436, y: -0.009615385}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 592
+      y: 696
+      width: 87
+      height: 104
+    spriteID: 0cb1f2f21d4338741a7f94bd1bac778c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 592, y: 696}
+  - name: demon_slime_v1.0_Frame_54
+    originalName: 
+    pivot: {x: 0.47252747, y: -0.009345795}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1349
+      y: 551
+      width: 91
+      height: 107
+    spriteID: 96a2cdfb04a455b499f86231cbd7a0aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1349, y: 551}
+  - name: demon_slime_v1.0_Frame_55
+    originalName: 
+    pivot: {x: 0.48351654, y: -0.009433962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1669
+      y: 551
+      width: 91
+      height: 106
+    spriteID: 5fd4e303dac4fe346aa508b02553d8a5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1669, y: 551}
+  - name: demon_slime_v1.0_Frame_56
+    originalName: 
+    pivot: {x: 0.47252747, y: -0.009345795}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1448
+      y: 551
+      width: 91
+      height: 107
+    spriteID: 50f4f68c3159f1645a156d3fa1ab6fa4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1448, y: 551}
+  - name: demon_slime_v1.0_Frame_57
+    originalName: 
+    pivot: {x: 0.47126436, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 890
+      y: 696
+      width: 87
+      height: 102
+    spriteID: 8e1835b84390c8c4e9c18c30e4ef4d65
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 890, y: 696}
+  - name: demon_slime_v1.0_Frame_58
+    originalName: 
+    pivot: {x: 0.54687506, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 728
+      y: 311
+      width: 64
+      height: 100
+    spriteID: d3c3c1afa9868b541b7f78f9f856e053
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 728, y: 311}
+  - name: demon_slime_v1.0_Frame_59
+    originalName: 
+    pivot: {x: 0.51470596, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 336
+      y: 311
+      width: 68
+      height: 99
+    spriteID: 620679095ae7be44caf165138210a374
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 336, y: 311}
+  - name: demon_slime_v1.0_Frame_60
+    originalName: 
+    pivot: {x: 0.52238816, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 488
+      y: 311
+      width: 67
+      height: 100
+    spriteID: d4467d5ae049c344ba557ad9ba435d26
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 488, y: 311}
+  - name: demon_slime_v1.0_Frame_61
+    originalName: 
+    pivot: {x: 0.50000006, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1937
+      y: 813
+      width: 70
+      height: 99
+    spriteID: 3977021373b217c4ca313296ccdc33e8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1937, y: 813}
+  - name: demon_slime_v1.0_Frame_62
+    originalName: 
+    pivot: {x: 0.47297302, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1438
+      y: 813
+      width: 74
+      height: 100
+    spriteID: b6b22e70357b326458e66ff15b03f334
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1438, y: 813}
+  - name: demon_slime_v1.0_Frame_63
+    originalName: 
+    pivot: {x: 0.448718, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 990
+      y: 813
+      width: 78
+      height: 100
+    spriteID: 81c1bb36e9fff5542a6b9d23ab98b138
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 990, y: 813}
+  - name: demon_slime_v1.0_Frame_64
+    originalName: 
+    pivot: {x: 0.44705883, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1344
+      y: 696
+      width: 85
+      height: 99
+    spriteID: f1c13f0cca79eee4c8ff2e812e2a545f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1344, y: 696}
+  - name: demon_slime_v1.0_Frame_65
+    originalName: 
+    pivot: {x: 0.475, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 734
+      y: 813
+      width: 80
+      height: 99
+    spriteID: 432251ea86cc36d4aab5a13ff6a1e478
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 734, y: 813}
+  - name: demon_slime_v1.0_Frame_66
+    originalName: 
+    pivot: {x: 0.475, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 557
+      y: 813
+      width: 80
+      height: 100
+    spriteID: 1dd9316daf191764f96a2cd9d959a686
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 557, y: 813}
+  - name: demon_slime_v1.0_Frame_67
+    originalName: 
+    pivot: {x: 0.49315068, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1698
+      y: 813
+      width: 73
+      height: 99
+    spriteID: 6afe3d2ce8038a241b9a0a66c143eac3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1698, y: 813}
+  - name: demon_slime_v1.0_Frame_68
+    originalName: 
+    pivot: {x: 0.50000006, y: -0.010000001}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1859
+      y: 813
+      width: 70
+      height: 100
+    spriteID: ecd7e069a5a84a74c9da64f4a12e488d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1859, y: 813}
+  - name: demon_slime_v1.0_Frame_69
+    originalName: 
+    pivot: {x: 0.51470596, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 412
+      y: 311
+      width: 68
+      height: 99
+    spriteID: 428a7fc8e4cbfae4ea88fb1c74c74663
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 412, y: 311}
+  - name: demon_slime_v1.0_Frame_70
+    originalName: 
+    pivot: {x: 0.475, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1525
+      y: 696
+      width: 80
+      height: 105
+    spriteID: a974d1580518a6149ba5af37b6d2be4e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1525, y: 696}
+  - name: demon_slime_v1.0_Frame_71
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.009615385}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 822
+      y: 813
+      width: 76
+      height: 104
+    spriteID: 54864df6497b4054da9f152222942fb6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 822, y: 813}
+  - name: demon_slime_v1.0_Frame_72
+    originalName: 
+    pivot: {x: 0.3978494, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1950
+      y: 420
+      width: 93
+      height: 109
+    spriteID: 93f57bc909a81434ea4f2e76fe66ae82
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1950, y: 420}
+  - name: demon_slime_v1.0_Frame_73
+    originalName: 
+    pivot: {x: 0.32558134, y: -0.009345795}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 400
+      y: 696
+      width: 86
+      height: 107
+    spriteID: bf15c60da3d3d674da4c9bdb9c9473c8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 400, y: 696}
+  - name: demon_slime_v1.0_Frame_74
+    originalName: 
+    pivot: {x: 0.32222223, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1157
+      y: 551
+      width: 90
+      height: 109
+    spriteID: 0fdb2c52fdfa48249a5920b9cb6176d1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1157, y: 551}
+  - name: demon_slime_v1.0_Frame_75
+    originalName: 
+    pivot: {x: 0.3146067, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 98
+      y: 696
+      width: 89
+      height: 105
+    spriteID: 8cd2b87fc6600bb4d8e5f0bdd68292aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 98, y: 696}
+  - name: demon_slime_v1.0_Frame_76
+    originalName: 
+    pivot: {x: 0.3139535, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1954
+      y: 551
+      width: 86
+      height: 109
+    spriteID: db0ffbbe73c18314f82b61aefd910da9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1954, y: 551}
+  - name: demon_slime_v1.0_Frame_77
+    originalName: 
+    pivot: {x: 0.3139535, y: -0.00877193}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1255
+      y: 551
+      width: 86
+      height: 114
+    spriteID: 08c1ef386aaad844aad0c9ce34e2a99e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1255, y: 551}
+  - name: demon_slime_v1.0_Frame_78
+    originalName: 
+    pivot: {x: 0.3139535, y: -0.009009009}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1768
+      y: 551
+      width: 86
+      height: 111
+    spriteID: af8f4d38aaafa6242bd0716825f0eeac
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1768, y: 551}
+  - name: demon_slime_v1.0_Frame_79
+    originalName: 
+    pivot: {x: 0.77272725, y: -0.00990099}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 296
+      y: 420
+      width: 154
+      height: 101
+    spriteID: c4d13d53bb674b84cb87cee67854e9a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 296, y: 420}
+  - name: demon_slime_v1.0_Frame_80
+    originalName: 
+    pivot: {x: 0.77707005, y: -0.01980198}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 311
+      width: 157
+      height: 101
+    spriteID: 60fedc6826adc97419a3839029bae76f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 311}
+  - name: demon_slime_v1.0_Frame_81
+    originalName: 
+    pivot: {x: 0.775, y: -0.010309278}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 458
+      y: 420
+      width: 160
+      height: 97
+    spriteID: d85218d3f9f797746a2643871be22db5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 458, y: 420}
+  - name: demon_slime_v1.0_Frame_82
+    originalName: 
+    pivot: {x: 0.64646465, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1050
+      y: 551
+      width: 99
+      height: 102
+    spriteID: ec36b9c9c887b6047ac3d35b727049bf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1050, y: 551}
+  - name: demon_slime_v1.0_Frame_83
+    originalName: 
+    pivot: {x: 0.55128205, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1966
+      y: 696
+      width: 78
+      height: 102
+    spriteID: fc56c37be5892fa42a6dbd1c78702d36
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1966, y: 696}
+  - name: demon_slime_v1.0_Frame_84
+    originalName: 
+    pivot: {x: 0.475, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1613
+      y: 696
+      width: 80
+      height: 105
+    spriteID: 577eb4456777f11438395f5488c994d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1613, y: 696}
+  - name: demon_slime_v1.0_Frame_85
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1166
+      y: 696
+      width: 81
+      height: 105
+    spriteID: 1c40509ef8087344dbed4fcb7e4b308b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1166, y: 696}
+  - name: demon_slime_v1.0_Frame_86
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.0106382985}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1076
+      y: 813
+      width: 81
+      height: 94
+    spriteID: 97d1a32450eac7143ad60b656b702f27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1076, y: 813}
+  - name: demon_slime_v1.0_Frame_87
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.010752688}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1268
+      y: 813
+      width: 81
+      height: 93
+    spriteID: 8f13abb1496b52d44bd87a01d3391454
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1268, y: 813}
+  - name: demon_slime_v1.0_Frame_88
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.011111111}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1609
+      y: 813
+      width: 81
+      height: 90
+    spriteID: 4fac9ee92d1fddd40a432727231b248a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1609, y: 813}
+  - name: demon_slime_v1.0_Frame_89
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.010989011}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1520
+      y: 813
+      width: 81
+      height: 91
+    spriteID: b4a4221ea430fde4fb6e50ad60e1b1a1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1520, y: 813}
+  - name: demon_slime_v1.0_Frame_90
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.14285715}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1255
+      y: 696
+      width: 81
+      height: 105
+    spriteID: f0aa07856aec4374aa68e7fadcceec94
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1255, y: 696}
+  - name: demon_slime_v1.0_Frame_91
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.27722773}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 468
+      y: 813
+      width: 81
+      height: 101
+    spriteID: 768b8bb12ed8e19478e38f6f00604880
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 468, y: 813}
+  - name: demon_slime_v1.0_Frame_92
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.55952376}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 169
+      y: 311
+      width: 81
+      height: 84
+    spriteID: a80ca598c294125499940b301ff06b7c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 169, y: 311}
+  - name: demon_slime_v1.0_Frame_93
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.80555564}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 984
+      y: 311
+      width: 81
+      height: 72
+    spriteID: 3d521620013d5ee4496c5aafd07000c1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 984, y: 311}
+  - name: demon_slime_v1.0_Frame_94
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.7073171}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 563
+      y: 311
+      width: 81
+      height: 82
+    spriteID: 576e935b60262fa41944e09d057fe060
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 563, y: 311}
+  - name: demon_slime_v1.0_Frame_95
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.010204082}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 645
+      y: 813
+      width: 81
+      height: 98
+    spriteID: 2d84ded74492d50408225ba3dd1338b0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 645, y: 813}
+  - name: demon_slime_v1.0_Frame_96
+    originalName: 
+    pivot: {x: 0.45, y: -0.011363637}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1028
+      y: 420
+      width: 160
+      height: 88
+    spriteID: 62c7b219107b15a42bd61175585c0711
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1028, y: 420}
+  - name: demon_slime_v1.0_Frame_97
+    originalName: 
+    pivot: {x: 0.49206352, y: -0.010869565}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1167
+      y: 4
+      width: 189
+      height: 92
+    spriteID: a6542be85b9faca499f6706e0c690770
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1167, y: 4}
+  - name: demon_slime_v1.0_Frame_98
+    originalName: 
+    pivot: {x: 0.49746194, y: -0.010989011}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 962
+      y: 4
+      width: 197
+      height: 91
+    spriteID: a0e370445ad671549bb5047d94e28df0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 962, y: 4}
+  - name: demon_slime_v1.0_Frame_99
+    originalName: 
+    pivot: {x: 0.4950495, y: -0.010752688}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 373
+      y: 4
+      width: 202
+      height: 93
+    spriteID: cc3c02e6c76e746498e63144b2d8abda
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 373, y: 4}
+  - name: demon_slime_v1.0_Frame_100
+    originalName: 
+    pivot: {x: 0.497561, y: -0.010989011}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 583
+      y: 4
+      width: 205
+      height: 91
+    spriteID: cc861728da5fd634099acae45ef48893
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 583, y: 4}
+  - name: demon_slime_v1.0_Frame_101
+    originalName: 
+    pivot: {x: 0.49758455, y: -0.010752688}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 158
+      y: 4
+      width: 207
+      height: 93
+    spriteID: fb98f9c298d97514f8071ce2ae71eb92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 158, y: 4}
+  - name: demon_slime_v1.0_Frame_102
+    originalName: 
+    pivot: {x: 0.46913582, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1877
+      y: 696
+      width: 81
+      height: 102
+    spriteID: af7722742cdcaaf4cb4884b410edf083
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1877, y: 696}
+  - name: demon_slime_v1.0_Frame_103
+    originalName: 
+    pivot: {x: 0.475, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1701
+      y: 696
+      width: 80
+      height: 105
+    spriteID: bf0ef35d52162bb409d8bbcbcc3d3e1a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1701, y: 696}
+  - name: demon_slime_v1.0_Frame_104
+    originalName: 
+    pivot: {x: 0.32558134, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 696
+      width: 86
+      height: 109
+    spriteID: 11eab34045960ad489e3048461220f29
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 696}
+  - name: demon_slime_v1.0_Frame_105
+    originalName: 
+    pivot: {x: 0.19277108, y: -0.009009009}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 96
+      y: 813
+      width: 83
+      height: 111
+    spriteID: 27f53aafb33304d45b81c955ab734bd8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 96, y: 813}
+  - name: demon_slime_v1.0_Frame_106
+    originalName: 
+    pivot: {x: 0.17857146, y: -0.00909091}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 813
+      width: 84
+      height: 110
+    spriteID: 990d5c5fb1eccd34f8de278a8f7cea5b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 813}
+  - name: demon_slime_v1.0_Frame_107
+    originalName: 
+    pivot: {x: 0.17857146, y: -0.008928572}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1862
+      y: 551
+      width: 84
+      height: 112
+    spriteID: 98a95eb3a5ad78e48b639a890d35ed8e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1862, y: 551}
+  - name: demon_slime_v1.0_Frame_108
+    originalName: 
+    pivot: {x: 0.49315068, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1357
+      y: 813
+      width: 73
+      height: 102
+    spriteID: 0882b9cb69d45294692f0b5069ddcdbe
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1357, y: 813}
+  - name: demon_slime_v1.0_Frame_109
+    originalName: 
+    pivot: {x: 0.5, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1078
+      y: 696
+      width: 80
+      height: 109
+    spriteID: 075bf6f314c626141a96ea43a516a844
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1078, y: 696}
+  - name: demon_slime_v1.0_Frame_110
+    originalName: 
+    pivot: {x: 0.6460177, y: -0.00729927}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 551
+      width: 113
+      height: 137
+    spriteID: 60893687916be674eb1b691474dac570
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 551}
+  - name: demon_slime_v1.0_Frame_111
+    originalName: 
+    pivot: {x: 0.69465643, y: -0.0068027214}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 156
+      width: 131
+      height: 147
+    spriteID: ff920d150da83fe42a02435c3a7b4a95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 156}
+  - name: demon_slime_v1.0_Frame_112
+    originalName: 
+    pivot: {x: 0.72602737, y: -0.006944445}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 146
+      height: 144
+    spriteID: c2a525a6494f6b6418127013eb7b499a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: demon_slime_v1.0_Frame_113
+    originalName: 
+    pivot: {x: 0.7468354, y: -0.00862069}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 796
+      y: 4
+      width: 158
+      height: 116
+    spriteID: a5643c29a36b95240a184c577551e0e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 796, y: 4}
+  - name: demon_slime_v1.0_Frame_114
+    originalName: 
+    pivot: {x: 0.7515528, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 956
+      y: 156
+      width: 161
+      height: 102
+    spriteID: 9267a611d13c3154ab830f73120d25b7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 956, y: 156}
+  - name: demon_slime_v1.0_Frame_115
+    originalName: 
+    pivot: {x: 0.7515528, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1872
+      y: 4
+      width: 161
+      height: 105
+    spriteID: e19542e6169ebf14a8e3f1a63ec5fe6e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1872, y: 4}
+  - name: demon_slime_v1.0_Frame_116
+    originalName: 
+    pivot: {x: 0.7515528, y: -0.009615385}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 143
+      y: 156
+      width: 161
+      height: 104
+    spriteID: 9d222bc693ab8f84e982eeb511dc85d5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 143, y: 156}
+  - name: demon_slime_v1.0_Frame_117
+    originalName: 
+    pivot: {x: 0.7515528, y: -0.009345795}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1534
+      y: 4
+      width: 161
+      height: 107
+    spriteID: f2c4aa2d9e7253048a5070332191f084
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1534, y: 4}
+  - name: demon_slime_v1.0_Frame_118
+    originalName: 
+    pivot: {x: 0.7515528, y: -0.009433962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1703
+      y: 4
+      width: 161
+      height: 106
+    spriteID: 4984b58af9a55794289628ca435fe2ce
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1703, y: 4}
+  - name: demon_slime_v1.0_Frame_119
+    originalName: 
+    pivot: {x: 0.7530864, y: -0.009345795}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1364
+      y: 4
+      width: 162
+      height: 107
+    spriteID: 7f269070604df4240b61e1e93f87d40b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1364, y: 4}
+  - name: demon_slime_v1.0_Frame_120
+    originalName: 
+    pivot: {x: 0.7484277, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1281
+      y: 156
+      width: 159
+      height: 102
+    spriteID: 557344f7750684b46be153c5815ebd55
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1281, y: 156}
+  - name: demon_slime_v1.0_Frame_121
+    originalName: 
+    pivot: {x: 0.7468354, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 312
+      y: 156
+      width: 158
+      height: 105
+    spriteID: 1981e2243db4c1e408c9ab519ee4a670
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 312, y: 156}
+  - name: demon_slime_v1.0_Frame_122
+    originalName: 
+    pivot: {x: 0.7468354, y: -0.009615385}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 478
+      y: 156
+      width: 158
+      height: 104
+    spriteID: 5e6770ad386209141ad1f48f0f88378e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 478, y: 156}
+  - name: demon_slime_v1.0_Frame_123
+    originalName: 
+    pivot: {x: 0.47368422, y: -0.009708738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 906
+      y: 813
+      width: 76
+      height: 103
+    spriteID: 4984feeb55df0d447afa147ca3d0cd76
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 906, y: 813}
+  - name: demon_slime_v1.0_Frame_124
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1448
+      y: 156
+      width: 148
+      height: 109
+    spriteID: a31b0da8e0c494f4d8d4ef0a6947aa27
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1448, y: 156}
+  - name: demon_slime_v1.0_Frame_125
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.009259259}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1604
+      y: 156
+      width: 148
+      height: 108
+    spriteID: 340badeebb9eeec40b36e1043ab14f1b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1604, y: 156}
+  - name: demon_slime_v1.0_Frame_126
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.009009009}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 644
+      y: 156
+      width: 148
+      height: 111
+    spriteID: d161f878de25d454884ac74397bbde48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 644, y: 156}
+  - name: demon_slime_v1.0_Frame_127
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.00909091}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1125
+      y: 156
+      width: 148
+      height: 110
+    spriteID: 48a48acb67976a9459ff101130382cb4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1125, y: 156}
+  - name: demon_slime_v1.0_Frame_128
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.009009009}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 800
+      y: 156
+      width: 148
+      height: 111
+    spriteID: 0a388b8b3992e3040865ecc3d04c17a8
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 800, y: 156}
+  - name: demon_slime_v1.0_Frame_129
+    originalName: 
+    pivot: {x: 0.5675676, y: -0.009433962}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 140
+      y: 420
+      width: 148
+      height: 106
+    spriteID: edd276886d75a0e44b2f8ecbecf5f5ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 140, y: 420}
+  - name: demon_slime_v1.0_Frame_130
+    originalName: 
+    pivot: {x: 0.475, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1789
+      y: 696
+      width: 80
+      height: 105
+    spriteID: d58e0864d0c6e1d47bc107ab58f096d0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1789, y: 696}
+  - name: demon_slime_v1.0_Frame_131
+    originalName: 
+    pivot: {x: 0.32941172, y: -0.009708738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 985
+      y: 696
+      width: 85
+      height: 103
+    spriteID: acd045b93de6f1d46a48494dda66d293
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 985, y: 696}
+  - name: demon_slime_v1.0_Frame_132
+    originalName: 
+    pivot: {x: 0.30392158, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 833
+      y: 551
+      width: 102
+      height: 105
+    spriteID: a6dc2b6518d47f1418adcf854c482386
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 833, y: 551}
+  - name: demon_slime_v1.0_Frame_133
+    originalName: 
+    pivot: {x: 0.3666667, y: -0.009803922}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 494
+      y: 696
+      width: 90
+      height: 102
+    spriteID: a022536f91fb8bb44ac1687b610c4d21
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 494, y: 696}
+  - name: demon_slime_v1.0_Frame_134
+    originalName: 
+    pivot: {x: 0.475, y: -0.009708738}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 380
+      y: 813
+      width: 80
+      height: 103
+    spriteID: b3139472e256f4443b77c0680b1e27c7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 380, y: 813}
+  - name: demon_slime_v1.0_Frame_135
+    originalName: 
+    pivot: {x: 0.475, y: -0.011235955}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 931
+      width: 80
+      height: 89
+    spriteID: 26a283fad8c2fee489046a03f67288d0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 931}
+  - name: demon_slime_v1.0_Frame_136
+    originalName: 
+    pivot: {x: 0.50000006, y: -0.010309278}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 258
+      y: 311
+      width: 70
+      height: 97
+    spriteID: 9199e29584d047749b23026ff0e3b39e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 258, y: 311}
+  - name: demon_slime_v1.0_Frame_137
+    originalName: 
+    pivot: {x: 0.4852942, y: -0.010416667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 652
+      y: 311
+      width: 68
+      height: 96
+    spriteID: c0f7de75a1ddeeb448ed60e884595cea
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 652, y: 311}
+  - name: demon_slime_v1.0_Frame_138
+    originalName: 
+    pivot: {x: 0.51388884, y: -0.01010101}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1779
+      y: 813
+      width: 72
+      height: 99
+    spriteID: a7e6cb0f353f9e4469c1ee99255977ef
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1779, y: 813}
+  - name: demon_slime_v1.0_Frame_139
+    originalName: 
+    pivot: {x: 0.4204545, y: -0.00952381}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 304
+      y: 696
+      width: 88
+      height: 105
+    spriteID: a5f384f97d0262445a5ba1ba555b588b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 304, y: 696}
+  - name: demon_slime_v1.0_Frame_140
+    originalName: 
+    pivot: {x: 0.27368426, y: -0.0088495575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 730
+      y: 551
+      width: 95
+      height: 113
+    spriteID: 1499a71c6619ad644890028abb51fea7
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 730, y: 551}
+  - name: demon_slime_v1.0_Frame_141
+    originalName: 
+    pivot: {x: 0.35042736, y: -0.008474576}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1576
+      y: 420
+      width: 117
+      height: 118
+    spriteID: adc8ab3d973f51e49a5559e2fd372aa6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1576, y: 420}
+  - name: demon_slime_v1.0_Frame_142
+    originalName: 
+    pivot: {x: 0.34351143, y: -0.008264462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1896
+      y: 156
+      width: 131
+      height: 121
+    spriteID: 07f01d822035a3b418775a264d4d8056
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1896, y: 156}
+  - name: demon_slime_v1.0_Frame_143
+    originalName: 
+    pivot: {x: 0.34375003, y: -0.008130081}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 420
+      width: 128
+      height: 123
+    spriteID: 383c22d8d40594347aae433c680f451b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 420}
+  - name: demon_slime_v1.0_Frame_144
+    originalName: 
+    pivot: {x: 0.34375003, y: -0.008264462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 626
+      y: 420
+      width: 128
+      height: 121
+    spriteID: c430fe31978200848bae96737120fccf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 626, y: 420}
+  - name: demon_slime_v1.0_Frame_145
+    originalName: 
+    pivot: {x: 0.34375003, y: -0.008064516}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1760
+      y: 156
+      width: 128
+      height: 124
+    spriteID: 818a8ad87df5cdb4cb6f28a80f2fa7c3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1760, y: 156}
+  - name: demon_slime_v1.0_Frame_146
+    originalName: 
+    pivot: {x: 0.34375003, y: -0.009174312}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1440
+      y: 420
+      width: 128
+      height: 109
+    spriteID: 62556261c0c05ad40956f357cc51bf49
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1440, y: 420}
+  - name: demon_slime_v1.0_Frame_147
+    originalName: 
+    pivot: {x: 0.32799998, y: -0.0088495575}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 895
+      y: 420
+      width: 125
+      height: 113
+    spriteID: b28af9b17f1c84044a9935a479e13ccd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 895, y: 420}
+  - name: demon_slime_v1.0_Frame_148
+    originalName: 
+    pivot: {x: 0.32799998, y: -0.008695653}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 762
+      y: 420
+      width: 125
+      height: 115
+    spriteID: 0c6e87e2560f3854dac26557e8f7cd9d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 762, y: 420}
+  - name: demon_slime_v1.0_Frame_149
+    originalName: 
+    pivot: {x: 0.2941177, y: -0.00862069}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1701
+      y: 420
+      width: 119
+      height: 116
+    spriteID: 15f4f681ba206934582701769a81f277
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1701, y: 420}
+  - name: demon_slime_v1.0_Frame_150
+    originalName: 
+    pivot: {x: 0.29203543, y: -0.008264462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 125
+      y: 551
+      width: 113
+      height: 121
+    spriteID: b880ed4b7bc481d46b6cd43ad1251154
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 125, y: 551}
+  - name: demon_slime_v1.0_Frame_151
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.008130081}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1196
+      y: 420
+      width: 114
+      height: 123
+    spriteID: 1e8683c6827817f49af9ae84fd5f9eed
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1196, y: 420}
+  - name: demon_slime_v1.0_Frame_152
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.008130081}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1318
+      y: 420
+      width: 114
+      height: 123
+    spriteID: a3c3fa7d3526fca4f9c348bfd4e24142
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1318, y: 420}
+  - name: demon_slime_v1.0_Frame_153
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.008264462}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1828
+      y: 420
+      width: 114
+      height: 121
+    spriteID: 52066e2c907ba6f419e34a71577f4690
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1828, y: 420}
+  - name: demon_slime_v1.0_Frame_154
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.011764706}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1547
+      y: 551
+      width: 114
+      height: 85
+    spriteID: cfac9368668460041b961096c8ae80f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1547, y: 551}
+  - name: demon_slime_v1.0_Frame_155
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 895
+      y: 541
+      width: 114
+      height: 2
+    spriteID: f56fbac1421d25e43811ccd979f8e223
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 895, y: 541}
+  - name: demon_slime_v1.0_Frame_156
+    originalName: 
+    pivot: {x: 0.30701756, y: -0.5}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 1440
+      y: 537
+      width: 114
+      height: 2
+    spriteID: 4e045a1754cb40e4dbdfbdff963f2928
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 1440, y: 537}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 270104976
+    name: demon_slime_v1.0
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: demon_slime_v1.0_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 133
+        y: 1
+        width: 18
+        height: 27
+      spriteId: ba66981b9edfb834fb0c354aefdf1b46
+    - name: demon_slime_v1.0_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 133
+        y: 1
+        width: 19
+        height: 29
+      spriteId: a2f33e2003c41874fbbe2592c350cffd
+    - name: demon_slime_v1.0_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 134
+        y: 1
+        width: 19
+        height: 30
+      spriteId: 0016bab4ea554f344986a952bcc074db
+    - name: demon_slime_v1.0_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 134
+        y: 1
+        width: 14
+        height: 30
+      spriteId: d5794a429ced99847b47f2ad6e913a92
+    - name: demon_slime_v1.0_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 128
+        y: 1
+        width: 25
+        height: 27
+      spriteId: 789d2d9159cb5364693dc00282d82474
+    - name: demon_slime_v1.0_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 132
+        y: 1
+        width: 19
+        height: 28
+      spriteId: 0991cec47b4f8e44483a476430e15278
+    - name: demon_slime_v1.0_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 133
+        y: 1
+        width: 18
+        height: 27
+      spriteId: 066f525db9ae901429a7428ef52cf1f9
+    - name: demon_slime_v1.0_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 128
+        y: 1
+        width: 25
+        height: 27
+      spriteId: 4ff7f512d44c835458ab28f07bb5b679
+    - name: demon_slime_v1.0_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 134
+        y: 10
+        width: 14
+        height: 34
+      spriteId: c587c2cfd2c0b9b4ca8a6a6a00d200d5
+    - name: demon_slime_v1.0_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 133
+        y: 19
+        width: 18
+        height: 25
+      spriteId: b58dd34eb18a7bf42a7f43e59d7df06c
+    - name: demon_slime_v1.0_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 133
+        y: 19
+        width: 18
+        height: 28
+      spriteId: b828718f59306de448d9fb45f25e5548
+    - name: demon_slime_v1.0_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 134
+        y: 10
+        width: 13
+        height: 32
+      spriteId: 6bd4dce253fb2c346a6337d80ca1bdaf
+    - name: demon_slime_v1.0_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 128
+        y: 1
+        width: 25
+        height: 28
+      spriteId: f820ed9075fa9594d8634fa34ba10454
+    - name: demon_slime_v1.0_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 132
+        y: 1
+        width: 19
+        height: 27
+      spriteId: 7e34d293c15a79a4e8d70ac8a518322e
+    - name: demon_slime_v1.0_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 130
+        y: 1
+        width: 23
+        height: 27
+      spriteId: 1ea811d71c0a8a84e9614443c4855c42
+    - name: demon_slime_v1.0_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 128
+        y: 1
+        width: 28
+        height: 27
+      spriteId: 5e3b92e62a9a81b41b8bd8f408501807
+    - name: demon_slime_v1.0_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 127
+        y: 1
+        width: 26
+        height: 26
+      spriteId: 13e32aeda8bcda542bbb3cddd9f7071b
+    - name: demon_slime_v1.0_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 134
+        y: 1
+        width: 17
+        height: 25
+      spriteId: 166942184bf09fb408a88887e5dd26a9
+    - name: demon_slime_v1.0_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 133
+        y: 1
+        width: 17
+        height: 27
+      spriteId: fbe0ef1ea9cc0e44f92432f549747644
+    - name: demon_slime_v1.0_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 133
+        y: 1
+        width: 18
+        height: 28
+      spriteId: a76bda2789e539142aa3e4e5e6fbcf03
+    - name: demon_slime_v1.0_Frame_20
+      frameIndex: 20
+      cellRect:
+        x: 133
+        y: 1
+        width: 18
+        height: 27
+      spriteId: e767f82a75788024797008bebb9d880d
+    - name: demon_slime_v1.0_Frame_21
+      frameIndex: 21
+      cellRect:
+        x: 129
+        y: 1
+        width: 26
+        height: 28
+      spriteId: d7a3a02c085a2514ba329e582055468e
+    - name: demon_slime_v1.0_Frame_22
+      frameIndex: 22
+      cellRect:
+        x: 124
+        y: 1
+        width: 35
+        height: 28
+      spriteId: 42b0fbf077774a642a2c377dad62e55c
+    - name: demon_slime_v1.0_Frame_23
+      frameIndex: 23
+      cellRect:
+        x: 117
+        y: 1
+        width: 49
+        height: 34
+      spriteId: aeb0c4af742326d4ba26c17407724e75
+    - name: demon_slime_v1.0_Frame_24
+      frameIndex: 24
+      cellRect:
+        x: 110
+        y: 1
+        width: 66
+        height: 40
+      spriteId: 6dab45a00b4d7e941b88a017f3dc8824
+    - name: demon_slime_v1.0_Frame_25
+      frameIndex: 25
+      cellRect:
+        x: 110
+        y: 1
+        width: 66
+        height: 41
+      spriteId: a0c341f94f0ca7b429c103c45b3a0fd0
+    - name: demon_slime_v1.0_Frame_26
+      frameIndex: 26
+      cellRect:
+        x: 106
+        y: 1
+        width: 70
+        height: 38
+      spriteId: 8b3e7638596f30041b578bde103ddfec
+    - name: demon_slime_v1.0_Frame_27
+      frameIndex: 27
+      cellRect:
+        x: 101
+        y: 1
+        width: 83
+        height: 32
+      spriteId: f34ca0f66e1e994408a3db48b2a18ad4
+    - name: demon_slime_v1.0_Frame_28
+      frameIndex: 28
+      cellRect:
+        x: 97
+        y: 1
+        width: 91
+        height: 28
+      spriteId: a5a7e0fa92cdd6e4dac4b29b5c878ceb
+    - name: demon_slime_v1.0_Frame_29
+      frameIndex: 29
+      cellRect:
+        x: 97
+        y: 1
+        width: 91
+        height: 27
+      spriteId: 1d90e0f273855bf45af1e7f7bc6b0979
+    - name: demon_slime_v1.0_Frame_30
+      frameIndex: 30
+      cellRect:
+        x: 96
+        y: 1
+        width: 93
+        height: 29
+      spriteId: 5aba40e52f4f676448cd8edee592180b
+    - name: demon_slime_v1.0_Frame_31
+      frameIndex: 31
+      cellRect:
+        x: 95
+        y: 1
+        width: 95
+        height: 29
+      spriteId: 4299597995b484547ba1352f40dbe765
+    - name: demon_slime_v1.0_Frame_32
+      frameIndex: 32
+      cellRect:
+        x: 94
+        y: 1
+        width: 97
+        height: 37
+      spriteId: 948f73ef9d6c7ce4c9593d8352c8afdf
+    - name: demon_slime_v1.0_Frame_33
+      frameIndex: 33
+      cellRect:
+        x: 93
+        y: 1
+        width: 99
+        height: 50
+      spriteId: aae41dda9df8a6c4f90a505916d4d11b
+    - name: demon_slime_v1.0_Frame_34
+      frameIndex: 34
+      cellRect:
+        x: 94
+        y: 1
+        width: 97
+        height: 56
+      spriteId: 6a2bc4aa849fd7e418a6a948ab242737
+    - name: demon_slime_v1.0_Frame_35
+      frameIndex: 35
+      cellRect:
+        x: 98
+        y: 1
+        width: 90
+        height: 62
+      spriteId: c0f719b70eaad6a4da7f7a28f93f1915
+    - name: demon_slime_v1.0_Frame_36
+      frameIndex: 36
+      cellRect:
+        x: 106
+        y: 1
+        width: 91
+        height: 58
+      spriteId: cb15fab2f2a0ec849925ab43b31d4f8f
+    - name: demon_slime_v1.0_Frame_37
+      frameIndex: 37
+      cellRect:
+        x: 113
+        y: 1
+        width: 86
+        height: 64
+      spriteId: d5582639fd3b4b04f953d6417f38bf59
+    - name: demon_slime_v1.0_Frame_38
+      frameIndex: 38
+      cellRect:
+        x: 119
+        y: 1
+        width: 84
+        height: 66
+      spriteId: b24cebab7772dfa4d83a325ee13baa36
+    - name: demon_slime_v1.0_Frame_39
+      frameIndex: 39
+      cellRect:
+        x: 120
+        y: 1
+        width: 84
+        height: 73
+      spriteId: c555de04e616b704a893da6dfb7db8fc
+    - name: demon_slime_v1.0_Frame_40
+      frameIndex: 40
+      cellRect:
+        x: 119
+        y: 1
+        width: 84
+        height: 76
+      spriteId: 89046b73b15450c45b5db9a4be902feb
+    - name: demon_slime_v1.0_Frame_41
+      frameIndex: 41
+      cellRect:
+        x: 108
+        y: 1
+        width: 95
+        height: 80
+      spriteId: d45c6a081d63da64c83dbe480a15f44b
+    - name: demon_slime_v1.0_Frame_42
+      frameIndex: 42
+      cellRect:
+        x: 106
+        y: 1
+        width: 97
+        height: 85
+      spriteId: 0613892253e0f4c4cbe09bbe01828151
+    - name: demon_slime_v1.0_Frame_43
+      frameIndex: 43
+      cellRect:
+        x: 104
+        y: 1
+        width: 99
+        height: 90
+      spriteId: 3d0b42b17da075a40b5b200b8d954569
+    - name: demon_slime_v1.0_Frame_44
+      frameIndex: 44
+      cellRect:
+        x: 102
+        y: 1
+        width: 101
+        height: 92
+      spriteId: d1d8ff883d68fc14e8db22319fd05d49
+    - name: demon_slime_v1.0_Frame_45
+      frameIndex: 45
+      cellRect:
+        x: 94
+        y: 1
+        width: 113
+        height: 101
+      spriteId: 28a379d4bef3a6440866ec7c21619aa3
+    - name: demon_slime_v1.0_Frame_46
+      frameIndex: 46
+      cellRect:
+        x: 94
+        y: 1
+        width: 113
+        height: 100
+      spriteId: 4e06670aa2daae247b31a38a65dcc15d
+    - name: demon_slime_v1.0_Frame_47
+      frameIndex: 47
+      cellRect:
+        x: 94
+        y: 1
+        width: 113
+        height: 100
+      spriteId: 41e2bc60998cdf14b89e1661d4949a74
+    - name: demon_slime_v1.0_Frame_48
+      frameIndex: 48
+      cellRect:
+        x: 94
+        y: 1
+        width: 113
+        height: 100
+      spriteId: 2d79f136070240d488d3e7f5000dff5d
+    - name: demon_slime_v1.0_Frame_49
+      frameIndex: 49
+      cellRect:
+        x: 99
+        y: 1
+        width: 99
+        height: 103
+      spriteId: a7a336e6a2b756e47a8dbdedd99a9eac
+    - name: demon_slime_v1.0_Frame_50
+      frameIndex: 50
+      cellRect:
+        x: 103
+        y: 0
+        width: 88
+        height: 102
+      spriteId: 976b85b731f93424c99c6844fa46481e
+    - name: demon_slime_v1.0_Frame_51
+      frameIndex: 51
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 103
+      spriteId: d36877083d556234695c6f623ae9d381
+    - name: demon_slime_v1.0_Frame_52
+      frameIndex: 52
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 105
+      spriteId: 698f0c07b4c628e49aaff948e010b827
+    - name: demon_slime_v1.0_Frame_53
+      frameIndex: 53
+      cellRect:
+        x: 103
+        y: 1
+        width: 87
+        height: 104
+      spriteId: 0cb1f2f21d4338741a7f94bd1bac778c
+    - name: demon_slime_v1.0_Frame_54
+      frameIndex: 54
+      cellRect:
+        x: 101
+        y: 1
+        width: 91
+        height: 107
+      spriteId: 96a2cdfb04a455b499f86231cbd7a0aa
+    - name: demon_slime_v1.0_Frame_55
+      frameIndex: 55
+      cellRect:
+        x: 100
+        y: 1
+        width: 91
+        height: 106
+      spriteId: 5fd4e303dac4fe346aa508b02553d8a5
+    - name: demon_slime_v1.0_Frame_56
+      frameIndex: 56
+      cellRect:
+        x: 101
+        y: 1
+        width: 91
+        height: 107
+      spriteId: 50f4f68c3159f1645a156d3fa1ab6fa4
+    - name: demon_slime_v1.0_Frame_57
+      frameIndex: 57
+      cellRect:
+        x: 103
+        y: 1
+        width: 87
+        height: 102
+      spriteId: 8e1835b84390c8c4e9c18c30e4ef4d65
+    - name: demon_slime_v1.0_Frame_58
+      frameIndex: 58
+      cellRect:
+        x: 109
+        y: 1
+        width: 64
+        height: 100
+      spriteId: d3c3c1afa9868b541b7f78f9f856e053
+    - name: demon_slime_v1.0_Frame_59
+      frameIndex: 59
+      cellRect:
+        x: 109
+        y: 1
+        width: 68
+        height: 99
+      spriteId: 620679095ae7be44caf165138210a374
+    - name: demon_slime_v1.0_Frame_60
+      frameIndex: 60
+      cellRect:
+        x: 109
+        y: 1
+        width: 67
+        height: 100
+      spriteId: d4467d5ae049c344ba557ad9ba435d26
+    - name: demon_slime_v1.0_Frame_61
+      frameIndex: 61
+      cellRect:
+        x: 109
+        y: 1
+        width: 70
+        height: 99
+      spriteId: 3977021373b217c4ca313296ccdc33e8
+    - name: demon_slime_v1.0_Frame_62
+      frameIndex: 62
+      cellRect:
+        x: 109
+        y: 1
+        width: 74
+        height: 100
+      spriteId: b6b22e70357b326458e66ff15b03f334
+    - name: demon_slime_v1.0_Frame_63
+      frameIndex: 63
+      cellRect:
+        x: 109
+        y: 1
+        width: 78
+        height: 100
+      spriteId: 81c1bb36e9fff5542a6b9d23ab98b138
+    - name: demon_slime_v1.0_Frame_64
+      frameIndex: 64
+      cellRect:
+        x: 106
+        y: 1
+        width: 85
+        height: 99
+      spriteId: f1c13f0cca79eee4c8ff2e812e2a545f
+    - name: demon_slime_v1.0_Frame_65
+      frameIndex: 65
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 99
+      spriteId: 432251ea86cc36d4aab5a13ff6a1e478
+    - name: demon_slime_v1.0_Frame_66
+      frameIndex: 66
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 100
+      spriteId: 1dd9316daf191764f96a2cd9d959a686
+    - name: demon_slime_v1.0_Frame_67
+      frameIndex: 67
+      cellRect:
+        x: 108
+        y: 1
+        width: 73
+        height: 99
+      spriteId: 6afe3d2ce8038a241b9a0a66c143eac3
+    - name: demon_slime_v1.0_Frame_68
+      frameIndex: 68
+      cellRect:
+        x: 109
+        y: 1
+        width: 70
+        height: 100
+      spriteId: ecd7e069a5a84a74c9da64f4a12e488d
+    - name: demon_slime_v1.0_Frame_69
+      frameIndex: 69
+      cellRect:
+        x: 109
+        y: 1
+        width: 68
+        height: 99
+      spriteId: 428a7fc8e4cbfae4ea88fb1c74c74663
+    - name: demon_slime_v1.0_Frame_70
+      frameIndex: 70
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 105
+      spriteId: a974d1580518a6149ba5af37b6d2be4e
+    - name: demon_slime_v1.0_Frame_71
+      frameIndex: 71
+      cellRect:
+        x: 108
+        y: 1
+        width: 76
+        height: 104
+      spriteId: 54864df6497b4054da9f152222942fb6
+    - name: demon_slime_v1.0_Frame_72
+      frameIndex: 72
+      cellRect:
+        x: 107
+        y: 1
+        width: 93
+        height: 109
+      spriteId: 93f57bc909a81434ea4f2e76fe66ae82
+    - name: demon_slime_v1.0_Frame_73
+      frameIndex: 73
+      cellRect:
+        x: 116
+        y: 1
+        width: 86
+        height: 107
+      spriteId: bf15c60da3d3d674da4c9bdb9c9473c8
+    - name: demon_slime_v1.0_Frame_74
+      frameIndex: 74
+      cellRect:
+        x: 115
+        y: 1
+        width: 90
+        height: 109
+      spriteId: 0fdb2c52fdfa48249a5920b9cb6176d1
+    - name: demon_slime_v1.0_Frame_75
+      frameIndex: 75
+      cellRect:
+        x: 116
+        y: 1
+        width: 89
+        height: 105
+      spriteId: 8cd2b87fc6600bb4d8e5f0bdd68292aa
+    - name: demon_slime_v1.0_Frame_76
+      frameIndex: 76
+      cellRect:
+        x: 117
+        y: 1
+        width: 86
+        height: 109
+      spriteId: db0ffbbe73c18314f82b61aefd910da9
+    - name: demon_slime_v1.0_Frame_77
+      frameIndex: 77
+      cellRect:
+        x: 117
+        y: 1
+        width: 86
+        height: 114
+      spriteId: 08c1ef386aaad844aad0c9ce34e2a99e
+    - name: demon_slime_v1.0_Frame_78
+      frameIndex: 78
+      cellRect:
+        x: 117
+        y: 1
+        width: 86
+        height: 111
+      spriteId: af8f4d38aaafa6242bd0716825f0eeac
+    - name: demon_slime_v1.0_Frame_79
+      frameIndex: 79
+      cellRect:
+        x: 25
+        y: 1
+        width: 154
+        height: 101
+      spriteId: c4d13d53bb674b84cb87cee67854e9a9
+    - name: demon_slime_v1.0_Frame_80
+      frameIndex: 80
+      cellRect:
+        x: 22
+        y: 2
+        width: 157
+        height: 101
+      spriteId: 60fedc6826adc97419a3839029bae76f
+    - name: demon_slime_v1.0_Frame_81
+      frameIndex: 81
+      cellRect:
+        x: 20
+        y: 1
+        width: 160
+        height: 97
+      spriteId: d85218d3f9f797746a2643871be22db5
+    - name: demon_slime_v1.0_Frame_82
+      frameIndex: 82
+      cellRect:
+        x: 80
+        y: 1
+        width: 99
+        height: 102
+      spriteId: ec36b9c9c887b6047ac3d35b727049bf
+    - name: demon_slime_v1.0_Frame_83
+      frameIndex: 83
+      cellRect:
+        x: 101
+        y: 1
+        width: 78
+        height: 102
+      spriteId: fc56c37be5892fa42a6dbd1c78702d36
+    - name: demon_slime_v1.0_Frame_84
+      frameIndex: 84
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 105
+      spriteId: 577eb4456777f11438395f5488c994d5
+    - name: demon_slime_v1.0_Frame_85
+      frameIndex: 85
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 105
+      spriteId: 1c40509ef8087344dbed4fcb7e4b308b
+    - name: demon_slime_v1.0_Frame_86
+      frameIndex: 86
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 94
+      spriteId: 97d1a32450eac7143ad60b656b702f27
+    - name: demon_slime_v1.0_Frame_87
+      frameIndex: 87
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 93
+      spriteId: 8f13abb1496b52d44bd87a01d3391454
+    - name: demon_slime_v1.0_Frame_88
+      frameIndex: 88
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 90
+      spriteId: 4fac9ee92d1fddd40a432727231b248a
+    - name: demon_slime_v1.0_Frame_89
+      frameIndex: 89
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 91
+      spriteId: b4a4221ea430fde4fb6e50ad60e1b1a1
+    - name: demon_slime_v1.0_Frame_90
+      frameIndex: 90
+      cellRect:
+        x: 106
+        y: 15
+        width: 81
+        height: 105
+      spriteId: f0aa07856aec4374aa68e7fadcceec94
+    - name: demon_slime_v1.0_Frame_91
+      frameIndex: 91
+      cellRect:
+        x: 106
+        y: 28
+        width: 81
+        height: 101
+      spriteId: 768b8bb12ed8e19478e38f6f00604880
+    - name: demon_slime_v1.0_Frame_92
+      frameIndex: 92
+      cellRect:
+        x: 106
+        y: 47
+        width: 81
+        height: 84
+      spriteId: a80ca598c294125499940b301ff06b7c
+    - name: demon_slime_v1.0_Frame_93
+      frameIndex: 93
+      cellRect:
+        x: 106
+        y: 58
+        width: 81
+        height: 72
+      spriteId: 3d521620013d5ee4496c5aafd07000c1
+    - name: demon_slime_v1.0_Frame_94
+      frameIndex: 94
+      cellRect:
+        x: 106
+        y: 58
+        width: 81
+        height: 82
+      spriteId: 576e935b60262fa41944e09d057fe060
+    - name: demon_slime_v1.0_Frame_95
+      frameIndex: 95
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 98
+      spriteId: 2d84ded74492d50408225ba3dd1338b0
+    - name: demon_slime_v1.0_Frame_96
+      frameIndex: 96
+      cellRect:
+        x: 72
+        y: 1
+        width: 160
+        height: 88
+      spriteId: 62c7b219107b15a42bd61175585c0711
+    - name: demon_slime_v1.0_Frame_97
+      frameIndex: 97
+      cellRect:
+        x: 51
+        y: 1
+        width: 189
+        height: 92
+      spriteId: a6542be85b9faca499f6706e0c690770
+    - name: demon_slime_v1.0_Frame_98
+      frameIndex: 98
+      cellRect:
+        x: 46
+        y: 1
+        width: 197
+        height: 91
+      spriteId: a0e370445ad671549bb5047d94e28df0
+    - name: demon_slime_v1.0_Frame_99
+      frameIndex: 99
+      cellRect:
+        x: 44
+        y: 1
+        width: 202
+        height: 93
+      spriteId: cc3c02e6c76e746498e63144b2d8abda
+    - name: demon_slime_v1.0_Frame_100
+      frameIndex: 100
+      cellRect:
+        x: 42
+        y: 1
+        width: 205
+        height: 91
+      spriteId: cc861728da5fd634099acae45ef48893
+    - name: demon_slime_v1.0_Frame_101
+      frameIndex: 101
+      cellRect:
+        x: 41
+        y: 1
+        width: 207
+        height: 93
+      spriteId: fb98f9c298d97514f8071ce2ae71eb92
+    - name: demon_slime_v1.0_Frame_102
+      frameIndex: 102
+      cellRect:
+        x: 106
+        y: 1
+        width: 81
+        height: 102
+      spriteId: af7722742cdcaaf4cb4884b410edf083
+    - name: demon_slime_v1.0_Frame_103
+      frameIndex: 103
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 105
+      spriteId: bf0ef35d52162bb409d8bbcbcc3d3e1a
+    - name: demon_slime_v1.0_Frame_104
+      frameIndex: 104
+      cellRect:
+        x: 116
+        y: 1
+        width: 86
+        height: 109
+      spriteId: 11eab34045960ad489e3048461220f29
+    - name: demon_slime_v1.0_Frame_105
+      frameIndex: 105
+      cellRect:
+        x: 128
+        y: 1
+        width: 83
+        height: 111
+      spriteId: 27f53aafb33304d45b81c955ab734bd8
+    - name: demon_slime_v1.0_Frame_106
+      frameIndex: 106
+      cellRect:
+        x: 129
+        y: 1
+        width: 84
+        height: 110
+      spriteId: 990d5c5fb1eccd34f8de278a8f7cea5b
+    - name: demon_slime_v1.0_Frame_107
+      frameIndex: 107
+      cellRect:
+        x: 129
+        y: 1
+        width: 84
+        height: 112
+      spriteId: 98a95eb3a5ad78e48b639a890d35ed8e
+    - name: demon_slime_v1.0_Frame_108
+      frameIndex: 108
+      cellRect:
+        x: 108
+        y: 1
+        width: 73
+        height: 102
+      spriteId: 0882b9cb69d45294692f0b5069ddcdbe
+    - name: demon_slime_v1.0_Frame_109
+      frameIndex: 109
+      cellRect:
+        x: 104
+        y: 1
+        width: 80
+        height: 109
+      spriteId: 075bf6f314c626141a96ea43a516a844
+    - name: demon_slime_v1.0_Frame_110
+      frameIndex: 110
+      cellRect:
+        x: 71
+        y: 1
+        width: 113
+        height: 137
+      spriteId: 60893687916be674eb1b691474dac570
+    - name: demon_slime_v1.0_Frame_111
+      frameIndex: 111
+      cellRect:
+        x: 53
+        y: 1
+        width: 131
+        height: 147
+      spriteId: ff920d150da83fe42a02435c3a7b4a95
+    - name: demon_slime_v1.0_Frame_112
+      frameIndex: 112
+      cellRect:
+        x: 38
+        y: 1
+        width: 146
+        height: 144
+      spriteId: c2a525a6494f6b6418127013eb7b499a
+    - name: demon_slime_v1.0_Frame_113
+      frameIndex: 113
+      cellRect:
+        x: 26
+        y: 1
+        width: 158
+        height: 116
+      spriteId: a5643c29a36b95240a184c577551e0e1
+    - name: demon_slime_v1.0_Frame_114
+      frameIndex: 114
+      cellRect:
+        x: 23
+        y: 1
+        width: 161
+        height: 102
+      spriteId: 9267a611d13c3154ab830f73120d25b7
+    - name: demon_slime_v1.0_Frame_115
+      frameIndex: 115
+      cellRect:
+        x: 23
+        y: 1
+        width: 161
+        height: 105
+      spriteId: e19542e6169ebf14a8e3f1a63ec5fe6e
+    - name: demon_slime_v1.0_Frame_116
+      frameIndex: 116
+      cellRect:
+        x: 23
+        y: 1
+        width: 161
+        height: 104
+      spriteId: 9d222bc693ab8f84e982eeb511dc85d5
+    - name: demon_slime_v1.0_Frame_117
+      frameIndex: 117
+      cellRect:
+        x: 23
+        y: 1
+        width: 161
+        height: 107
+      spriteId: f2c4aa2d9e7253048a5070332191f084
+    - name: demon_slime_v1.0_Frame_118
+      frameIndex: 118
+      cellRect:
+        x: 23
+        y: 1
+        width: 161
+        height: 106
+      spriteId: 4984b58af9a55794289628ca435fe2ce
+    - name: demon_slime_v1.0_Frame_119
+      frameIndex: 119
+      cellRect:
+        x: 22
+        y: 1
+        width: 162
+        height: 107
+      spriteId: 7f269070604df4240b61e1e93f87d40b
+    - name: demon_slime_v1.0_Frame_120
+      frameIndex: 120
+      cellRect:
+        x: 25
+        y: 1
+        width: 159
+        height: 102
+      spriteId: 557344f7750684b46be153c5815ebd55
+    - name: demon_slime_v1.0_Frame_121
+      frameIndex: 121
+      cellRect:
+        x: 26
+        y: 1
+        width: 158
+        height: 105
+      spriteId: 1981e2243db4c1e408c9ab519ee4a670
+    - name: demon_slime_v1.0_Frame_122
+      frameIndex: 122
+      cellRect:
+        x: 26
+        y: 1
+        width: 158
+        height: 104
+      spriteId: 5e6770ad386209141ad1f48f0f88378e
+    - name: demon_slime_v1.0_Frame_123
+      frameIndex: 123
+      cellRect:
+        x: 108
+        y: 1
+        width: 76
+        height: 103
+      spriteId: 4984feeb55df0d447afa147ca3d0cd76
+    - name: demon_slime_v1.0_Frame_124
+      frameIndex: 124
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 109
+      spriteId: a31b0da8e0c494f4d8d4ef0a6947aa27
+    - name: demon_slime_v1.0_Frame_125
+      frameIndex: 125
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 108
+      spriteId: 340badeebb9eeec40b36e1043ab14f1b
+    - name: demon_slime_v1.0_Frame_126
+      frameIndex: 126
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 111
+      spriteId: d161f878de25d454884ac74397bbde48
+    - name: demon_slime_v1.0_Frame_127
+      frameIndex: 127
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 110
+      spriteId: 48a48acb67976a9459ff101130382cb4
+    - name: demon_slime_v1.0_Frame_128
+      frameIndex: 128
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 111
+      spriteId: 0a388b8b3992e3040865ecc3d04c17a8
+    - name: demon_slime_v1.0_Frame_129
+      frameIndex: 129
+      cellRect:
+        x: 60
+        y: 1
+        width: 148
+        height: 106
+      spriteId: edd276886d75a0e44b2f8ecbecf5f5ef
+    - name: demon_slime_v1.0_Frame_130
+      frameIndex: 130
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 105
+      spriteId: d58e0864d0c6e1d47bc107ab58f096d0
+    - name: demon_slime_v1.0_Frame_131
+      frameIndex: 131
+      cellRect:
+        x: 116
+        y: 1
+        width: 85
+        height: 103
+      spriteId: acd045b93de6f1d46a48494dda66d293
+    - name: demon_slime_v1.0_Frame_132
+      frameIndex: 132
+      cellRect:
+        x: 113
+        y: 1
+        width: 102
+        height: 105
+      spriteId: a6dc2b6518d47f1418adcf854c482386
+    - name: demon_slime_v1.0_Frame_133
+      frameIndex: 133
+      cellRect:
+        x: 111
+        y: 1
+        width: 90
+        height: 102
+      spriteId: a022536f91fb8bb44ac1687b610c4d21
+    - name: demon_slime_v1.0_Frame_134
+      frameIndex: 134
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 103
+      spriteId: b3139472e256f4443b77c0680b1e27c7
+    - name: demon_slime_v1.0_Frame_135
+      frameIndex: 135
+      cellRect:
+        x: 106
+        y: 1
+        width: 80
+        height: 89
+      spriteId: 26a283fad8c2fee489046a03f67288d0
+    - name: demon_slime_v1.0_Frame_136
+      frameIndex: 136
+      cellRect:
+        x: 109
+        y: 1
+        width: 70
+        height: 97
+      spriteId: 9199e29584d047749b23026ff0e3b39e
+    - name: demon_slime_v1.0_Frame_137
+      frameIndex: 137
+      cellRect:
+        x: 111
+        y: 1
+        width: 68
+        height: 96
+      spriteId: c0f7de75a1ddeeb448ed60e884595cea
+    - name: demon_slime_v1.0_Frame_138
+      frameIndex: 138
+      cellRect:
+        x: 107
+        y: 1
+        width: 72
+        height: 99
+      spriteId: a7e6cb0f353f9e4469c1ee99255977ef
+    - name: demon_slime_v1.0_Frame_139
+      frameIndex: 139
+      cellRect:
+        x: 107
+        y: 1
+        width: 88
+        height: 105
+      spriteId: a5f384f97d0262445a5ba1ba555b588b
+    - name: demon_slime_v1.0_Frame_140
+      frameIndex: 140
+      cellRect:
+        x: 118
+        y: 1
+        width: 95
+        height: 113
+      spriteId: 1499a71c6619ad644890028abb51fea7
+    - name: demon_slime_v1.0_Frame_141
+      frameIndex: 141
+      cellRect:
+        x: 103
+        y: 1
+        width: 117
+        height: 118
+      spriteId: adc8ab3d973f51e49a5559e2fd372aa6
+    - name: demon_slime_v1.0_Frame_142
+      frameIndex: 142
+      cellRect:
+        x: 99
+        y: 1
+        width: 131
+        height: 121
+      spriteId: 07f01d822035a3b418775a264d4d8056
+    - name: demon_slime_v1.0_Frame_143
+      frameIndex: 143
+      cellRect:
+        x: 100
+        y: 1
+        width: 128
+        height: 123
+      spriteId: 383c22d8d40594347aae433c680f451b
+    - name: demon_slime_v1.0_Frame_144
+      frameIndex: 144
+      cellRect:
+        x: 100
+        y: 1
+        width: 128
+        height: 121
+      spriteId: c430fe31978200848bae96737120fccf
+    - name: demon_slime_v1.0_Frame_145
+      frameIndex: 145
+      cellRect:
+        x: 100
+        y: 1
+        width: 128
+        height: 124
+      spriteId: 818a8ad87df5cdb4cb6f28a80f2fa7c3
+    - name: demon_slime_v1.0_Frame_146
+      frameIndex: 146
+      cellRect:
+        x: 100
+        y: 1
+        width: 128
+        height: 109
+      spriteId: 62556261c0c05ad40956f357cc51bf49
+    - name: demon_slime_v1.0_Frame_147
+      frameIndex: 147
+      cellRect:
+        x: 103
+        y: 1
+        width: 125
+        height: 113
+      spriteId: b28af9b17f1c84044a9935a479e13ccd
+    - name: demon_slime_v1.0_Frame_148
+      frameIndex: 148
+      cellRect:
+        x: 103
+        y: 1
+        width: 125
+        height: 115
+      spriteId: 0c6e87e2560f3854dac26557e8f7cd9d
+    - name: demon_slime_v1.0_Frame_149
+      frameIndex: 149
+      cellRect:
+        x: 109
+        y: 1
+        width: 119
+        height: 116
+      spriteId: 15f4f681ba206934582701769a81f277
+    - name: demon_slime_v1.0_Frame_150
+      frameIndex: 150
+      cellRect:
+        x: 111
+        y: 1
+        width: 113
+        height: 121
+      spriteId: b880ed4b7bc481d46b6cd43ad1251154
+    - name: demon_slime_v1.0_Frame_151
+      frameIndex: 151
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 123
+      spriteId: 1e8683c6827817f49af9ae84fd5f9eed
+    - name: demon_slime_v1.0_Frame_152
+      frameIndex: 152
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 123
+      spriteId: a3c3fa7d3526fca4f9c348bfd4e24142
+    - name: demon_slime_v1.0_Frame_153
+      frameIndex: 153
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 121
+      spriteId: 52066e2c907ba6f419e34a71577f4690
+    - name: demon_slime_v1.0_Frame_154
+      frameIndex: 154
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 85
+      spriteId: cfac9368668460041b961096c8ae80f4
+    - name: demon_slime_v1.0_Frame_155
+      frameIndex: 155
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 2
+      spriteId: f56fbac1421d25e43811ccd979f8e223
+    - name: demon_slime_v1.0_Frame_156
+      frameIndex: 156
+      cellRect:
+        x: 109
+        y: 1
+        width: 114
+        height: 2
+      spriteId: 4e045a1754cb40e4dbdfbdff963f2928
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 288, y: 160}
