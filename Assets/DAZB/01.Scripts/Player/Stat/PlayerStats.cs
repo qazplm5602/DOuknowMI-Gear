@@ -8,4 +8,5 @@ public class PlayerStats
     public float PlayerSpeed;
     public float JumpPower;
     public float CriticalChance;
+    public int maxDashCount;
 }

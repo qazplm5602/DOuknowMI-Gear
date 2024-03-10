@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDir;
     private bool isGround;
     private bool isDash;
+    private int currentDashCount;
     private PlayerStats stats;
 
     private void Awake() {
@@ -21,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void Start() {
         stats = PlayerManager.instance.stats;
+        currentDashCount = stats.maxDashCount;
     }
 
     private void FixedUpdate() {
@@ -44,11 +46,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void DashHandle() {
+        if (currentDashCount < 1) { return; }
         StartCoroutine(DashRoutine());
     }
 
     private IEnumerator DashRoutine() {
         if (isDash) yield break;
+        currentDashCount--;
         isDash = true;
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
@@ -58,6 +62,14 @@ public class PlayerMovement : MonoBehaviour
         rigid.velocity = Vector2.zero;
         yield return new WaitForSeconds(0.05f);
         isDash = false;
+        DashBar.instance.DecreaseDashCount();
+        StartCoroutine(DashChargeRoutine());
+    }
+
+    private IEnumerator DashChargeRoutine() {
+        yield return new WaitForSeconds(5f);
+        currentDashCount++;
+        DashBar.instance.IncreaseDashCount();
     }
 
     private void GroundCheck() {
