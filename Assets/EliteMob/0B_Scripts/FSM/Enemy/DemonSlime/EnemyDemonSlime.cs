@@ -10,6 +10,10 @@ public class EnemyDemonSlime : Enemy
 {
     public EnemyStateMachine<DemonSlimeStateEnum> StateMachine { get; private set; }
 
+    [SerializeField] protected float _smashRange;
+    [SerializeField] protected float _breathRange;
+    [SerializeField] protected float _spellRange;
+
     protected override void Awake() {
         base.Awake();
 
