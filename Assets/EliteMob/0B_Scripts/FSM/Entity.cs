@@ -9,10 +9,10 @@ namespace FSM {
 
         #region Components
 
-        public SpriteRenderer SpriteRendererCompo;
-        public Animator AnimatorCompo;
-        public Rigidbody2D RigidbodyCompo;
-        public Collider2D ColliderCompo;
+        [HideInInspector] public SpriteRenderer SpriteRendererCompo;
+        [HideInInspector] public Animator AnimatorCompo;
+        [HideInInspector] public Rigidbody2D RigidbodyCompo;
+        [HideInInspector] public Collider2D ColliderCompo;
 
         #endregion
 
