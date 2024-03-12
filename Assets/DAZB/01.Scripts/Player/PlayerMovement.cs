@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move() {
         if (isDash) return;
-        rigid.velocity = new Vector2(moveDir.x * stats.PlayerSpeed, rigid.velocity.y);
+        rigid.velocity = new Vector2(moveDir.x * stats.MoveSpeed, rigid.velocity.y);
     }
 
     private void MovementHandle(Vector2 value) {

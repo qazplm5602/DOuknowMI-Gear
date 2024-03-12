@@ -39,7 +39,6 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("점프누룸");
         if (context.performed) {
             JumpEvent?.Invoke();
         }
