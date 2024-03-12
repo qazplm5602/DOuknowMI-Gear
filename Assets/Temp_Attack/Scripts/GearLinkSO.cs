@@ -8,11 +8,11 @@ public class GearLinkSO : ScriptableObject
     [SerializeField] GearSO[] combine;
     [SerializeField] GameObject loadModule;
 
-    GameObject LoadModule {
+    public GameObject LoadModule {
         get => loadModule;
     }
 
-    GearSO[] Combine {
+    public GearSO[] Combine {
         get => combine;
     }
 }

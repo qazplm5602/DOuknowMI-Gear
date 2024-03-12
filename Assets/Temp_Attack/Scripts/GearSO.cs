@@ -11,9 +11,9 @@ public class GearSO : ScriptableObject
     [SerializeField] GameObject loadModule; // 스킬 관련된 스크를 오브젝트에 감싸서 넣어야함.
 
     // @Getter
-    GameObject LoadModule => loadModule;
+    public GameObject LoadModule => loadModule;
 
-    int CogAmount => cogAmount;
+    public int CogAmount => cogAmount;
 
-    string Name => name;
+    public string Name => name;
 }
