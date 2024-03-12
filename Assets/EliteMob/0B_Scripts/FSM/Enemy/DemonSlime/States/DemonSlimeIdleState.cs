@@ -1,24 +1,35 @@
 using UnityEngine;
 using FSM;
 
-public class DemonSlimeIdleState : EnemyState<DemonSlimeStateEnum>
+public class DemonSlimeIdleState : DemonSlimeGroundState
 {
     public DemonSlimeIdleState(Enemy enemy, EnemyStateMachine<DemonSlimeStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
-    private object _player; //Player
-    private int _moveDirection;
-    private float _timer = 0f;
+    private Transform _playerTrm;
+    private Coroutine _delayCoroutine = null;
 
-    private readonly int _xVelocityHash = Animator.StringToHash("x_velocity");
+    public override void Enter() {
+        base.Enter();
+
+        if(_delayCoroutine != null) _enemy.StopCoroutine(_delayCoroutine);
+        _enemy.StopImmediately(false);
+
+        _delayCoroutine = _enemy.StartDelayCallback(_enemy.idleTime, () => _stateMachine.ChangeState(DemonSlimeStateEnum.Move));
+
+        _playerTrm = GameObject.Find("Player").transform;
+    }
 
     public override void UpdateState() {
         base.UpdateState();
 
-        // SetDirectionToPlayer();
+        if(Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x) < 200) {
+            _stateMachine.ChangeState(DemonSlimeStateEnum.Battle);
+        }
+    }
 
-        _enemy.AnimatorCompo.SetFloat(_xVelocityHash, Mathf.Abs(_rigidbody.velocity.x));
+    public override void Exit() {
+        if(_delayCoroutine != null) _enemy.StopCoroutine(_delayCoroutine);
 
-        _moveDirection = _enemy.FacingDirection;
-        _enemy.SetVelocity(_enemy.moveSpeed * _moveDirection, _rigidbody.velocity.y);
+        base.Exit();
     }
 }
