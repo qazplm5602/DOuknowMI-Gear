@@ -42,7 +42,7 @@ public class GearCircle : MonoBehaviour
         currentCog += reverse ? -1 : 1;
         if (currentCog < 0) {
             currentCog = gearSO.CogList.Length - 1;
-        } else if (gearSO.CogList.Length < currentCog) {
+        } else if (gearSO.CogList.Length <= currentCog) {
             currentCog = 0;
         }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] DeprecatePlayerControlWithAttack control;
+    [SerializeField] GearManager gearManager;
 
     private void Awake() {
         control.OnMouseClick += OnChangeMouse;
@@ -16,6 +17,9 @@ public class PlayerAttack : MonoBehaviour
 
     void OnChangeMouse(bool isDown) {
         print("OnChangeMouse: "+ isDown.ToString());
+        if (isDown) {
+            gearManager.StartRoll();
+        }
     }
 
     private void Update() {

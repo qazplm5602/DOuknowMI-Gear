@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: {fileID: 1835667951}
+  gearManager: {fileID: 1966445892}
 --- !u!114 &1835667951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -524,8 +525,10 @@ MonoBehaviour:
   section: {fileID: 493331526}
   spawnGears:
   - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
+  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
   spawnGearCoords:
   - {x: 150, y: -150}
+  - {x: 320, y: -245}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
