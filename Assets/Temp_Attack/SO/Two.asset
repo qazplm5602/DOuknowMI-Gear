@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Two
   m_EditorClassIdentifier: 
   name: test2
-  cogAmount: 6
+  cogList: 000000000100000002000000000000000100000000000000
+  linkAmount: 0
   loadModule: {fileID: 0}

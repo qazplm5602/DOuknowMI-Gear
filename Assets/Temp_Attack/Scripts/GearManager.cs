@@ -26,6 +26,7 @@ public class GearManager : MonoBehaviour
         gears = new GearInfo[spawnGears.Length];
 
         int i = 0;
+        bool isReverse = false;
         foreach (var item in spawnGears)
         {
             var gear = Instantiate(gearCircle, section);
@@ -39,9 +40,13 @@ public class GearManager : MonoBehaviour
             };
 
             gearD.system.gearSO = gearD.data;
+            gearD.system.reverse = isReverse;
             gearD.system.Init();
 
+            isReverse = !isReverse;
             ++i;
         }
     }
+
+    
 }
