@@ -16,7 +16,8 @@ namespace FSM {
         [SerializeField] protected LayerMask _playerLayer;
 
         [Header("Attack Settings")]
-        public float attackRange;
+        public Vector2 attackRange;
+        public Vector2 attackOffset;
         public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
 

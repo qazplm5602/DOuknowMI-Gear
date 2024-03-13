@@ -256,11 +256,14 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  attackRange: 3.7
+  attackRange: {x: 1.82, y: 2.36}
+  attackOffset: {x: 2.49, y: 0}
   attackCooldown: 2
   lastAttackTime: 0
-  smashRange: 2
-  breathRange: 4.5
+  smashRange: {x: 6.32, y: 2.82}
+  smashOffset: {x: 0, y: 0}
+  breathRange: {x: 7.78, y: 3.46}
+  breathOffset: {x: 0, y: 0}
 --- !u!1 &1164464889
 GameObject:
   m_ObjectHideFlags: 0
