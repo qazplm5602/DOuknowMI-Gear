@@ -29,13 +29,13 @@ public class DemonSlimeBattleState : EnemyState<DemonSlimeStateEnum>
         if(_enemy.CanAttack()) {
             float distance = Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x);
             
-            if(distance <= _demonSlime.smashRange) {
+            if(distance <= _demonSlime.smashRange.x) {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Smash);
             }
-            else if(distance <= _demonSlime.attackRange) {
+            else if(distance <= _demonSlime.attackRange.x) {                                                                                      
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Attack);
             }
-            else if(distance <= _demonSlime.breathRange) {
+            else if(distance <= _demonSlime.breathRange.x) {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Breath);
             }
             else {

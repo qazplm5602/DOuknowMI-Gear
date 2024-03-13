@@ -1,7 +1,7 @@
-using FSM;
 using UnityEngine;
+using FSM;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth;
     [SerializeField] private int _currentHealth;
