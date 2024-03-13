@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,8 @@ public class GearCircle : MonoBehaviour
     float oneAngle;
     public bool reverse = false;
     int currentCog = 0;
+
+    Sequence sequence;
 
     // GameObject cog;
     
@@ -34,7 +38,7 @@ public class GearCircle : MonoBehaviour
         }
     }
 
-    public void Run() {
+    public void Run(Action cb = null) {
         currentCog += reverse ? -1 : 1;
         if (currentCog < 0) {
             currentCog = gearSO.CogList.Length - 1;
@@ -42,7 +46,9 @@ public class GearCircle : MonoBehaviour
             currentCog = 0;
         }
 
-        
+        sequence = DOTween.Sequence();
+        sequence.Append(_transform.DOLocalRotate(new Vector3(0,0, currentCog * oneAngle), .3f));
+        sequence.OnComplete(() => cb?.Invoke());
     }
 
     // 콕 색상
@@ -56,5 +62,9 @@ public class GearCircle : MonoBehaviour
             default:
                 return Color.white;
         }
+    }
+
+    private void OnDestroy() {
+        sequence?.Kill();
     }
 }

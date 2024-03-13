@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,9 +6,12 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] DeprecatePlayerControlWithAttack control;
-    
+
     private void Awake() {
         control.OnMouseClick += OnChangeMouse;
+    }
+    private void OnDestroy() {
+        control.OnMouseClick -= OnChangeMouse;
     }
 
     void OnChangeMouse(bool isDown) {

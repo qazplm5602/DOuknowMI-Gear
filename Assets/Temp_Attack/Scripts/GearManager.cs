@@ -48,5 +48,10 @@ public class GearManager : MonoBehaviour
         }
     }
 
-    
+    void StartRoll() {
+        foreach (var gear in gears)
+        {
+            gear.system.Run();
+        }
+    }
 }
