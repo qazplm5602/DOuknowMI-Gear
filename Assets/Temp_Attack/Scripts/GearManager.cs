@@ -32,11 +32,14 @@ public class GearManager : MonoBehaviour
             var gear_transform = gear.GetComponent<RectTransform>();
             gear_transform.anchoredPosition = spawnGearCoords[i];
             
-            gears[i] = new GearInfo() { 
+            var gearD = gears[i] = new GearInfo() { 
                 data = item,
                 entity = gear,
                 system = gear.GetComponent<GearCircle>()
             };
+
+            gearD.system.gearSO = gearD.data;
+            gearD.system.Init();
 
             ++i;
         }
