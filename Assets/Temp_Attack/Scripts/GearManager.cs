@@ -26,19 +26,32 @@ public class GearManager : MonoBehaviour
         gears = new GearInfo[spawnGears.Length];
 
         int i = 0;
+        bool isReverse = false;
         foreach (var item in spawnGears)
         {
             var gear = Instantiate(gearCircle, section);
             var gear_transform = gear.GetComponent<RectTransform>();
             gear_transform.anchoredPosition = spawnGearCoords[i];
             
-            gears[i] = new GearInfo() { 
+            var gearD = gears[i] = new GearInfo() { 
                 data = item,
                 entity = gear,
                 system = gear.GetComponent<GearCircle>()
             };
 
+            gearD.system.gearSO = gearD.data;
+            gearD.system.reverse = isReverse;
+            gearD.system.Init();
+
+            isReverse = !isReverse;
             ++i;
+        }
+    }
+
+    public void StartRoll() {
+        foreach (var gear in gears)
+        {
+            gear.system.Run();
         }
     }
 }

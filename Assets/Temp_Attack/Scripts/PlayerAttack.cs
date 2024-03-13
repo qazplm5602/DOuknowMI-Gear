@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,13 +6,20 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] DeprecatePlayerControlWithAttack control;
-    
+    [SerializeField] GearManager gearManager;
+
     private void Awake() {
         control.OnMouseClick += OnChangeMouse;
+    }
+    private void OnDestroy() {
+        control.OnMouseClick -= OnChangeMouse;
     }
 
     void OnChangeMouse(bool isDown) {
         print("OnChangeMouse: "+ isDown.ToString());
+        if (isDown) {
+            gearManager.StartRoll();
+        }
     }
 
     private void Update() {
