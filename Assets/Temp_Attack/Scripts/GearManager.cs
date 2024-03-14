@@ -12,6 +12,7 @@ struct GearInfo {
 public class GearManager : MonoBehaviour
 {
     [SerializeField] Transform section;
+    [SerializeField] GearScriptModule scriptModule;
     [SerializeField] GearSO[] spawnGears;
     [SerializeField] Vector2[] spawnGearCoords;
 
@@ -70,6 +71,6 @@ public class GearManager : MonoBehaviour
     }
 
     public void GetGearResult() {
-        
+
     }
 }
