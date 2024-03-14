@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,10 +49,27 @@ public class GearManager : MonoBehaviour
         }
     }
 
-    public void StartRoll() {
+    int rollFinishRoll = 0;
+    Action roolFinishCb;
+    void RollFinish() {
+        if (roolFinishCb == null) return;
+        
+        ++rollFinishRoll;
+        if (gears.Length != rollFinishRoll) return;
+
+        roolFinishCb.Invoke();
+        roolFinishCb = null;
+    }
+
+    public void StartRoll(Action cb) {
+        rollFinishRoll = 0;
+        roolFinishCb = cb;
+
         foreach (var gear in gears)
-        {
-            gear.system.Run();
-        }
+            gear.system.Run(RollFinish);
+    }
+
+    public void GetGearResult() {
+        
     }
 }
