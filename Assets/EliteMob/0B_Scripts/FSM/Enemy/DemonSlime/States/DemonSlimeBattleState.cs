@@ -27,15 +27,20 @@ public class DemonSlimeBattleState : EnemyState<DemonSlimeStateEnum>
 
     private void CheckAttack() {
         if(_enemy.CanAttack()) {
-            float distance = Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x);
-            
-            if(distance <= _demonSlime.smashRange.x) {
+            Vector2 playerPosition = _playerTrm.position;
+            Vector2 smashStartPosition = (Vector2)_enemy.transform.position + _demonSlime.smashOffset * _enemy.FacingDirection;
+            Vector2 attackStartPosition = (Vector2)_enemy.transform.position + _demonSlime.attackOffset * _enemy.FacingDirection;
+            Vector2 breathStartPosition = (Vector2)_enemy.transform.position + _demonSlime.breathOffset * _enemy.FacingDirection;
+
+            Debug.Log($"{smashStartPosition} {attackStartPosition} {breathStartPosition}");
+
+            if(Physics2D.OverlapBox(smashStartPosition, _demonSlime.smashRange, 0, _enemy.whatIsPlayer)) {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Smash);
             }
-            else if(distance <= _demonSlime.attackRange.x) {                                                                                      
+            else if(Physics2D.OverlapBox(attackStartPosition, _enemy.attackRange, 0, _enemy.whatIsPlayer)) {                                                                                      
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Attack);
             }
-            else if(distance <= _demonSlime.breathRange.x) {
+            else if(Physics2D.OverlapBox(breathStartPosition, _demonSlime.breathRange, 0, _enemy.whatIsPlayer)) {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Breath);
             }
             else {

@@ -13,7 +13,7 @@ namespace FSM {
         [Header("Check Settings")]
         [SerializeField] protected float _checkDistance;
         [SerializeField] protected Transform _checkTransform;
-        [SerializeField] protected LayerMask _playerLayer;
+        public LayerMask whatIsPlayer;
 
         [Header("Attack Settings")]
         public Vector2 attackRange;
@@ -38,7 +38,7 @@ namespace FSM {
         public abstract void AnimationFinishTrigger();
 
         public virtual RaycastHit2D IsPlayerDetected()
-            => Physics2D.Raycast(_checkTransform.position, Vector2.right * FacingDirection, _checkDistance, _playerLayer);
+            => Physics2D.Raycast(_checkTransform.position, Vector2.right * FacingDirection, _checkDistance, whatIsPlayer);
 
         public bool CanAttack() {
             return Time.time >= lastAttackTime + attackCooldown;
