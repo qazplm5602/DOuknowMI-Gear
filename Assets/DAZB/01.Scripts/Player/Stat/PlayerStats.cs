@@ -1,11 +1,11 @@
 [System.Serializable]
 public class PlayerStats
 {
-    public float health;
-    public float ATK;
+    public float healthPoint;
     public float AttackSpeed;
-    public float DEF;
-    public float PlayerSpeed;
+    public float MoveSpeed;
+    public float ATK;
+    public float Defense;
     public float JumpPower;
     public float CriticalChance;
     public int maxDashCount;

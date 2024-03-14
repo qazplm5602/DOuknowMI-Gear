@@ -16,7 +16,8 @@ namespace FSM {
         [SerializeField] protected LayerMask _playerLayer;
 
         [Header("Attack Settings")]
-        public float attackRange;
+        public Vector2 attackRange;
+        public Vector2 attackOffset;
         public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
 
@@ -38,6 +39,10 @@ namespace FSM {
 
         public virtual RaycastHit2D IsPlayerDetected()
             => Physics2D.Raycast(_checkTransform.position, Vector2.right * FacingDirection, _checkDistance, _playerLayer);
+
+        public bool CanAttack() {
+            return Time.time >= lastAttackTime + attackCooldown;
+        }
 
         public override void ReturnDefaultSpeed() {
             moveSpeed = _defualtMoveSpeed;

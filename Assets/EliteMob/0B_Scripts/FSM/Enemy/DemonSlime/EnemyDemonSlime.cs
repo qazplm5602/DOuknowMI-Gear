@@ -3,16 +3,18 @@ using UnityEngine;
 using FSM;
 
 public enum DemonSlimeStateEnum {
-    Idle, Move, Battle, Attack, Dead
+    Idle, Move, Battle, Attack, Smash, Breath, Spell, Dead
 }
 
 public class EnemyDemonSlime : Enemy
 {
     public EnemyStateMachine<DemonSlimeStateEnum> StateMachine { get; private set; }
 
-    [SerializeField] protected float _smashRange;
-    [SerializeField] protected float _breathRange;
-    [SerializeField] protected float _spellRange;
+    [Header("Pattern Settings")]
+    public Vector2 smashRange;
+    public Vector2 smashOffset;
+    public Vector2 breathRange;
+    public Vector2 breathOffset;
 
     protected override void Awake() {
         base.Awake();
@@ -46,8 +48,17 @@ public class EnemyDemonSlime : Enemy
     }
 
     public override void ReturnDefaultSpeed() {
-        
+
     }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)smashOffset * FacingDirection, smashRange);
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)attackOffset * FacingDirection, attackRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)breathOffset * FacingDirection, breathRange);
+    }
 }
