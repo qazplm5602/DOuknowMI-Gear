@@ -3,6 +3,9 @@ using UnityEngine;
 namespace FSM {
     public abstract class Enemy : Entity
     {
+        [HideInInspector] public EnemyDamageCaster DamageCasterCompo;
+        [HideInInspector] public EnemyHealth HealthCompo;
+
         [Header("Settings")]
         public float moveSpeed;
         public float idleTime;
@@ -18,6 +21,7 @@ namespace FSM {
         [Header("Attack Settings")]
         public Vector2 attackRange;
         public Vector2 attackOffset;
+        public int attackDamage;
         public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
 
@@ -25,6 +29,9 @@ namespace FSM {
 
         protected override void Awake() {
             base.Awake();
+            DamageCasterCompo = GetComponent<EnemyDamageCaster>();
+            HealthCompo = GetComponent<EnemyHealth>();
+            HealthCompo.SetOwner(this);
 
             _defualtMoveSpeed = moveSpeed;
         }

@@ -27,12 +27,9 @@ public class DemonSlimeBattleState : EnemyState<DemonSlimeStateEnum>
 
     private void CheckAttack() {
         if(_enemy.CanAttack()) {
-            Vector2 playerPosition = _playerTrm.position;
             Vector2 smashStartPosition = (Vector2)_enemy.transform.position + _demonSlime.smashOffset * _enemy.FacingDirection;
             Vector2 attackStartPosition = (Vector2)_enemy.transform.position + _demonSlime.attackOffset * _enemy.FacingDirection;
             Vector2 breathStartPosition = (Vector2)_enemy.transform.position + _demonSlime.breathOffset * _enemy.FacingDirection;
-
-            Debug.Log($"{smashStartPosition} {attackStartPosition} {breathStartPosition}");
 
             if(Physics2D.OverlapBox(smashStartPosition, _demonSlime.smashRange, 0, _enemy.whatIsPlayer)) {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Smash);
