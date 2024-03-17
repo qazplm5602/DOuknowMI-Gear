@@ -20,6 +20,9 @@ public class GearManager : MonoBehaviour
 
     GearInfo[] gears;
 
+
+    public GameObject _player;
+
     private void Start() {
         Init();
     }
@@ -41,8 +44,10 @@ public class GearManager : MonoBehaviour
                 system = gear.GetComponent<GearCircle>()
             };
 
-            if (item.LoadModule)
-                scriptModule.LoadModule(GearScriptModule.Type.Skill, item.id, item.LoadModule);
+            if (item.LoadModule) {
+                var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, item.id, item.LoadModule);
+                script._player = _player; // 플레이어 알려줌
+            }
 
             gearD.system.gearSO = gearD.data;
             gearD.system.reverse = isReverse;

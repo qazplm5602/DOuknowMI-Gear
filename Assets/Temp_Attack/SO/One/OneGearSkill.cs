@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class OneGearSkill : GearCogEvent
 {
-    public override void Init()
-    {
-        
-    }
+    // public override void Init()
+    // {
+
+    // }
 
     public override void Use()
     {

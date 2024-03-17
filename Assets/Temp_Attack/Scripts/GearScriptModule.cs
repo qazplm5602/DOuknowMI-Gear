@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class GearCogEvent : MonoBehaviour {
-    public abstract void Init();
+    public GameObject _player;
+    
+    // public abstract void Init();
     public abstract void Use();
 }
 
@@ -21,7 +23,7 @@ public class GearScriptModule : MonoBehaviour
         skillEvents = linkEvents = new();
     }
 
-    public void LoadModule(Type type, string id, GameObject entity) {
+    public GearCogEvent LoadModule(Type type, string id, GameObject entity) {
         var moduleContainer = Instantiate(entity, transform);
         moduleContainer.name = $"{id}_Script";
 
@@ -31,6 +33,8 @@ public class GearScriptModule : MonoBehaviour
         } else if (type == Type.Link) {
             linkEvents[id] = script;
         }
+
+        return script;
     }
 
     public GearCogEvent GetSkillScript(string id) => skillEvents[id];
