@@ -79,6 +79,11 @@ public class GearManager : MonoBehaviour
     }
 
     public void GetGearResult() {
+        int i = 0;
+        foreach(var gear in gears) {
+            print("["+i+"] "+gear.system.currentCogType.ToString());
 
+            ++i;
+        }
     }
 }
