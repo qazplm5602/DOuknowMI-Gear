@@ -30,6 +30,10 @@ namespace FSM {
             _enemy.AssignLastAnimationHash(_animationBoolHash);
         }
 
+        public virtual void AnimationAttackTrigger() {
+            
+        }
+
         public void AnimationFinishTrigger() {
             _triggerCalled = true;
         }
