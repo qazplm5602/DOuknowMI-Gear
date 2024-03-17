@@ -41,6 +41,9 @@ public class GearManager : MonoBehaviour
                 system = gear.GetComponent<GearCircle>()
             };
 
+            if (item.LoadModule)
+                scriptModule.LoadModule(GearScriptModule.Type.Skill, item.id, item.LoadModule);
+
             gearD.system.gearSO = gearD.data;
             gearD.system.reverse = isReverse;
             gearD.system.Init();
