@@ -8,6 +8,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] DeprecatePlayerControlWithAttack control;
     [SerializeField] GearManager gearManager;
 
+    bool mouseDisable = false;
+
     private void Awake() {
         control.OnMouseClick += OnChangeMouse;
     }
@@ -17,8 +19,9 @@ public class PlayerAttack : MonoBehaviour
 
     void OnChangeMouse(bool isDown) {
         print("OnChangeMouse: "+ isDown.ToString());
-        if (isDown) {
-            gearManager.StartRoll();
+        if (isDown && !mouseDisable) {
+            mouseDisable = true;
+            gearManager.StartRoll(GearRollFinish);
         }
     }
 
@@ -29,5 +32,12 @@ public class PlayerAttack : MonoBehaviour
     Vector2 GetMouseDir() {
         Vector2 mouseCoords = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return mouseCoords - (Vector2)transform.position;
+    }
+
+    void GearRollFinish() {
+        print("GearRollFinish");
+        mouseDisable = false;
+
+        gearManager.GetGearResult();
     }
 }
