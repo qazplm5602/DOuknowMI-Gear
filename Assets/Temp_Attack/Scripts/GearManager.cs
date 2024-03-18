@@ -16,6 +16,9 @@ public class GearManager : MonoBehaviour
     [SerializeField] GearScriptModule scriptModule;
     [SerializeField] GearSO[] spawnGears;
     [SerializeField] Vector2[] spawnGearCoords;
+    
+    [SerializeField] GearLinkSO[] loadLinkData;
+    Dictionary<string, GearLinkSO> linkDataSO; // id -> 기어연계SO 가져오는 용도
 
     [SerializeField] GameObject gearCircle;
 
@@ -29,6 +32,7 @@ public class GearManager : MonoBehaviour
     }
 
     void Init() {
+        /////////// 기어 소환
         gears = new GearInfo[spawnGears.Length];
 
         int i = 0;
@@ -57,6 +61,12 @@ public class GearManager : MonoBehaviour
             isReverse = !isReverse;
             ++i;
         }
+    
+        /////////// 연계 SO 로드
+        // foreach (var item in collection)
+        // {
+            
+        // }
     }
 
     int rollFinishRoll = 0;

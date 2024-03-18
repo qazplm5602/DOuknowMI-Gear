@@ -576,6 +576,8 @@ MonoBehaviour:
   - {x: 150, y: -150}
   - {x: 330, y: -200}
   - {x: 510, y: -150}
+  loadLinkData:
+  - {fileID: 11400000, guid: e325461c085ca804c93b811c84e33bf1, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
