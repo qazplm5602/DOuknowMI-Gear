@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 struct GearInfo {
@@ -79,11 +80,36 @@ public class GearManager : MonoBehaviour
     }
 
     public void GetGearResult() {
+        List<int[]> linkIndex = new();
+        
+        List<int> linkBox = null;
         int i = 0;
         foreach(var gear in gears) {
-            print("["+i+"] "+gear.system.currentCogType.ToString());
+            if (gear.system.currentCogType == CogType.Link) {
+                if (linkBox == null)
+                    linkBox = new();
+
+                linkBox.Add(i);
+            } else {
+                if (linkBox != null) {
+                    if (linkBox.Count > 1) {
+                        linkIndex.Add(linkBox.ToArray());
+                    }
+                    linkBox = null;
+                }
+            }
 
             ++i;
+        }
+
+        if (linkBox != null && linkBox.Count > 1)
+            linkIndex.Add(linkBox.ToArray());
+
+        // 디버깅
+        print("---------------- links");
+        for (i = 0; i < linkIndex.Count; i++)
+        {
+            print("["+i+"] " + String.Join(", ", linkIndex[i].ToArray()));
         }
     }
 }
