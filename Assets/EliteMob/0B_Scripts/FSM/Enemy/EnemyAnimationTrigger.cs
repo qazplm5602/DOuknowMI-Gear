@@ -14,7 +14,8 @@ namespace FSM {
         }
 
         private void AnimationAttackTrigger() {
-            _enemy.Attack();
+            EnemyDemonSlime demonSlime = _enemy as EnemyDemonSlime;
+            demonSlime.StateMachine.CurrentState.AnimationAttackTrigger();
         }
     }
 }
