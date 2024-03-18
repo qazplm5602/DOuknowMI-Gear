@@ -11,8 +11,10 @@ public class EnemyDemonSlime : Enemy
     public EnemyStateMachine<DemonSlimeStateEnum> StateMachine { get; private set; }
 
     [Header("Pattern Settings")]
-    public float smashRange;
-    public float breathRange;
+    public Vector2 smashRange;
+    public Vector2 smashOffset;
+    public Vector2 breathRange;
+    public Vector2 breathOffset;
 
     protected override void Awake() {
         base.Awake();
@@ -53,10 +55,10 @@ public class EnemyDemonSlime : Enemy
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(_checkTransform.position, new Vector3(smashRange * 2, 3));
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)smashOffset * FacingDirection, smashRange);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(_checkTransform.position, new Vector3(attackRange * 2, 3.5f));
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)attackOffset * FacingDirection, attackRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_checkTransform.position, new Vector3(breathRange * 2, 4));
+        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)breathOffset * FacingDirection, breathRange);
     }
 }
