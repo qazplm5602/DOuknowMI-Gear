@@ -80,34 +80,51 @@ public class GearManager : MonoBehaviour
     }
 
     public void GetGearResult() {
-        List<int[]> linkIndex = new();
+        List<int[]> ResultLink() {
+            List<int[]> linkIndex = new();
         
-        List<int> linkBox = null;
-        int i = 0;
-        foreach(var gear in gears) {
-            if (gear.system.currentCogType == CogType.Link) {
-                if (linkBox == null)
-                    linkBox = new();
+            List<int> linkBox = null;
+            int i = 0;
+            foreach(var gear in gears) {
+                if (gear.system.currentCogType == CogType.Link) {
+                    if (linkBox == null)
+                        linkBox = new();
 
-                linkBox.Add(i);
-            } else {
-                if (linkBox != null) {
-                    if (linkBox.Count > 1) {
-                        linkIndex.Add(linkBox.ToArray());
+                    linkBox.Add(i);
+                } else {
+                    if (linkBox != null) {
+                        if (linkBox.Count > 1) {
+                            linkIndex.Add(linkBox.ToArray());
+                        }
+                        linkBox = null;
                     }
-                    linkBox = null;
                 }
+
+                ++i;
             }
 
-            ++i;
+            if (linkBox != null && linkBox.Count > 1)
+                linkIndex.Add(linkBox.ToArray());
+
+            foreach (var linkSection in linkIndex)
+            {
+                List<string> cogIds = new();
+                foreach (var item in linkSection)
+                    cogIds.Add(gears[item].data.id);
+
+                // 정렬 하고 합쳐서 ID 만듬 ( 연계SO도 저렇게 찾을꺼 )
+                string linkID = String.Join(",", cogIds.OrderBy(v => v).ToArray());
+                print(linkID);
+            }
+
+            return linkIndex;
         }
 
-        if (linkBox != null && linkBox.Count > 1)
-            linkIndex.Add(linkBox.ToArray());
+        List<int[]> linkIndex = ResultLink();
 
         // 디버깅
         print("---------------- links");
-        for (i = 0; i < linkIndex.Count; i++)
+        for (int i = 0; i < linkIndex.Count; i++)
         {
             print("["+i+"] " + String.Join(", ", linkIndex[i].ToArray()));
         }
