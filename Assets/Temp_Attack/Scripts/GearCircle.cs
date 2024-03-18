@@ -13,6 +13,8 @@ public class GearCircle : MonoBehaviour
     float oneAngle;
     public bool reverse = false;
     int currentCog = 0;
+    // 현재 콕 어디로 바라봄?
+    public CogType currentCogType => gearSO.CogList[currentCog];
 
     Sequence sequence;
 
@@ -31,7 +33,7 @@ public class GearCircle : MonoBehaviour
             var cog_image = cog.GetComponent<Image>();
 
             // 회전 ㄱㄱ
-            cog.transform.RotateAround(transform.position, new Vector3(0,0,1), oneAngle * i);
+            cog.transform.RotateAround(transform.position, new Vector3(0,0,1), oneAngle * i * (reverse ? 1 : -1));
 
             // 색상 콕
             cog_image.color = GetCogTypeColor(gearSO.CogList[i]);
@@ -39,7 +41,7 @@ public class GearCircle : MonoBehaviour
     }
 
     public void Run(Action cb = null) {
-        currentCog += reverse ? -1 : 1;
+        currentCog += 1;
         if (currentCog < 0) {
             currentCog = gearSO.CogList.Length - 1;
         } else if (gearSO.CogList.Length <= currentCog) {
@@ -47,7 +49,7 @@ public class GearCircle : MonoBehaviour
         }
 
         sequence = DOTween.Sequence();
-        sequence.Append(_transform.DOLocalRotate(new Vector3(0,0, currentCog * oneAngle), .3f));
+        sequence.Append(_transform.DOLocalRotate(new Vector3(0,0, currentCog * oneAngle * (reverse ? -1 : 1)), .3f));
         sequence.OnComplete(() => cb?.Invoke());
     }
 

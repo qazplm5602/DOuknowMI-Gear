@@ -21,6 +21,10 @@ public class PlayerAttack : MonoBehaviour
         print("OnChangeMouse: "+ isDown.ToString());
         if (isDown && !mouseDisable) {
             mouseDisable = true;
+
+            // 발사 후 돌림
+            gearManager.GetGearResult();
+
             gearManager.StartRoll(GearRollFinish);
         }
     }
@@ -37,7 +41,5 @@ public class PlayerAttack : MonoBehaviour
     void GearRollFinish() {
         print("GearRollFinish");
         mouseDisable = false;
-
-        gearManager.GetGearResult();
     }
 }
