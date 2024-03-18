@@ -260,6 +260,50 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &342647522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 342647523}
+  - component: {fileID: 342647524}
+  m_Layer: 0
+  m_Name: Modules
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &342647523
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342647522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &342647524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 342647522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de867cddb71e82b4c93a6c0056c7073e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &493331525
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,7 +464,6 @@ GameObject:
   - component: {fileID: 1966445889}
   - component: {fileID: 1966445888}
   - component: {fileID: 1966445892}
-  - component: {fileID: 1966445893}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -524,26 +567,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   section: {fileID: 493331526}
+  scriptModule: {fileID: 342647524}
   spawnGears:
   - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
   - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
+  - {fileID: 11400000, guid: 9396b46b57cfa4642ae3d41dfbba44e7, type: 2}
   spawnGearCoords:
   - {x: 150, y: -150}
-  - {x: 320, y: -245}
+  - {x: 330, y: -200}
+  - {x: 510, y: -150}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
-  scriptModule: {fileID: 1966445893}
---- !u!114 &1966445893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966445887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de867cddb71e82b4c93a6c0056c7073e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _player: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -551,3 +585,4 @@ SceneRoots:
   - {fileID: 256243117}
   - {fileID: 1835667949}
   - {fileID: 1966445891}
+  - {fileID: 342647523}

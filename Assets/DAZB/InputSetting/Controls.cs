@@ -125,6 +125,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""0fdbb9ca-4e1e-410b-a845-68207dd2eae5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseWheel"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a298c8bc-145a-495a-8bb8-e1cdc3fd45d7"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -136,6 +154,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Stat"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""116f8c94-c8d9-4531-b2e5-51fd30635ff0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9eea747d-4fa3-4b9b-91cf-2e69ffaa2a59"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": ""Clamp(min=-1,max=1)"",
+                    ""groups"": ""keyboardAndMouse"",
+                    ""action"": ""PauseWheel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -169,6 +209,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Stat = m_UI.FindAction("Stat", throwIfNotFound: true);
+        m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_PauseWheel = m_UI.FindAction("PauseWheel", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,11 +335,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Stat;
+    private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_PauseWheel;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Stat => m_Wrapper.m_UI_Stat;
+        public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @PauseWheel => m_Wrapper.m_UI_PauseWheel;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -310,6 +356,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Stat.started += instance.OnStat;
             @Stat.performed += instance.OnStat;
             @Stat.canceled += instance.OnStat;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
+            @PauseWheel.started += instance.OnPauseWheel;
+            @PauseWheel.performed += instance.OnPauseWheel;
+            @PauseWheel.canceled += instance.OnPauseWheel;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -317,6 +369,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Stat.started -= instance.OnStat;
             @Stat.performed -= instance.OnStat;
             @Stat.canceled -= instance.OnStat;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
+            @PauseWheel.started -= instance.OnPauseWheel;
+            @PauseWheel.performed -= instance.OnPauseWheel;
+            @PauseWheel.canceled -= instance.OnPauseWheel;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -352,5 +410,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnStat(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+        void OnPauseWheel(InputAction.CallbackContext context);
     }
 }

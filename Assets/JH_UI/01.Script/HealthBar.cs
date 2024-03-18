@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] private float valueChangeTime;
     [SerializeField] private Gradient _gradient;
     private Slider _slider;
     private Image _fill;
@@ -30,6 +32,7 @@ public class HealthBar : MonoBehaviour
     /// <param name="health">체력</param>
     public void SetHealth(int health)
     {
+        
         _slider.value = health;
         SetGradientValue();
     }
@@ -40,8 +43,9 @@ public class HealthBar : MonoBehaviour
     /// <param name="amount">값</param>
     public void DecreaseHealth(int amount)
     {
-        _slider.value -= amount;
-        SetGradientValue();
+        /* _slider.value -= amount;
+        SetGradientValue(); */
+        StartCoroutine(DecreaseRoutine(amount));
     }
 
     /// <summary>
@@ -50,8 +54,9 @@ public class HealthBar : MonoBehaviour
     /// <param name="amount">값</param>
     public void IncreaseHealth(int amount)
     {
-        _slider.value += amount;
-        SetGradientValue();
+        /* _slider.value += amount;
+        SetGradientValue(); */
+        StartCoroutine(IncreaseRoutine(amount));
     }
 
     /// <summary>
@@ -69,5 +74,29 @@ public class HealthBar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) DecreaseHealth(10);
     }
 #endif
+
+    private IEnumerator IncreaseRoutine(int amout) {
+        float startVal = _slider.value;
+        float endVal = _slider.value + amout;
+        float elapsedTime = 0;
+        while (elapsedTime < valueChangeTime) {
+            elapsedTime += Time.deltaTime;
+            float val = Mathf.Lerp(startVal, endVal, elapsedTime / valueChangeTime);
+            _slider.value = val;
+            yield return null;
+        }
+    }
+
+    private IEnumerator DecreaseRoutine(int amout) {
+        float startVal = _slider.value;
+        float endVal = _slider.value - amout;
+        float elapsedTime = 0;
+        while (elapsedTime < valueChangeTime) {
+            elapsedTime += Time.deltaTime;
+            float val = Mathf.Lerp(startVal, endVal, elapsedTime / valueChangeTime);
+            _slider.value = val;
+            yield return null;
+        }
+    }
 }
 
