@@ -25,6 +25,9 @@ namespace FSM {
         public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
 
+        [Header("ETC Settings")]
+        public int experienceValue;
+
         protected int _lastAnimationBoolHash;
 
         protected override void Awake() {
