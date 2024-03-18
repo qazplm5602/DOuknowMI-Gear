@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static Controls;
@@ -7,10 +6,16 @@ using static Controls;
 [CreateAssetMenu(menuName = "SO/InputReader")]
 public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 {
+    #region Player
     public event Action<Vector2> MovementEvent;
     public event Action JumpEvent;
     public event Action DashEvent;
+    #endregion
+    #region UI
     public event Action StatOpenEvent;
+    public event Action PauseEvent;
+    public event Action<float> PauseWheelEvent;
+    #endregion
 
     private Controls _controls;
     public Controls GetControl()
@@ -55,6 +60,21 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
     {
         if (context.performed) {
             StatOpenEvent?.Invoke();
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed) {
+            PauseEvent?.Invoke();
+        }
+    }
+
+    public void OnPauseWheel(InputAction.CallbackContext context)
+    {
+        float value = context.ReadValue<float>();
+        if (context.performed) {
+            PauseWheelEvent?.Invoke(value);
         }
     }
 }
