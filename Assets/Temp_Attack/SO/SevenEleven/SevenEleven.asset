@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
-  m_Name: Two
+  m_Name: SevenEleven
   m_EditorClassIdentifier: 
-  name: test2
-  cogList: 000000000100000002000000000000000100000000000000
-  linkAmount: 0
-  loadModule: {fileID: 0}
+  name: "7\uAC1C\uC758\uD1B1"
+  cogList: 02000000000000000000000001000000000000000200000000000000
+  loadModule: {fileID: 4423284104849833554, guid: 11a03094030d92147847369c8e5ae5ec, type: 3}

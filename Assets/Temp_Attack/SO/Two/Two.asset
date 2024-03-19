@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
-  m_Name: Lucky
+  m_Name: Two
   m_EditorClassIdentifier: 
-  name: "7\uAC1C\uC758\uD1B1"
-  cogList: 02000000000000000000000001000000000000000200000000000000
-  loadModule: {fileID: 0}
+  name: test2
+  cogList: 000000000100000002000000000000000100000000000000
+  loadModule: {fileID: 7825408551897690595, guid: d7903189039d9264c90a7bffdeaab1c5, type: 3}

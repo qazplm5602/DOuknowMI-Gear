@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
     }
 
     void OnChangeMouse(bool isDown) {
-        print("OnChangeMouse: "+ isDown.ToString());
         if (isDown && !mouseDisable) {
             mouseDisable = true;
 
@@ -39,7 +38,6 @@ public class PlayerAttack : MonoBehaviour
     }
 
     void GearRollFinish() {
-        print("GearRollFinish");
         mouseDisable = false;
     }
 
@@ -49,10 +47,12 @@ public class PlayerAttack : MonoBehaviour
         
         foreach (var item in gearList)
         {
-            print("-----------------");
-            print(item.type.ToString());
-            print(item.script);
-            print(String.Join(',', item.gearIdx));
+            // print("-----------------");
+            // print(item.type.ToString());
+            // print(item.script);
+            // print(String.Join(',', item.gearIdx));
+
+            item.script.Use();
         }
     }
 }
