@@ -25,23 +25,16 @@ public class RoomSpawner : MonoBehaviour
     [SerializeField] private GameObject _wallPrefab;
     private void Start()
     {
-        if (RoomTemplates.instance.currentCountByDirection[openingDirection] >= RoomTemplates.instance.maxCountByDirection[openingDirection]) return;
-        if (RoomTemplates.instance.currentCountByDirection[openingDirection] == RoomTemplates.instance.maxCountByDirection[openingDirection] - 1)
-        {
-            RoomTemplates.instance.currentCountByDirection[openingDirection]++;
-            MakeLastRoom();
-            return;
-        }
-
-        RoomTemplates.instance.currentCountByDirection[openingDirection]++;
+        if (RoomTemplates.instance.maxCount <= RoomTemplates.instance.currentCount) return;
+        ++RoomTemplates.instance.currentCount;
         Invoke(nameof(SpawnRoom), 0.1f);
     }
-    private void MakeLastRoom()
-    {
-        if (_spawned) print("이거왜쓰는지모르겠는데?");
-        Instantiate(RoomTemplates.instance.LastRoom[openingDirection], transform.position, Quaternion.identity, RoomTemplates.instance.roomParent);
-        _spawned = true;
-    }
+    //private void MakeLastRoom()
+    //{
+    //    if (_spawned) print("이거왜쓰는지모르겠는데?");
+    //    Instantiate(RoomTemplates.instance.LastRoom[openingDirection], transform.position, Quaternion.identity, RoomTemplates.instance.roomParent);
+    //    _spawned = true;
+    //}
     public void SpawnRoom()
     {
         if (_spawned) return;
