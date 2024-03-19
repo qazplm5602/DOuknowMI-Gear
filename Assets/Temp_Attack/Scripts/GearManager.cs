@@ -24,6 +24,12 @@ struct GearSkillDTO {
     public int gearIdx;
 }
 
+struct GearCogResultDTO {
+    public CogType type;
+    public GearCogEvent script;
+    public int[] gearIdx;
+}
+
 public class GearManager : MonoBehaviour
 {
     [SerializeField] Transform section;
@@ -109,7 +115,7 @@ public class GearManager : MonoBehaviour
             gear.system.Run(RollFinish);
     }
 
-    public void GetGearResult() {
+    public GearCogResultDTO[] GetGearResult() {
         HashSet<int> ignoreIdx = new();
         GearLinkDTO[] ResultLink() {
             print("ResultLink / ignore: "+ignoreIdx.Count);
@@ -183,22 +189,29 @@ public class GearManager : MonoBehaviour
             return result.ToArray();
         }
 
+        List<GearCogResultDTO> result = new();
         GearLinkDTO[] linkIndex = ResultLink();
         if (linkIndex.Length == 0) { // 연계된 기어가 하나도 없으면
             GearSkillDTO[] skillResult = ResultSkill();
-
-            print("---------------- skills");
-            for (int i = 0; i < skillResult.Length; i++)
+            
+            foreach (var item in skillResult)
             {
-                print($"[{skillResult[i].gearIdx}] {skillResult[i].id}");
+                result.Add(new() {
+                    type = CogType.Skill,
+                    script = item.script,
+                    gearIdx = new int[1] { item.gearIdx }
+                });
             }
+            return result.ToArray();
         }
+
+        
 
         // 디버깅
-        print("---------------- links");
-        for (int i = 0; i < linkIndex.Length; i++)
-        {
-            print("["+i+"] " + String.Join(", ", linkIndex[i].id));
-        }
+        // print("---------------- links");
+        // for (int i = 0; i < linkIndex.Length; i++)
+        // {
+        //     print("["+i+"] " + String.Join(", ", linkIndex[i].id));
+        // }
     }
 }
