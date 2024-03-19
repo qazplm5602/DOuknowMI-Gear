@@ -116,54 +116,41 @@ public class GearManager : MonoBehaviour
     }
 
     public GearCogResultDTO[] GetGearResult() {
-        HashSet<int> ignoreIdx = new();
         GearLinkDTO[] ResultLink() {
-            print("ResultLink / ignore: "+ignoreIdx.Count);
-            
             List<GearLinkDTO> result = new();
-            List<int[]> linkIndex = new();
-        
-            List<int> linkBox = null;
+            Dictionary<GearSO, int> cacheGear = new();
+
+            // 기어 캐싱
             int i = 0;
             foreach(var gear in gears) {
-                if (gear.system.currentCogType == CogType.Link && !ignoreIdx.Contains(i) /* 포함 안되어있어야 됨 */) {
-                    if (linkBox == null)
-                        linkBox = new();
-
-                    linkBox.Add(i);
-                } else if (linkBox != null) {
-                    if (linkBox.Count > 1)
-                        linkIndex.Add(linkBox.ToArray());
-                        
-                    linkBox = null;
-                }
+                if (gear.system.currentCogType == CogType.Link)
+                    cacheGear[gear.data] = i;
 
                 ++i;
             }
 
-            if (linkBox != null && linkBox.Count > 1)
-                linkIndex.Add(linkBox.ToArray());
-
-            foreach (var linkSection in linkIndex)
+            bool isFaild;
+            foreach (var item in loadLinkData)
             {
-                List<string> cogIds = new();
-                foreach (var item in linkSection)
-                    cogIds.Add(gears[item].data.id);
+                isFaild = false;
+                List<int> combineIdx = new(); // 연계된 기어 인덱스
 
-                // 정렬 하고 합쳐서 ID 만듬 ( 연계SO도 저렇게 찾을꺼 )
-                string linkID = String.Join(",", cogIds.OrderBy(v => v).ToArray());
-                
-                GearCogEvent script;
-                if (!linkDataSO.TryGetValue(linkID, out var linkSO) || (script = scriptModule.GetLinkScript(linkID)) == null) {
-                    ignoreIdx.Add(linkSection[linkSection.Length - 1]); // 마지막꺼 무사 해
-                    return ResultLink(); // 이거 아직 못찾으면 하나 무시해서 다시 찾을꺼임 (재귀함수 밍밍)
+                foreach (var gear in item.Combine) {
+                    if (!cacheGear.TryGetValue(gear, out var idx)) { // 아니 연계된 기어가 없음
+                        isFaild = true;
+                        break;
+                    } 
+
+                    combineIdx.Add(idx);
                 }
+                if (isFaild) continue;
 
-                result.Add(new() {
-                    id = linkID,
-                    data = linkSO,
-                    script  = script,
-                    gearIdx = linkSection
+                string id = item.GetId();
+                result.Add(new GearLinkDTO() {
+                    id = id,
+                    data = item,
+                    script = scriptModule.GetLinkScript(id),
+                    gearIdx = combineIdx.ToArray()
                 });
             }
 
