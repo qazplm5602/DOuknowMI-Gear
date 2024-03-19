@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OneGearSkill : GearCogEvent
 {
-    // public override void Init()
-    // {
-
-    // }
-
+    [SerializeField] private GameObject _boltPrefab;
     public override void Use()
     {
-        print("[Skill] OneGearSkill 호출");
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 dir = mousePos - transform.position;
+        Quaternion look = Quaternion.LookRotation(dir);
+        Instantiate(_boltPrefab, transform.position, look);
     }
 }
