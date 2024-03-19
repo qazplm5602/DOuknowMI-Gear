@@ -10,6 +10,13 @@ struct GearInfo {
     public GearCircle system;
 }
 
+struct GearLinkDTO {
+    public string id; // 기어 연계 ID ex) One,Two 
+    public GearLinkSO data; // 연계 SO
+    public GearCogEvent script; // 연게 SO 인스턴스 모듈
+    public int[] gearIdx; // 연계된 기어 인덱스
+}
+
 public class GearManager : MonoBehaviour
 {
     [SerializeField] Transform section;
@@ -96,13 +103,17 @@ public class GearManager : MonoBehaviour
     }
 
     public void GetGearResult() {
-        List<int[]> ResultLink() {
+        HashSet<int> ignoreIdx = new();
+        GearLinkDTO[] ResultLink() {
+            print("ResultLink / ignore: "+ignoreIdx.Count);
+            
+            List<GearLinkDTO> result = new();
             List<int[]> linkIndex = new();
         
             List<int> linkBox = null;
             int i = 0;
             foreach(var gear in gears) {
-                if (gear.system.currentCogType == CogType.Link) {
+                if (gear.system.currentCogType == CogType.Link && !ignoreIdx.Contains(i) /* 포함 안되어있어야 됨 */) {
                     if (linkBox == null)
                         linkBox = new();
 
@@ -128,19 +139,31 @@ public class GearManager : MonoBehaviour
 
                 // 정렬 하고 합쳐서 ID 만듬 ( 연계SO도 저렇게 찾을꺼 )
                 string linkID = String.Join(",", cogIds.OrderBy(v => v).ToArray());
-                print(linkID);
+                
+                GearCogEvent script;
+                if (!linkDataSO.TryGetValue(linkID, out var linkSO) || (script = scriptModule.GetLinkScript(linkID)) == null) {
+                    ignoreIdx.Add(linkSection[linkSection.Length - 1]); // 마지막꺼 무사 해
+                    return ResultLink(); // 이거 아직 못찾으면 하나 무시해서 다시 찾을꺼임 (재귀함수 밍밍)
+                }
+
+                result.Add(new() {
+                    id = linkID,
+                    data = linkSO,
+                    script  = script,
+                    gearIdx = linkSection
+                });
             }
 
-            return linkIndex;
+            return result.ToArray();
         }
 
-        List<int[]> linkIndex = ResultLink();
+        GearLinkDTO[] linkIndex = ResultLink();
 
         // 디버깅
         print("---------------- links");
-        for (int i = 0; i < linkIndex.Count; i++)
+        for (int i = 0; i < linkIndex.Length; i++)
         {
-            print("["+i+"] " + String.Join(", ", linkIndex[i].ToArray()));
+            print("["+i+"] " + String.Join(", ", linkIndex[i].id));
         }
     }
 }
