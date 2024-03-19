@@ -63,10 +63,16 @@ public class GearManager : MonoBehaviour
         }
     
         /////////// 연계 SO 로드
-        // foreach (var item in collection)
-        // {
-            
-        // }
+        linkDataSO = new();
+
+        foreach (var item in loadLinkData)
+        {
+            if (item.LoadModule == null) continue;
+
+            string id = item.GetId();
+            linkDataSO[id] = item;
+            scriptModule.LoadModule(GearScriptModule.Type.Link, id, item.LoadModule);
+        }
     }
 
     int rollFinishRoll = 0;
@@ -101,13 +107,11 @@ public class GearManager : MonoBehaviour
                         linkBox = new();
 
                     linkBox.Add(i);
-                } else {
-                    if (linkBox != null) {
-                        if (linkBox.Count > 1) {
-                            linkIndex.Add(linkBox.ToArray());
-                        }
-                        linkBox = null;
-                    }
+                } else if (linkBox != null) {
+                    if (linkBox.Count > 1)
+                        linkIndex.Add(linkBox.ToArray());
+                        
+                    linkBox = null;
                 }
 
                 ++i;
