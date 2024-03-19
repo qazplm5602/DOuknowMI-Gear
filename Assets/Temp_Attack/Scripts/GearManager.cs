@@ -85,13 +85,21 @@ public class GearManager : MonoBehaviour
         /////////// 연계 SO 로드
         linkDataSO = new();
 
+        // combine 길이가 큰것부터 ㄱㄱㄱ
+        Array.Sort(loadLinkData, (a, b) => {
+            if (a.Combine.Length < b.Combine.Length) return 1;
+            else if (a.Combine.Length > b.Combine.Length) return -1;
+            else return 0;
+        });
+
         foreach (var item in loadLinkData)
         {
             if (item.LoadModule == null) continue;
 
             string id = item.GetId();
             linkDataSO[id] = item;
-            scriptModule.LoadModule(GearScriptModule.Type.Link, id, item.LoadModule);
+            var script = scriptModule.LoadModule(GearScriptModule.Type.Link, id, item.LoadModule);
+            script._player = _player; // 플레이어 알려줌
         }
     }
 
@@ -144,6 +152,11 @@ public class GearManager : MonoBehaviour
                     combineIdx.Add(idx);
                 }
                 if (isFaild) continue;
+
+                // 일단 완료했으면 제외할꺼 추가
+                foreach (var idx in combineIdx)
+                    if (idx != 0) // 0번째는 제외 안함
+                        cacheGear.Remove(gears[idx].data);
 
                 string id = item.GetId();
                 result.Add(new GearLinkDTO() {
