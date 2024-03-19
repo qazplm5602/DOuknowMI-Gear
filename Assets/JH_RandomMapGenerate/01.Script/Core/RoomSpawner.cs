@@ -19,45 +19,39 @@ public enum OpeningDirection
 public class RoomSpawner : MonoBehaviour
 {
     public OpeningDirection openingDirection = OpeningDirection.Up;
-    
+
     private bool _spawned = false;
     [SerializeField] private Vector2 _offset;
-    [SerializeField] private GameObject fuck;
+    [SerializeField] private GameObject _wallPrefab;
     private void Start()
     {
-        if (RoomTemplates.instance.currentCount >= RoomTemplates.instance.maxCount)
+        if (RoomTemplates.instance.currentCountByDirection[openingDirection] >= RoomTemplates.instance.maxCountByDirection[openingDirection]) return;
+        if (RoomTemplates.instance.currentCountByDirection[openingDirection] == RoomTemplates.instance.maxCountByDirection[openingDirection] - 1)
         {
-            RoomTemplates.instance.generating = true;
+            RoomTemplates.instance.currentCountByDirection[openingDirection]++;
+            MakeLastRoom();
             return;
         }
-            RoomTemplates.instance.currentCount++;
+
+        RoomTemplates.instance.currentCountByDirection[openingDirection]++;
         Invoke(nameof(SpawnRoom), 0.1f);
     }
-
+    private void MakeLastRoom()
+    {
+        if (_spawned) print("이거왜쓰는지모르겠는데?");
+        Instantiate(RoomTemplates.instance.LastRoom[openingDirection], transform.position, Quaternion.identity, RoomTemplates.instance.roomParent);
+        _spawned = true;
+    }
     public void SpawnRoom()
     {
         if (_spawned) return;
-
-        int _rand = Random.Range(0, 8);
+        int _rand = Random.Range(0, 6);
         GameObject[] _rooms = RoomTemplates.instance.rooms[openingDirection];
-        Instantiate(_rooms[_rand], transform.position, Quaternion.identity, RoomTemplates.instance.RoomParent);
+        Instantiate(_rooms[_rand], transform.position, Quaternion.identity, RoomTemplates.instance.roomParent);
+
         _spawned = true;
-    }
 
-    IEnumerator GenerateEnd()
-    {
-        yield return new WaitUntil(() => RoomTemplates.instance.generating);
-        Vector2 dir = transform.parent.position - transform.position;
-        dir.Normalize();
-        MakeWall(dir);
     }
-
-    void MakeWall(Vector2 direction)
-    {
-        print("굿");
-        Instantiate(fuck, direction * _offset, Quaternion.identity);
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("SpawnPoint") && collision.GetComponent<RoomSpawner>() == null)
@@ -68,5 +62,6 @@ public class RoomSpawner : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 }
