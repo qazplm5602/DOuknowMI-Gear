@@ -103,6 +103,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "0fdbb9ca-4e1e-410b-a845-68207dd2eae5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseWheel",
+                    "type": "PassThrough",
+                    "id": "a298c8bc-145a-495a-8bb8-e1cdc3fd45d7",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -114,6 +132,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Stat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "116f8c94-c8d9-4531-b2e5-51fd30635ff0",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9eea747d-4fa3-4b9b-91cf-2e69ffaa2a59",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "groups": "keyboardAndMouse",
+                    "action": "PauseWheel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
