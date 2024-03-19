@@ -17,6 +17,13 @@ struct GearLinkDTO {
     public int[] gearIdx; // 연계된 기어 인덱스
 }
 
+struct GearSkillDTO {
+    public string id;
+    public GearSO data;
+    public GearCogEvent script;
+    public int gearIdx;
+}
+
 public class GearManager : MonoBehaviour
 {
     [SerializeField] Transform section;
@@ -156,8 +163,36 @@ public class GearManager : MonoBehaviour
 
             return result.ToArray();
         }
+        GearSkillDTO[] ResultSkill() {
+            List<GearSkillDTO> result = new();
+            
+            int i = 0;
+            foreach (var gear in gears)
+            {
+                if (gear.system.currentCogType == CogType.Skill)
+                    result.Add(new() {
+                        id = gear.data.id,
+                        data = gear.data,
+                        script = scriptModule.GetSkillScript(gear.data.id),
+                        gearIdx = i
+                    });
+                
+                i++;
+            }
+
+            return result.ToArray();
+        }
 
         GearLinkDTO[] linkIndex = ResultLink();
+        if (linkIndex.Length == 0) { // 연계된 기어가 하나도 없으면
+            GearSkillDTO[] skillResult = ResultSkill();
+
+            print("---------------- skills");
+            for (int i = 0; i < skillResult.Length; i++)
+            {
+                print($"[{skillResult[i].gearIdx}] {skillResult[i].id}");
+            }
+        }
 
         // 디버깅
         print("---------------- links");
