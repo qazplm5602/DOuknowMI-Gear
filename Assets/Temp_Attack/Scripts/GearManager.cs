@@ -24,7 +24,7 @@ struct GearSkillDTO {
     public int gearIdx;
 }
 
-struct GearCogResultDTO {
+public struct GearCogResultDTO {
     public CogType type;
     public GearCogEvent script;
     public int[] gearIdx;
@@ -205,13 +205,13 @@ public class GearManager : MonoBehaviour
             return result.ToArray();
         }
 
-        
+        foreach (var item in linkIndex)
+            result.Add(new() {
+                type = CogType.Link,
+                script = item.script,
+                gearIdx = item.gearIdx
+            });
 
-        // 디버깅
-        // print("---------------- links");
-        // for (int i = 0; i < linkIndex.Length; i++)
-        // {
-        //     print("["+i+"] " + String.Join(", ", linkIndex[i].id));
-        // }
+        return result.ToArray();
     }
 }
