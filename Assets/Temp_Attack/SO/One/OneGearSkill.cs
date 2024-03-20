@@ -1,13 +1,16 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class OneGearSkill : GearCogEvent
 {
-    [SerializeField] private GameObject _boltPrefab;
+    PlayerWeapon _weaponType = PlayerWeapon.Wheel;
     public override void Use()
     {
+        Vector3 playerPos = _player.transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 dir = mousePos - transform.position;
-        Quaternion look = Quaternion.LookRotation(dir);
-        Instantiate(_boltPrefab, transform.position, look);
+        mousePos.z = 0;
+        float angle = Mathf.Atan2(mousePos.y - playerPos.y, mousePos.x -  playerPos.x) * Mathf.Rad2Deg;
+        Quaternion look = Quaternion.AngleAxis(angle, Vector3.forward);
+        Instantiate(PlayerWeapons.instance.WeaponDictionary[_weaponType], playerPos, look);
     }
 }
