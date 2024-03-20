@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class OneGearSkill : GearCogEvent
 {
-    PlayerWeapon _weaponType = PlayerWeapon.Wheel;
+    PlayerWeapon _weaponType = PlayerWeapon.BoltAndNut;
     public override void Use()
     {
         Vector3 playerPos = _player.transform.position;

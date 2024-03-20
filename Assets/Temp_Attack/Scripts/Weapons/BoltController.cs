@@ -7,6 +7,4 @@ public class BoltController : MonoBehaviour
     {
         transform.position += _speed * Time.fixedDeltaTime * transform.right;
     }
-
-
 }

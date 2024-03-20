@@ -333,6 +333,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd1b80068ebfa89438aff6305efb6a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWeapon: 4
+  playerWeaponPrefab:
+  - {fileID: 5663472254907384932, guid: d535d49a98e023c47a65d0001ed045eb, type: 3}
+  - {fileID: 5663472254907384932, guid: 826ee242a2a94d144a2e411cabadd15f, type: 3}
+  - {fileID: 5663472254907384932, guid: 5eb82ff43ab959a4ab5a029a3a6f0d47, type: 3}
+  - {fileID: 5663472254907384932, guid: 48773dea6e9868642a60766b5d8b3a6a, type: 3}
 --- !u!4 &410409892
 Transform:
   m_ObjectHideFlags: 0
@@ -342,7 +348,7 @@ Transform:
   m_GameObject: {fileID: 410409890}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 251.5131, y: 145.26007, z: -8.865822}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
