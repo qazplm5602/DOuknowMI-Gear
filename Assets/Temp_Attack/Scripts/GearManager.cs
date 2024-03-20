@@ -42,7 +42,7 @@ public class GearManager : MonoBehaviour
 
     [SerializeField] GameObject gearCircle;
 
-    GearInfo[] gears;
+    List<GearInfo> gears;
 
 
     public GameObject _player;
@@ -53,34 +53,10 @@ public class GearManager : MonoBehaviour
 
     void Init() {
         /////////// 기어 소환
-        gears = new GearInfo[spawnGears.Length];
+        gears = new();
 
-        int i = 0;
-        bool isReverse = false;
         foreach (var item in spawnGears)
-        {
-            var gear = Instantiate(gearCircle, section);
-            var gear_transform = gear.GetComponent<RectTransform>();
-            gear_transform.anchoredPosition = spawnGearCoords[i];
-            
-            var gearD = gears[i] = new GearInfo() { 
-                data = item,
-                entity = gear,
-                system = gear.GetComponent<GearCircle>()
-            };
-
-            if (item.LoadModule) {
-                var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, item.id, item.LoadModule);
-                script._player = _player; // 플레이어 알려줌
-            }
-
-            gearD.system.gearSO = gearD.data;
-            gearD.system.reverse = isReverse;
-            gearD.system.Init();
-
-            isReverse = !isReverse;
-            ++i;
-        }
+            GearAdd(item);
     
         /////////// 연계 SO 로드
         linkDataSO = new();
@@ -102,6 +78,44 @@ public class GearManager : MonoBehaviour
             script._player = _player; // 플레이어 알려줌
         }
     }
+        
+
+    public void GearAdd(GearSO data) {
+        var myIdx = gears.Count;
+        var gear = Instantiate(gearCircle, section);
+        var gear_transform = gear.GetComponent<RectTransform>();
+        gear_transform.anchoredPosition = spawnGearCoords[myIdx];
+        
+        var gearD = new GearInfo() { 
+            data = data,
+            entity = gear,
+            system = gear.GetComponent<GearCircle>()
+        };
+        gears.Add(gearD);
+
+        if (data.LoadModule) {
+            var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, data.id, data.LoadModule);
+            script._player = _player; // 플레이어 알려줌
+        }
+
+        gearD.system.gearSO = data;
+        gearD.system.reverse = (myIdx % 2) != 0;
+        gearD.system.Init();
+    }
+    public void GearRemove(int idx) {
+        var gear = gears[idx];
+        Destroy(gear.entity);
+        
+        gears.RemoveAt(idx);
+
+        for (int i = idx; i < gears.Count; i++)
+        {
+            var gearD = gears[i];
+            var gearTrm = gearD.entity.GetComponent<RectTransform>();
+            gearTrm.anchoredPosition = spawnGearCoords[i];
+            gearD.system.reverse = !gearD.system.reverse;
+        }
+    }
 
     int rollFinishRoll = 0;
     Action roolFinishCb;
@@ -109,7 +123,7 @@ public class GearManager : MonoBehaviour
         if (roolFinishCb == null) return;
         
         ++rollFinishRoll;
-        if (gears.Length != rollFinishRoll) return;
+        if (gears.Count != rollFinishRoll) return;
 
         roolFinishCb.Invoke();
         roolFinishCb = null;
