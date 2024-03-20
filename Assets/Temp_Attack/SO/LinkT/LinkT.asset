@@ -15,4 +15,4 @@ MonoBehaviour:
   combine:
   - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
   - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
-  loadModule: {fileID: 0}
+  loadModule: {fileID: 3740617446654555590, guid: e9181391e9e8b654b8c0cad29277ec8c, type: 3}

@@ -37,6 +37,12 @@ public class GearScriptModule : MonoBehaviour
         return script;
     }
 
-    public GearCogEvent GetSkillScript(string id) => skillEvents[id];
-    public GearCogEvent GetLinkScript(string id) => linkEvents[id];
+    public GearCogEvent GetSkillScript(string id) {
+        skillEvents.TryGetValue(id, out var script);
+        return script;
+    }
+    public GearCogEvent GetLinkScript(string id) {
+        linkEvents.TryGetValue(id, out var script);
+        return script;
+    }
 }

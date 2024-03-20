@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: test2
   cogList: 000000000100000002000000000000000100000000000000
-  linkAmount: 0
-  loadModule: {fileID: 0}
+  loadModule: {fileID: 7825408551897690595, guid: d7903189039d9264c90a7bffdeaab1c5, type: 3}

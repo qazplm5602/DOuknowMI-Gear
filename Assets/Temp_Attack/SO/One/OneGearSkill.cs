@@ -11,6 +11,6 @@ public class OneGearSkill : GearCogEvent
 
     public override void Use()
     {
-
+        print("[Skill] OneGearSkill 호출");
     }
 }

@@ -18,12 +18,11 @@ public class PlayerAttack : MonoBehaviour
     }
 
     void OnChangeMouse(bool isDown) {
-        print("OnChangeMouse: "+ isDown.ToString());
         if (isDown && !mouseDisable) {
             mouseDisable = true;
 
             // 발사 후 돌림
-            gearManager.GetGearResult();
+            GearRunModule();
 
             gearManager.StartRoll(GearRollFinish);
         }
@@ -39,7 +38,21 @@ public class PlayerAttack : MonoBehaviour
     }
 
     void GearRollFinish() {
-        print("GearRollFinish");
         mouseDisable = false;
+    }
+
+    // 기어 공격 실행
+    void GearRunModule() {
+        var gearList = gearManager.GetGearResult();
+        
+        foreach (var item in gearList)
+        {
+            // print("-----------------");
+            // print(item.type.ToString());
+            // print(item.script);
+            // print(String.Join(',', item.gearIdx));
+
+            item.script.Use();
+        }
     }
 }

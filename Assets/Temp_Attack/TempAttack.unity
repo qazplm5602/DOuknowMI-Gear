@@ -574,10 +574,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9396b46b57cfa4642ae3d41dfbba44e7, type: 2}
   spawnGearCoords:
   - {x: 150, y: -150}
-  - {x: 330, y: -200}
-  - {x: 510, y: -150}
+  - {x: 330, y: -190}
+  - {x: 515, y: -170}
+  loadLinkData:
+  - {fileID: 11400000, guid: e325461c085ca804c93b811c84e33bf1, type: 2}
+  - {fileID: 11400000, guid: f936439df70a1844d977eaef575abb3d, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
-  _player: {fileID: 0}
+  _player: {fileID: 1835667947}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

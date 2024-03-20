@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 struct GearInfo {
@@ -9,12 +10,35 @@ struct GearInfo {
     public GearCircle system;
 }
 
+struct GearLinkDTO {
+    public string id; // 기어 연계 ID ex) One,Two 
+    public GearLinkSO data; // 연계 SO
+    public GearCogEvent script; // 연게 SO 인스턴스 모듈
+    public int[] gearIdx; // 연계된 기어 인덱스
+}
+
+struct GearSkillDTO {
+    public string id;
+    public GearSO data;
+    public GearCogEvent script;
+    public int gearIdx;
+}
+
+public struct GearCogResultDTO {
+    public CogType type;
+    public GearCogEvent script;
+    public int[] gearIdx;
+}
+
 public class GearManager : MonoBehaviour
 {
     [SerializeField] Transform section;
     [SerializeField] GearScriptModule scriptModule;
     [SerializeField] GearSO[] spawnGears;
     [SerializeField] Vector2[] spawnGearCoords;
+    
+    [SerializeField] GearLinkSO[] loadLinkData;
+    Dictionary<string, GearLinkSO> linkDataSO; // id -> 기어연계SO 가져오는 용도
 
     [SerializeField] GameObject gearCircle;
 
@@ -28,6 +52,7 @@ public class GearManager : MonoBehaviour
     }
 
     void Init() {
+        /////////// 기어 소환
         gears = new GearInfo[spawnGears.Length];
 
         int i = 0;
@@ -56,6 +81,26 @@ public class GearManager : MonoBehaviour
             isReverse = !isReverse;
             ++i;
         }
+    
+        /////////// 연계 SO 로드
+        linkDataSO = new();
+
+        // combine 길이가 큰것부터 ㄱㄱㄱ
+        Array.Sort(loadLinkData, (a, b) => {
+            if (a.Combine.Length < b.Combine.Length) return 1;
+            else if (a.Combine.Length > b.Combine.Length) return -1;
+            else return 0;
+        });
+
+        foreach (var item in loadLinkData)
+        {
+            if (item.LoadModule == null) continue;
+
+            string id = item.GetId();
+            linkDataSO[id] = item;
+            var script = scriptModule.LoadModule(GearScriptModule.Type.Link, id, item.LoadModule);
+            script._player = _player; // 플레이어 알려줌
+        }
     }
 
     int rollFinishRoll = 0;
@@ -78,12 +123,95 @@ public class GearManager : MonoBehaviour
             gear.system.Run(RollFinish);
     }
 
-    public void GetGearResult() {
-        int i = 0;
-        foreach(var gear in gears) {
-            print("["+i+"] "+gear.system.currentCogType.ToString());
+    public GearCogResultDTO[] GetGearResult() {
+        GearLinkDTO[] ResultLink() {
+            List<GearLinkDTO> result = new();
+            Dictionary<GearSO, int> cacheGear = new();
 
-            ++i;
+            // 기어 캐싱
+            int i = 0;
+            foreach(var gear in gears) {
+                if (gear.system.currentCogType == CogType.Link)
+                    cacheGear[gear.data] = i;
+
+                ++i;
+            }
+
+            bool isFaild;
+            foreach (var item in loadLinkData)
+            {
+                isFaild = false;
+                List<int> combineIdx = new(); // 연계된 기어 인덱스
+
+                foreach (var gear in item.Combine) {
+                    if (!cacheGear.TryGetValue(gear, out var idx)) { // 아니 연계된 기어가 없음
+                        isFaild = true;
+                        break;
+                    } 
+
+                    combineIdx.Add(idx);
+                }
+                if (isFaild) continue;
+
+                // 일단 완료했으면 제외할꺼 추가
+                foreach (var idx in combineIdx)
+                    if (idx != 0) // 0번째는 제외 안함
+                        cacheGear.Remove(gears[idx].data);
+
+                string id = item.GetId();
+                result.Add(new GearLinkDTO() {
+                    id = id,
+                    data = item,
+                    script = scriptModule.GetLinkScript(id),
+                    gearIdx = combineIdx.ToArray()
+                });
+            }
+
+            return result.ToArray();
         }
+        GearSkillDTO[] ResultSkill() {
+            List<GearSkillDTO> result = new();
+            
+            int i = 0;
+            foreach (var gear in gears)
+            {
+                if (gear.system.currentCogType == CogType.Skill)
+                    result.Add(new() {
+                        id = gear.data.id,
+                        data = gear.data,
+                        script = scriptModule.GetSkillScript(gear.data.id),
+                        gearIdx = i
+                    });
+                
+                i++;
+            }
+
+            return result.ToArray();
+        }
+
+        List<GearCogResultDTO> result = new();
+        GearLinkDTO[] linkIndex = ResultLink();
+        if (linkIndex.Length == 0) { // 연계된 기어가 하나도 없으면
+            GearSkillDTO[] skillResult = ResultSkill();
+            
+            foreach (var item in skillResult)
+            {
+                result.Add(new() {
+                    type = CogType.Skill,
+                    script = item.script,
+                    gearIdx = new int[1] { item.gearIdx }
+                });
+            }
+            return result.ToArray();
+        }
+
+        foreach (var item in linkIndex)
+            result.Add(new() {
+                type = CogType.Link,
+                script = item.script,
+                gearIdx = item.gearIdx
+            });
+
+        return result.ToArray();
     }
 }
