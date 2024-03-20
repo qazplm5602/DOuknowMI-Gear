@@ -124,7 +124,7 @@ public class GearManager : MonoBehaviour
     }
 
     public GearCogResultDTO[] GetGearResult() {
-        GearLinkDTO[] ResultLink() {
+        GearLinkDTO[] ResultLink(out GearSkillDTO[] responseSkillGear) {
             List<GearLinkDTO> result = new();
             Dictionary<GearSO, int> cacheGear = new();
 
@@ -138,6 +138,7 @@ public class GearManager : MonoBehaviour
             }
 
             bool isFaild;
+            bool firstGearFlag = false; // 첫번째 기어 연계 조합 됨?
             foreach (var item in loadLinkData)
             {
                 isFaild = false;
@@ -155,8 +156,10 @@ public class GearManager : MonoBehaviour
 
                 // 일단 완료했으면 제외할꺼 추가
                 foreach (var idx in combineIdx)
-                    if (idx != 0) // 0번째는 제외 안함
+                    if (idx != 0) { // 0번째는 제외 안함
                         cacheGear.Remove(gears[idx].data);
+                    } else firstGearFlag = true;
+                        
 
                 string id = item.GetId();
                 result.Add(new GearLinkDTO() {
@@ -167,6 +170,21 @@ public class GearManager : MonoBehaviour
                 });
             }
 
+            // 조합이 안된 기어 확인
+            List<GearSkillDTO> skillResult = new();
+            foreach (var item in cacheGear) {
+                if (item.Value == 0 && firstGearFlag) continue; // 첫번째 기어는 이미 조합 됨
+                
+                var id = item.Key.id;
+                skillResult.Add(new() {
+                    id = id,
+                    data = item.Key,
+                    script = scriptModule.GetSkillScript(id),
+                    gearIdx = item.Value
+                });
+            }
+
+            responseSkillGear = skillResult.ToArray();
             return result.ToArray();
         }
         GearSkillDTO[] ResultSkill() {
@@ -190,7 +208,7 @@ public class GearManager : MonoBehaviour
         }
 
         List<GearCogResultDTO> result = new();
-        GearLinkDTO[] linkIndex = ResultLink();
+        GearLinkDTO[] linkIndex = ResultLink(out GearSkillDTO[] linkFormatSkill /* Cog가 연계이지만 조합은 안된 기어들은 스킬로 감 */);
         if (linkIndex.Length == 0) { // 연계된 기어가 하나도 없으면
             GearSkillDTO[] skillResult = ResultSkill();
             
@@ -202,6 +220,8 @@ public class GearManager : MonoBehaviour
                     gearIdx = new int[1] { item.gearIdx }
                 });
             }
+
+            // Cog가 연계인것들도 다 스킬로 넘겨야함 (연계가 조합된게 없어서.)
             return result.ToArray();
         }
 
@@ -210,6 +230,14 @@ public class GearManager : MonoBehaviour
                 type = CogType.Link,
                 script = item.script,
                 gearIdx = item.gearIdx
+            });
+
+        // 스킬도 같이 보냄
+        foreach (var item in linkFormatSkill)
+            result.Add(new() {
+                type = CogType.Skill,
+                script = item.script,
+                gearIdx = new int[1] { item.gearIdx }
             });
 
         return result.ToArray();
