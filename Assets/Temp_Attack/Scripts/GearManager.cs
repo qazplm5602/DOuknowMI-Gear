@@ -193,7 +193,7 @@ public class GearManager : MonoBehaviour
             int i = 0;
             foreach (var gear in gears)
             {
-                if (gear.system.currentCogType == CogType.Skill)
+                if (gear.system.currentCogType == CogType.Skill || gear.system.currentCogType == CogType.Link /* 어차피 이 함수를 실행하는건 연계된 콕이 없으니 연계된 기어들은 다 스킬로 ㄱㄱ */)
                     result.Add(new() {
                         id = gear.data.id,
                         data = gear.data,
