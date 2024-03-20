@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PlayerWeapon
@@ -6,11 +7,10 @@ public enum PlayerWeapon
     BoltAndNut = 0,
     Wheel,
     Piston,
-    Foghorn
-    
+    Foghorn,
+    BoltNutWheelChain
 
-
-    ,None
+    ,None // dont remove none
 }
 
 public class PlayerWeapons : MonoBehaviour
@@ -25,10 +25,11 @@ public class PlayerWeapons : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        for(int i = 0; i <  playerWeaponPrefab.Length - 1; i++)
+        for(int i = 0; i <  playerWeaponPrefab.Length; i++)
         {
             WeaponDictionary[(PlayerWeapon)i] = playerWeaponPrefab[i];
         }
     }
 
+    
 }
