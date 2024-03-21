@@ -5,7 +5,7 @@ public class TestLinkT : GearCogEvent
     PlayerWeapon _weaponType = PlayerWeapon.BoltNutWheelChain;
     public override void Use()
     {
-        print("체인스킬 발사");
+        print("1 2 체인 ");
         Vector3 playerPos = _player.transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;

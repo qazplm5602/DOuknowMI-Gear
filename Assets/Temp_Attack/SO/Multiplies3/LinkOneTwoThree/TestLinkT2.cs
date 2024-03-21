@@ -6,6 +6,6 @@ public class TestLinkT2 : GearCogEvent
 {
     public override void Use()
     {
-        print("[Link] TestLinkT2 호출");
+        print("[Link] TestLinkT2 호출 1 2 3");
     }
 }
