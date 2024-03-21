@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PlayerWeapon
@@ -7,6 +8,9 @@ public enum PlayerWeapon
     Wheel,
     Piston,
     Foghorn,
+    BoltNutWheelChain
+
+    ,None // dont remove none
 }
 
 public class PlayerWeapons : MonoBehaviour
@@ -27,4 +31,5 @@ public class PlayerWeapons : MonoBehaviour
         }
     }
 
+    
 }
