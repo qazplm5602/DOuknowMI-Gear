@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TwoGearSkill : GearCogEvent
+public class FourGearSkill : GearCogEvent
 {
-    PlayerWeapon _weaponType = PlayerWeapon.Wheel;
+    PlayerWeapon _weaponType = PlayerWeapon.Foghorn;
     public override void Use()
     {
         Vector3 playerPos = _player.transform.position;

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3d50876239cd9c4caa060eb074484d7, type: 3}
+  m_Name: LinkT2
+  m_EditorClassIdentifier: 
+  combine:
+  - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
+  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
+  - {fileID: 11400000, guid: 26a263a51d3758d4c9a086b1045a64c6, type: 2}
+  loadModule: {fileID: 3773078817111306895, guid: ab6b71bfc66f88e46b7460c063dae431, type: 3}
