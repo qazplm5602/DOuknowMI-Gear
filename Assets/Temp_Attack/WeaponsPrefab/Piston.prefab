@@ -210,5 +210,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e9e50d9d085d34daa4f87033fac210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
+  _speed: 6
   _boltFXPrefab: {fileID: 0}

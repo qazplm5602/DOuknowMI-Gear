@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
   m_Name: Four
   m_EditorClassIdentifier: 
-  name: 
-  cogList: 
-  loadModule: {fileID: 0}
+  name: gear4
+  cogList: 010000000100000001000000020000000000000000000000000000000000000000000000000000000000000000000000
+  loadModule: {fileID: 8152039590136237335, guid: 802e451403790a346b9a5375a709eb86, type: 3}

@@ -786,6 +786,7 @@ MonoBehaviour:
   - {x: 150, y: -150}
   - {x: 330, y: -190}
   - {x: 515, y: -170}
+  - {x: 700, y: -190}
   loadLinkData:
   - {fileID: 11400000, guid: e325461c085ca804c93b811c84e33bf1, type: 2}
   - {fileID: 11400000, guid: f936439df70a1844d977eaef575abb3d, type: 2}
