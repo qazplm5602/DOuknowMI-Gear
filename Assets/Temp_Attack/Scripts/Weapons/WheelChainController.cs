@@ -28,6 +28,6 @@ public class WheelChainController : WeaponCollision
     protected override void GiveDamageToEnemy(Enemy enemy)
     {
         //Instantiate(_WheelChainFXPrefab, transform.position, Quaternion.identity);
-        enemy.HealthCompo.ApplyDamage(Mathf.CeilToInt(_gearDamageMultiply /* * _player.Damage어딨는데*/));
+        enemy.HealthCompo.ApplyDamage(Mathf.CeilToInt(_gearDamageMultiply /* * _player.Damage어딨는데*/), PlayerManager.instance.playerTrm);
     }
 }
