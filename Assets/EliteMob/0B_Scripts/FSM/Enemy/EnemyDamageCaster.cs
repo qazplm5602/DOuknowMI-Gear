@@ -1,5 +1,4 @@
 using UnityEngine;
-using FSM;
 
 public class EnemyDamageCaster : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class EnemyDamageCaster : MonoBehaviour
 
         foreach(Collider2D col in cols) {
             if(col.TryGetComponent<IDamageable>(out IDamageable target)) {
-                target.ApplyDamage(damage);
+                target.ApplyDamage(damage, transform);
             }
         }
     }
