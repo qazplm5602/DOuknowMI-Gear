@@ -7,10 +7,16 @@ using UnityEngine;
 public class BaseStage : MonoBehaviour
 {
     public Door[] door;
-    public Map.ROOMTYPE type;
+    public ROOMTYPE type;
 
-    
+    public int StageNum;
+
     public LinkedStage StageLinkedData;
+
+    public GameObject Arena; //적의 스폰 Parent
+
+    public bool Cleared = false;
+    public bool RoomActive = false;
 
     public void LoadDoors()
     {
@@ -31,6 +37,8 @@ public class BaseStage : MonoBehaviour
 
     public void Initialize()
     {
+        Arena = gameObject;
+
         if (StageLinkedData.RightMap != null)
         {
             if (door[(int)Door.DoorType.Right] != null)
@@ -73,4 +81,29 @@ public class BaseStage : MonoBehaviour
         LoadDoors();
         Initialize();
     }
+
+    public void Enter()
+    {
+        Map.Instance.CurrentStage = this;
+        RoomActive = true;
+        //spawn shits
+    }
+    public void Exit()
+    {
+
+    }
+    public void OnClear()
+    {
+        RoomActive = false;
+        Cleared = true;
+    }
+    
+    ///////적이 스폰하는 아레나 안에 넣을것
+    //private void OnTransformChildrenChanged()
+    //{
+    //    if (transform.childCount <= 0 && RoomActive)
+    //    {
+    //        //적이 모두 죽음;
+    //    }
+    //}
 }

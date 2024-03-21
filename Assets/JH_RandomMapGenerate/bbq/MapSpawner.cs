@@ -1,8 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.U2D.Aseprite;
 using UnityEngine;
+using static StageData;
 using Random = UnityEngine.Random;
 
 public class MapSpawner : MonoBehaviour
@@ -17,6 +17,8 @@ public class MapSpawner : MonoBehaviour
         { DIRECTION.LEFT,new Vector2Int(-1,0)},
     };
 
+    public Map map;
+
     [Serializable]
     public struct SpawnData
     {
@@ -24,6 +26,8 @@ public class MapSpawner : MonoBehaviour
         public int MinCnt;
 
         public int MaxListSize;
+
+        public int MaxStatue;
     }
 
     [Serializable]
@@ -34,13 +38,14 @@ public class MapSpawner : MonoBehaviour
         public StageData[] Maplist;
         public List<GameObject> CurrentRoomObjs;
         public GameObject[] MapObjList;
+
+        public int StatueCount;
     }
 
     public SpawnData jajiOption = new SpawnData();
     public CurrentValue current = new CurrentValue();
     public void InitSetting()
     {
-        jajiOption.MaxListSize = 5;
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.MapObjList = new GameObject[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.CurrentRoomObjs = new List<GameObject>();
@@ -126,7 +131,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         //왼쪽
-        RandNum = UnityEngine.Random.Range(0, 100);
+        RandNum = Random.Range(0, 100);
         //Debug.Log($"랜덤{RandNum}");
         if (RandNum <= 70)
         {
@@ -137,7 +142,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         //오른쪽
-        RandNum = UnityEngine.Random.Range(0, 100);
+        RandNum = Random.Range(0, 100);
 
         if (RandNum <= 70)
         {
@@ -148,7 +153,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         //위쪽
-        RandNum = UnityEngine.Random.Range(0, 100);
+        RandNum = Random.Range(0, 100);
         if (RandNum <= 70)
         {
             if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
@@ -158,7 +163,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         //아래쪽
-        RandNum = UnityEngine.Random.Range(0, 100);
+        RandNum = Random.Range(0, 100);
 
         if (RandNum <= 70)
         {
@@ -206,7 +211,7 @@ public class MapSpawner : MonoBehaviour
                     obj.name = $"Room_{num}";
 
                     obj.GetComponent<BaseStage>().Init();
-                    //obj.GetComponent<BaseStage>().StageNum = num;
+                    obj.GetComponent<BaseStage>().StageNum = num;
                 }
             }
         }
@@ -221,54 +226,56 @@ public class MapSpawner : MonoBehaviour
         int y = index / yval;
         linkeddata.Num = current.Maplist[index].Num;
 
-        //linkeddata에서 어느방향이 연결되어 있는 지 확인하고
-        //prefabs에서 해당방향에 방이 현재 만들어져 있는지 확인하고
-        //서로 연결한다.
+        //check linked rooms, and if exist, link their doors actually
 
         if (current.Maplist[index].LeftMap != null)
         {
-            if (current.MapObjList[(x - 1) + (y * yval)] != null)
+            var mapObj = current.MapObjList[(x - 1) + (y * yval)];
+            if (mapObj != null)
             {
-                linkeddata.LeftMap = current.MapObjList[(x - 1) + (y * yval)];
-                if (current.MapObjList[(x - 1) + (y * yval)].GetComponent<BaseStage>().StageLinkedData != null)
+                linkeddata.LeftMap = mapObj;
+                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
                 {
-                    current.MapObjList[(x - 1) + (y * yval)].GetComponent<BaseStage>().StageLinkedData.RightMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.GetComponent<BaseStage>().StageLinkedData.RightMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
         if (current.Maplist[index].RightMap != null)
         {
-            if (current.MapObjList[(x + 1) + (y * yval)] != null)
+            var mapObj = current.MapObjList[(x + 1) + (y * yval)];
+            if (mapObj != null)
             {
-                linkeddata.RightMap = current.MapObjList[(x + 1) + (y * yval)];
+                linkeddata.RightMap = mapObj;
 
-                if (current.MapObjList[(x + 1) + (y * yval)].GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
                 {
-                    current.MapObjList[(x + 1) + (y * yval)].GetComponent<BaseStage>().StageLinkedData.LeftMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.GetComponent<BaseStage>().StageLinkedData.LeftMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
         if (current.Maplist[index].UpMap != null)
         {
-            if (current.MapObjList[x + ((y - 1) * yval)] != null)
+            var mapObj = current.MapObjList[x + ((y - 1) * yval)];
+            if (mapObj != null)
             {
-                linkeddata.UpMap = current.MapObjList[x + ((y - 1) * yval)];
+                linkeddata.UpMap = mapObj;
 
-                if (current.MapObjList[x + ((y - 1) * yval)].GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
                 {
-                    current.MapObjList[x + ((y - 1) * yval)].GetComponent<BaseStage>().StageLinkedData.DownMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.GetComponent<BaseStage>().StageLinkedData.DownMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
         if (current.Maplist[index].DownMap != null)
         {
-            if (current.MapObjList[x + ((y + 1) * yval)] != null)
+            var mapObj = current.MapObjList[x + ((y + 1) * yval)];
+            if (mapObj != null)
             {
-                linkeddata.DownMap = current.MapObjList[x + ((y + 1) * yval)];
+                linkeddata.DownMap = mapObj;
 
-                if (current.MapObjList[x + ((y + 1) * yval)].GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
                 {
-                    current.MapObjList[x + ((y + 1) * yval)].GetComponent<BaseStage>().StageLinkedData.UpMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.GetComponent<BaseStage>().StageLinkedData.UpMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
@@ -283,7 +290,7 @@ public class MapSpawner : MonoBehaviour
         int size = jajiOption.MaxListSize;
         for (int i = 0; i < size * size; i++)
         {
-            int count = 0;
+            int countDoor = 0;
             bool flag = false;
 
             for (int b = 0; b < dir.Length; b++)
@@ -294,30 +301,59 @@ public class MapSpawner : MonoBehaviour
 
             if (current.Maplist[i] != null)
             {
-                if (current.Maplist[i].RightMap != null)
+                if (current.Maplist[i].Num == 0) // check if first room
                 {
-                    dir[(int)Door.DoorType.Right] = true;
-                    count++;
+                    current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Start));
                 }
-                if (current.Maplist[i].LeftMap != null)
+                else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
                 {
-                    dir[(int)Door.DoorType.Left] = true;
-                    count++;
+                    current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
                 }
-                if (current.Maplist[i].UpMap != null)
+                else
                 {
-                    dir[(int)Door.DoorType.Up] = true;
-                    count++;
-                }
-                if (current.Maplist[i].DownMap != null)
-                {
-                    dir[(int)Door.DoorType.Down] = true;
-                    count++;
-                }
-                int rnd = Random.Range(1, 101);
-                if (rnd < 1e6)
-                {
-                    GameObject obj = Map.Instance.StageLoad(Map.ROOMTYPE.Normal);
+                    if (current.Maplist[i].RightMap != null)
+                    {
+                        dir[(int)Door.DoorType.Right] = true;
+                        countDoor++;
+                    }
+                    if (current.Maplist[i].LeftMap != null)
+                    {
+                        dir[(int)Door.DoorType.Left] = true;
+                        countDoor++;
+                    }
+                    if (current.Maplist[i].UpMap != null)
+                    {
+                        dir[(int)Door.DoorType.Up] = true;
+                        countDoor++;
+                    }
+                    if (current.Maplist[i].DownMap != null)
+                    {
+                        dir[(int)Door.DoorType.Down] = true;
+                        countDoor++;
+                    }
+                    int rnd = Random.Range(1, 101);
+
+                    ROOMSIZE roomSize = ROOMSIZE.NODATA;
+                    bool pray = false;
+
+                    if(rnd <= 20)
+                    {
+                        roomSize = ROOMSIZE.Medium;
+                    }
+                    if (rnd <= 10)
+                    {
+                        roomSize = ROOMSIZE.Large;
+                    }
+                    if (roomSize == ROOMSIZE.NODATA)
+                    {
+                        if (jajiOption.MaxStatue > current.StatueCount)
+                        {
+                            pray = true;
+                            current.StatueCount++;
+                        }
+                        roomSize = ROOMSIZE.Small;
+                    }
+                    GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
                     current.MapObjList[i] = GameObject.Instantiate(obj);
                 }
                 
@@ -351,7 +387,7 @@ public class MapSpawner : MonoBehaviour
                 LinkedStage data = SetLinkingData(i);
                 current.MapObjList[i].GetComponent<BaseStage>().StageLinkedData = data;
                 //obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
-                Debug.Log($"{i}번방 링크세팅");
+                //Debug.Log($"{i}번방 링크세팅");
             }
         }
     }
