@@ -37,6 +37,7 @@ public class MapSpawner : MonoBehaviour
         [SerializeField]
         public StageData[] Maplist;
         public List<GameObject> CurrentRoomObjs;
+        public List<int> PrayRoomCandidates; // 조각상 방으로 가능한 방들의 인덱스 목록
         public GameObject[] MapObjList;
 
         public int StatueCount;
@@ -46,6 +47,7 @@ public class MapSpawner : MonoBehaviour
     public CurrentValue current = new CurrentValue();
     public void InitSetting()
     {
+        current.PrayRoomCandidates = new List<int>();
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.MapObjList = new GameObject[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.CurrentRoomObjs = new List<GameObject>();
@@ -62,6 +64,7 @@ public class MapSpawner : MonoBehaviour
         InitSetting();
         MapSpawn(0, 2, null, 0);
         MakeMapMotherfuker();
+        MakeStatueRoom();
         ShowMaps();
     }
 
@@ -346,15 +349,24 @@ public class MapSpawner : MonoBehaviour
                     }
                     if (roomSize == ROOMSIZE.NODATA)
                     {
-                        if (jajiOption.MaxStatue > current.StatueCount)
-                        {
-                            pray = true;
-                            current.StatueCount++;
-                        }
+                        //if (jajiOption.MaxStatue > current.StatueCount)
+                        //{
+                        //    pray = true;
+                        //    current.StatueCount++;
+                        //}
                         roomSize = ROOMSIZE.Small;
                     }
+
                     GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
                     current.MapObjList[i] = GameObject.Instantiate(obj);
+
+                    if (roomSize == ROOMSIZE.Small)
+                    {
+                        if (!pray) // Pray가 아닌 경우에만 후보 목록에 추가
+                        {
+                            current.PrayRoomCandidates.Add(i);
+                        }
+                    }
                 }
                 
             }
@@ -390,5 +402,25 @@ public class MapSpawner : MonoBehaviour
                 //Debug.Log($"{i}번방 링크세팅");
             }
         }
+    }
+
+    public void MakeStatueRoom()
+    {
+        if (jajiOption.MaxStatue > current.StatueCount)
+        {
+            int randomIndex = Random.Range(0, current.PrayRoomCandidates.Count);
+            int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
+            GameObject prayRoom = map.StageLoad(ROOMTYPE.Pray);
+            GameObject.Destroy(current.MapObjList[prayRoomIndex]);
+            current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom);
+            current.StatueCount++;
+
+            if (current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData != null)
+            {
+                LinkedStage data = SetLinkingData(prayRoomIndex);
+                current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData = data;
+            }
+        }
+
     }
 }
