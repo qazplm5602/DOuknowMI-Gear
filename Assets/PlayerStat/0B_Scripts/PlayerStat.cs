@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 public enum PlayerStatEnum {
-    Atk, Health, AttackSpeed, Money, Exp
+    Atk, Health, AttackSpeed, MoveSpeed, Money, Exp
 }
 
 public class PlayerStat : MonoBehaviour
@@ -14,6 +14,7 @@ public class PlayerStat : MonoBehaviour
     private int _atk;
     private int _health;
     private int _attackSpeed;
+    private int _moveSpeed;
     private int _money;
     private int _exp;
 
@@ -38,6 +39,13 @@ public class PlayerStat : MonoBehaviour
             _attackSpeedText.text = _attackSpeed.ToString();
         }
     }
+    [HideInInspector] public int MoveSpeed {
+        get => _moveSpeed;
+        set {
+            _moveSpeed = value;
+            _moveSpeedText.text = _moveSpeed.ToString();
+        }
+    }
     [HideInInspector] public int Money {
         get => _money;
         set {
@@ -59,6 +67,7 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _atkText;
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] private TextMeshProUGUI _attackSpeedText;
+    [SerializeField] private TextMeshProUGUI _moveSpeedText;
     [SerializeField] private TextMeshProUGUI _moneyText;
     [SerializeField] private TextMeshProUGUI _expText;
 
@@ -79,6 +88,9 @@ public class PlayerStat : MonoBehaviour
                 break;
             case PlayerStatEnum.AttackSpeed:
                 ++AttackSpeed;
+                break;
+            case PlayerStatEnum.MoveSpeed:
+                ++MoveSpeed;
                 break;
             case PlayerStatEnum.Money:
                 ++Money;
@@ -103,6 +115,10 @@ public class PlayerStat : MonoBehaviour
                 if(AttackSpeed > 0) --AttackSpeed;
                 else return;
                 break;
+            case PlayerStatEnum.MoveSpeed:
+                if(MoveSpeed > 0) --MoveSpeed;
+                else return;
+                break;
             case PlayerStatEnum.Money:
                 if(Money > 0) --Money;
                 else return;
@@ -121,6 +137,7 @@ public class PlayerStat : MonoBehaviour
         statPoint += Atk;
         statPoint += Health;
         statPoint += AttackSpeed;
+        statPoint += MoveSpeed;
         statPoint += Money;
         statPoint += Exp;
         
@@ -129,6 +146,7 @@ public class PlayerStat : MonoBehaviour
         Atk = 0;
         Health = 0;
         AttackSpeed = 0;
+        MoveSpeed = 0;
         Money = 0;
         Exp = 0;
     }
