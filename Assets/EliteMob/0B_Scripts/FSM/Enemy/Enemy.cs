@@ -16,6 +16,7 @@ namespace FSM {
         [Header("Check Settings")]
         [SerializeField] protected float _checkDistance;
         [SerializeField] protected Transform _checkTransform;
+        public float nearDistance;
         public LayerMask whatIsPlayer;
 
         [Header("Attack Settings")]
