@@ -16,6 +16,7 @@ namespace FSM {
         [Header("Check Settings")]
         [SerializeField] protected float _checkDistance;
         [SerializeField] protected Transform _checkTransform;
+        public float nearDistance;
         public LayerMask whatIsPlayer;
 
         [Header("Attack Settings")]
@@ -24,6 +25,9 @@ namespace FSM {
         public int attackDamage;
         public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
+
+        [Header("ETC Settings")]
+        public int experienceValue;
 
         protected int _lastAnimationBoolHash;
 

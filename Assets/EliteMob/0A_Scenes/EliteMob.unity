@@ -252,11 +252,12 @@ MonoBehaviour:
   ColliderCompo: {fileID: 0}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 2
   idleTime: 5
   battleTime: 5
   _checkDistance: 3
   _checkTransform: {fileID: 1730227758}
+  nearDistance: 3
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -265,6 +266,7 @@ MonoBehaviour:
   attackDamage: 1
   attackCooldown: 2
   lastAttackTime: 0
+  experienceValue: 50
   smashRange: {x: 6.32, y: 2.82}
   smashOffset: {x: 0, y: 0}
   breathRange: {x: 7.78, y: 3.46}
@@ -281,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff397a78f93413943ab50c6a03f80419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  Player: {fileID: 1568935299}
+  maxHealth: 10
   _currentHealth: 0
 --- !u!114 &344923275
 MonoBehaviour:
@@ -474,6 +477,7 @@ GameObject:
   - component: {fileID: 1568935298}
   - component: {fileID: 1568935300}
   - component: {fileID: 1568935301}
+  - component: {fileID: 1568935302}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -542,7 +546,7 @@ Transform:
   m_GameObject: {fileID: 1568935297}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.84, y: -1.58, z: 0}
+  m_LocalPosition: {x: 1.6, y: -1.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -595,8 +599,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff397a78f93413943ab50c6a03f80419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 0}
   maxHealth: 100
   _currentHealth: 0
+--- !u!114 &1568935302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568935297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d32f1f9686c4624b85428ca5b79c2df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _level: 1
+  _currentExp: 0
+  _needExp: 1
 --- !u!1 &1593190590
 GameObject:
   m_ObjectHideFlags: 0

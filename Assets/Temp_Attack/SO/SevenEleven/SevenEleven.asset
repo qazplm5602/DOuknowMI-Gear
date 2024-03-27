@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
+  m_Name: SevenEleven
+  m_EditorClassIdentifier: 
+  name: "7\uAC1C\uC758\uD1B1"
+  cogList: 02000000000000000000000001000000000000000200000000000000
+  loadModule: {fileID: 4423284104849833554, guid: 11a03094030d92147847369c8e5ae5ec, type: 3}

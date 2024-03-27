@@ -3,14 +3,10 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
+    public PlayerStats stats;
+    public Transform playerTrm;
 
     private void Awake() {
-        if (instance == null) {
-            instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else {
-            Destroy(gameObject);
-        }
+        instance = this;
     }
 }
