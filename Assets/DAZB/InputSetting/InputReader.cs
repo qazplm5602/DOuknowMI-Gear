@@ -7,7 +7,6 @@ using static Controls;
 public class InputReader : ScriptableObject, IPlayerActions, IUIActions
 {
     #region Player
-    public event Action<Vector2> MovementEvent;
     public event Action JumpEvent;
     public event Action DashEvent;
     #endregion
@@ -23,6 +22,9 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         return _controls;
     }
 
+    public Vector2 _xMovement { get; private set; }
+    public Vector2 mousePosition { get; private set; }
+
     private void OnEnable()
     {
         if (_controls == null)
@@ -36,10 +38,10 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         _controls.UI.Enable();
     }
 
+
     public void OnMovement(InputAction.CallbackContext context)
     {
-        Vector2 value = context.ReadValue<Vector2>();
-        MovementEvent?.Invoke(value);
+        _xMovement = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -76,5 +78,10 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         if (context.performed) {
             PauseWheelEvent?.Invoke(value);
         }
+    }
+
+    public void OnMouse(InputAction.CallbackContext context)
+    {
+        mousePosition = context.ReadValue<Vector2>();
     }
 }

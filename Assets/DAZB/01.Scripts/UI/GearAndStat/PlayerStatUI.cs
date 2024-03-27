@@ -3,7 +3,7 @@ using TMPro;
 
 public class PlayerStatUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text[] texts;
+/*     [SerializeField] private TMP_Text[] texts;
     [SerializeField] private InputReader inputReader;
     private PlayerStats stats;
 
@@ -25,5 +25,5 @@ public class PlayerStatUI : MonoBehaviour
         texts[5].text = "JUMP POWER: " + stats.JumpPower;
         texts[6].text = "CRITICAL CHANCE: " + stats.CriticalChance + "%";
         texts[7].text = "MAX DASH COUNT: " + stats.maxDashCount;
-    }
+    } */
 }
