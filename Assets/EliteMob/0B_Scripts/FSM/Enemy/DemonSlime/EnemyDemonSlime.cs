@@ -18,6 +18,7 @@ public class EnemyDemonSlime : Enemy
 
     protected override void Awake() {
         base.Awake();
+        HealthCompo.OnDead += HandleDeadEvent;
 
         StateMachine = new EnemyStateMachine<DemonSlimeStateEnum>();
 
@@ -39,6 +40,10 @@ public class EnemyDemonSlime : Enemy
         StateMachine.Initialize(DemonSlimeStateEnum.Idle, this);
     }
 
+    private void OnDestroy() {
+        HealthCompo.OnDead -= HandleDeadEvent;
+    }
+
     private void Update() {
         StateMachine.CurrentState.UpdateState();
     }
@@ -52,6 +57,10 @@ public class EnemyDemonSlime : Enemy
     }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
+    private void HandleDeadEvent() {
+        StateMachine.ChangeState(DemonSlimeStateEnum.Dead);
+    }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;

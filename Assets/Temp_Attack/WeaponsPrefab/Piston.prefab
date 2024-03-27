@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3292329775106411985}
   - component: {fileID: 2570273788426217553}
   - component: {fileID: 7703011849892642698}
-  - component: {fileID: 4734208858780203636}
+  - component: {fileID: -5390577153274276091}
   m_Layer: 0
   m_Name: Piston
   m_TagString: Untagged
@@ -198,7 +198,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4734208858780203636
+--- !u!114 &-5390577153274276091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,8 +207,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5663472254907384932}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02e9e50d9d085d34daa4f87033fac210, type: 3}
+  m_Script: {fileID: 11500000, guid: f0ab5b262cba8224bb3360e234366a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 6
-  _boltFXPrefab: {fileID: 0}
+  _speed: 10
+  _pistonFXPrefab: {fileID: 0}
