@@ -7,6 +7,8 @@ public class PlayerExperience : MonoBehaviour
     [SerializeField] private int _currentExp = 0;
     [SerializeField] private int _needExp = 1;
 
+    [SerializeField] private PlayerStat _playerStat;
+
     public event Action LevelUpEvent;
 
     public void GetExp(int value) {
@@ -19,6 +21,7 @@ public class PlayerExperience : MonoBehaviour
         if(_currentExp > _needExp) {
             _currentExp -= _needExp;
             ++_level;
+            _playerStat.statPoint += 3;
             
             LevelUpEvent?.Invoke();
 
