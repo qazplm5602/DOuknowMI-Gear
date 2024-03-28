@@ -1,3 +1,5 @@
+using System;
+
 [System.Serializable]
 public class DialogueData {
     public string speaker;
@@ -5,5 +7,10 @@ public class DialogueData {
     public DialogueData(string speaker, string content) {
         this.speaker = speaker;
         this.content = content;
+    }
+
+    public static implicit operator string(DialogueData v)
+    {
+        throw new NotImplementedException();
     }
 }
