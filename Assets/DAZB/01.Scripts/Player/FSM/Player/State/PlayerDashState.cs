@@ -4,7 +4,6 @@ using UnityEngine;
 public class PlayerDashState : PlayerState
 {
     private Vector3 dashDir;
-    private float dashTime = 0.1f;
 
     public PlayerDashState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
