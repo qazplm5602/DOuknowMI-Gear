@@ -252,11 +252,12 @@ MonoBehaviour:
   ColliderCompo: {fileID: 0}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  moveSpeed: 0
+  moveSpeed: 2
   idleTime: 5
   battleTime: 5
   _checkDistance: 3
   _checkTransform: {fileID: 1730227758}
+  nearDistance: 3
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -613,7 +614,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d32f1f9686c4624b85428ca5b79c2df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _level: 1
   _currentExp: 0
+  _needExp: 1
 --- !u!1 &1593190590
 GameObject:
   m_ObjectHideFlags: 0

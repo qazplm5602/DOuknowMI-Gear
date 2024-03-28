@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class DashBar : MonoBehaviour
 {
-    public static DashBar instance;
+/*     public static DashBar instance;
     [SerializeField] private Image dashCharge;
     private int nowCharge;
 
@@ -23,5 +23,5 @@ public class DashBar : MonoBehaviour
     public void IncreaseDashCount() {
         RectTransform rt = dashCharge.GetComponent<RectTransform>();
         rt.localScale = new Vector2(rt.localScale.x + 0.25f, 1);
-    }
+    } */
 }
