@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static StageData;
 using Random = UnityEngine.Random;
 
 public class MapSpawner : MonoBehaviour
 {
+    [SerializeField] private GameObject mapParent;
     public enum DIRECTION { NODATA = -1, UP, RIGHT, DOWN, LEFT, MAX };
 
     public Dictionary<DIRECTION, Vector2Int> dirIndex = new Dictionary<DIRECTION, Vector2Int>()
@@ -37,8 +37,9 @@ public class MapSpawner : MonoBehaviour
         [SerializeField]
         public StageData[] Maplist;
         public List<GameObject> CurrentRoomObjs;
-        public List<int> PrayRoomCandidates; // Á¶°¢»ó ¹æÀ¸·Î °¡´ÉÇÑ ¹æµéÀÇ ÀÎµ¦½º ¸ñ·Ï
+        public List<int> PrayRoomCandidates; // ì¡°ê°ìƒ ë°©ìœ¼ë¡œ ê°€ëŠ¥í•œ ë°©ë“¤ì˜ ì¸ë±ìŠ¤ ëª©ë¡
         public GameObject[] MapObjList;
+        public BaseStage StartRoom;
 
         public int StatueCount;
     }
@@ -70,7 +71,7 @@ public class MapSpawner : MonoBehaviour
 
     public Vector2Int MapSpawn(int x, int y, StageData Parent, int depth)
     {
-        //¸ÊÀÌ ÃÖ´ë °³¼ö±îÁö ¸¸µé¾î Áö¸é Á¾·áÇÑ´Ù.
+        //ë§µì´ ìµœëŒ€ ê°œìˆ˜ê¹Œì§€ ë§Œë“¤ì–´ ì§€ë©´ ì¢…ë£Œí•œë‹¤.
         if (current.NowCount >= jajiOption.MaxCnt)
         {
             return new Vector2Int(x, y);
@@ -79,28 +80,28 @@ public class MapSpawner : MonoBehaviour
         int RandNum;
         int yval = jajiOption.MaxListSize;
 
-        //µé¾î¿À¸é ÇØ´ç À§Ä¡¿¡ ¹æÀ» ¸¸µé°í 
-        //À½½ÄÁ¡, »óÁ¡, ¹æ Å©±â, »óÀÚ ½ºÆù µîÀ» °áÁ¤ÇÑ´Ù.
-        //º¸½ºÀüÀÌ ÀÖ¾î¾ß ÇÏ¸é º¸½º¹æµµ ½ºÆù
+        //ë“¤ì–´ì˜¤ë©´ í•´ë‹¹ ìœ„ì¹˜ì— ë°©ì„ ë§Œë“¤ê³  
+        //ìŒì‹ì , ìƒì , ë°© í¬ê¸°, ìƒì ìŠ¤í° ë“±ì„ ê²°ì •í•œë‹¤.
+        //ë³´ìŠ¤ì „ì´ ìˆì–´ì•¼ í•˜ë©´ ë³´ìŠ¤ë°©ë„ ìŠ¤í°
         if (current.Maplist[x + (y * yval)] == null)
         {
             current.Maplist[x + (y * yval)] = new StageData();
             current.Maplist[x + (y * yval)].InitSttting(current.NowCount, x, y);
             current.NowCount++;
 
-            //°¢ ¹æµéÀº ¼­·Î ¿¬°áµÇ¾î¼­ ÀÌµ¿ÇÒ ¼ö ÀÖ¾î¾ß ÇÏÁö¸¸ ÀÎÁ¢ÇØ ÀÖ´Ù°í Ç×»ó ¿¬°áµÇ¾î ÀÖ¾î¾ß ÇÏ´Â°ÍÀº ¾Æ´Ï´Ù
-            //µû¶ó¼­ Å½»öÀ» ÇÒ¶§ ÀÚ½ÅÀÌ ÇöÀç Å½»öÇÑ À§Ä¡¿¡¼­ ÀÌÀü¿¡ ÀÖ¾ú´ø À§Ä¡¸¦ ³Ñ°ÜÁÜÀ¸·Î½á
-            //Å½»öÀ» ¼öÇàÇÑ °æ·Î°¡ ¹æÀ» ÀÌ¾îÁÖ´Â Åë·Î°¡ µÉ ¼ö ÀÖµµ·Ï ÇØÁØ´Ù.
+            //ê° ë°©ë“¤ì€ ì„œë¡œ ì—°ê²°ë˜ì–´ì„œ ì´ë™í•  ìˆ˜ ìˆì–´ì•¼ í•˜ì§€ë§Œ ì¸ì ‘í•´ ìˆë‹¤ê³  í•­ìƒ ì—°ê²°ë˜ì–´ ìˆì–´ì•¼ í•˜ëŠ”ê²ƒì€ ì•„ë‹ˆë‹¤
+            //ë”°ë¼ì„œ íƒìƒ‰ì„ í• ë•Œ ìì‹ ì´ í˜„ì¬ íƒìƒ‰í•œ ìœ„ì¹˜ì—ì„œ ì´ì „ì— ìˆì—ˆë˜ ìœ„ì¹˜ë¥¼ ë„˜ê²¨ì¤Œìœ¼ë¡œì¨
+            //íƒìƒ‰ì„ ìˆ˜í–‰í•œ ê²½ë¡œê°€ ë°©ì„ ì´ì–´ì£¼ëŠ” í†µë¡œê°€ ë  ìˆ˜ ìˆë„ë¡ í•´ì¤€ë‹¤.
             if (Parent != null)
             {
                 if (Parent.indexX == x)
                 {
-                    if (Parent.indexY > y)//¾Æ·¡ÂÊ°ú ¿¬°á
+                    if (Parent.indexY > y)//ì•„ë˜ìª½ê³¼ ì—°ê²°
                     {
                         current.Maplist[x + (y * yval)].DownMap = Parent;
                         Parent.UpMap = current.Maplist[x + (y * yval)];
                     }
-                    else//À§ÂÊ°ú ¿¬°á
+                    else//ìœ„ìª½ê³¼ ì—°ê²°
                     {
                         current.Maplist[x + (y * yval)].UpMap = Parent;
                         Parent.DownMap = current.Maplist[x + (y * yval)];
@@ -110,12 +111,12 @@ public class MapSpawner : MonoBehaviour
                 }
                 else if (Parent.indexY == y)
                 {
-                    if (Parent.indexX > x)//¿À¸¥ÂÊ°ú ¿¬°á
+                    if (Parent.indexX > x)//ì˜¤ë¥¸ìª½ê³¼ ì—°ê²°
                     {
                         current.Maplist[x + (y * yval)].RightMap = Parent;
                         Parent.LeftMap = current.Maplist[x + (y * yval)];
                     }
-                    else//¿ŞÂÊ°ú ¿¬°á
+                    else//ì™¼ìª½ê³¼ ì—°ê²°
                     {
                         current.Maplist[x + (y * yval)].LeftMap = Parent;
                         Parent.RightMap = current.Maplist[x + (y * yval)];
@@ -125,7 +126,7 @@ public class MapSpawner : MonoBehaviour
 
         }
 
-        //Ãµ¹øÂ° ¹æÀº Ç×»ó ¿À¸¥ÂÊÀ¸·Î°£´Ù.
+        //ì²œë²ˆì§¸ ë°©ì€ í•­ìƒ ì˜¤ë¥¸ìª½ìœ¼ë¡œê°„ë‹¤.
         if (current.NowCount == 1)
         {
             MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
@@ -133,9 +134,9 @@ public class MapSpawner : MonoBehaviour
             return new Vector2Int(x + 1, y);
         }
 
-        //¿ŞÂÊ
+        //ì™¼ìª½
         RandNum = Random.Range(0, 100);
-        //Debug.Log($"·£´ı{RandNum}");
+        //Debug.Log($"ëœë¤{RandNum}");
         if (RandNum <= 70)
         {
             if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
@@ -144,7 +145,7 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
-        //¿À¸¥ÂÊ
+        //ì˜¤ë¥¸ìª½
         RandNum = Random.Range(0, 100);
 
         if (RandNum <= 70)
@@ -155,7 +156,7 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
-        //À§ÂÊ
+        //ìœ„ìª½
         RandNum = Random.Range(0, 100);
         if (RandNum <= 70)
         {
@@ -165,7 +166,7 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
-        //¾Æ·¡ÂÊ
+        //ì•„ë˜ìª½
         RandNum = Random.Range(0, 100);
 
         if (RandNum <= 70)
@@ -176,7 +177,7 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
-        //ÀÌ·¸°Ô È®·ü·Î ¿òÁ÷ÀÌµµ·Ï ÇÏ¸é ÃÖ¼Ò°³¼ö°¡ ¸¸µé¾î ÁöÁö ¾ÊÀ»¼ö ÀÖ±â ¶§¹®¿¡ ÃÖ¼Ò °³¼ö°¡ Ã¤¿öÁöÁö ¾ÊÀ¸¸é 4 ¹æÇâÁß ºñ¾îÀÖ´Â °÷À» Ã£¾Æ¼­ °­Á¦·Î »ı¼º½ÃÄÑ Áİ´Ï´Ù.
+        //ì´ë ‡ê²Œ í™•ë¥ ë¡œ ì›€ì§ì´ë„ë¡ í•˜ë©´ ìµœì†Œê°œìˆ˜ê°€ ë§Œë“¤ì–´ ì§€ì§€ ì•Šì„ìˆ˜ ìˆê¸° ë•Œë¬¸ì— ìµœì†Œ ê°œìˆ˜ê°€ ì±„ì›Œì§€ì§€ ì•Šìœ¼ë©´ 4 ë°©í–¥ì¤‘ ë¹„ì–´ìˆëŠ” ê³³ì„ ì°¾ì•„ì„œ ê°•ì œë¡œ ìƒì„±ì‹œì¼œ ì¤ë‹ˆë‹¤.
         if (current.NowCount < jajiOption.MinCnt)
         {
             for (int i = 0; i < 4; i++)
@@ -198,7 +199,7 @@ public class MapSpawner : MonoBehaviour
 
     public void ShowMaps()
     {
-        int interval = 5;
+        int interval = 30;
         int yval = jajiOption.MaxListSize;
 
         for (int y = 0; y < jajiOption.MaxListSize; y++)
@@ -208,13 +209,20 @@ public class MapSpawner : MonoBehaviour
                 if (current.MapObjList[x + (y * yval)] != null)
                 {
                     GameObject obj = current.MapObjList[x + (y * yval)];
+                    BaseStage stageData = obj.GetComponent<BaseStage>();
                     obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
 
-                    int num = obj.GetComponent<BaseStage>().StageLinkedData.Num;
+                    int num = stageData.StageLinkedData.Num;
                     obj.name = $"Room_{num}";
 
-                    obj.GetComponent<BaseStage>().Init();
-                    obj.GetComponent<BaseStage>().StageNum = num;
+                    stageData.Init();
+                    stageData.StageNum = num;
+
+                    if (stageData.type == ROOMTYPE.Start)
+                    {
+                        Debug.Log(stageData.type + stageData.transform.name);
+                        current.StartRoom = stageData;
+                    }
                 }
             }
         }
@@ -358,11 +366,11 @@ public class MapSpawner : MonoBehaviour
                     }
 
                     GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
-                    current.MapObjList[i] = GameObject.Instantiate(obj);
+                    current.MapObjList[i] = GameObject.Instantiate(obj, mapParent.transform);
 
                     if (roomSize == ROOMSIZE.Small)
                     {
-                        if (!pray) // Pray°¡ ¾Æ´Ñ °æ¿ì¿¡¸¸ ÈÄº¸ ¸ñ·Ï¿¡ Ãß°¡
+                        if (!pray) // Prayê°€ ì•„ë‹Œ ê²½ìš°ì—ë§Œ í›„ë³´ ëª©ë¡ì— ì¶”ê°€
                         {
                             current.PrayRoomCandidates.Add(i);
                         }
@@ -375,7 +383,7 @@ public class MapSpawner : MonoBehaviour
             {
                 for (int a = 0; a < (int)Door.DoorType.DoorMax; a++)
                 {
-                    //¹®ÀÌ Á¸Àç ÇØ¾ß ÇÏ´Âµ¥ »ı¼ºµÈ ¸ÊÀÌ ÇØ´çÀ§Ä¡¿¡ ¹®ÀÌ ¾ø´Â ¹æÀÌ¸é ´Ù½Ã»Ì°Ô ÇÑ´Ù.
+                    //ë¬¸ì´ ì¡´ì¬ í•´ì•¼ í•˜ëŠ”ë° ìƒì„±ëœ ë§µì´ í•´ë‹¹ìœ„ì¹˜ì— ë¬¸ì´ ì—†ëŠ” ë°©ì´ë©´ ë‹¤ì‹œë½‘ê²Œ í•œë‹¤.
                     if (dir[a])
                     {
                         if (current.MapObjList[i].GetComponent<BaseStage>().door[a] == null)
@@ -393,13 +401,13 @@ public class MapSpawner : MonoBehaviour
                 continue;
             }
 
-            //ÇÁ¸®ÆÕ ¸®½ºÆ®¿¡ °ªÀÌ µé¾î°¬À¸¸é ÁÖº¯¿¡ ÀÖ´Â ¹æµéÀ» °Ë»çÇØ¼­ ¸µÅ©µ¥ÀÌÅÍ¸¦ ³Ö¾îÁØ´Ù.
+            //í”„ë¦¬íŒ¹ ë¦¬ìŠ¤íŠ¸ì— ê°’ì´ ë“¤ì–´ê°”ìœ¼ë©´ ì£¼ë³€ì— ìˆëŠ” ë°©ë“¤ì„ ê²€ì‚¬í•´ì„œ ë§í¬ë°ì´í„°ë¥¼ ë„£ì–´ì¤€ë‹¤.
             if (current.MapObjList[i] != null)
             {
                 LinkedStage data = SetLinkingData(i);
                 current.MapObjList[i].GetComponent<BaseStage>().StageLinkedData = data;
                 //obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
-                //Debug.Log($"{i}¹ø¹æ ¸µÅ©¼¼ÆÃ");
+                //Debug.Log($"{i}ë²ˆë°© ë§í¬ì„¸íŒ…");
             }
         }
     }
