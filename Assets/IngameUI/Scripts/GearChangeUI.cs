@@ -1,11 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GearChangeUI : MonoBehaviour
 {
     [SerializeField] Transform _content;
+    
+    //////////////// 설명 관련
+    [Header("Description")]
+    [SerializeField] Image desc_image;
+    [SerializeField] TextMeshProUGUI desc_title;
+    [SerializeField] TextMeshProUGUI desc_subText;
+    [SerializeField] TextMeshProUGUI desc_script;
+
+    /////////////// 기어 관련
+    [Header("Gear")]
     [SerializeField] GameObject _gearPrefab;
     [SerializeField] GameObject _cogPrefab;
     [SerializeField] Vector2 _gearSize; // 기어 사이즈 강제 변환
@@ -29,7 +40,16 @@ public class GearChangeUI : MonoBehaviour
 
         Vector2 ratioSize = _gearSize / gearTrm.sizeDelta;
         gearTrm.sizeDelta = _gearSize;
+        
+        gearObj.GetComponent<GearChangeHoverEvent>().OnHoverEvent += (isHover) => {
+            if (isHover) {
+                ShowDescription(gearInfo);
+            } else {
+                print("hide");
+            }
+        };
 
+        // 콕 소환
         int i = 0;
         foreach (var item in gearInfo.CogList)
         {
@@ -51,5 +71,14 @@ public class GearChangeUI : MonoBehaviour
 
     void GearRemove(int idx) {
 
+    }
+
+    // 설명띄움
+    void ShowDescription(GearSO gearInfo) {
+        // 아직 SO에 사진 데이터가 없음
+        
+        desc_title.text = gearInfo.Name;
+        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개\n기본 데미지: 10";
+        // desc_script.text = gearInfo.script;
     }
 }

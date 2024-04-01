@@ -1409,6 +1409,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _content: {fileID: 1093339959}
+  desc_image: {fileID: 740182912}
+  desc_title: {fileID: 1343462522}
+  desc_subText: {fileID: 1912500958}
+  desc_script: {fileID: 1636878913}
   _gearPrefab: {fileID: 5554032802613063862, guid: a7ac70b5066f570429249a360f405b9a, type: 3}
   _cogPrefab: {fileID: 5657474403025271194, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
   _gearSize: {x: 130, y: 130}
