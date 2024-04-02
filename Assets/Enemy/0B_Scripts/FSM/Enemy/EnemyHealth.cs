@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         if(_currentHealth == 0) {
             _owner.isDead = true;
 
-            dealer.GetComponent<PlayerExperience>().GetExp(_owner.experienceValue);
+            dealer.GetComponent<PlayerExperience>().GetExp(_owner.dropTable.experience);
             OnDead?.Invoke();
         }
     }

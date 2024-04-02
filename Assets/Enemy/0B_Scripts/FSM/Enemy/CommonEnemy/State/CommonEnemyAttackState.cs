@@ -9,6 +9,7 @@ public class CommonEnemyAttackState : EnemyState<CommonEnemyStateEnum>
         
         if(_enemy.isDead) _stateMachine.ChangeState(CommonEnemyStateEnum.Dead);
         
+        _triggerCalled = true;
         if(_triggerCalled) {
             _stateMachine.ChangeState(CommonEnemyStateEnum.Chase);
         }
