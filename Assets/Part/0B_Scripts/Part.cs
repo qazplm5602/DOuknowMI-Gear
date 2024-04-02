@@ -5,7 +5,8 @@ public enum PartSize {
     Big
 }
 
-public class Part : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class Part : PoolableMono
 {
     [SerializeField] private PartSize _partSize;
 
@@ -33,10 +34,6 @@ public class Part : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        if(Physics2D.OverlapCircle(transform.position, _magnetRadius, _whatIsPlayer)) {
-            
-        }
-
         if(Physics2D.OverlapBox((Vector2)transform.position + _groundCheckOffset, _groundCheckBox, 0, _whatIsGround)) {
             _rigidbody.gravityScale = 0f;
             _rigidbody.velocity = Vector2.zero;
@@ -49,15 +46,18 @@ public class Part : MonoBehaviour
             Vector3 direction = _playerTrm.position - transform.position;
             transform.position += direction.normalized * Time.deltaTime * _magnetSpeed;
         }
-        else if(Physics2D.OverlapCircle(transform.position, _magnetRadius, _whatIsPlayer)) {
-            _playerTrm = PlayerManager.instance.playerTrm;
+        else {
+            if(Physics2D.OverlapCircle(transform.position, _magnetRadius, _whatIsPlayer)) {
+                _playerTrm = PlayerManager.instance.playerTrm;
+            }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.TryGetComponent(out PlayerPart playerPart)) {
             playerPart.IncreasePart(GetPartAmount());
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            PoolManager.Instance.Push(this);
         }
     }
 
@@ -71,6 +71,10 @@ public class Part : MonoBehaviour
 
         Debug.LogError("[Part] PartSize not found");
         return 0;
+    }
+
+    public override void ResetItem() {
+        gameObject.SetActive(true);
     }
 
     private void OnDrawGizmos() {

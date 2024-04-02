@@ -30,18 +30,17 @@ public class DemonSlimeBattleState : EnemyState<DemonSlimeStateEnum>
 
     private void CheckAttack() {
         if(_enemy.CanAttack()) {
-            Vector2 smashStartPosition = (Vector2)_enemy.transform.position + _demonSlime.smashOffset * _enemy.FacingDirection;
-            Vector2 attackStartPosition = (Vector2)_enemy.transform.position + _demonSlime.attackOffset * _enemy.FacingDirection;
-            Vector2 breathStartPosition = (Vector2)_enemy.transform.position + _demonSlime.breathOffset * _enemy.FacingDirection;
-
-            if(Physics2D.OverlapBox(smashStartPosition, _demonSlime.smashRange, 0, _enemy.whatIsPlayer)) {
-                _stateMachine.ChangeState(DemonSlimeStateEnum.Smash);
-            }
-            else if(Physics2D.OverlapBox(attackStartPosition, _enemy.attackRange, 0, _enemy.whatIsPlayer)) {                                                                                      
-                _stateMachine.ChangeState(DemonSlimeStateEnum.Attack);
-            }
-            else if(Physics2D.OverlapBox(breathStartPosition, _demonSlime.breathRange, 0, _enemy.whatIsPlayer)) {
-                _stateMachine.ChangeState(DemonSlimeStateEnum.Breath);
+            Vector3 direction = _playerTrm.position - _enemy.transform.position;
+            if(!_enemy.IsObstacleInLine(direction.magnitude, direction.normalized)) {
+                if(_enemy.IsPlayerDetected(_demonSlime.smashOffset, _demonSlime.smashRange)) {
+                    _stateMachine.ChangeState(DemonSlimeStateEnum.Smash);
+                }
+                else if(_enemy.IsPlayerDetected(_demonSlime.attackOffset, _demonSlime.attackRange)) {                                                                                      
+                    _stateMachine.ChangeState(DemonSlimeStateEnum.Attack);
+                }
+                else if(_enemy.IsPlayerDetected(_demonSlime.breathOffset, _demonSlime.breathRange)) {
+                    _stateMachine.ChangeState(DemonSlimeStateEnum.Breath);
+                }
             }
             else {
                 _stateMachine.ChangeState(DemonSlimeStateEnum.Spell);    

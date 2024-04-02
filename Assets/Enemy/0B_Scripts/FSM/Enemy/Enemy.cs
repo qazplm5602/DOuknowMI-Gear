@@ -15,7 +15,8 @@ namespace FSM {
 
         [Header("Check Settings")]
         public float nearDistance;
-        public LayerMask whatIsPlayer;
+        [SerializeField] private  LayerMask _whatIsPlayer;
+        [SerializeField] private LayerMask _whatIsObstacle;
 
         [Header("Attack Settings")]
         public Vector2 attackRange;
@@ -25,7 +26,7 @@ namespace FSM {
         [HideInInspector] public float lastAttackTime;
 
         [Header("ETC Settings")]
-        public int experienceValue;
+        public DropTableSO dropTable;
 
         protected int _lastAnimationBoolHash;
 
@@ -53,6 +54,14 @@ namespace FSM {
         public override void ReturnDefaultSpeed() {
             moveSpeed = _defualtMoveSpeed;
             AnimatorCompo.speed = 1f;
+        }
+
+        public virtual bool IsPlayerDetected(Vector2 checkOffset, Vector2 checkRange) {
+            return Physics2D.OverlapBox((Vector2)transform.position + checkOffset * FacingDirection, checkRange, 0, _whatIsPlayer);
+        }
+
+        public virtual bool IsObstacleInLine(float distance, Vector3 direction) {
+            return Physics2D.Raycast(transform.position, direction, distance, _whatIsObstacle);
         }
 
         private void OnDrawGizmos() {

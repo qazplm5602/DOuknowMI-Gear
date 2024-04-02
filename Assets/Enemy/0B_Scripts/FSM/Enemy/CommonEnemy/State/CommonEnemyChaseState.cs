@@ -16,7 +16,8 @@ public class CommonEnemyChaseState : EnemyState<CommonEnemyStateEnum>
     public override void UpdateState() {
         if(_enemy.isDead) _stateMachine.ChangeState(CommonEnemyStateEnum.Dead);
 
-        if(Physics2D.OverlapBox((Vector2)_enemy.transform.position + _enemy.attackOffset * _enemy.FacingDirection, _enemy.attackRange, 0, _enemy.whatIsPlayer)) {
+        Vector2 direction = _playerTrm.position - _enemy.transform.position;
+        if(_enemy.IsPlayerDetected(_enemy.attackOffset, _enemy.attackRange) && _enemy.IsObstacleInLine(direction.magnitude, direction.normalized)) {
             if(_enemy.CanAttack()) {
                 _stateMachine.ChangeState(CommonEnemyStateEnum.Attack);
             }

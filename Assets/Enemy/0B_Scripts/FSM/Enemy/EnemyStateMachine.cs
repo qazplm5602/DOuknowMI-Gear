@@ -17,8 +17,6 @@ namespace FSM {
         public void ChangeState(T newState, bool forceMode = false) {
             if(!_enemy.CanStateChangeable && !forceMode) return;
 
-            if(_enemy.isDead) return;
-
             CurrentState.Exit();
             CurrentState = StateDictionary[newState];
             CurrentState.Enter();
