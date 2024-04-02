@@ -45,7 +45,7 @@ public class GearChangeUI : MonoBehaviour
             if (isHover) {
                 ShowDescription(gearInfo);
             } else {
-                print("hide");
+                HideDescription();
             }
         };
 
@@ -75,10 +75,16 @@ public class GearChangeUI : MonoBehaviour
 
     // 설명띄움
     void ShowDescription(GearSO gearInfo) {
-        // 아직 SO에 사진 데이터가 없음
-        
         desc_title.text = gearInfo.Name;
-        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개\n기본 데미지: 10";
-        // desc_script.text = gearInfo.script;
+        desc_image.sprite = gearInfo.Icon;
+        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개{(gearInfo.ActiveDamage ? $"\n기본 데미지: {gearInfo.DefaultDamage}" : "")}{(gearInfo.ActiveRange ? $"\n기본 범위: {gearInfo.DefaultRange}" : "")}";
+        desc_script.text = gearInfo.Desc;
+    }
+
+    void HideDescription() {
+        desc_title.text = "";
+        desc_image.sprite = null;
+        desc_subText.text = "";
+        desc_script.text = "설명을 보려면 기어, 슬롯을 마우스에 올려두세요.";
     }
 }
