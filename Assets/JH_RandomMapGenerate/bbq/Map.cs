@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static Door;
 
 public enum ROOMTYPE { Start, Normal, Boss ,Pray }
 public enum ROOMSIZE { NODATA = -1, Small, Medium, Large }
@@ -20,8 +17,8 @@ public class Map : CockSingleton<Map>
 
     private Dictionary<ROOMSIZE, GameObject[]> Rooms = new Dictionary<ROOMSIZE, GameObject[]>();
 
-    private void Awake()
-    {
+    private void Start()
+    { 
         Rooms[ROOMSIZE.Small] = SmallRoom;
         Rooms[ROOMSIZE.Medium] = MediumRoom;
         Rooms[ROOMSIZE.Large] = LargeRoom;

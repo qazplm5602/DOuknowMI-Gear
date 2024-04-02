@@ -15,6 +15,9 @@ public class BaseStage : MonoBehaviour
 
     public GameObject Arena; //적의 스폰 Parent
 
+    public int MaxWave = 3;
+    public int CurrentWave = 0;
+
     public bool Cleared = false;
     public bool RoomActive = false;
 
@@ -37,6 +40,17 @@ public class BaseStage : MonoBehaviour
 
     public void Initialize()
     {
+        if (ROOMTYPE.Normal == type)
+        {
+            MaxWave = Mathf.Max(2, MaxWave - 1);
+        }
+        else
+        {
+            MaxWave = 0;
+        }
+
+        CurrentWave = 1;
+
         Arena = gameObject;
 
         if (StageLinkedData.RightMap != null)
@@ -73,7 +87,21 @@ public class BaseStage : MonoBehaviour
         }
     }
 
+    public void StartRoom()
+    {
 
+    }
+
+    [ContextMenu("Clear Wave")]
+    public void NextWave()
+    {
+        ++CurrentWave;
+        if (CurrentWave > MaxWave)
+        {
+            Clear();
+        }
+        // do something for wavesa
+    }
 
     public void Init()
     {
@@ -84,20 +112,24 @@ public class BaseStage : MonoBehaviour
 
     public void Enter()
     {
+        print(Map.Instance);
         Map.Instance.CurrentStage = this;
         RoomActive = true;
+
+        StartRoom();
         //spawn shits
     }
     public void Exit()
     {
-
-    }
-    public void OnClear()
-    {
+        Cleared = true;
         RoomActive = false;
+    }
+    public void Clear()
+    {
+        RoomActive = true;
         Cleared = true;
     }
-    
+
     ///////적이 스폰하는 아레나 안에 넣을것
     //private void OnTransformChildrenChanged()
     //{

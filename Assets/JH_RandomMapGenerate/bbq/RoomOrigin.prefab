@@ -302,7 +302,8 @@ MonoBehaviour:
   - {fileID: 8865158416994999321}
   - {fileID: 2764849631058693508}
   - {fileID: 2171174659742114346}
-  type: 0
+  type: 1
+  StageNum: 0
   StageLinkedData:
     RightMap: {fileID: 0}
     LeftMap: {fileID: 0}
@@ -311,6 +312,11 @@ MonoBehaviour:
     Num: 0
     indexX: 0
     indexY: 0
+  Arena: {fileID: 0}
+  MaxWave: 3
+  CurrentWave: 0
+  Cleared: 0
+  RoomActive: 0
 --- !u!1 &4572739681053232995
 GameObject:
   m_ObjectHideFlags: 0

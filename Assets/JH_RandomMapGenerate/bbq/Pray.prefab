@@ -206,7 +206,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5784109519524508412, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: type
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -5784109519524508412, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: door.Array.size
