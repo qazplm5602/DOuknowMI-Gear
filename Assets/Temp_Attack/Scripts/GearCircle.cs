@@ -54,7 +54,7 @@ public class GearCircle : MonoBehaviour
     }
 
     // 콕 색상
-    Color GetCogTypeColor(CogType type) {
+    static public Color GetCogTypeColor(CogType type) {
         switch (type)
         {
             case CogType.Skill:

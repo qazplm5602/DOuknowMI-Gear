@@ -386,6 +386,7 @@ GameObject:
   - component: {fileID: 9196805433419405142}
   - component: {fileID: 8367274833939496496}
   - component: {fileID: 4916569722776119275}
+  - component: {fileID: 6644566712202189936}
   m_Layer: 5
   m_Name: Inven_Box
   m_TagString: Untagged
@@ -455,3 +456,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6644566712202189936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881521164610122400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42167f59d4e2a204fb3d2918f358d3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
