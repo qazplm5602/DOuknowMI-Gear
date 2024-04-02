@@ -17,7 +17,7 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
         }
         else
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 

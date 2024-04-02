@@ -313,6 +313,8 @@ MonoBehaviour:
     indexX: 0
     indexY: 0
   Arena: {fileID: 0}
+  MaxWave: 3
+  CurrentWave: 0
   Cleared: 0
   RoomActive: 0
 --- !u!1 &4572739681053232995
