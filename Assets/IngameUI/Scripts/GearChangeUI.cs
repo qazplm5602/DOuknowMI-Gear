@@ -15,21 +15,37 @@ public class GearChangeUI : MonoBehaviour
     [SerializeField] TextMeshProUGUI desc_subText;
     [SerializeField] TextMeshProUGUI desc_script;
 
+    ////////////// 인벤 관련
+    [Header("Inventory")]
+    [SerializeField] Transform inven_content;
+    [SerializeField] GameObject inven_box;
+
     /////////////// 기어 관련
     [Header("Gear")]
     [SerializeField] GameObject _gearPrefab;
     [SerializeField] GameObject _cogPrefab;
     [SerializeField] Vector2 _gearSize; // 기어 사이즈 강제 변환
 
+    [SerializeField] ContextMenuUI _contextUI;
+
     [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
     List<GearSO> gearDatas;
 
+    GearSO[] inventory = new GearSO[9 * 6];
+
     private void Awake() {
         gearDatas = new();
 
-        foreach (var item in _gearDatas)
+        for (int i = 0; i < inven_content.childCount; i++)
+            DestroyImmediate(inven_content.GetChild(i).gameObject);
+        for (int i = 0; i < inventory.Length; i++)
+            Instantiate(inven_box, inven_content);
+
+        foreach (var item in _gearDatas) {
             GearAdd(item);
+            print($"{item.Name} inven add {GiveInventory(item)}");
+        }
     }
 
     void GearAdd(GearSO gearInfo) {
@@ -70,7 +86,70 @@ public class GearChangeUI : MonoBehaviour
     }
 
     void GearRemove(int idx) {
+        Destroy(transform.GetChild(idx).gameObject);
+        gearDatas.RemoveAt(idx);
+    }
 
+    bool GiveInventory(GearSO gear, int idx = -1) {
+        if (idx == -1) {
+            idx = GetEmptyInventoryIdx();
+            if (idx == -1) return false;
+        }
+
+        if (inventory[idx] != null) return false; // 해당자리에는 이미 있음
+
+        inventory[idx] = gear;
+        
+        var invenEntity = inven_content.GetChild(idx);
+        var imageBox = invenEntity.GetChild(0).GetComponent<Image>();
+        imageBox.enabled = true;
+        imageBox.sprite = gear.Icon;
+
+        var eventManager = invenEntity.GetComponent<GearChangeHoverEvent>();
+        eventManager.OnHoverEvent += (isHover) => {
+            if (isHover)
+                ShowDescription(gear);
+            else
+                HideDescription();
+        };
+        eventManager.OnRightMouseDownEvent += () => {
+            _contextUI.OpenMenu(new ContextButtonDTO[] {
+                new() {
+                    name = "장착하기"
+                },
+                new() {
+                    name = "버리기"
+                }
+            });
+        };
+        
+        return true;
+    }
+    
+    bool RemoveInventory(int idx) {
+        if (inventory[idx] == null) return false;
+        
+        inventory[idx] = null;
+
+        var invenEntity = inven_content.GetChild(idx);
+        
+        var imageBox = invenEntity.GetChild(0).GetComponent<Image>();
+        imageBox.enabled = false;
+        imageBox.sprite = null;
+
+        invenEntity.GetComponent<GearChangeHoverEvent>().ClearEventHandler();
+
+        return true;
+    }
+
+    int GetEmptyInventoryIdx() {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i] == null)
+                return i;
+        }
+
+        return -1;
     }
 
     // 설명띄움
