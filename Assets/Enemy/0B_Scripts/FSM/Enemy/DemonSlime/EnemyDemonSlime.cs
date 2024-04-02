@@ -64,10 +64,10 @@ public class EnemyDemonSlime : Enemy
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)smashOffset * FacingDirection, smashRange);
+        Gizmos.DrawWireCube(transform.position + (Vector3)smashOffset * FacingDirection, smashRange);
         Gizmos.color = Color.white;
-        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)attackOffset * FacingDirection, attackRange);
+        Gizmos.DrawWireCube(transform.position + (Vector3)attackOffset * FacingDirection, attackRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(_checkTransform.position + (Vector3)breathOffset * FacingDirection, breathRange);
+        Gizmos.DrawWireCube(transform.position + (Vector3)breathOffset * FacingDirection, breathRange);
     }
 }

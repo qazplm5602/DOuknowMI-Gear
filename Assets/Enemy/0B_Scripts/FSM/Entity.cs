@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 namespace FSM {
+    [RequireComponent(typeof(Rigidbody2D))]
     public abstract class Entity : MonoBehaviour
     {
         [HideInInspector] public bool isDead = false;

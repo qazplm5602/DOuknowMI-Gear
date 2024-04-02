@@ -1,21 +1,19 @@
 using UnityEngine;
 
+
 namespace FSM {
+    [RequireComponent(typeof(EnemyDamageCaster), typeof(EnemyHealth))]
     public abstract class Enemy : Entity
     {
         [HideInInspector] public EnemyDamageCaster DamageCasterCompo;
         [HideInInspector] public EnemyHealth HealthCompo;
 
-        [Header("Settings")]
+        [Header("Move Settings")]
         public float moveSpeed;
-        public float idleTime;
-        public float battleTime;
 
         protected float _defualtMoveSpeed;
 
         [Header("Check Settings")]
-        [SerializeField] protected float _checkDistance;
-        [SerializeField] protected Transform _checkTransform;
         public float nearDistance;
         public LayerMask whatIsPlayer;
 
@@ -48,9 +46,6 @@ namespace FSM {
 
         public abstract void AnimationFinishTrigger();
 
-        public virtual RaycastHit2D IsPlayerDetected()
-            => Physics2D.Raycast(_checkTransform.position, Vector2.right * FacingDirection, _checkDistance, whatIsPlayer);
-
         public bool CanAttack() {
             return Time.time >= lastAttackTime + attackCooldown;
         }
@@ -61,8 +56,8 @@ namespace FSM {
         }
 
         private void OnDrawGizmos() {
-            Gizmos.color = Color.green;
-            Gizmos.DrawRay(_checkTransform.position, Vector3.right * FacingDirection * _checkDistance);
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireCube((Vector2)transform.position + attackOffset * FacingDirection, attackRange);
         }
     }
 }
