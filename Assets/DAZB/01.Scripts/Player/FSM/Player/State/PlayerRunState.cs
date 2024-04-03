@@ -9,6 +9,10 @@ public class PlayerRunState : PlayerCanDashState
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+    }
 
     public override void UpdateState()
     {

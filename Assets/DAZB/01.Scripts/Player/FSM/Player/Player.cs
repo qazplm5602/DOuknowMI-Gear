@@ -17,12 +17,17 @@ public class Player : Agent
     public float moveSpeed;
     public float dashPower;
     public float jumpPower;
+    public float ATK;
+    public float AtkSpeed;
     public PlayerStateMachine StateMachine {get; private set;}
     [SerializeField] private InputReader inputReader;
     public InputReader InputReader => inputReader;
     public bool isDash;
+    private PlayerStat stats;
 
     protected override void Awake() {
+        stats = GetComponent<PlayerStat>();
+        moveSpeed = stats.defaultMoveSpeed;
         base.Awake();
         StateMachine = new PlayerStateMachine();
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum))) {
@@ -43,6 +48,7 @@ public class Player : Agent
     }
 
     protected void Update() {
+        if (DialogueManager.instance.isEnd == false) return;
         StateMachine.CurrentState.UpdateState();
     }
 }

@@ -11,6 +11,18 @@ public class PlayerStat : MonoBehaviour
     
     #region Stats
 
+    [Header("default")]
+    public int defaultAtk;
+    public int defaultHealth;
+    public float defaultAttackSpeed;
+    public float defaultMoveSpeed;
+
+    [Header("point per increas value")]
+    public float atkPerPointInc;
+    public float healthPerPointInc;
+    public float attackSpeedPerPointInc;
+    public float moveSpeedPerPointInc;
+
     private int _atk;
     private int _health;
     private int _attackSpeed;
@@ -64,14 +76,14 @@ public class PlayerStat : MonoBehaviour
     #endregion
 
     [Header("Stat Text")]
-    [SerializeField] private TextMeshProUGUI _atkText;
-    [SerializeField] private TextMeshProUGUI _healthText;
-    [SerializeField] private TextMeshProUGUI _attackSpeedText;
-    [SerializeField] private TextMeshProUGUI _moveSpeedText;
-    [SerializeField] private TextMeshProUGUI _moneyText;
-    [SerializeField] private TextMeshProUGUI _expText;
+    public TextMeshProUGUI _atkText;
+    public TextMeshProUGUI _healthText;
+    public TextMeshProUGUI _attackSpeedText;
+    public TextMeshProUGUI _moveSpeedText;
+    public TextMeshProUGUI _moneyText;
+    public TextMeshProUGUI _expText;
 
-    [SerializeField] private TextMeshProUGUI _statPointText;
+    public TextMeshProUGUI _statPointText;
 
     public void IncreaseStat(int stat) {
         if(statPoint <= 0) return;

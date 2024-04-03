@@ -1,16 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
-using DG.Tweening;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private NpcData npcData;
-    [SerializeField] private TextAsset dialogueDataFile;
-    [SerializeField] private List<DialogueData> greetingList = new();
-    [SerializeField] private List<DialogueData> cancleList = new();
-    [SerializeField] private List<DialogueData> conversationList = new();
-    [SerializeField] private List<DialogueData> interactionList = new();
+    public TextAsset dialogueDataFile;
+    private List<DialogueData> greetingList = new();
+    private List<DialogueData> cancleList = new();
+    private List<DialogueData> conversationList = new();
+    private List<DialogueData> interactionList = new();
+    private Npc npc;
 
     private void Awake()
     {
@@ -30,9 +28,14 @@ public class Dialogue : MonoBehaviour
                 interactionList.Add(iter);
             }
         }
+        npc = GetComponent<Npc>();
     }
-/* 
-    private void Start() {
+
+    public void StartDialogue() {
+        DialogueManager.instance.Init(greetingList, cancleList, conversationList, interactionList, npc);
+    }
+
+ /*    private void Start() {
         Conversation();
     }
 
