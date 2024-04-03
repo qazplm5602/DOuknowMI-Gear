@@ -1830,7 +1830,6 @@ MonoBehaviour:
   scriptModule: {fileID: 1886806770}
   spawnGears:
   - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
-  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
   spawnGearCoords:
   - {x: 150, y: -150}
   - {x: 330, y: -190}

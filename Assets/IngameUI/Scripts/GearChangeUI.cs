@@ -120,9 +120,20 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                 HideDescription();
             }
         };
-        // eventHandler.OnLeftMouseDownEvent += () => {
+        eventHandler.OnLeftMouseDownEvent += () => {
+            _contextUI.Close();
+            for (int idx = 0; idx < _content.childCount; idx++)
+            {
+                if (_content.GetChild(idx) == gearObj.transform) {
+                    if (idx == 0) return; // 첫번째는 뺄 수 없음.
 
-        // }
+                    GearRemove(idx);
+                    _gearManager.GearRemove(idx);
+                    GiveInventory(gearInfo);
+                    break;
+                }
+            }
+        };
 
         // 콕 소환
         int i = 0;
@@ -248,5 +259,6 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         var gearD = inventory[invenID];
         RemoveInventory(invenID);
         GearAdd(gearD);
+        _gearManager.GearAdd(gearD);
     }
 }
