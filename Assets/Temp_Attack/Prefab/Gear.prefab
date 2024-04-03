@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f1c407dddfea744291e68aeb3fce568, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87766e613e0965d42bfcd040655c54c2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,3 +89,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gearCogPrefab: {fileID: 9072734208524101308, guid: 2259c0593c24d3441ac9247c948bfe9f, type: 3}
+  gearSO: {fileID: 0}
+  reverse: 0

@@ -148,7 +148,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
             cogObj.transform.RotateAround(gearTrm.position, new Vector3(0, 0, 1), (360f / gearInfo.CogList.Length) * -i);
             
             // 색상 지정
-            if (item != CogType.None)
+            // if (item != CogType.None)
                 cogObj.GetComponent<Image>().color = GearCircle.GetCogTypeColor(item);
 
             i++;
