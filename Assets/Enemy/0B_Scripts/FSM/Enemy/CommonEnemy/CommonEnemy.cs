@@ -35,10 +35,6 @@ public class CommonEnemy : Enemy
 
     private void Update() {
         StateMachine.CurrentState.UpdateState();
-
-        if(Input.GetKeyDown(KeyCode.P)) {
-            isDead = true;
-        }
     }
 
     public override void Attack() { }
