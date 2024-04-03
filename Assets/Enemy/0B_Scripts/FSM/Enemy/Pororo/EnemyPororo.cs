@@ -2,13 +2,11 @@ using System;
 using UnityEngine;
 using FSM;
 
-public enum CommonEnemyStateEnum {
-    Chase, Attack, Dead
-}
-
-public class CommonEnemy : Enemy
+public class EnemyProro : Enemy
 {
     public EnemyStateMachine<CommonEnemyStateEnum> StateMachine { get; private set; }
+
+    public Transform attackTransform;
 
     protected override void Awake() {
         base.Awake();
@@ -17,14 +15,14 @@ public class CommonEnemy : Enemy
 
         foreach(CommonEnemyStateEnum stateEnum in Enum.GetValues(typeof(CommonEnemyStateEnum))) {
             string typeName = stateEnum.ToString();
-            Type t = Type.GetType($"CommonEnemy{typeName}State");
+            Type t = Type.GetType($"Pororo{typeName}State");
 
             try {
                 var enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<CommonEnemyStateEnum>;
                 StateMachine.AddState(stateEnum, enemyState);
             }
             catch {
-                Debug.LogError($"[Enemy CommonEnemy] : Not Found State [{typeName}]");
+                Debug.LogError($"[Enemy Pororo] : Not Found State [{typeName}]");
             }
         }
     }
@@ -37,7 +35,9 @@ public class CommonEnemy : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-    public override void Attack() { }
+    public override void Attack() {
+        StateMachine.CurrentState.AnimationAttackTrigger();
+    }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 }
