@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class EnemyProjectile : PoolableMono
 {
-    [SerializeField] private float _speed;
-    [SerializeField] private float _lifeTime;
     [SerializeField] private LayerMask _whatIsEnemy;
 
+    private float _lifeTime;
+    private float _speed;
     private float _timer = 0f;
     private bool _isInit = false;
-    private Vector2 direction;
+    private Vector2 _direction;
 
     private void Update() {
         if(!_isInit) return;
@@ -17,8 +17,10 @@ public class EnemyProjectile : PoolableMono
         Move();
     }
 
-    public void Init(Vector2 direction) {
-        this.direction = direction;
+    public void Init(float lifeTime, float speed, Vector2 direction) {
+        _lifeTime = lifeTime;
+        _speed = speed;
+        _direction = direction;
 
         _isInit = true;
     }
@@ -31,7 +33,7 @@ public class EnemyProjectile : PoolableMono
     }
 
     private void Move() {
-        transform.position += (Vector3)direction.normalized * _speed * Time.deltaTime;
+        transform.position += (Vector3)_direction.normalized * _speed * Time.deltaTime;
     }
     
     private void OnCollisionEnter2D(Collision2D other) {

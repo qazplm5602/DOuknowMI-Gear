@@ -1,18 +1,17 @@
 using UnityEngine;
 using FSM;
 
-public class GuniAttackState : EnemyState<CommonEnemyStateEnum>
+public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
 {
-    public GuniAttackState(Enemy enemy, EnemyStateMachine<CommonEnemyStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
+    public PororoAttackState(Enemy enemy, EnemyStateMachine<CommonEnemyStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
-    private EnemyGuni _enemyGuni;
-    private Vector2 direction;
-
+    private EnemyProro _enemyPororo;
+    
     public override void Enter() {
         base.Enter();
 
-        _enemyGuni = _enemy as EnemyGuni;
-        direction = (PlayerManager.instance.playerTrm.position - _enemyGuni.attackTransform.position).normalized;
+        _enemy.StopImmediately(true);
+        _enemyPororo = _enemy as EnemyProro;
     }
 
     public override void UpdateState() {
@@ -26,8 +25,8 @@ public class GuniAttackState : EnemyState<CommonEnemyStateEnum>
 
     public override void AnimationAttackTrigger() {
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
-        bulletObject.transform.position = _enemyGuni.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(3, 6, direction);
+        bulletObject.transform.position = _enemyPororo.attackTransform.position;
+        bulletObject.GetComponent<EnemyProjectile>().Init(3, 6, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
         Debug.Log("탕!!");
     }
 

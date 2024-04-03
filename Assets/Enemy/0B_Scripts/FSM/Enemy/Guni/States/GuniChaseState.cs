@@ -1,9 +1,9 @@
 using UnityEngine;
 using FSM;
 
-public class GuniChaseState : EnemyState<GuniStateEnum>
+public class GuniChaseState : EnemyState<CommonEnemyStateEnum>
 {
-    public GuniChaseState(Enemy enemy, EnemyStateMachine<GuniStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
+    public GuniChaseState(Enemy enemy, EnemyStateMachine<CommonEnemyStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
     private Transform _playerTrm;
 
@@ -15,15 +15,13 @@ public class GuniChaseState : EnemyState<GuniStateEnum>
     }
 
     public override void UpdateState() {
-        if(_enemy.isDead) _stateMachine.ChangeState(GuniStateEnum.Dead);
+        if(_enemy.isDead) _stateMachine.ChangeState(CommonEnemyStateEnum.Dead);
 
         Vector2 direction = _playerTrm.position - _enemy.transform.position;
         if(_enemy.IsPlayerDetected(_enemy.attackOffset, _enemy.attackRange) && !_enemy.IsObstacleInLine(direction.magnitude, direction.normalized)) {
-            Debug.Log("Player Detected");
             _enemy.StopImmediately(false);
             if(_enemy.CanAttack()) {
-                Debug.Log("Can Attack");
-                _stateMachine.ChangeState(GuniStateEnum.Attack);
+                _stateMachine.ChangeState(CommonEnemyStateEnum.Attack);
             }
         }
         else if(Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x) > _enemy.nearDistance) Move();
