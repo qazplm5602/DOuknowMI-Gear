@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 {
+    [SerializeField] Transform _main;
     [SerializeField] Transform _content;
     
     //////////////// 설명 관련
@@ -27,6 +28,8 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     [SerializeField] GameObject _cogPrefab;
     [SerializeField] Vector2 _gearSize; // 기어 사이즈 강제 변환
 
+    [Header("Scripts")]
+    [SerializeField] GearManager _gearManager;
     [SerializeField] ContextMenuUI _contextUI;
 
     [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
@@ -44,10 +47,47 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
             Instantiate(inven_box, inven_content).GetComponent<GearChangeHoverEvent>().OnLeftMouseDownEvent += () => OnPointerDown(null);
         }
 
-        foreach (var item in _gearDatas) {
-            GearAdd(item);
-            print($"{item.Name} inven add {GiveInventory(item)}");
+        // foreach (var item in _gearDatas) {
+        //     GearAdd(item);
+        //     print($"{item.Name} inven add {GiveInventory(item)}");
+        // }
+    
+        // Open();
+    }
+
+    private void Update() {
+        if (Input.GetKeyUp(KeyCode.E)) {
+            Open();
         }
+    }
+
+    // 메뉴 오픈
+    void Open() {
+        bool needRefresh = false;
+        GearSO[] slot =  _gearManager.GetSlotGearSO();
+
+        if (gearDatas.Count != slot.Length) needRefresh = true;
+        if (!needRefresh)
+            for (int i = 0; i < slot.Length; i++) {
+                if (gearDatas[i] != gearDatas[i]) {
+                    needRefresh = true;
+                    break;
+                }
+            }
+
+        if (!needRefresh) return; // 무결성 검사 좋음
+
+        // 기어 있는거 다 삭제
+        for (int i = 0; i < _content.childCount; i++)
+        {
+            Destroy(_content.GetChild(i).gameObject);
+            gearDatas = new();
+        }
+
+        foreach (var item in slot)
+            GearAdd(item);
+
+        _main.gameObject.SetActive(true);
     }
 
     void GearAdd(GearSO gearInfo) {
@@ -88,7 +128,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     }
 
     void GearRemove(int idx) {
-        Destroy(transform.GetChild(idx).gameObject);
+        Destroy(_content.GetChild(idx).gameObject);
         gearDatas.RemoveAt(idx);
     }
 
@@ -182,6 +222,6 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     void InsertGear(int invenID) {
         if (inventory[invenID] == null) return;
         
-        
+
     }
 }

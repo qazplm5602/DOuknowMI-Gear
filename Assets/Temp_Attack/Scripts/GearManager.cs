@@ -44,7 +44,6 @@ public class GearManager : MonoBehaviour
 
     List<GearInfo> gears;
 
-
     public GameObject _player;
 
     private void Start() {
@@ -115,6 +114,19 @@ public class GearManager : MonoBehaviour
             gearTrm.anchoredPosition = spawnGearCoords[i];
             gearD.system.reverse = !gearD.system.reverse;
         }
+    }
+
+    // 자주 호출은 하지 않는게 좋음
+    public GearSO[] GetSlotGearSO() {
+        GearSO[] result = new GearSO[gears.Count];
+        
+        int i = 0;
+        foreach (var item in gears)
+        {
+            result[i] = item.data;
+            i++;
+        }
+        return result;
     }
 
     int rollFinishRoll = 0;
