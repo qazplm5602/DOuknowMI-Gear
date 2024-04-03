@@ -32,7 +32,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     [SerializeField] GearManager _gearManager;
     [SerializeField] ContextMenuUI _contextUI;
 
-    [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
+    // [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
     List<GearSO> gearDatas;
 
@@ -47,6 +47,12 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
             Instantiate(inven_box, inven_content).GetComponent<GearChangeHoverEvent>().OnLeftMouseDownEvent += () => OnPointerDown(null);
         }
 
+        // close 버튼연결
+        _main.Find("Header/Close").GetComponent<Button>().onClick.AddListener(Close);
+
+        // 설명 init
+        HideDescription();
+
         // foreach (var item in _gearDatas) {
         //     GearAdd(item);
         //     print($"{item.Name} inven add {GiveInventory(item)}");
@@ -55,14 +61,17 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         // Open();
     }
 
+    ////////////////////// TEST
     private void Update() {
+        print(Input.GetKeyUp(KeyCode.E));
         if (Input.GetKeyUp(KeyCode.E)) {
             Open();
         }
     }
+    ////////////////////// TEST END
 
     // 메뉴 오픈
-    void Open() {
+    public void Open() {
         bool needRefresh = false;
         GearSO[] slot =  _gearManager.GetSlotGearSO();
 
@@ -75,19 +84,22 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                 }
             }
 
-        if (!needRefresh) return; // 무결성 검사 좋음
+        if (needRefresh) { // 무결성 검사 실패
+            // 기어 있는거 다 삭제
+            for (int i = 0; i < _content.childCount; i++)
+            {
+                Destroy(_content.GetChild(i).gameObject);
+                gearDatas = new();
+            }
 
-        // 기어 있는거 다 삭제
-        for (int i = 0; i < _content.childCount; i++)
-        {
-            Destroy(_content.GetChild(i).gameObject);
-            gearDatas = new();
+            foreach (var item in slot)
+                GearAdd(item);
         }
 
-        foreach (var item in slot)
-            GearAdd(item);
-
         _main.gameObject.SetActive(true);
+    }
+    public void Close() {
+        _main.gameObject.SetActive(false);
     }
 
     void GearAdd(GearSO gearInfo) {
