@@ -41,6 +41,9 @@ public class MapSpawner : MonoBehaviour
         public GameObject[] MapObjList;
         public BaseStage StartRoom;
 
+        public int LargeRoomChance;
+        public int MediumRoomChance;
+
         public int StatueCount;
     }
 
@@ -158,7 +161,7 @@ public class MapSpawner : MonoBehaviour
 
         //위쪽
         RandNum = Random.Range(0, 100);
-        if (RandNum <= 70)
+        if (RandNum <= 25)
         {
             if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
             {
@@ -169,7 +172,7 @@ public class MapSpawner : MonoBehaviour
         //아래쪽
         RandNum = Random.Range(0, 100);
 
-        if (RandNum <= 70)
+        if (RandNum <= 25)
         {
             if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
             {
@@ -342,28 +345,30 @@ public class MapSpawner : MonoBehaviour
                         dir[(int)Door.DoorType.Down] = true;
                         countDoor++;
                     }
-                    int rnd = Random.Range(1, 101);
 
-                    ROOMSIZE roomSize = ROOMSIZE.NODATA;
                     bool pray = false;
+                    ROOMSIZE roomSize = ROOMSIZE.Small;
+                    //if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방 이면서 상점과, 음식점이 없으면 상점과 음식점이 된다.
+                    //{
+                        
+                    //}
+                    //else
+                    //{
 
-                    if(rnd <= 20)
-                    {
-                        roomSize = ROOMSIZE.Medium;
-                    }
-                    if (rnd <= 10)
-                    {
-                        roomSize = ROOMSIZE.Large;
-                    }
-                    if (roomSize == ROOMSIZE.NODATA)
-                    {
-                        //if (jajiOption.MaxStatue > current.StatueCount)
-                        //{
-                        //    pray = true;
-                        //    current.StatueCount++;
-                        //}
-                        roomSize = ROOMSIZE.Small;
-                    }
+
+                        int rnd = Random.Range(1, 101);
+                        if (rnd <= 70)
+                        {
+                            roomSize = ROOMSIZE.Medium;
+                        }
+                        else
+                        {
+                            roomSize = ROOMSIZE.Large;
+                        }
+                    //}
+
+                    roomSize = ROOMSIZE.Small;
+                    
 
                     GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
                     current.MapObjList[i] = GameObject.Instantiate(obj, mapParent.transform);
@@ -429,6 +434,5 @@ public class MapSpawner : MonoBehaviour
                 current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData = data;
             }
         }
-
     }
 }

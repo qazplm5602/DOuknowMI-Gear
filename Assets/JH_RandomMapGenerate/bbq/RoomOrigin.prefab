@@ -299,8 +299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door:
   - {fileID: 6161850670465136139}
-  - {fileID: 8865158416994999321}
   - {fileID: 2764849631058693508}
+  - {fileID: 8865158416994999321}
   - {fileID: 2171174659742114346}
   type: 1
   StageNum: 0

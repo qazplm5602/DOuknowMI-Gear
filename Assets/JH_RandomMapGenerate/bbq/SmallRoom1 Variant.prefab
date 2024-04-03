@@ -21,9 +21,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: -5784109519524508412, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
-      propertyPath: door.Array.data[2]
+      propertyPath: door.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -5784109519524508412, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+      propertyPath: door.Array.data[2]
+      value: 
+      objectReference: {fileID: 1929831132675234394}
     - target: {fileID: 2375395491166239985, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.34322783
@@ -66,7 +70,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: m_Name
-      value: Room1 Variant
+      value: SmallRoom1 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -75,3 +79,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+--- !u!114 &1929831132675234394 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8865158416994999321, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+  m_PrefabInstance: {fileID: 7047990121980085827}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

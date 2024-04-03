@@ -53,7 +53,7 @@ public class Door : MonoBehaviour
     {
         stageData.Exit();
         nextRoom.GetComponent<BaseStage>().Enter();
-        //ÅÚ·¹Æ÷Æ®
+        //í…”ë ˆí¬íŠ¸
         //plr.transform.position = nextRoom.GetComponent<BaseStage>().door[(int)OppoDir[Type]].transform.position;
     }
 }
