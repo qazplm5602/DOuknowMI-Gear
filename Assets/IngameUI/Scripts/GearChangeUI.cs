@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 {
+    [SerializeField] int maxGear = 4; // 최대 장착 가능한 수
     [SerializeField] Transform _main;
     [SerializeField] Transform _content;
     
@@ -32,7 +33,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     [SerializeField] GearManager _gearManager;
     [SerializeField] ContextMenuUI _contextUI;
 
-    // [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
+    [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
     List<GearSO> gearDatas;
 
@@ -53,10 +54,10 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         // 설명 init
         HideDescription();
 
-        // foreach (var item in _gearDatas) {
-        //     GearAdd(item);
-        //     print($"{item.Name} inven add {GiveInventory(item)}");
-        // }
+        foreach (var item in _gearDatas) {
+            // GearAdd(item);
+            print($"{item.Name} inven add {GiveInventory(item)}");
+        }
     
         // Open();
     }
@@ -111,13 +112,17 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         Vector2 ratioSize = _gearSize / gearTrm.sizeDelta;
         gearTrm.sizeDelta = _gearSize;
         
-        gearObj.GetComponent<GearChangeHoverEvent>().OnHoverEvent += (isHover) => {
+        var eventHandler = gearObj.GetComponent<GearChangeHoverEvent>();
+        eventHandler.OnHoverEvent += (isHover) => {
             if (isHover) {
                 ShowDescription(gearInfo);
             } else {
                 HideDescription();
             }
         };
+        // eventHandler.OnLeftMouseDownEvent += () => {
+
+        // }
 
         // 콕 소환
         int i = 0;
@@ -170,10 +175,15 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         eventManager.OnRightMouseDownEvent += () => {
             _contextUI.OpenMenu(new ContextButtonDTO[] {
                 new() {
-                    name = "장착하기"
+                    name = "장착하기",
+                    callback = () => InsertGear(idx)
                 },
                 new() {
-                    name = "버리기"
+                    name = "버리기",
+                    callback = () => {
+                        _contextUI.Close();
+                        RemoveInventory(idx);
+                    }
                 }
             });
         };
@@ -232,8 +242,11 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     
     // 기어 적용
     void InsertGear(int invenID) {
-        if (inventory[invenID] == null) return;
+        _contextUI.Close();
+        if (inventory[invenID] == null || gearDatas.Count >= maxGear) return;
         
-
+        var gearD = inventory[invenID];
+        RemoveInventory(invenID);
+        GearAdd(gearD);
     }
 }
