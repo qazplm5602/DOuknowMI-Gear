@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class GearChangeUI : MonoBehaviour
+public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] Transform _content;
     
@@ -39,8 +40,9 @@ public class GearChangeUI : MonoBehaviour
 
         for (int i = 0; i < inven_content.childCount; i++)
             DestroyImmediate(inven_content.GetChild(i).gameObject);
-        for (int i = 0; i < inventory.Length; i++)
-            Instantiate(inven_box, inven_content);
+        for (int i = 0; i < inventory.Length; i++) {
+            Instantiate(inven_box, inven_content).GetComponent<GearChangeHoverEvent>().OnLeftMouseDownEvent += () => OnPointerDown(null);
+        }
 
         foreach (var item in _gearDatas) {
             GearAdd(item);
@@ -106,6 +108,7 @@ public class GearChangeUI : MonoBehaviour
         imageBox.sprite = gear.Icon;
 
         var eventManager = invenEntity.GetComponent<GearChangeHoverEvent>();
+        eventManager.ClearEventHandler();
         eventManager.OnHoverEvent += (isHover) => {
             if (isHover)
                 ShowDescription(gear);
@@ -122,6 +125,7 @@ public class GearChangeUI : MonoBehaviour
                 }
             });
         };
+        eventManager.OnLeftMouseDownEvent += () => OnPointerDown(null);
         
         return true;
     }
@@ -137,7 +141,9 @@ public class GearChangeUI : MonoBehaviour
         imageBox.enabled = false;
         imageBox.sprite = null;
 
-        invenEntity.GetComponent<GearChangeHoverEvent>().ClearEventHandler();
+        var eventHandler = invenEntity.GetComponent<GearChangeHoverEvent>();
+        eventHandler.ClearEventHandler();
+        eventHandler.OnLeftMouseDownEvent += () => OnPointerDown(null);
 
         return true;
     }
@@ -165,5 +171,17 @@ public class GearChangeUI : MonoBehaviour
         desc_image.sprite = null;
         desc_subText.text = "";
         desc_script.text = "설명을 보려면 기어, 슬롯을 마우스에 올려두세요.";
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        _contextUI.Close();
+    }
+    
+    // 기어 적용
+    void InsertGear(int invenID) {
+        if (inventory[invenID] == null) return;
+        
+        
     }
 }
