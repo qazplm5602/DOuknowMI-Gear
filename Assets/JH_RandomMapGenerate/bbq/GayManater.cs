@@ -31,7 +31,7 @@ public class GayManater : MonoBehaviour
         }
     }
 
-    [ContextMenu("ÀÚÀ§Áß")]
+    [ContextMenu("ììœ„ì¤‘")]
     public void Ming()
     {
         var startRoom = mapSpawner.current.StartRoom;
