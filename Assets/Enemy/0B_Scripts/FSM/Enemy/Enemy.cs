@@ -37,6 +37,7 @@ namespace FSM {
             HealthCompo.SetOwner(this);
 
             _defualtMoveSpeed = moveSpeed;
+            lastAttackTime = -attackCooldown;
         }
 
         public virtual void AssignLastAnimationHash(int hashCode) {

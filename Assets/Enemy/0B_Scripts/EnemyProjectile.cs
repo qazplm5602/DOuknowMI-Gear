@@ -40,7 +40,10 @@ public class EnemyProjectile : PoolableMono
         if(other.transform.TryGetComponent(out IDamageable health)) {
 
         }
-        if(other.gameObject.layer == _whatIsEnemy.value) gameObject.SetActive(false);
+        int otherLayer = 1 << other.gameObject.layer;
+        if((otherLayer & _whatIsEnemy.value) > 0) {
+            gameObject.SetActive(false);
+        }
     }
 
     public override void ResetItem() {
