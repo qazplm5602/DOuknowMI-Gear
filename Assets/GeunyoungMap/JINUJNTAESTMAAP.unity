@@ -388,10 +388,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3083441366341385940, guid: 5f81904c2790de142bbc0a7308342fc7, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 6844279645882108796, guid: 5f81904c2790de142bbc0a7308342fc7, type: 3}
       propertyPath: m_Name
       value: MiddleMapTest
