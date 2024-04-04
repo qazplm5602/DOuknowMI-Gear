@@ -220,6 +220,10 @@ PrefabInstance:
       propertyPath: door.Array.data[2]
       value: 
       objectReference: {fileID: 6464360984121281594}
+    - target: {fileID: 1080817614218507800, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+      propertyPath: type
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2375395491166239985, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.34322783
