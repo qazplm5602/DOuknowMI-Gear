@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BaseStage : MonoBehaviour
+public abstract class BaseStage : MonoBehaviour
 {
     public Door[] door;
     public ROOMTYPE type;
@@ -21,7 +18,7 @@ public class BaseStage : MonoBehaviour
     public bool Cleared = false;
     public bool RoomActive = false;
 
-    public void LoadDoors()
+    public virtual void LoadDoors()
     {
         door = new Door[(int)Door.DoorType.DoorMax];
         for (Door.DoorType i = Door.DoorType.Up; i < Door.DoorType.DoorMax; i++)
@@ -38,7 +35,7 @@ public class BaseStage : MonoBehaviour
     }
 
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         if (ROOMTYPE.Normal == type)
         {
@@ -87,13 +84,13 @@ public class BaseStage : MonoBehaviour
         }
     }
 
-    public void StartRoom()
+    public virtual void StartRoom()
     {
 
     }
 
     [ContextMenu("Clear Wave")]
-    public void NextWave()
+    public virtual void NextWave()
     {
         ++CurrentWave;
         if (CurrentWave > MaxWave)
@@ -103,14 +100,13 @@ public class BaseStage : MonoBehaviour
         // do something for wavesa
     }
 
-    public void Init()
+    public virtual void Init()
     {
-        //playerobj = GameObject.Find("Player");
         LoadDoors();
         Initialize();
     }
 
-    public void Enter()
+    public virtual void Enter()
     {
         print(Map.Instance);
         Map.Instance.CurrentStage = this;
@@ -119,12 +115,12 @@ public class BaseStage : MonoBehaviour
         StartRoom();
         //spawn shits
     }
-    public void Exit()
+    public virtual void Exit()
     {
         Cleared = true;
         RoomActive = false;
     }
-    public void Clear()
+    public virtual void Clear()
     {
         RoomActive = true;
         Cleared = true;
