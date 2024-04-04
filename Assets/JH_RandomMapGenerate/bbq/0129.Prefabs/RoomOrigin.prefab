@@ -206,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2375395491166239985}
   - component: {fileID: 8175358732230591011}
-  - component: {fileID: -5784109519524508412}
+  - component: {fileID: 1080817614218507800}
   m_Layer: 0
   m_Name: RoomOrigin
   m_TagString: Untagged
@@ -285,7 +285,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-5784109519524508412
+--- !u!114 &1080817614218507800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,14 +294,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3368520076706366229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb97d233b0a2274cb16735dfa6a6da4, type: 3}
+  m_Script: {fileID: 11500000, guid: d047c6a9e4cc9524b844ff39061574c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door:
-  - {fileID: 6161850670465136139}
-  - {fileID: 2764849631058693508}
-  - {fileID: 8865158416994999321}
-  - {fileID: 2171174659742114346}
+  door: []
   type: 1
   StageNum: 0
   StageLinkedData:

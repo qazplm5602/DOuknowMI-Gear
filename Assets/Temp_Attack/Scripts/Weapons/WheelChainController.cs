@@ -4,7 +4,7 @@ using UnityEngine;
 public class WheelChainController : WeaponCollision
 {
     [SerializeField] private Transform _visualTrm;
-    [SerializeField] private GameObject _WheelChainFXPrefab;
+    [SerializeField] private GameObject _wheelChainFXPrefab;
     [SerializeField] private float _speed = 8f;
 
     private float _gearDamageMultiply = 10f;

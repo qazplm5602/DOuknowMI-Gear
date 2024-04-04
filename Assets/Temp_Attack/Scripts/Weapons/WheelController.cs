@@ -4,7 +4,7 @@ using UnityEngine;
 public class WheelController : WeaponCollision
 {
     [SerializeField] private Transform _visualTrm;
-    [SerializeField] private GameObject _boltFXPrefab;
+    [SerializeField] private GameObject _wheelFXPrefab;
     [SerializeField] private float _speed = 8f;
     private float _gearDamageMultiply = 5f;
 
