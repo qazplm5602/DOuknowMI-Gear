@@ -1,0 +1,8 @@
+ID,Speaker,Type,Order,Content,,,
+10001,Npc,Greeting,1,오 지우왔구나 반갑노이기
+20001,Npc,Conversation,1,인사좀 해보거라
+20002,Player,Conversation,2,우와 엔지니어씨 안녕하세여
+20003,Npc,Conversation,3,이제 꺼지렴
+30001,Npc,Cancle,1,담에 또 오렴
+40001,Player,Interaction,1,아재요 저 수리좀
+40002,Npc,Interaction,2,싸가지 보소? 이리 와보렴

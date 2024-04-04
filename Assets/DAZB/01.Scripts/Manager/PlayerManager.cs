@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
-    public PlayerStats stats;
+    public PlayerStat stats;
     public Transform playerTrm;
 
     private void Awake() {

@@ -12,7 +12,19 @@ public enum CogType {
 public class GearSO : ScriptableObject
 {
     public string id => base.name.Replace(" (SO),", "");
+    [SerializeField] Sprite icon;
     [SerializeField] new string name;
+    [SerializeField, TextArea] string desc;
+
+    [Header("Default Values")]
+    [SerializeField] int defaultDamage;
+    [SerializeField] float defaultRange;
+
+    [Header("Options")]
+    [SerializeField] bool activeDamage = true;
+    [SerializeField] bool activeRange = true;
+
+    [Space]
     [SerializeField] CogType[] cogList;
     [SerializeField] GameObject loadModule; // 스킬 관련된 스크를 오브젝트에 감싸서 넣어야함.
 
@@ -21,5 +33,14 @@ public class GearSO : ScriptableObject
 
     public CogType[] CogList => cogList;
 
+    // Getter
     public string Name => name;
+    public Sprite Icon => icon;
+    public string Desc => desc;
+
+    public int DefaultDamage => defaultDamage;
+    public float DefaultRange => defaultRange;
+
+    public bool ActiveDamage => activeDamage;
+    public bool ActiveRange => activeRange;
 }
