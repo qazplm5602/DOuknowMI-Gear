@@ -64,7 +64,6 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
     ////////////////////// TEST
     private void Update() {
-        print(Input.GetKeyUp(KeyCode.E));
         if (Input.GetKeyUp(KeyCode.E)) {
             Open();
         }

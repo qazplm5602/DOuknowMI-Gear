@@ -16,7 +16,7 @@ public class IngameUIControl : MonoBehaviour
     TextMeshProUGUI healthLevel;
 
     private void Awake() {
-        locationT = _location.GetComponent<TextMeshProUGUI>();
+        locationT = _location.GetComponentInChildren<TextMeshProUGUI>();
         
         healthRed = _healthBar.transform.Find("Red_in").GetComponent<Image>();
         healthGreen = _healthBar.transform.Find("Green_in").GetComponent<Image>();
