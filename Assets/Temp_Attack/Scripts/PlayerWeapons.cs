@@ -8,9 +8,11 @@ public enum PlayerWeapon
     Wheel,
     Piston,
     Foghorn,
-    BoltNutWheelChain
-
-    ,None // dont remove none
+    BoltNutWheelChain,
+    BoltNutWheelPistonChain,
+    BoltNutWheelPistonFoghornChain,
+    
+    None // dont remove none
 }
 
 public class PlayerWeapons : MonoBehaviour
