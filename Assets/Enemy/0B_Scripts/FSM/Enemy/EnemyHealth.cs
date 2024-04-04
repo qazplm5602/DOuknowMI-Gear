@@ -4,16 +4,17 @@ using FSM;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Transform Player;
-
     public int maxHealth;
     [SerializeField] private int _currentHealth;
     
     public event Action OnDead;
 
+    private Transform _playerTrm;
     private Enemy _owner;
 
     private void Start() {
+        _playerTrm = PlayerManager.instance.playerTrm;
+
         _currentHealth = maxHealth;
     }
 
@@ -38,8 +39,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
     //test
     private void Update() {
-        if(Player != null && Input.GetKeyDown(KeyCode.P)) {
-            ApplyDamage(10, Player);
+        if(_playerTrm != null && Input.GetKeyDown(KeyCode.P)) {
+            ApplyDamage(10, _playerTrm);
         }
     }
 }

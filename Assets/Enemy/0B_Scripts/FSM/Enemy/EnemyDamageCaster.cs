@@ -8,7 +8,7 @@ public class EnemyDamageCaster : MonoBehaviour
         Collider2D[] cols = Physics2D.OverlapBoxAll(position, range, 0, _whatIsEnemy);
 
         foreach(Collider2D col in cols) {
-            if(col.TryGetComponent<IDamageable>(out IDamageable target)) {
+            if(col.TryGetComponent(out IDamageable target)) {
                 target.ApplyDamage(damage, transform);
             }
         }
