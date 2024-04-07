@@ -44,7 +44,6 @@ public class GearManager : MonoBehaviour
 
     List<GearInfo> gears;
 
-
     public GameObject _player;
 
     private void Start() {
@@ -93,7 +92,7 @@ public class GearManager : MonoBehaviour
         };
         gears.Add(gearD);
 
-        if (data.LoadModule) {
+        if (data.LoadModule && scriptModule.GetSkillScript(data.id) == null) {
             var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, data.id, data.LoadModule);
             script._player = _player; // 플레이어 알려줌
         }
@@ -107,6 +106,7 @@ public class GearManager : MonoBehaviour
         Destroy(gear.entity);
         
         gears.RemoveAt(idx);
+        // scriptModule.UnloadModule(GearScriptModule.Type.Skill, gear.data.id);
 
         for (int i = idx; i < gears.Count; i++)
         {
@@ -115,6 +115,19 @@ public class GearManager : MonoBehaviour
             gearTrm.anchoredPosition = spawnGearCoords[i];
             gearD.system.reverse = !gearD.system.reverse;
         }
+    }
+
+    // 자주 호출은 하지 않는게 좋음
+    public GearSO[] GetSlotGearSO() {
+        GearSO[] result = new GearSO[gears.Count];
+        
+        int i = 0;
+        foreach (var item in gears)
+        {
+            result[i] = item.data;
+            i++;
+        }
+        return result;
     }
 
     int rollFinishRoll = 0;

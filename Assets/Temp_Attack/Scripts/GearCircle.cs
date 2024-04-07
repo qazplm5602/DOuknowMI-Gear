@@ -54,15 +54,15 @@ public class GearCircle : MonoBehaviour
     }
 
     // 콕 색상
-    Color GetCogTypeColor(CogType type) {
+    static public Color GetCogTypeColor(CogType type) {
         switch (type)
         {
             case CogType.Skill:
-                return Color.red;
+                return new Color32(245, 105, 84, 255);
             case CogType.Link:
-                return Color.blue;
+                return new Color32(0, 159, 255, 255);
             default:
-                return Color.white;
+                return new Color32(236, 161, 47, 255);
         }
     }
 
