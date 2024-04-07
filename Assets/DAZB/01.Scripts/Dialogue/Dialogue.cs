@@ -1,48 +1,45 @@
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using System.Collections;
-using DG.Tweening;
 
 public class Dialogue : MonoBehaviour
 {
-    [SerializeField] private TMP_Text nameText;
-    [SerializeField] private TMP_Text contentText;
-
-    [Header("대화")]
     public TextAsset dialogueDataFile;
-    public List<DialogueData> greetingList = new();
-    public List<DialogueData> cancleList = new();
-    public List<DialogueData> conversationList = new();
-    public List<DialogueData> interactionList = new();
+    private List<DialogueData> greetingList = new();
+    private List<DialogueData> cancleList = new();
+    private List<DialogueData> conversationList = new();
+    private List<DialogueData> interactionList = new();
+    private Npc npc;
 
     private void Awake()
     {
         string data = dialogueDataFile.text;
-        List<DialogueInfo> datas = CSVParser.parse(data);
+        List<DialogueData> datas = CSVParser.parse(data);
         foreach(var iter in datas) {
             if (iter.Type == "Cancle") {
-                cancleList.Add(new DialogueData(iter.Speaker, iter.Content));
+                cancleList.Add(iter);
             }
             else if (iter.Type == "Conversation") {
-                conversationList.Add(new DialogueData(iter.Speaker, iter.Content));
+                conversationList.Add(iter);
             }
             else if (iter.Type == "Greeting") {
-                greetingList.Add(new DialogueData(iter.Speaker, iter.Content));
+                greetingList.Add(iter);
             }
             else if (iter.Type == "Interaction") {
-                interactionList.Add(new DialogueData(iter.Speaker, iter.Content));
+                interactionList.Add(iter);
             }
         }
+        npc = GetComponent<Npc>();
     }
 
-    private void Start() {
-        Greeting();
+    public void StartDialogue() {
+        DialogueManager.instance.Init(greetingList, cancleList, conversationList, interactionList, npc);
+    }
+
+ /*    private void Start() {
+        Conversation();
     }
 
     public void Greeting() {
-       /*  nameText.text = greetingList[0].speaker;
-        contentText.text = greetingList[0].content; */
         StartCoroutine(GreetingRoutine());
     }
 
@@ -59,10 +56,25 @@ public class Dialogue : MonoBehaviour
     }
 
     private IEnumerator GreetingRoutine() {
+        int randNum = Random.Range(1, int.Parse(greetingList[greetingList.Count - 1].RandomType));
+        foreach (var iter in greetingList) {
+            if (int.Parse(iter.RandomType) == randNum) {
+                DialogueManager.instance.SetDialogue(npcData.Name, iter.Content, npcData.InteractionName);
+                yield return new WaitUntil(() => true == DialogueManager.instance.isEnd);
+            }
+        }
         yield return null;
     }
 
     private IEnumerator ConversationRoutine() {
+        int randNum = Random.Range(1, int.Parse(conversationList[conversationList.Count - 1].RandomType));
+        foreach (var iter in conversationList) {
+            if (int.Parse(iter.RandomType) == randNum) {
+                DialogueManager.instance.SetDialogue(npcData.Name, iter.Content, npcData.InteractionName);
+                yield return new WaitUntil(() => true == DialogueManager.instance.isEnd);
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            }
+        }
         yield return null;
     }
 
@@ -72,10 +84,5 @@ public class Dialogue : MonoBehaviour
 
     private IEnumerator CancleRoutine() {
         yield return null;
-    }
-
-    private void TypeText(TMP_Text text , float duration) {
-        text.maxVisibleCharacters = 0;
-        DOTween.To(x => text.maxVisibleCharacters = (int)x, 0f, text.text.Length, duration);
-    }
+    } */
 }
