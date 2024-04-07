@@ -3,9 +3,9 @@ using UnityEngine;
 namespace FSM {
     public class EnemyAnimationTrigger : MonoBehaviour
     {
-        private Enemy _enemy;
+        protected Enemy _enemy;
 
-        private void Awake() {
+        protected virtual void Awake() {
             _enemy = transform.parent.GetComponent<Enemy>();
         }
 

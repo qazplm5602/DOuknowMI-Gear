@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyProjectile : PoolableMono
 {
+    [SerializeField] private int _damage;
     [SerializeField] private LayerMask _whatIsEnemy;
 
     private float _lifeTime;
@@ -38,7 +39,7 @@ public class EnemyProjectile : PoolableMono
     
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.TryGetComponent(out IDamageable health)) {
-
+            health.ApplyDamage(_damage, transform);
         }
         int otherLayer = 1 << other.gameObject.layer;
         if((otherLayer & _whatIsEnemy.value) > 0) {
