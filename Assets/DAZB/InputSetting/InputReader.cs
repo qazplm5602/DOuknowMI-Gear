@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
     #region Player
     public event Action JumpEvent;
     public event Action DashEvent;
+    public event Action AttackEvent;
     #endregion
     #region UI
     public event Action StatOpenEvent;
@@ -82,5 +83,12 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
     public void OnMouse(InputAction.CallbackContext context)
     {
         mousePosition = context.ReadValue<Vector2>();
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed) {
+            AttackEvent?.Invoke();
+        }
     }
 }

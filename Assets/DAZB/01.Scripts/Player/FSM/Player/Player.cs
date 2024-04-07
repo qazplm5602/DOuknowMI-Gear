@@ -9,6 +9,9 @@ public enum PlayerStateEnum {
     Dash,
     Fall,
     Jump,
+    Hurt,
+    Attack,
+    Dead
 }
 
 public class Player : Agent
@@ -47,8 +50,13 @@ public class Player : Agent
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
     }
 
+    public override void HandleDeadEvent() {
+        isDead = true;
+        StateMachine.ChangeState(PlayerStateEnum.Dead);
+    }
+
     protected void Update() {
-        if (DialogueManager.instance.isEnd == false) return;
+        if (DialogueManager.instance.isEnd == false || isDead) return;
         StateMachine.CurrentState.UpdateState();
     }
 }

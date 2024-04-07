@@ -18,7 +18,7 @@ public class PlayerRunState : PlayerCanDashState
     {
         base.UpdateState();
         Vector2 velocity = movementDirection;
-        player.MovementCompo.SetMovement(velocity * player.moveSpeed);
+        player.MovementCompo.SetMovement(velocity * player.moveSpeed, true);
         HandleMovementEvent();
 
     }

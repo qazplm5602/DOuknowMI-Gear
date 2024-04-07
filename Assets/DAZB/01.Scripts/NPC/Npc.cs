@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Npc : MonoBehaviour
+public abstract class Npc : MonoBehaviour, IInteraction
 {
     [SerializeField] private NpcData npcData;
     [SerializeField] private LayerMask whatIsPlayer;
@@ -10,9 +10,9 @@ public abstract class Npc : MonoBehaviour
     protected bool isCheck;
     private Dialogue dialogue;
 
-    public abstract void Interaction();
     public NpcData GetNpcData() => npcData;
-
+    public abstract void Interaction();
+    
     private void Awake() {
         dialogue = GetComponent<Dialogue>();
     }

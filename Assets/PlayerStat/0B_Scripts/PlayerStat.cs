@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ public class PlayerStat : MonoBehaviour
     public float healthPerPointInc;
     public float attackSpeedPerPointInc;
     public float moveSpeedPerPointInc;
+
+    public Action OnUpdateStat;
 
     private int _atk;
     private int _health;
