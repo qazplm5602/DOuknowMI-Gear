@@ -28,7 +28,17 @@ public class Door : MonoBehaviour
 
     private void OnEnable()
     {
-        stageData = transform.parent.GetComponent<BaseStage>();
+        GameObject stage = gameObject;
+        int tries = 0, maxTries = 25;
+        while (!stage.CompareTag("Stage"))
+        {
+            stage = stage.transform.parent.gameObject;
+            tries++;
+        }
+        if (tries > maxTries)
+            return;
+
+        stageData = stage.GetComponent<BaseStage>();
 
         switch (Type)
         {

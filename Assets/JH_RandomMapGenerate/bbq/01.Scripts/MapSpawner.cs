@@ -140,7 +140,7 @@ public class MapSpawner : MonoBehaviour
         //왼쪽
         RandNum = Random.Range(0, 100);
         //Debug.Log($"랜덤{RandNum}");
-        if (RandNum <= 70)
+        if (RandNum <= 50)
         {
             if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
             {
@@ -161,7 +161,7 @@ public class MapSpawner : MonoBehaviour
 
         //위쪽
         RandNum = Random.Range(0, 100);
-        if (RandNum <= 25)
+        if (RandNum <= 35)
         {
             if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
             {
@@ -172,7 +172,7 @@ public class MapSpawner : MonoBehaviour
         //아래쪽
         RandNum = Random.Range(0, 100);
 
-        if (RandNum <= 25)
+        if (RandNum <= 35)
         {
             if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
             {
@@ -183,7 +183,7 @@ public class MapSpawner : MonoBehaviour
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
         if (current.NowCount < jajiOption.MinCnt)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 3; i >= 0; i++)
             {
                 int tempx = x + dirIndex[(DIRECTION)i].x;
                 int tempy = y + dirIndex[(DIRECTION)i].y;
@@ -348,14 +348,12 @@ public class MapSpawner : MonoBehaviour
 
                     bool pray = false;
                     ROOMSIZE roomSize = ROOMSIZE.Small;
-                    //if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방 이면서 상점과, 음식점이 없으면 상점과 음식점이 된다.
-                    //{
-                        
-                    //}
-                    //else
-                    //{
+                    if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방 이면서 상점과, 음식점이 없으면 상점과 음식점이 된다.
+                    {
 
-
+                    }
+                    else
+                    {
                         int rnd = Random.Range(1, 101);
                         if (rnd <= 70)
                         {
@@ -365,7 +363,7 @@ public class MapSpawner : MonoBehaviour
                         {
                             roomSize = ROOMSIZE.Large;
                         }
-                    //}
+                    }
 
                     roomSize = ROOMSIZE.Small;
                     

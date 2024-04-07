@@ -206,12 +206,11 @@ MonoBehaviour:
   - {fileID: 3741301128739732425, guid: da4f6b07e29806c4eb2d914b567a76d6, type: 3}
   PrayRoom: {fileID: 5724108683232609622, guid: 9b9eba52982abc54697324b43c367e28, type: 3}
   SmallRoom:
-  - {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
-  - {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+  - {fileID: 5724108683232609622, guid: a9e2c4c99ee2fc04eade1fa7673cab75, type: 3}
+  - {fileID: 7774449934344063952, guid: 258eae52bd90f904a9b529bb02e4ed25, type: 3}
   - {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
   MediumRoom:
-  - {fileID: 3059234917830217990, guid: ce067f9ac56762f40a8d2d0fbdfec607, type: 3}
-  - {fileID: 3059234917830217990, guid: 3d5716a91a7db0f4ca20e7777dd00b1a, type: 3}
+  - {fileID: 8779015678579230411, guid: 0d4820cd0e80be5439f83ebfaa004f93, type: 3}
   LargeRoom:
   - {fileID: 5436793796404222867, guid: f9f6a436b0e625342be3c1313a1bb002, type: 3}
   - {fileID: 5436793796404222867, guid: 197948877c2f077468e658c925f7cafb, type: 3}
@@ -231,7 +230,7 @@ MonoBehaviour:
   map: {fileID: 573908938}
   jajiOption:
     MaxCnt: 12
-    MinCnt: 6
+    MinCnt: 8
     MaxListSize: 8
     MaxStatue: 1
   current:
