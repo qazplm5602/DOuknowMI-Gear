@@ -92,7 +92,7 @@ public class GearManager : MonoBehaviour
         };
         gears.Add(gearD);
 
-        if (data.LoadModule) {
+        if (data.LoadModule && scriptModule.GetSkillScript(data.id) == null) {
             var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, data.id, data.LoadModule);
             script._player = _player; // 플레이어 알려줌
         }
@@ -106,6 +106,7 @@ public class GearManager : MonoBehaviour
         Destroy(gear.entity);
         
         gears.RemoveAt(idx);
+        // scriptModule.UnloadModule(GearScriptModule.Type.Skill, gear.data.id);
 
         for (int i = idx; i < gears.Count; i++)
         {
