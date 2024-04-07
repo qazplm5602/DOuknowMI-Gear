@@ -37,23 +37,6 @@ public class GearScriptModule : MonoBehaviour
         return script;
     }
 
-    public bool UnloadModule(Type type, string id) {
-        GearCogEvent script;
-
-        if (type == Type.Skill) {
-            if (skillEvents.TryGetValue(id, out script)) return false;
-            skillEvents.Remove(id);
-        } else if (type == Type.Link) {
-            if (linkEvents.TryGetValue(id, out script)) return false;
-            linkEvents.Remove(id);
-        } else return false;
-
-        if (script == null) return false;
-        
-        Destroy(script.gameObject);
-        return true;
-    }
-
     public GearCogEvent GetSkillScript(string id) {
         skillEvents.TryGetValue(id, out var script);
         return script;
