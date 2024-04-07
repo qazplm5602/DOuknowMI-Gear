@@ -161,7 +161,7 @@ public class MapSpawner : MonoBehaviour
 
         //위쪽
         RandNum = Random.Range(0, 100);
-        if (RandNum <= 35)
+        if (RandNum <= 50)
         {
             if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
             {
@@ -172,7 +172,7 @@ public class MapSpawner : MonoBehaviour
         //아래쪽
         RandNum = Random.Range(0, 100);
 
-        if (RandNum <= 35)
+        if (RandNum <= 50)
         {
             if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
             {
@@ -202,7 +202,7 @@ public class MapSpawner : MonoBehaviour
 
     public void ShowMaps()
     {
-        int interval = 30;
+        int interval = 90;
         int yval = jajiOption.MaxListSize;
 
         for (int y = 0; y < jajiOption.MaxListSize; y++)
@@ -364,8 +364,6 @@ public class MapSpawner : MonoBehaviour
                             roomSize = ROOMSIZE.Large;
                         }
                     }
-
-                    roomSize = ROOMSIZE.Small;
                     
 
                     GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
@@ -423,7 +421,7 @@ public class MapSpawner : MonoBehaviour
             int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
             GameObject prayRoom = map.StageLoad(ROOMTYPE.Pray);
             GameObject.Destroy(current.MapObjList[prayRoomIndex]);
-            current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom);
+            current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom,map.transform);
             current.StatueCount++;
 
             if (current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData != null)

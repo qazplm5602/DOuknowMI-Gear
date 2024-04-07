@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class BaseStage : MonoBehaviour
 {
+    [Header("UP DOWN RIGHT LEFT")]
     public Door[] door;
     public ROOMTYPE type;
 
