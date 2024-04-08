@@ -27,6 +27,6 @@ public class PlayerJumpState : PlayerCanDashState
     }
 
     private void HandleMovementEvent() {
-        player.MovementCompo.SetMovement(player.InputReader._xMovement * player.speed, true);
+        player.MovementCompo.SetMovement(player.InputReader._xMovement * player.moveSpeed, true);
     }
 }

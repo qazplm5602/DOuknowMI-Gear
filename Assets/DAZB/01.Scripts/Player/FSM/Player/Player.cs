@@ -17,13 +17,12 @@ public enum PlayerStateEnum {
 public class Player : Agent
 {
     [Header("Setting value")]
-    public float speed;
+    public float moveSpeed;
     public float dashPower;
     public float jumpPower;
     public float ATK;
-    public float def;
+    public float AtkSpeed;
     public PlayerStateMachine StateMachine {get; private set;}
-    [HideInInspector] public float lastAttackTime;
     [SerializeField] private InputReader inputReader;
     public InputReader InputReader => inputReader;
     public bool isDash;
@@ -31,7 +30,7 @@ public class Player : Agent
 
     protected override void Awake() {
         stats = GetComponent<PlayerStat>();
-        stats.OnUpdateStat += UpdateState;
+        moveSpeed = stats.defaultMoveSpeed;
         base.Awake();
         StateMachine = new PlayerStateMachine();
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum))) {
@@ -49,8 +48,6 @@ public class Player : Agent
 
     protected void Start() {
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
-        speed = stats.defaultSpeed;
-        def = stats.defaultDefense;
     }
 
     public override void HandleDeadEvent() {
@@ -61,9 +58,5 @@ public class Player : Agent
     protected void Update() {
         if (DialogueManager.instance.isEnd == false || isDead) return;
         StateMachine.CurrentState.UpdateState();
-    }
-
-    private void UpdateState() {
-        
     }
 }
