@@ -4,10 +4,24 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public struct GearStat {
+    public int level;
+    public int damage;
+    public float range;
+    
+    public readonly bool Equals(GearStat target) {
+        return (damage == target.damage) && (level == target.level) && (range == target.range);
+    }
+    // public static bool operator+(GearStat a, GearStat b) {
+    //     return (a.damage == b.damage) && (a.level == b.level) && (a.range == b.range);
+    // }
+}
+
 struct GearInfo {
     public GearSO data;
     public GameObject entity;
     public GearCircle system;
+    public GearStat stat;
 }
 
 struct GearLinkDTO {
@@ -79,7 +93,7 @@ public class GearManager : MonoBehaviour
     }
         
 
-    public void GearAdd(GearSO data) {
+    public void GearAdd(GearSO data, GearStat stat) {
         var myIdx = gears.Count;
         var gear = Instantiate(gearCircle, section);
         var gear_transform = gear.GetComponent<RectTransform>();
@@ -88,19 +102,34 @@ public class GearManager : MonoBehaviour
         var gearD = new GearInfo() { 
             data = data,
             entity = gear,
-            system = gear.GetComponent<GearCircle>()
+            system = gear.GetComponent<GearCircle>(),
+            stat = stat
         };
         gears.Add(gearD);
 
         if (data.LoadModule && scriptModule.GetSkillScript(data.id) == null) {
             var script = scriptModule.LoadModule(GearScriptModule.Type.Skill, data.id, data.LoadModule);
             script._player = _player; // 플레이어 알려줌
+            script._stat = stat; // 플레이어 알려줌
         }
 
         gearD.system.gearSO = data;
         gearD.system.reverse = (myIdx % 2) != 0;
         gearD.system.Init();
     }
+
+    // 그냥 스텟 없이 보낸 경우
+    public void GearAdd(GearSO data) {
+        GearStat stat = new GearStat
+        {
+            level = 0,
+            damage = data.ActiveDamage ? data.DefaultDamage : -1,
+            range = data.ActiveRange ? data.DefaultRange : -1
+        };
+
+        GearAdd(data, stat);
+    }
+
     public void GearRemove(int idx) {
         var gear = gears[idx];
         Destroy(gear.entity);
@@ -118,13 +147,13 @@ public class GearManager : MonoBehaviour
     }
 
     // 자주 호출은 하지 않는게 좋음
-    public GearSO[] GetSlotGearSO() {
-        GearSO[] result = new GearSO[gears.Count];
+    public GearGroupDTO[] GetSlotGearSO() {
+        GearGroupDTO[] result = new GearGroupDTO[gears.Count];
         
         int i = 0;
         foreach (var item in gears)
         {
-            result[i] = item.data;
+            result[i] = new() { data = item.data, stat = item.stat };
             i++;
         }
         return result;
