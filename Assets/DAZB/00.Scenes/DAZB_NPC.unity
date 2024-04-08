@@ -814,11 +814,12 @@ MonoBehaviour:
   isDead: 0
   ishurt: 0
   isInvincibility: 0
-  moveSpeed: 6
+  speed: 5
   dashPower: 25
   jumpPower: 10
   ATK: 0
-  AtkSpeed: 0
+  def: 0
+  lastAttackTime: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
 --- !u!50 &643500286
@@ -936,16 +937,16 @@ MonoBehaviour:
   statPoint: 0
   defaultAtk: 3
   defaultHealth: 10
-  defaultAttackSpeed: 0.2
-  defaultMoveSpeed: 8
+  defaultSpeed: 6
+  defaultDefense: 10
   atkPerPointInc: 0
   healthPerPointInc: 0
-  attackSpeedPerPointInc: 0
-  moveSpeedPerPointInc: 0
+  speedPerPointInc: 0
+  defensePerPointInc: 0
   _atkText: {fileID: 0}
   _healthText: {fileID: 0}
-  _attackSpeedText: {fileID: 0}
-  _moveSpeedText: {fileID: 0}
+  _defenseText: {fileID: 0}
+  _speedText: {fileID: 0}
   _moneyText: {fileID: 0}
   _expText: {fileID: 0}
   _statPointText: {fileID: 0}

@@ -21,10 +21,6 @@ public abstract class PlayerGroundState : PlayerState
         }
     }
 
-    private void HandleAttackEvent() {
-        
-    }
-
     private void HandleJumpEvent()
     {
         if (player.MovementCompo.isGround) {
