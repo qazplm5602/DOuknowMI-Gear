@@ -121,7 +121,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         var eventHandler = gearObj.GetComponent<GearChangeHoverEvent>();
         eventHandler.OnHoverEvent += (isHover) => {
             if (isHover) {
-                ShowDescription(gearInfo);
+                ShowDescription(gearInfo, gearGroup.stat);
             } else {
                 HideDescription();
             }
@@ -185,7 +185,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         eventManager.ClearEventHandler();
         eventManager.OnHoverEvent += (isHover) => {
             if (isHover)
-                ShowDescription(gear.data);
+                ShowDescription(gear.data, gear.stat);
             else
                 HideDescription();
         };
@@ -238,10 +238,10 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     }
 
     // 설명띄움
-    void ShowDescription(GearSO gearInfo) {
+    void ShowDescription(GearSO gearInfo, GearStat stat) {
         desc_title.text = gearInfo.Name;
         desc_image.sprite = gearInfo.Icon;
-        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개{(gearInfo.ActiveDamage ? $"\n기본 데미지: {gearInfo.DefaultDamage}" : "")}{(gearInfo.ActiveRange ? $"\n기본 범위: {gearInfo.DefaultRange}" : "")}";
+        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개\nLv.{stat.level}{(gearInfo.ActiveDamage ? $"\n데미지: {stat.damage}" : "")}{(gearInfo.ActiveRange ? $"\n범위: {stat.range}" : "")}";
         desc_script.text = gearInfo.Desc;
     }
 
