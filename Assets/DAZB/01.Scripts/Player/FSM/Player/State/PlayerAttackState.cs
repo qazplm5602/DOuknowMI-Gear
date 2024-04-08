@@ -8,14 +8,24 @@ public class PlayerAttackState : PlayerState
 
     public override void Enter()
     {
-        base.Enter();
         player.isAttack = true;
+        var gearList = GearManager.Instance.GetGearResult();
+        foreach (var iter in gearList) {
+            iter.script.Use();
+        }
+        GearManager.Instance.StartRoll(null);
+        stateMachine.ChangeState(PlayerStateEnum.Idle);
     }
 
-    public override void UpdateState() {
+/*     public override void UpdateState() {
+        HandleMovementEvent();
         if (endTriggerCalled) {
             stateMachine.ChangeState(PlayerStateEnum.Idle);
             player.isAttack = false;
         }
     }
+
+    private void HandleMovementEvent() {
+        player.MovementCompo.SetMovement(player.InputReader._xMovement * player.moveSpeed, true);
+    } */
 }

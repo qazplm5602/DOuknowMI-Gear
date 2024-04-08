@@ -44,7 +44,7 @@ public struct GearCogResultDTO {
     public int[] gearIdx;
 }
 
-public class GearManager : MonoBehaviour
+public class GearManager : MonoSingleton<GearManager>
 {
     [SerializeField] Transform section;
     [SerializeField] GearScriptModule scriptModule;
