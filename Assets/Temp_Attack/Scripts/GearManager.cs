@@ -8,6 +8,13 @@ public struct GearStat {
     public int level;
     public int damage;
     public float range;
+    
+    public readonly bool Equals(GearStat target) {
+        return (damage == target.damage) && (level == target.level) && (range == target.range);
+    }
+    // public static bool operator+(GearStat a, GearStat b) {
+    //     return (a.damage == b.damage) && (a.level == b.level) && (a.range == b.range);
+    // }
 }
 
 struct GearInfo {
@@ -140,13 +147,13 @@ public class GearManager : MonoBehaviour
     }
 
     // 자주 호출은 하지 않는게 좋음
-    public GearSO[] GetSlotGearSO() {
-        GearSO[] result = new GearSO[gears.Count];
+    public GearGroupDTO[] GetSlotGearSO() {
+        GearGroupDTO[] result = new GearGroupDTO[gears.Count];
         
         int i = 0;
         foreach (var item in gears)
         {
-            result[i] = item.data;
+            result[i] = new() { data = item.data, stat = item.stat };
             i++;
         }
         return result;
