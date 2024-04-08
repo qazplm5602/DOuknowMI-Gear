@@ -3155,7 +3155,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 5996621766262362415}
   - {fileID: 7346517444090218455}
-  type: 0
+  type: 3
   StageNum: 0
   StageLinkedData:
     RightMap: {fileID: 0}

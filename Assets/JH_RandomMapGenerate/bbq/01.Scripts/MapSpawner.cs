@@ -20,7 +20,7 @@ public class MapSpawner : MonoBehaviour
     public Map map;
 
     [Serializable]
-    public struct SpawnData
+    public struct MapSettings
     {
         public int MaxCnt;
         public int MinCnt;
@@ -31,14 +31,14 @@ public class MapSpawner : MonoBehaviour
     }
 
     [Serializable]
-    public class CurrentValue
+    public class CurrentMapState
     {
         public int NowCount;
         [SerializeField]
         public StageData[] Maplist;
         public List<GameObject> CurrentRoomObjs;
         public List<int> PrayRoomCandidates; // 조각상 방으로 가능한 방들의 인덱스 목록
-        public GameObject[] MapObjList;
+        public BaseStage[] MapObjList;
         public BaseStage StartRoom;
 
         public int LargeRoomChance;
@@ -47,13 +47,13 @@ public class MapSpawner : MonoBehaviour
         public int StatueCount;
     }
 
-    public SpawnData jajiOption = new SpawnData();
-    public CurrentValue current = new CurrentValue();
+    public MapSettings jajiOption = new MapSettings();
+    public CurrentMapState current = new CurrentMapState();
     public void InitSetting()
     {
         current.PrayRoomCandidates = new List<int>();
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
-        current.MapObjList = new GameObject[jajiOption.MaxListSize * jajiOption.MaxListSize];
+        current.MapObjList = new BaseStage[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.CurrentRoomObjs = new List<GameObject>();
         for (int i = 0; i < jajiOption.MaxListSize * jajiOption.MaxListSize - 1; i++)
         {
@@ -68,7 +68,7 @@ public class MapSpawner : MonoBehaviour
         InitSetting();
         MapSpawn(0, 2, null, 0);
         MakeMapMotherfuker();
-        MakeStatueRoom();
+        //MakeStatueRoom();
         ShowMaps();
     }
 
@@ -185,6 +185,7 @@ public class MapSpawner : MonoBehaviour
         {
             for (int i = 3; i >= 0; i++)
             {
+                if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
                 int tempx = x + dirIndex[(DIRECTION)i].x;
                 int tempy = y + dirIndex[(DIRECTION)i].y;
                 if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
@@ -211,12 +212,11 @@ public class MapSpawner : MonoBehaviour
             {
                 if (current.MapObjList[x + (y * yval)] != null)
                 {
-                    GameObject obj = current.MapObjList[x + (y * yval)];
-                    BaseStage stageData = obj.GetComponent<BaseStage>();
-                    obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
+                    BaseStage stageData = current.MapObjList[x + (y * yval)];
+                    stageData.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
 
                     int num = stageData.StageLinkedData.Num;
-                    obj.name = $"Room_{num}";
+                    stageData.gameObject.name = $"Room_{num}";
 
                     stageData.Init();
                     stageData.StageNum = num;
@@ -248,9 +248,9 @@ public class MapSpawner : MonoBehaviour
             if (mapObj != null)
             {
                 linkeddata.LeftMap = mapObj;
-                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.GetComponent<BaseStage>().StageLinkedData.RightMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.RightMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
@@ -261,9 +261,9 @@ public class MapSpawner : MonoBehaviour
             {
                 linkeddata.RightMap = mapObj;
 
-                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.GetComponent<BaseStage>().StageLinkedData.LeftMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.LeftMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
@@ -274,9 +274,9 @@ public class MapSpawner : MonoBehaviour
             {
                 linkeddata.UpMap = mapObj;
 
-                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.GetComponent<BaseStage>().StageLinkedData.DownMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.DownMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
@@ -287,9 +287,9 @@ public class MapSpawner : MonoBehaviour
             {
                 linkeddata.DownMap = mapObj;
 
-                if (mapObj.GetComponent<BaseStage>().StageLinkedData != null)
+                if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.GetComponent<BaseStage>().StageLinkedData.UpMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.UpMap = current.MapObjList[(x) + (y * yval)];
                 }
             }
         }
@@ -313,72 +313,70 @@ public class MapSpawner : MonoBehaviour
             }
 
 
-            if (current.Maplist[i] != null)
+            if (current.Maplist[i] == null) continue;
+            if (current.Maplist[i].Num == 0) // check if first room
             {
-                if (current.Maplist[i].Num == 0) // check if first room
+                current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Start));
+            }
+            else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
+            {
+                current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
+            }
+            else
+            {
+                if (current.Maplist[i].RightMap != null)
                 {
-                    current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Start));
+                    dir[(int)Door.DoorType.Right] = true;
+                    countDoor++;
                 }
-                else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
+                if (current.Maplist[i].LeftMap != null)
                 {
-                    current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
+                    dir[(int)Door.DoorType.Left] = true;
+                    countDoor++;
+                }
+                if (current.Maplist[i].UpMap != null)
+                {
+                    dir[(int)Door.DoorType.Up] = true;
+                    countDoor++;
+                }
+                if (current.Maplist[i].DownMap != null)
+                {
+                    dir[(int)Door.DoorType.Down] = true;
+                    countDoor++;
+                }
+
+                bool pray = false;
+                ROOMSIZE roomSize = ROOMSIZE.Small;
+                print(countDoor);
+                if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
+                {
+                    //진짜입니까??
                 }
                 else
                 {
-                    if (current.Maplist[i].RightMap != null)
+                    int rnd = Random.Range(1, 101);
+                    if (rnd <= 70)
                     {
-                        dir[(int)Door.DoorType.Right] = true;
-                        countDoor++;
-                    }
-                    if (current.Maplist[i].LeftMap != null)
-                    {
-                        dir[(int)Door.DoorType.Left] = true;
-                        countDoor++;
-                    }
-                    if (current.Maplist[i].UpMap != null)
-                    {
-                        dir[(int)Door.DoorType.Up] = true;
-                        countDoor++;
-                    }
-                    if (current.Maplist[i].DownMap != null)
-                    {
-                        dir[(int)Door.DoorType.Down] = true;
-                        countDoor++;
-                    }
-
-                    bool pray = false;
-                    ROOMSIZE roomSize = ROOMSIZE.Small;
-                    if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방 이면서 상점과, 음식점이 없으면 상점과 음식점이 된다.
-                    {
-
+                        roomSize = ROOMSIZE.Medium;
                     }
                     else
                     {
-                        int rnd = Random.Range(1, 101);
-                        if (rnd <= 70)
-                        {
-                            roomSize = ROOMSIZE.Medium;
-                        }
-                        else
-                        {
-                            roomSize = ROOMSIZE.Large;
-                        }
-                    }
-                    
-
-                    GameObject obj = (pray == false) ? map.StageLoad(ROOMTYPE.Normal, roomSize) : map.StageLoad(ROOMTYPE.Pray);
-                    current.MapObjList[i] = GameObject.Instantiate(obj, mapParent.transform);
-
-                    if (roomSize == ROOMSIZE.Small)
-                    {
-                        if (!pray) // Pray가 아닌 경우에만 후보 목록에 추가
-                        {
-                            current.PrayRoomCandidates.Add(i);
-                        }
+                        roomSize = ROOMSIZE.Large;
                     }
                 }
-                
-            }
+
+
+                BaseStage obj = map.StageLoad(ROOMTYPE.Normal, roomSize);
+                current.MapObjList[i] = Instantiate(obj, mapParent.transform);
+
+                if (roomSize == ROOMSIZE.Small)
+                {
+                    if (!pray) // Pray가 아닌 경우에만 후보 목록에 추가
+                    {
+                        current.PrayRoomCandidates.Add(i);
+                    }
+                }
+            }         
 
             if (current.MapObjList[i] != null)
             {
@@ -387,10 +385,10 @@ public class MapSpawner : MonoBehaviour
                     //문이 존재 해야 하는데 생성된 맵이 해당위치에 문이 없는 방이면 다시뽑게 한다.
                     if (dir[a])
                     {
-                        if (current.MapObjList[i].GetComponent<BaseStage>().door[a] == null)
+                        if (current.MapObjList[i].door[a] == null)
                         {
                             flag = true;
-                            GameObject.Destroy(current.MapObjList[i]);
+                            Destroy(current.MapObjList[i]);
                             break;
                         }
                     }
@@ -406,7 +404,7 @@ public class MapSpawner : MonoBehaviour
             if (current.MapObjList[i] != null)
             {
                 LinkedStage data = SetLinkingData(i);
-                current.MapObjList[i].GetComponent<BaseStage>().StageLinkedData = data;
+                current.MapObjList[i].StageLinkedData = data;
                 //obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
                 //Debug.Log($"{i}번방 링크세팅");
             }
@@ -419,15 +417,15 @@ public class MapSpawner : MonoBehaviour
         {
             int randomIndex = Random.Range(0, current.PrayRoomCandidates.Count);
             int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
-            GameObject prayRoom = map.StageLoad(ROOMTYPE.Pray);
+            BaseStage prayRoom = map.StageLoad(ROOMTYPE.Pray);
             GameObject.Destroy(current.MapObjList[prayRoomIndex]);
             current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom,map.transform);
             current.StatueCount++;
 
-            if (current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData != null)
+            if (current.MapObjList[prayRoomIndex].StageLinkedData != null)
             {
                 LinkedStage data = SetLinkingData(prayRoomIndex);
-                current.MapObjList[prayRoomIndex].GetComponent<BaseStage>().StageLinkedData = data;
+                current.MapObjList[prayRoomIndex].StageLinkedData = data;
             }
         }
     }

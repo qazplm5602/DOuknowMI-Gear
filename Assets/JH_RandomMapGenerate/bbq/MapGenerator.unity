@@ -200,19 +200,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentStage: {fileID: 0}
-  StartRoom: {fileID: 3368520076706366229, guid: 950cfe40d77f6df41bccb22ffac5d1ae, type: 3}
+  StartRoom: {fileID: 5353938931063013475, guid: d41c11fcdd6313944b5bdd86d2c74fae, type: 3}
   BossRoom:
-  - {fileID: 3741301128739732425, guid: da4f6b07e29806c4eb2d914b567a76d6, type: 3}
-  - {fileID: 3741301128739732425, guid: da4f6b07e29806c4eb2d914b567a76d6, type: 3}
-  PrayRoom: {fileID: 4843966201381268025, guid: 2f63b5c6d161d164983562b692422053, type: 3}
+  - {fileID: 4143770235450300818, guid: 8f2cb6d18d14bd1408aa9bf3ad1cb9c5, type: 3}
+  PrayRoom: {fileID: 4749083187472490087, guid: 2f63b5c6d161d164983562b692422053, type: 3}
   SmallRoom:
-  - {fileID: 7676785299428362684, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}
-  - {fileID: 7676785299428362684, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}
-  - {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
+  - {fileID: 7242360341026066563, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}
   MediumRoom:
-  - {fileID: 8779015678579230411, guid: 0d4820cd0e80be5439f83ebfaa004f93, type: 3}
+  - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
   LargeRoom:
-  - {fileID: 7676785299428362684, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
+  - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
 --- !u!114 &573908939
 MonoBehaviour:
   m_ObjectHideFlags: 0

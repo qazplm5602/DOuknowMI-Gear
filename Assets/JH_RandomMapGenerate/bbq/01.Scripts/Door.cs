@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
     
     private BaseStage stageData;
 
-    private GameObject nextRoom;
+    private BaseStage nextRoom;
 
     public void Awake()
     {
@@ -62,7 +62,7 @@ public class Door : MonoBehaviour
     public void Teleport()
     {
         stageData.Exit();
-        nextRoom.GetComponent<BaseStage>().Enter();
+        nextRoom.Enter();
         //텔레포트
         //plr.transform.position = nextRoom.GetComponent<BaseStage>().door[(int)OppoDir[Type]].transform.position;
     }

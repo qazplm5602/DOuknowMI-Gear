@@ -21,12 +21,12 @@ public class GayManater : MonoBehaviour
     {
         if (CurrentRoom != null && Input.anyKey)
         {
-            GameObject canMoveRoom = IsCanMoveRoom(new Vector2Int((int)Input.GetAxisRaw("Horizontal")
+            BaseStage canMoveRoom = IsCanMoveRoom(new Vector2Int((int)Input.GetAxisRaw("Horizontal")
              , (int)Input.GetAxisRaw("Vertical")));
             if ((bool)canMoveRoom)
             {
                 print("ming u moved room");
-                MoveRoom(canMoveRoom.GetComponent<BaseStage>());
+                MoveRoom(canMoveRoom);
             }
         }
     }
@@ -47,7 +47,7 @@ public class GayManater : MonoBehaviour
         vcam.transform.position = targetRoom.transform.position + Vector3.back * 10;
     }
 
-    public GameObject IsCanMoveRoom(Vector2Int whereToMove)
+    public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
     {
         if (CurrentRoom.RoomActive && CurrentRoom.Cleared)
         {
