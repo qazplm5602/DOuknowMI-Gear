@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAttackState : PlayerState
@@ -11,11 +9,13 @@ public class PlayerAttackState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.isAttack = true;
     }
 
-    private void Update() {
+    public override void UpdateState() {
         if (endTriggerCalled) {
             stateMachine.ChangeState(PlayerStateEnum.Idle);
+            player.isAttack = false;
         }
     }
 }
