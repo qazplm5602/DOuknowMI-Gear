@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 
 public enum PlayerStatEnum {
-    Atk, Health, AttackSpeed, MoveSpeed, Money, Exp
+    Atk, Health, Speed, Defense, Money, Exp
 }
 
 public class PlayerStat : MonoBehaviour
@@ -15,23 +15,29 @@ public class PlayerStat : MonoBehaviour
     [Header("default")]
     public int defaultAtk;
     public int defaultHealth;
-    public float defaultAttackSpeed;
-    public float defaultMoveSpeed;
+    public int defaultSpeed;
+    public int defaultDefense;
 
     [Header("point per increas value")]
     public float atkPerPointInc;
     public float healthPerPointInc;
-    public float attackSpeedPerPointInc;
-    public float moveSpeedPerPointInc;
+    public float speedPerPointInc;
+    public float defensePerPointInc;
 
     public Action OnUpdateStat;
 
     private int _atk;
     private int _health;
-    private int _attackSpeed;
-    private int _moveSpeed;
+    private int _defense;
+    private int _speed;
     private int _money;
     private int _exp;
+
+    // current stat
+    private float currentHealth;
+    private float currentSpeed;
+    private float currentDefense;
+    private float currentAtk;
 
     [HideInInspector] public int Atk {
         get => _atk;
@@ -47,18 +53,18 @@ public class PlayerStat : MonoBehaviour
             _healthText.text = _health.ToString();
         }
     }
-    [HideInInspector] public int AttackSpeed {
-        get => _attackSpeed;
+    [HideInInspector] public int Defense {
+        get => _defense;
         set {
-            _attackSpeed = value;
-            _attackSpeedText.text = _attackSpeed.ToString();
+            _defense = value;
+            _defenseText.text = _defense.ToString();
         }
     }
-    [HideInInspector] public int MoveSpeed {
-        get => _moveSpeed;
+        [HideInInspector] public int Speed {
+        get => _speed;
         set {
-            _moveSpeed = value;
-            _moveSpeedText.text = _moveSpeed.ToString();
+            _speed = value;
+            _speedText.text = _defense.ToString();
         }
     }
     [HideInInspector] public int Money {
@@ -81,8 +87,8 @@ public class PlayerStat : MonoBehaviour
     [Header("Stat Text")]
     public TextMeshProUGUI _atkText;
     public TextMeshProUGUI _healthText;
-    public TextMeshProUGUI _attackSpeedText;
-    public TextMeshProUGUI _moveSpeedText;
+    public TextMeshProUGUI _defenseText;
+    public TextMeshProUGUI _speedText;
     public TextMeshProUGUI _moneyText;
     public TextMeshProUGUI _expText;
 
@@ -101,14 +107,14 @@ public class PlayerStat : MonoBehaviour
             case PlayerStatEnum.Health:
                 ++Health;
                 break;
-            case PlayerStatEnum.AttackSpeed:
-                ++AttackSpeed;
-                break;
-            case PlayerStatEnum.MoveSpeed:
-                ++MoveSpeed;
+            case PlayerStatEnum.Speed:
+                ++Speed;
                 break;
             case PlayerStatEnum.Money:
                 ++Money;
+                break;
+            case PlayerStatEnum.Defense:
+                ++Defense;
                 break;
             case PlayerStatEnum.Exp:
                 ++Exp;
@@ -126,12 +132,12 @@ public class PlayerStat : MonoBehaviour
                 if(Health > 0) --Health;
                 else return;
                 break;
-            case PlayerStatEnum.AttackSpeed:
-                if(AttackSpeed > 0) --AttackSpeed;
+            case PlayerStatEnum.Speed:
+                if(Speed > 0) --Speed;
                 else return;
                 break;
-            case PlayerStatEnum.MoveSpeed:
-                if(MoveSpeed > 0) --MoveSpeed;
+            case PlayerStatEnum.Defense:
+                if(Defense > 0) --Defense;
                 else return;
                 break;
             case PlayerStatEnum.Money:
@@ -151,8 +157,8 @@ public class PlayerStat : MonoBehaviour
     public void ResetStat() {
         statPoint += Atk;
         statPoint += Health;
-        statPoint += AttackSpeed;
-        statPoint += MoveSpeed;
+        statPoint += Speed;
+        statPoint += Defense;
         statPoint += Money;
         statPoint += Exp;
         
@@ -160,8 +166,8 @@ public class PlayerStat : MonoBehaviour
 
         Atk = 0;
         Health = 0;
-        AttackSpeed = 0;
-        MoveSpeed = 0;
+        Speed = 0;
+        Defense = 0;
         Money = 0;
         Exp = 0;
     }
