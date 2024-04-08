@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum PlayerStateEnum {
@@ -20,17 +21,24 @@ public class Player : Agent
     public float moveSpeed;
     public float dashPower;
     public float jumpPower;
-    public float ATK;
-    public float AtkSpeed;
+    public float atk;
+    public float atkCool;
+    public float criticalChance;
     public PlayerStateMachine StateMachine {get; private set;}
     [SerializeField] private InputReader inputReader;
     public InputReader InputReader => inputReader;
     public bool isDash;
     private PlayerStat stats;
+    public float lastAttackTime {get; private set;}
+    public bool isAttack;
 
     protected override void Awake() {
         stats = GetComponent<PlayerStat>();
+        stats.OnUpdateStat += UpdateState;
         moveSpeed = stats.defaultMoveSpeed;
+        atk = stats.defaultAtk;
+        atkCool = stats.defaultAttackCool;
+        criticalChance = stats.defaultCriticalChance;
         base.Awake();
         StateMachine = new PlayerStateMachine();
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum))) {
@@ -46,6 +54,10 @@ public class Player : Agent
         }
     }
 
+    private void OnDestroy() {
+        stats.OnUpdateStat -= UpdateState;
+    }
+
     protected void Start() {
         StateMachine.Initialize(PlayerStateEnum.Idle, this);
     }
@@ -58,5 +70,12 @@ public class Player : Agent
     protected void Update() {
         if (DialogueManager.instance.isEnd == false || isDead) return;
         StateMachine.CurrentState.UpdateState();
+    }
+
+    private void UpdateState() {
+        moveSpeed = stats.currentMoveSpeed;
+        atk = stats.currentAtk;
+        atkCool = stats.currentAttckCool;
+        criticalChance = stats.currentCriticalChance;
     }
 }
