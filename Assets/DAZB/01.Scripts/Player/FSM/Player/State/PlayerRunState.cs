@@ -2,19 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerRunState : PlayerGroundState
+public class PlayerRunState : PlayerCanDashState
 {
     private Vector2 movementDirection;
     public PlayerRunState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
     {
     }
 
+    public override void Enter()
+    {
+        base.Enter();
+    }
 
     public override void UpdateState()
     {
         base.UpdateState();
         Vector2 velocity = movementDirection;
-        player.MovementCompo.SetMovement(velocity * player.moveSpeed);
+        player.MovementCompo.SetMovement(velocity * player.moveSpeed, true);
         HandleMovementEvent();
 
     }

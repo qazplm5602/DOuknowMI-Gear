@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+public class GearGroupDTO {
+    public GearSO data;
+    public GearStat stat;
+}
+
 public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 {
     [SerializeField] int maxGear = 4; // 최대 장착 가능한 수
@@ -35,9 +40,9 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
     [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
-    List<GearSO> gearDatas;
+    List<GearGroupDTO> gearDatas;
 
-    GearSO[] inventory = new GearSO[9 * 6];
+    GearGroupDTO[] inventory = new GearGroupDTO[9 * 6];
 
     private void Awake() {
         gearDatas = new();
@@ -56,7 +61,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
         foreach (var item in _gearDatas) {
             // GearAdd(item);
-            print($"{item.Name} inven add {GiveInventory(item)}");
+            print($"{item.Name} inven add {GiveInventory(new GearGroupDTO() { data = item })}");
         }
     
         // Open();
@@ -73,12 +78,12 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     // 메뉴 오픈
     public void Open() {
         bool needRefresh = false;
-        GearSO[] slot =  _gearManager.GetSlotGearSO();
+        GearGroupDTO[] slot =  _gearManager.GetSlotGearSO();
 
         if (gearDatas.Count != slot.Length) needRefresh = true;
         if (!needRefresh)
             for (int i = 0; i < slot.Length; i++) {
-                if (gearDatas[i] != gearDatas[i]) {
+                if (gearDatas[i].data != slot[i].data || gearDatas[i].stat.Equals(slot[i].stat)) {
                     needRefresh = true;
                     break;
                 }
@@ -102,8 +107,10 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         _main.gameObject.SetActive(false);
     }
 
-    void GearAdd(GearSO gearInfo) {
-        gearDatas.Add(gearInfo);
+    // void GearAdd(GearSO gearInfo, GearStat stat) {
+    void GearAdd(GearGroupDTO gearGroup) {
+        GearSO gearInfo = gearGroup.data;
+        gearDatas.Add(gearGroup);
 
         GameObject gearObj = Instantiate(_gearPrefab, _content);
         RectTransform gearTrm = gearObj.GetComponent<RectTransform>();
@@ -114,7 +121,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         var eventHandler = gearObj.GetComponent<GearChangeHoverEvent>();
         eventHandler.OnHoverEvent += (isHover) => {
             if (isHover) {
-                ShowDescription(gearInfo);
+                ShowDescription(gearInfo, gearGroup.stat);
             } else {
                 HideDescription();
             }
@@ -128,7 +135,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
                     GearRemove(idx);
                     _gearManager.GearRemove(idx);
-                    GiveInventory(gearInfo);
+                    GiveInventory(gearGroup);
                     break;
                 }
             }
@@ -159,7 +166,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         gearDatas.RemoveAt(idx);
     }
 
-    bool GiveInventory(GearSO gear, int idx = -1) {
+    bool GiveInventory(GearGroupDTO gear, int idx = -1) {
         if (idx == -1) {
             idx = GetEmptyInventoryIdx();
             if (idx == -1) return false;
@@ -172,13 +179,13 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         var invenEntity = inven_content.GetChild(idx);
         var imageBox = invenEntity.GetChild(0).GetComponent<Image>();
         imageBox.enabled = true;
-        imageBox.sprite = gear.Icon;
+        imageBox.sprite = gear.data.Icon;
 
         var eventManager = invenEntity.GetComponent<GearChangeHoverEvent>();
         eventManager.ClearEventHandler();
         eventManager.OnHoverEvent += (isHover) => {
             if (isHover)
-                ShowDescription(gear);
+                ShowDescription(gear.data, gear.stat);
             else
                 HideDescription();
         };
@@ -231,10 +238,10 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     }
 
     // 설명띄움
-    void ShowDescription(GearSO gearInfo) {
+    void ShowDescription(GearSO gearInfo, GearStat stat) {
         desc_title.text = gearInfo.Name;
         desc_image.sprite = gearInfo.Icon;
-        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개{(gearInfo.ActiveDamage ? $"\n기본 데미지: {gearInfo.DefaultDamage}" : "")}{(gearInfo.ActiveRange ? $"\n기본 범위: {gearInfo.DefaultRange}" : "")}";
+        desc_subText.text = $"톱니개수: {gearInfo.CogList.Length}개\nLv.{stat.level}{(gearInfo.ActiveDamage ? $"\n데미지: {stat.damage}" : "")}{(gearInfo.ActiveRange ? $"\n범위: {stat.range}" : "")}";
         desc_script.text = gearInfo.Desc;
     }
 
@@ -258,6 +265,6 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         var gearD = inventory[invenID];
         RemoveInventory(invenID);
         GearAdd(gearD);
-        _gearManager.GearAdd(gearD);
+        _gearManager.GearAdd(gearD.data, gearD.stat);
     }
 }

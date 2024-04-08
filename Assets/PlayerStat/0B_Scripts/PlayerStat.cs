@@ -1,8 +1,9 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public enum PlayerStatEnum {
-    Atk, Health, AttackSpeed, MoveSpeed, Money, Exp
+    Atk, Health, Speed, CriticalChance, Defence, Money, Exp
 }
 
 public class PlayerStat : MonoBehaviour
@@ -11,18 +12,48 @@ public class PlayerStat : MonoBehaviour
     
     #region Stats
 
+    [Header("default")]
+    public int defaultAtk;
+    public int defaultHealth;
+    public float defaultAttackCool;
+    public float defaultMoveSpeed;
+    public float defaultDefence;
+    public float defaultCriticalChance;
+
+    [Header("point per increas value")]
+    public float atkPerPointInc;
+    public float healthPerPointInc;
+    public float attackCoolPerPointInc;
+    public float moveSpeedPerPointInc;
+    public float defencePerPointInc;
+    public float ciriticalChancePerPointInc;
+
+    public Action OnUpdateStat;
+
     private int _atk;
     private int _health;
-    private int _attackSpeed;
-    private int _moveSpeed;
+    private int _defence;
+    private int _speed;
+    private int _criticalChance;
     private int _money;
     private int _exp;
+
+    #region current stat
+    public int currentAtk {get; private set;}
+    public int currentHealth {get; private set;}
+    public int currentMoveSpeed {get; private set;}
+    public int currentDefence {get; private set;}
+    public float currentCriticalChance {get; private set;}
+    public float currentAttckCool {get; private set;}
+    #endregion
 
     [HideInInspector] public int Atk {
         get => _atk;
         set {
             _atk = value;
             _atkText.text = _atk.ToString();
+            currentAtk = (int)(defaultAtk + _atk * atkPerPointInc);
+            OnUpdateStat?.Invoke();
         }
     }
     [HideInInspector] public int Health {
@@ -30,22 +61,41 @@ public class PlayerStat : MonoBehaviour
         set {
             _health = value;
             _healthText.text = _health.ToString();
+            currentHealth = (int)(defaultHealth + _health * healthPerPointInc);
+            OnUpdateStat?.Invoke();
         }
     }
-    [HideInInspector] public int AttackSpeed {
-        get => _attackSpeed;
+    [HideInInspector] public int Speed {
+        get => _speed;
         set {
-            _attackSpeed = value;
-            _attackSpeedText.text = _attackSpeed.ToString();
+            _speed = value;
+            _speedText.text = _speed.ToString();
+            currentAttckCool = defaultAttackCool - _speed * attackCoolPerPointInc;
+            currentMoveSpeed = (int)(defaultMoveSpeed + _speed * moveSpeedPerPointInc);
+            OnUpdateStat?.Invoke();
         }
     }
-    [HideInInspector] public int MoveSpeed {
-        get => _moveSpeed;
+
+    [HideInInspector] public int Defence {
+        get => _defence;
         set {
-            _moveSpeed = value;
-            _moveSpeedText.text = _moveSpeed.ToString();
+            _defence = value;
+            _defenceText.text = _defence.ToString();
+            currentDefence = (int)(defaultDefence + _defence * defencePerPointInc);
+            OnUpdateStat?.Invoke();
         }
     }
+
+    [HideInInspector] public int CriticalChance {
+        get => _criticalChance;
+        set {
+            _criticalChance = value;
+            _criticalChanceText.text = _criticalChance.ToString();
+            currentCriticalChance = defaultCriticalChance + _criticalChance * ciriticalChancePerPointInc;
+            OnUpdateStat?.Invoke();
+        }
+    }
+
     [HideInInspector] public int Money {
         get => _money;
         set {
@@ -64,14 +114,15 @@ public class PlayerStat : MonoBehaviour
     #endregion
 
     [Header("Stat Text")]
-    [SerializeField] private TextMeshProUGUI _atkText;
-    [SerializeField] private TextMeshProUGUI _healthText;
-    [SerializeField] private TextMeshProUGUI _attackSpeedText;
-    [SerializeField] private TextMeshProUGUI _moveSpeedText;
-    [SerializeField] private TextMeshProUGUI _moneyText;
-    [SerializeField] private TextMeshProUGUI _expText;
+    public TextMeshProUGUI _atkText;
+    public TextMeshProUGUI _healthText;
+    public TextMeshProUGUI _speedText;
+    public TextMeshProUGUI _criticalChanceText;
+    public TextMeshProUGUI _defenceText;
+    public TextMeshProUGUI _moneyText;
+    public TextMeshProUGUI _expText;
 
-    [SerializeField] private TextMeshProUGUI _statPointText;
+    public TextMeshProUGUI _statPointText;
 
     public void IncreaseStat(int stat) {
         if(statPoint <= 0) return;
@@ -86,11 +137,14 @@ public class PlayerStat : MonoBehaviour
             case PlayerStatEnum.Health:
                 ++Health;
                 break;
-            case PlayerStatEnum.AttackSpeed:
-                ++AttackSpeed;
+            case PlayerStatEnum.Speed:
+                ++Speed;
                 break;
-            case PlayerStatEnum.MoveSpeed:
-                ++MoveSpeed;
+            case PlayerStatEnum.CriticalChance:
+                ++CriticalChance;
+                break;
+            case PlayerStatEnum.Defence:
+                ++Defence;
                 break;
             case PlayerStatEnum.Money:
                 ++Money;
@@ -111,12 +165,8 @@ public class PlayerStat : MonoBehaviour
                 if(Health > 0) --Health;
                 else return;
                 break;
-            case PlayerStatEnum.AttackSpeed:
-                if(AttackSpeed > 0) --AttackSpeed;
-                else return;
-                break;
-            case PlayerStatEnum.MoveSpeed:
-                if(MoveSpeed > 0) --MoveSpeed;
+            case PlayerStatEnum.Speed:
+                if(Speed > 0) --Speed;
                 else return;
                 break;
             case PlayerStatEnum.Money:
@@ -136,17 +186,19 @@ public class PlayerStat : MonoBehaviour
     public void ResetStat() {
         statPoint += Atk;
         statPoint += Health;
-        statPoint += AttackSpeed;
-        statPoint += MoveSpeed;
+        statPoint += Speed;
         statPoint += Money;
+        statPoint += Defence;
+        statPoint += CriticalChance;
         statPoint += Exp;
         
         _statPointText.text = $"StatPoint: {statPoint}";
 
         Atk = 0;
         Health = 0;
-        AttackSpeed = 0;
-        MoveSpeed = 0;
+        Speed = 0;
+        Defence = 0;
+        CriticalChance = 0;
         Money = 0;
         Exp = 0;
     }
