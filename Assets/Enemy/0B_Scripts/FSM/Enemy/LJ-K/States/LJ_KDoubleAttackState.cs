@@ -1,9 +1,9 @@
 using UnityEngine;
 using FSM;
 
-public class LJ_KChopState : EnemyState<LJ_KStateEnum>
+public class LJ_KDoubleAttackState : EnemyState<LJ_KStateEnum>
 {
-    public LJ_KChopState(Enemy enemy, EnemyStateMachine<LJ_KStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
+    public LJ_KDoubleAttackState(Enemy enemy, EnemyStateMachine<LJ_KStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
     private EnemyLJ_K _enemyLJ_K;
 
@@ -12,9 +12,9 @@ public class LJ_KChopState : EnemyState<LJ_KStateEnum>
 
         _enemyLJ_K = _enemy as EnemyLJ_K;
 
-        _enemyLJ_K.currentAttackDamage = _enemyLJ_K.chopDamage;
-        _enemyLJ_K.currentAttackRange = _enemyLJ_K.chopRange;
-        _enemyLJ_K.currentAttackOffset = _enemyLJ_K.chopOffset;
+        _enemyLJ_K.currentAttackDamage = _enemyLJ_K.doubleAttackDamage;
+        _enemyLJ_K.currentAttackRange = _enemyLJ_K.doubleAttack1Range;
+        _enemyLJ_K.currentAttackOffset = _enemyLJ_K.doubleAttack1Offset;
 
         _enemy.StopImmediately(false);
     }

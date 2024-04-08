@@ -3,7 +3,7 @@ using UnityEngine;
 using FSM;
 
 public enum LJ_KStateEnum {
-    Battle, Chop, Dead
+    Battle, Chop, DoubleAttack, Dead
 }
 
 public class EnemyLJ_K : Enemy
@@ -12,13 +12,28 @@ public class EnemyLJ_K : Enemy
 
     public readonly int battleModeHash = Animator.StringToHash("BattleMode");
 
+    [HideInInspector] public int currentAttackDamage;
     [HideInInspector] public Vector2 currentAttackRange;
     [HideInInspector] public Vector2 currentAttackOffset;
+
+    [Header("Pattern Check Settings")]
+    public float combatAttackDistance;
+    public float rangeAttackDistance;
 
     [Header("Pattern Settings")]
     public int chopDamage;
     public Vector2 chopRange;
-    public Vector2 chopOffset; 
+    public Vector2 chopOffset;
+    public GameObject stonePrefab;
+    public Transform stoneSpawnPosTrm;
+
+    [Space]
+
+    public int doubleAttackDamage;
+    public Vector2 doubleAttack1Range;
+    public Vector2 doubleAttack1Offset;
+    public Vector2 doubleAttack2Range;
+    public Vector2 doubleAttack2Offset;
 
     protected override void Awake() {
         base.Awake();
@@ -48,8 +63,16 @@ public class EnemyLJ_K : Enemy
     }
 
     public override void Attack() {
-        
+        DamageCasterCompo.Damage(currentAttackDamage, (Vector2)transform.position + currentAttackOffset, currentAttackRange);
     }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
+    private void OnDrawGizmos() {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube((Vector2)transform.position + chopOffset * FacingDirection, chopRange);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube((Vector2)transform.position + doubleAttack1Offset * FacingDirection, doubleAttack1Range);
+        Gizmos.DrawWireCube((Vector2)transform.position + doubleAttack2Offset * FacingDirection, doubleAttack2Range);
+    }
 }

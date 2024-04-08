@@ -14,19 +14,30 @@ public class LJ_KBattleState : EnemyState<LJ_KStateEnum>
         _playerTrm = PlayerManager.instance.playerTrm;
         _enemyLJ_K = _enemy as EnemyLJ_K;
         _enemy.AnimatorCompo.SetFloat(_enemyLJ_K.battleModeHash, 0);
+        _enemy.FlipController(_playerTrm.position.x - _enemy.transform.position.x);
     }
 
     public override void UpdateState() {
         float distance = Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x);
-        if(distance <= 6f) {
-            _enemy.StopImmediately(false);
-        }
-        else if(distance <= 7.5f) {
+        if(distance <= _enemyLJ_K.combatAttackDistance) {
             if(_enemy.CanAttack()) {
-                _stateMachine.ChangeState(LJ_KStateEnum.Chop);
+                _stateMachine.ChangeState(LJ_KStateEnum.DoubleAttack);
+                return;
             }
         }
+        else if(distance > _enemyLJ_K.rangeAttackDistance) {
+            if(_enemy.CanAttack()) {
+                return;
+            }
+        }
+
+        if(distance <= _enemy.nearDistance) {
+            _enemy.AnimatorCompo.SetFloat(_enemyLJ_K.battleModeHash, 0);
+            _enemy.StopImmediately(false);
+        }
         else {
+            _enemy.AnimatorCompo.SetFloat(_enemyLJ_K.battleModeHash, 1);
+            _enemy.FlipController(_playerTrm.position.x - _enemy.transform.position.x);
             _enemy.SetVelocity(_enemy.moveSpeed * _enemy.FacingDirection, _rigidbody.velocity.y);
         }
     }
