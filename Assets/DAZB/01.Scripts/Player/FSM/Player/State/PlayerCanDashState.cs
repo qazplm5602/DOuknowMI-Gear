@@ -11,20 +11,11 @@ public abstract class PlayerCanDashState : PlayerGroundState
     public override void Enter() {
         base.Enter();
         player.InputReader.DashEvent += HadleDashEvent;
-        player.InputReader.AttackEvent += HandleAttackEvent;
     }
     
     public override void Exit() {
         player.InputReader.DashEvent -= HadleDashEvent;
-        player.InputReader.AttackEvent -= HandleAttackEvent;
         base.Exit();
-    }
-
-    private void HandleAttackEvent() {
-        bool cooldownPass = player.lastAttackTime + player.speed <= Time.time;
-        if (cooldownPass) {
-            //stateMachine.ChangeState(PlayerStateEnum.Attack);
-        }
     }
 
     private void HadleDashEvent() {
