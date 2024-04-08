@@ -1,8 +1,16 @@
-ID,Speaker,Type,Order,Content,,,
-10001,Npc,Greeting,1,오 지우왔구나 반갑노이기
-20001,Npc,Conversation,1,인사좀 해보거라
-20002,Player,Conversation,2,우와 엔지니어씨 안녕하세여
-20003,Npc,Conversation,3,이제 꺼지렴
-30001,Npc,Cancle,1,담에 또 오렴
-40001,Player,Interaction,1,아재요 저 수리좀
-40002,Npc,Interaction,2,싸가지 보소? 이리 와보렴
+Random Type,Type,Order,Content,
+1,Greeting,1,오 지우왔구나 반갑노이기,
+2,Greeting,1,오 이게뭐야 이지우잖아??,
+1,Conversation,1,인사좀 해보거라,
+1,Conversation,2,인사 잘 한다~,
+1,Conversation,3,이제 꺼지렴,
+2,Conversation,1,아니글쎄 이지우가 엔진수행을 망쳣단다,
+2,Conversation,2,기획인 나도 이렇진 않겠구나,
+3,Conversation,1,어떻게 하면 레이캐스트 시험을 망치는지 모르겠구나,
+3,Conversation,2,겜마고의 미래가 아주 불투명해,
+1,Cancle,1,담에 또 오렴,
+1,Cancle,1,취소할거면 왜 말을 걸었니,
+1,Interaction,1,뭐?수리를 해달라고?,
+1,Interaction,2,싸가지 보소? 이리 와보렴,
+2,Interaction,1,존나 고장냈네,
+2,Interaction,2,하지만 고쳐줄게 딱히 너를 좋아해서 그런건 아니라고..!,

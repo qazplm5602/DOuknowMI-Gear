@@ -7,15 +7,24 @@ public abstract class Agent : MonoBehaviour
     public Animator AnimatorCompo {get; protected set;}
     public AgentMovement MovementCompo {get; protected set;}
     public Rigidbody2D RigidCompo {get; protected set;}
+    public PlayerHealth HealthCompo {get; protected set;}
     public bool CanStateChangeable { get; protected set; } = true;
-    
+    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool ishurt = false;
+    [HideInInspector] public bool isInvincibility = false;
 
     protected virtual void Awake()
     {
         AnimatorCompo = GetComponent<Animator>();
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody2D>();
+        HealthCompo = GetComponent<PlayerHealth>();
         MovementCompo.Initialize(this);
+        HealthCompo.OnDead += HandleDeadEvent;
+    }
+
+    private void OnDestroy() {
+        HealthCompo.OnDead -= HandleDeadEvent;
     }
         
     #region Delay callback coroutine
@@ -23,6 +32,8 @@ public abstract class Agent : MonoBehaviour
     {
         return StartCoroutine(DelayCoroutine(delayTime, Callback));
     }
+
+    public abstract void HandleDeadEvent();
 
     protected IEnumerator DelayCoroutine(float delayTime, Action Callback)
     {
