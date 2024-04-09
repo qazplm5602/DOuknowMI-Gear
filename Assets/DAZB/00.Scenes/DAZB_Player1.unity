@@ -543,7 +543,7 @@ MonoBehaviour:
   statPoint: 0
   defaultAtk: 3
   defaultHealth: 10
-  defaultAttackCool: 3
+  defaultAttackCool: 0.5
   defaultMoveSpeed: 8
   defaultDefence: 10
   defaultCriticalChance: 50
@@ -642,6 +642,7 @@ MonoBehaviour:
   criticalChance: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
+  lastAttackTime: 0
   isAttack: 0
 --- !u!50 &986396555
 Rigidbody2D:
