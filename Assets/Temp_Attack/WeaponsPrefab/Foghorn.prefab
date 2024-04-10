@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9142330310008297320}
   - component: {fileID: 2461911292042951903}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4643481619436243137}
   - component: {fileID: 3025484857227857869}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7713153888034679679}
   - component: {fileID: 2076056168853630745}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +267,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6639905626894839238}
   - component: {fileID: 7048430843446826975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 305120469448367599}
   - component: {fileID: 3895695748814096319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Steam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7665672788004532101}
   - component: {fileID: 1373887722745188289}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +522,7 @@ GameObject:
   - component: {fileID: 1181960084473272134}
   - component: {fileID: -8610175965371593142}
   - component: {fileID: 7698097775878790305}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Foghorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8367811617065256122}
   - component: {fileID: 8161356578842693083}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}

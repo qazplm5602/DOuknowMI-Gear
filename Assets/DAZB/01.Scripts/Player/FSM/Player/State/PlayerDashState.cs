@@ -15,7 +15,15 @@ public class PlayerDashState : PlayerState
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         dashDir = (mousePosition - player.transform.position).normalized;
+        player.MovementCompo.Flip(mousePosition);
         player.StartCoroutine(DashCor());
+        player.isInvincibility = true;
+    }
+
+    public override void Exit()
+    {
+        player.isInvincibility = false;
+        base.Exit();
     }
 
     public override void UpdateState()
@@ -30,8 +38,10 @@ public class PlayerDashState : PlayerState
         if (player.isDash) yield break;
         player.isDash = true;
         player.RigidCompo.AddForce(dashDir * player.dashPower, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.1f);
+        player.RigidCompo.gravityScale = 0;
+        yield return new WaitForSeconds(0.2f);
         player.RigidCompo.velocity = Vector2.zero;
+        player.RigidCompo.gravityScale = 3;
         player.isDash = false;
     }
 }
