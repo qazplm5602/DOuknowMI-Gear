@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3124783059068234882}
   - component: {fileID: 7559146033839866906}
   - component: {fileID: -787895612288044910}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PistonChain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8882127413790595525}
   - component: {fileID: 4578050753988480592}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

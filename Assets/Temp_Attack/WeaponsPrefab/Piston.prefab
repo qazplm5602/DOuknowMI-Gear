@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4068944857286367861}
   - component: {fileID: 5332803097691743354}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 2570273788426217553}
   - component: {fileID: 7703011849892642698}
   - component: {fileID: -5390577153274276091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Piston
   m_TagString: Untagged
   m_Icon: {fileID: 0}
