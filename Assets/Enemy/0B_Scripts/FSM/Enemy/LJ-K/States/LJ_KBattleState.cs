@@ -27,6 +27,7 @@ public class LJ_KBattleState : EnemyState<LJ_KStateEnum>
         }
         else if(distance > _enemyLJ_K.rangeAttackDistance) {
             if(_enemy.CanAttack()) {
+                _stateMachine.ChangeState(LJ_KStateEnum.SprayStone);
                 return;
             }
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 using FSM;
 
 public enum LJ_KStateEnum {
-    Battle, Chop, DoubleAttack, Dead
+    Battle, Chop, DoubleAttack, SprayStone, Dead
 }
 
 public class EnemyLJ_K : Enemy
@@ -11,6 +11,7 @@ public class EnemyLJ_K : Enemy
     public EnemyStateMachine<LJ_KStateEnum> StateMachine { get; private set; }
 
     public readonly int battleModeHash = Animator.StringToHash("BattleMode");
+    public readonly int arriveHash = Animator.StringToHash("Arrive");
 
     [HideInInspector] public int currentAttackDamage;
     [HideInInspector] public Vector2 currentAttackRange;

@@ -16,7 +16,7 @@ namespace FSM {
         [Header("Check Settings")]
         public float nearDistance;
         [SerializeField] private  LayerMask _whatIsPlayer;
-        [SerializeField] private LayerMask _whatIsObstacle;
+        public LayerMask whatIsObstacle;
 
         [Header("Attack Settings")]
         public Vector2 attackRange;
@@ -62,7 +62,7 @@ namespace FSM {
         }
 
         public virtual bool IsObstacleInLine(float distance, Vector3 direction) {
-            return Physics2D.Raycast(transform.position, direction, distance, _whatIsObstacle);
+            return Physics2D.Raycast(transform.position, direction, distance, whatIsObstacle);
         }
 
         private void OnDrawGizmos() {

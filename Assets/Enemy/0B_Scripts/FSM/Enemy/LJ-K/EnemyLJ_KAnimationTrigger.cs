@@ -84,4 +84,18 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
         _enemyLJ_K.currentAttackRange = _enemyLJ_K.doubleAttack2Range;
         _enemyLJ_K.currentAttackOffset = _enemyLJ_K.doubleAttack2Offset;
     }
+
+    private void CameraShake(float amplitude, float frequency, float time) {
+        CameraManager.Instance.ShakeCamera(amplitude, frequency, time);
+    }
+
+    private void SprayStone(int amount, float range) {
+        for(int i = 0; i < amount; ++i) {
+            float randXPos = Random.Range(0.1f * _enemy.FacingDirection, range * _enemy.FacingDirection);
+            GameObject obj = Instantiate(_enemyLJ_K.stonePrefab, new Vector2
+            (_enemyLJ_K.stoneSpawnPosTrm.position.x + randXPos, _enemyLJ_K.stoneSpawnPosTrm.position.y), Quaternion.identity);
+            EnemyLJ_KStone stone = obj.GetComponent<EnemyLJ_KStone>();
+            stone.Explode(randXPos);
+        }
+    }
 }
