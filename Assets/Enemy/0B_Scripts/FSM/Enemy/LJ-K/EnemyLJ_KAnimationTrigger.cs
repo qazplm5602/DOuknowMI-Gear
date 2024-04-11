@@ -1,11 +1,15 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using FSM;
-using UnityEditor.PackageManager;
 
 public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
 {
     [SerializeField] private GameObject _attackRangeObject;
+
+    private float _groundYPosition;
+    [SerializeField] private GameObject _columnRangePrefab;
+    private List<GameObject> _columnRangeObjects = new List<GameObject>();
 
     private SpriteRenderer attackObjSR;
     private EnemyLJ_K _enemyLJ_K;
@@ -102,6 +106,41 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
             (_enemyLJ_K.stoneSpawnPosTrm.position.x + randomSpawnPosX, _enemyLJ_K.stoneSpawnPosTrm.position.y), Quaternion.identity);
             EnemyLJ_KStone stone = obj.GetComponent<EnemyLJ_KStone>();
             stone.Explode(randXPos);
+        }
+    }
+
+    private void ShowColumn() {
+        _groundYPosition = Physics2D.Raycast(_enemy.transform.position, -Vector2.up, Mathf.Infinity, _enemy.whatIsObstacle).point.y;
+
+        for(int i = 0; i < 7; ++i) {
+            float width = 2.5f;
+            float height = 4.5f + i;
+
+            GameObject obj = Instantiate(_columnRangePrefab);
+            obj.transform.position = new Vector2(_enemy.transform.position.x + 5f * _enemy.FacingDirection + (5f * i * _enemy.FacingDirection), _groundYPosition + height * 0.5f);
+            obj.transform.localScale = new Vector3(width, height, 1);
+
+            _columnRangeObjects.Add(obj);
+        }
+    }
+
+    private void SpawnColumns() {
+        _columnRangeObjects.ForEach(o => Destroy(o));
+
+        StartCoroutine(SpawnColumnsRoutine());
+    }
+
+    private IEnumerator SpawnColumnsRoutine() {
+        for(int i = 0; i < 7; ++i) {
+            float delay = 0.1f + i * 0.05f;
+            float width = 2.5f;
+            float height = 4.5f + i;
+
+            GameObject obj = Instantiate(_enemyLJ_K.stoneColumnPrefab);
+            obj.transform.position = new Vector2(_enemy.transform.position.x + 5f * _enemy.FacingDirection + (5f * i * _enemy.FacingDirection), _groundYPosition - height * 0.5f);
+            obj.transform.localScale = new Vector3(width, height, 1);
+
+            yield return new WaitForSeconds(delay);
         }
     }
 }

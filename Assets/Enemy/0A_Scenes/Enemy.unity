@@ -171,7 +171,7 @@ BoxCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1023
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -419,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 23035014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -0.3, z: 0}
+  m_LocalPosition: {x: 9.8, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 224262204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -0.3, z: -10}
+  m_LocalPosition: {x: 9.8, y: 0.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3051,6 +3051,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackRangeObject: {fileID: 1091717966}
+  _columnRangePrefab: {fileID: 286275694123117452, guid: 10db81ed2318d954fb194d54dab1a496, type: 3}
 --- !u!1 &1726027112
 GameObject:
   m_ObjectHideFlags: 0
@@ -3139,7 +3140,7 @@ Transform:
   m_GameObject: {fileID: 1726027112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: -0.3, z: -10}
+  m_LocalPosition: {x: 9.8, y: 0.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3470,6 +3471,7 @@ MonoBehaviour:
   doubleAttack2Offset: {x: 4.8, y: -1.825}
   tripleAttackDamage: 0
   sprayStonePrefab: {fileID: 4062814298076577425, guid: 1b03feba9b35e7a4393614d7d0ecfd7a, type: 3}
+  stoneColumnPrefab: {fileID: 3500622615105846852, guid: 7a7eaa03b2aa83e4396d1ee6bd73c0ae, type: 3}
 --- !u!114 &1916660486
 MonoBehaviour:
   m_ObjectHideFlags: 0
