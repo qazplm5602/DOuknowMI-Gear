@@ -29,7 +29,7 @@ public class Player : Agent
     public InputReader InputReader => inputReader;
     public bool isDash;
     private PlayerStat stats;
-    public float lastAttackTime {get; private set;}
+    public float lastAttackTime;
     public bool isAttack;
 
     protected override void Awake() {
