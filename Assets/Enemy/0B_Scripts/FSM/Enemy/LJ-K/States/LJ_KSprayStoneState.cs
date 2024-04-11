@@ -16,7 +16,7 @@ public class LJ_KSprayStoneState : EnemyState<LJ_KStateEnum>
         _enemyLJ_K = _enemy as EnemyLJ_K;
 
         BoxCollider2D boxCollider = _enemy.ColliderCompo as BoxCollider2D;
-        paddingX = boxCollider.size.x / 1.5f;
+        paddingX = boxCollider.size.x * 1.3f;
 
         _enemy.StartCoroutine(MoveRoutine());
     }
@@ -25,6 +25,13 @@ public class LJ_KSprayStoneState : EnemyState<LJ_KStateEnum>
         if(_triggerCalled) {
             _stateMachine.ChangeState(LJ_KStateEnum.Battle);
         }
+    }
+
+    public override void Exit() {
+        _enemy.lastAttackTime = Time.time;
+        _enemy.AnimatorCompo.speed = 1f;
+
+        base.Exit();
     }
 
     private IEnumerator MoveRoutine() {

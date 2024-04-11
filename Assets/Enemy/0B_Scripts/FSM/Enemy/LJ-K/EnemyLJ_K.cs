@@ -3,7 +3,7 @@ using UnityEngine;
 using FSM;
 
 public enum LJ_KStateEnum {
-    Battle, Chop, DoubleAttack, SprayStone, Dead
+    Battle, Chop, DoubleAttack, TripleAttack, SprayStone, Dead
 }
 
 public class EnemyLJ_K : Enemy
@@ -25,7 +25,7 @@ public class EnemyLJ_K : Enemy
     public int chopDamage;
     public Vector2 chopRange;
     public Vector2 chopOffset;
-    public GameObject stonePrefab;
+    public GameObject chopStonePrefab;
     public Transform stoneSpawnPosTrm;
 
     [Space]
@@ -35,6 +35,14 @@ public class EnemyLJ_K : Enemy
     public Vector2 doubleAttack1Offset;
     public Vector2 doubleAttack2Range;
     public Vector2 doubleAttack2Offset;
+
+    [Space]
+
+    public int tripleAttackDamage;
+
+    [Space]
+
+    public GameObject sprayStonePrefab;
 
     protected override void Awake() {
         base.Awake();

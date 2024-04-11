@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using FSM;
+using UnityEditor.PackageManager;
 
 public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
 {
@@ -70,10 +71,11 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
 
     private void SpawnStones() {
         CameraManager.Instance.ShakeCamera(10, 10, 0.2f);
+        
         int loop = Random.Range(3, 5);
         for(int i = 0; i < loop; ++i) {
-            float randXPos = Random.Range(-3f, 1.5f);
-            GameObject obj = Instantiate(_enemyLJ_K.stonePrefab, new Vector2
+            float randXPos = Random.Range(-3f, 2f);
+            GameObject obj = Instantiate(_enemyLJ_K.chopStonePrefab, new Vector2
             (_enemyLJ_K.stoneSpawnPosTrm.position.x + randXPos, _enemyLJ_K.stoneSpawnPosTrm.position.y), Quaternion.identity);
             EnemyLJ_KStone stone = obj.GetComponent<EnemyLJ_KStone>();
             stone.Explode(randXPos);
@@ -85,15 +87,19 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
         _enemyLJ_K.currentAttackOffset = _enemyLJ_K.doubleAttack2Offset;
     }
 
-    private void CameraShake(float amplitude, float frequency, float time) {
-        CameraManager.Instance.ShakeCamera(amplitude, frequency, time);
-    }
+    private void SprayStone(int level) {
+        CameraManager.Instance.ShakeCamera(9f, 10f, 0.2f);
 
-    private void SprayStone(int amount, float range) {
+        _enemy.AnimatorCompo.speed = 1 + level * 0.5f;
+        if(level == 5) _enemy.AnimatorCompo.speed = 1;
+        
+        int amount = 10 + level * 3;
+        float range = 12 + level * 9f;
         for(int i = 0; i < amount; ++i) {
-            float randXPos = Random.Range(0.1f * _enemy.FacingDirection, range * _enemy.FacingDirection);
-            GameObject obj = Instantiate(_enemyLJ_K.stonePrefab, new Vector2
-            (_enemyLJ_K.stoneSpawnPosTrm.position.x + randXPos, _enemyLJ_K.stoneSpawnPosTrm.position.y), Quaternion.identity);
+            float randXPos = Random.Range(2f * _enemy.FacingDirection, range * _enemy.FacingDirection);
+            float randomSpawnPosX = Random.Range(0.05f * _enemy.FacingDirection, 3f * _enemy.FacingDirection);
+            GameObject obj = Instantiate(_enemyLJ_K.sprayStonePrefab, new Vector2
+            (_enemyLJ_K.stoneSpawnPosTrm.position.x + randomSpawnPosX, _enemyLJ_K.stoneSpawnPosTrm.position.y), Quaternion.identity);
             EnemyLJ_KStone stone = obj.GetComponent<EnemyLJ_KStone>();
             stone.Explode(randXPos);
         }

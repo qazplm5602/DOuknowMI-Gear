@@ -17,10 +17,12 @@ public class EnemyLJ_KStone : MonoBehaviour
     }
 
     public void Explode(float spawnX) {
-        Vector2 dir = new Vector2(spawnX, Mathf.Sin(Mathf.Acos(spawnX / 4.5f)) * 4.5f);
-        dir.Normalize();
+        float randomMultiplier = Random.Range(0.5f, 0.75f);
+        Vector2 dir = new Vector2(spawnX, Mathf.Abs(spawnX) * randomMultiplier);
+        Debug.Log(dir);
 
         _rigidbody.AddForce(dir * _force, ForceMode2D.Impulse);
+        _rigidbody.AddTorque(10 * randomMultiplier);
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

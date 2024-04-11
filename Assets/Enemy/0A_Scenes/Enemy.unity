@@ -398,7 +398,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 6bd1f7cf788d7634dabc07b8c32f2350, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -419,7 +419,7 @@ Transform:
   m_GameObject: {fileID: 23035014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: -0.22, z: 0}
+  m_LocalPosition: {x: 3.3, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -549,7 +549,7 @@ Transform:
   m_GameObject: {fileID: 224262204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: -0.22, z: -10}
+  m_LocalPosition: {x: 3.3, y: -0.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3139,7 +3139,7 @@ Transform:
   m_GameObject: {fileID: 1726027112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.28, y: -0.22, z: -10}
+  m_LocalPosition: {x: 3.3, y: -0.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3437,6 +3437,7 @@ MonoBehaviour:
   AnimatorCompo: {fileID: 0}
   RigidbodyCompo: {fileID: 0}
   ColliderCompo: {fileID: 0}
+  Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
   moveSpeed: 4
@@ -3450,7 +3451,6 @@ MonoBehaviour:
   attackRange: {x: 0, y: 0}
   attackOffset: {x: 0, y: 0}
   attackDamage: 0
-  attackCooldown: 4
   lastAttackTime: 0
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
   currentAttackDamage: 0
@@ -3458,16 +3458,18 @@ MonoBehaviour:
   currentAttackOffset: {x: 0, y: 0}
   combatAttackDistance: 7.5
   rangeAttackDistance: 12
-  chopDamage: 0
+  chopDamage: 5
   chopRange: {x: 7, y: 7}
   chopOffset: {x: 4.5, y: 0}
-  stonePrefab: {fileID: 4062814298076577425, guid: 9f5a691142ff3094a8f5f364706d2209, type: 3}
+  chopStonePrefab: {fileID: 4062814298076577425, guid: 9f5a691142ff3094a8f5f364706d2209, type: 3}
   stoneSpawnPosTrm: {fileID: 1614809316}
-  doubleAttackDamage: 0
+  doubleAttackDamage: 5
   doubleAttack1Range: {x: 14, y: 7.3}
   doubleAttack1Offset: {x: 7, y: 0}
   doubleAttack2Range: {x: 9.6, y: 3.65}
   doubleAttack2Offset: {x: 4.8, y: -1.825}
+  tripleAttackDamage: 0
+  sprayStonePrefab: {fileID: 4062814298076577425, guid: 1b03feba9b35e7a4393614d7d0ecfd7a, type: 3}
 --- !u!114 &1916660486
 MonoBehaviour:
   m_ObjectHideFlags: 0
