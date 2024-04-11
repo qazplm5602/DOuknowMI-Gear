@@ -3167,6 +3167,7 @@ MonoBehaviour:
   _payBoxNasa: {fileID: 441470597}
   _payBoxSkill: {fileID: 1766225723}
   _paymentCoin: 0a00000014000000280000003c00000064000000
+  tempGear: {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
 --- !u!1 &1093339958
 GameObject:
   m_ObjectHideFlags: 0
