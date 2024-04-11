@@ -37,7 +37,7 @@ public class IngameUIControl : MonoBehaviour
 
         SetCoin(1000);
     }
-
+    
     public void SetHealthBar(float current, float max) {
         healthRed.fillAmount = current / max;
     }
@@ -65,6 +65,7 @@ public class IngameUIControl : MonoBehaviour
         }
         
         if (coinSequence == null) {
+            coinState = 1;
             coinSequence = DOTween.Sequence();
             coinSequence.Append(coinGroup.DOFade(1, 0.3f).SetEase(Ease.OutQuad));
             coinSequence.Join(_coinBox.DOAnchorPosX(30, 0.3f).SetEase(Ease.OutQuad));
@@ -87,14 +88,17 @@ public class IngameUIControl : MonoBehaviour
         int nowVal = int.Parse(coinT.text.Replace(@",", ""));
         int diff = Mathf.Abs(value - nowVal);
 
-        float nowT = Time.time;
+        float nowT = 0;
 
-        while (nowVal != value) {
-            nowVal = (int)Mathf.Lerp(nowVal, value, Time.deltaTime * 5);
+        while (nowT < 1) {
+            nowT += Time.deltaTime;
+            nowVal = (int)Mathf.Lerp(nowVal, value, nowT);
 
             coinT.text = nowVal.ToString("N0");
             yield return null;
         }
+
+        yield return new WaitForSecondsRealtime(3f);
 
         coinState = 2;
 
@@ -105,5 +109,7 @@ public class IngameUIControl : MonoBehaviour
             coinState = 0;
             coinSequence = null;
         });
+
+        coinCoroutine = null;
     }
 }
