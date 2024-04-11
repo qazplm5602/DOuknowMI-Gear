@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using FSM;
 
-public class EnemyGuni : Enemy
+public class EnemyBT_K : Enemy
 {
     public EnemyStateMachine<CommonEnemyStateEnum> StateMachine { get; private set; }
 
@@ -15,14 +15,14 @@ public class EnemyGuni : Enemy
 
         foreach(CommonEnemyStateEnum stateEnum in Enum.GetValues(typeof(CommonEnemyStateEnum))) {
             string typeName = stateEnum.ToString();
-            Type t = Type.GetType($"Guni{typeName}State");
+            Type t = Type.GetType($"BT_K{typeName}State");
 
             try {
                 var enemyState = Activator.CreateInstance(t, this, StateMachine, typeName) as EnemyState<CommonEnemyStateEnum>;
                 StateMachine.AddState(stateEnum, enemyState);
             }
             catch {
-                Debug.LogError($"[Enemy Guni] : Not Found State [{typeName}]");
+                Debug.LogError($"[Enemy BT-K] : Not Found State [{typeName}]");
             }
         }
     }

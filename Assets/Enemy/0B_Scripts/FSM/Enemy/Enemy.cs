@@ -11,18 +11,15 @@ namespace FSM {
         [Header("Move Settings")]
         public float moveSpeed;
 
-        protected float _defualtMoveSpeed;
-
         [Header("Check Settings")]
         public float nearDistance;
         [SerializeField] private  LayerMask _whatIsPlayer;
-        [SerializeField] private LayerMask _whatIsObstacle;
+        public LayerMask whatIsObstacle;
 
         [Header("Attack Settings")]
         public Vector2 attackRange;
         public Vector2 attackOffset;
         public int attackDamage;
-        public float attackCooldown;
         [HideInInspector] public float lastAttackTime;
 
         [Header("ETC Settings")]
@@ -36,7 +33,7 @@ namespace FSM {
             HealthCompo = GetComponent<EnemyHealth>();
             HealthCompo.SetOwner(this);
 
-            _defualtMoveSpeed = moveSpeed;
+            lastAttackTime = -Stat.GetAttackSpeed();
         }
 
         public virtual void AssignLastAnimationHash(int hashCode) {
@@ -48,11 +45,11 @@ namespace FSM {
         public abstract void AnimationFinishTrigger();
 
         public bool CanAttack() {
-            return Time.time >= lastAttackTime + attackCooldown;
+            return Time.time >= lastAttackTime + Stat.GetAttackSpeed();
         }
 
         public override void ReturnDefaultSpeed() {
-            moveSpeed = _defualtMoveSpeed;
+            moveSpeed = Stat.moveSpeed.GetValue();
             AnimatorCompo.speed = 1f;
         }
 
@@ -61,7 +58,7 @@ namespace FSM {
         }
 
         public virtual bool IsObstacleInLine(float distance, Vector3 direction) {
-            return Physics2D.Raycast(transform.position, direction, distance, _whatIsObstacle);
+            return Physics2D.Raycast(transform.position, direction, distance, whatIsObstacle);
         }
 
         private void OnDrawGizmos() {
