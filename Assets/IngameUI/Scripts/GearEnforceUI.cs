@@ -16,6 +16,7 @@ public class GearEnforceUI : MonoBehaviour
     [SerializeField] int[] _paymentCoin;
 
     [Header("Anim")]
+    [SerializeField] RectTransform _animScreen;
     [SerializeField] GearEnforceUI_SkillBox AnimBoxBefore;
     [SerializeField] GearEnforceUI_SkillBox AnimBoxAfter;
 
@@ -29,6 +30,7 @@ public class GearEnforceUI : MonoBehaviour
 
     CanvasGroup AnimBoxBefore_group;
     CanvasGroup AnimBoxAfter_group;
+    TextMeshProUGUI AnimText;
 
     GearGroupDTO currentGear;
     Action<bool> callback;
@@ -41,7 +43,7 @@ public class GearEnforceUI : MonoBehaviour
 
         AnimBoxBefore_group = AnimBoxBefore.GetComponent<CanvasGroup>();
         AnimBoxAfter_group = AnimBoxAfter.GetComponent<CanvasGroup>();
-        
+        AnimText = _animScreen.Find("title").GetComponent<TextMeshProUGUI>();
     
         // 테스트 코드
         Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
@@ -101,5 +103,7 @@ public class GearEnforceUI : MonoBehaviour
         sequence.Join(AnimBoxAfter.transform.DOLocalRotate(new Vector3(20, -20, 0), 1).SetEase(Ease.OutCirc));
         sequence.Append(AnimBoxAfter.transform.DOScale(1, 0.3f).SetEase(Ease.InOutQuad));
         sequence.Join(AnimBoxAfter.transform.DOLocalRotate(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
+    
+        sequence.Join(AnimText.DOFade(1, 0.3f).SetEase(Ease.InOutQuad));
     }
 }
