@@ -35,9 +35,7 @@ public class EnemyGuni : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-    public override void Attack() {
-        StateMachine.CurrentState.AnimationAttackTrigger();
-    }
+    public override void Attack() => StateMachine.CurrentState.AnimationAttackTrigger();
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 }

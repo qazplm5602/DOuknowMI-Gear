@@ -46,10 +46,10 @@ public class AgentMovement : MonoBehaviour
             }
             return;
         }
-        else if (facingDirection.x < 0) {
+        if (facingDirection.x < 0) {
             agent.transform.eulerAngles = new Vector3(0, 180, 0);
         }
-        else if (facingDirection.x > 1) {
+        else if (facingDirection.x > 0) {
             agent.transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
@@ -69,7 +69,7 @@ public class AgentMovement : MonoBehaviour
 
     private void Move() {
         //rigid.velocity = new Vector2(velocity.x, rigid.velocity.y);
-        if (agent.isDash || agent.isAttack) return;
+        if (agent.isDash) return;
         agent.RigidCompo.velocity = new Vector2(velocity.x, agent.RigidCompo.velocity.y);
     }
 

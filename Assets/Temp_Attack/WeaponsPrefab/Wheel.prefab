@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7581400069557356995}
   - component: {fileID: 5534686899270282035}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 7703011849892642698}
   - component: {fileID: 2741109731852867692}
   - component: {fileID: 1678284163495484091}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -159,8 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca430b9d83b1c04ab8f7e60de6f0754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 8
   _visualTrm: {fileID: 7581400069557356995}
+  _wheelFXPrefab: {fileID: 0}
+  _speed: 8
 --- !u!58 &1678284163495484091
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 872060986208917147}
   - component: {fileID: 4803419398939526451}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}

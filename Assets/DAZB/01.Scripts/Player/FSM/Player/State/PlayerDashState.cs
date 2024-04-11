@@ -17,6 +17,13 @@ public class PlayerDashState : PlayerState
         dashDir = (mousePosition - player.transform.position).normalized;
         player.MovementCompo.Flip(mousePosition);
         player.StartCoroutine(DashCor());
+        player.isInvincibility = true;
+    }
+
+    public override void Exit()
+    {
+        player.isInvincibility = false;
+        base.Exit();
     }
 
     public override void UpdateState()
