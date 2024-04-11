@@ -39,7 +39,7 @@ public class MapSpawner : MonoBehaviour
         public List<GameObject> CurrentRoomObjs;
         public List<int> PrayRoomCandidates; // 조각상 방으로 가능한 방들의 인덱스 목록
         public BaseStage[] MapObjList;
-        public BaseStage StartRoom;
+        public StartStage StartRoom;
 
         public int LargeRoomChance;
         public int MediumRoomChance;
@@ -224,7 +224,7 @@ public class MapSpawner : MonoBehaviour
                     if (stageData.type == ROOMTYPE.Start)
                     {
                         Debug.Log(stageData.type + stageData.transform.name);
-                        current.StartRoom = stageData;
+                        current.StartRoom = stageData as StartStage;
                     }
                 }
             }
@@ -347,13 +347,14 @@ public class MapSpawner : MonoBehaviour
 
                 bool pray = false;
                 ROOMSIZE roomSize = ROOMSIZE.Small;
-                print(countDoor);
                 if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
                 {
+                    print($"{countDoor} {i}");
                     //진짜입니까??
                 }
                 else
                 {
+                    print("Spawning Large Or Medium...");
                     int rnd = Random.Range(1, 101);
                     if (rnd <= 70)
                     {

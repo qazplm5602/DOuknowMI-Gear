@@ -109,7 +109,6 @@ public abstract class BaseStage : MonoBehaviour
 
     public virtual void Enter()
     {
-        print(Map.Instance);
         Map.Instance.CurrentStage = this;
         RoomActive = true;
 

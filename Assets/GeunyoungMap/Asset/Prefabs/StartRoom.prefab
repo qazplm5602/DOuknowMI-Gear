@@ -1312,6 +1312,7 @@ Transform:
   - {fileID: 4149770279562377209}
   - {fileID: 6768545837267596144}
   - {fileID: 5214662424793912092}
+  - {fileID: 5533467436805028540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &3686124002775128208
@@ -1358,6 +1359,7 @@ MonoBehaviour:
   CurrentWave: 0
   Cleared: 0
   RoomActive: 0
+  SpawnPoint: {fileID: 5533467436805028540}
 --- !u!1 &2836410842671092312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,6 +3257,37 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!1 &5931482257120948056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5533467436805028540}
+  m_Layer: 0
+  m_Name: PlrSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5533467436805028540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5931482257120948056}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8638308639698500272}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6041561824058965762
 GameObject:
   m_ObjectHideFlags: 0

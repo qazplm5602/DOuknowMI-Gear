@@ -3696,7 +3696,7 @@ GameObject:
   - component: {fileID: 4454616196352136315}
   - component: {fileID: 7242360341026066563}
   m_Layer: 0
-  m_Name: Smallking
+  m_Name: Smallking FourDir
   m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3,59 +3,69 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GayManater : MonoBehaviour
+namespace bbqCode
 {
-    [SerializeField] private CinemachineVirtualCamera vcam;
-    [SerializeField] private MapSpawner mapSpawner;
-
-    public BaseStage CurrentRoom;
-
-    private BaseStage StartRoom;
-
-    private void Start()
+    public class GayManater : CockSingleton<GayManater>
     {
-        mapSpawner = FindObjectOfType<MapSpawner>();
-    }
+        [SerializeField] private CinemachineVirtualCamera vcam;
+        [SerializeField] private MapSpawner mapSpawner;
 
-    private void Update()
-    {
-        if (CurrentRoom != null && Input.anyKey)
+        public BaseStage CurrentRoom;
+        public Player plr;
+
+        private BaseStage StartRoom;
+
+        private void Start()
         {
-            BaseStage canMoveRoom = IsCanMoveRoom(new Vector2Int((int)Input.GetAxisRaw("Horizontal")
-             , (int)Input.GetAxisRaw("Vertical")));
-            if ((bool)canMoveRoom)
+            mapSpawner = FindObjectOfType<MapSpawner>();
+            Ming();
+        }
+
+        //private void Update()
+        //{
+        //    if (CurrentRoom != null && Input.anyKey)
+        //    {
+        //        BaseStage canMoveRoom = IsCanMoveRoom(new Vector2Int((int)Input.GetAxisRaw("Horizontal")
+        //         , (int)Input.GetAxisRaw("Vertical")));
+        //        if ((bool)canMoveRoom)
+        //        {
+        //            print("ming u moved room");
+        //            MoveRoom(canMoveRoom);
+        //        }
+        //    }
+        //}
+
+        [ContextMenu("자위중")]
+        public void Ming()
+        {
+            var startRoom = mapSpawner.current.StartRoom;
+            MoveRoom(startRoom);
+            plr.transform.position = startRoom.SpawnPoint.position;
+            plr.gameObject.SetActive(true);
+        }
+
+        public void MoveRoom(BaseStage targetRoom, Door door = null)
+        {
+            if (CurrentRoom != null)
+                CurrentRoom.Exit();
+            CurrentRoom = targetRoom;
+            CurrentRoom.Enter();
+            Transform doorToGo = door != null ? door.transform : targetRoom.transform;
+            plr.transform.position = doorToGo.position;
+            vcam.transform.position = targetRoom.transform.position + Vector3.back * 10;
+        }
+
+        public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
+        {
+            if (CurrentRoom.RoomActive && CurrentRoom.Cleared)
             {
-                print("ming u moved room");
-                MoveRoom(canMoveRoom);
+                if (CurrentRoom.StageLinkedData.LeftMap && whereToMove == new Vector2Int(-1, 0)) return CurrentRoom.StageLinkedData.LeftMap;
+                if (CurrentRoom.StageLinkedData.RightMap && whereToMove == new Vector2Int(1, 0)) return CurrentRoom.StageLinkedData.RightMap;
+                if (CurrentRoom.StageLinkedData.DownMap && whereToMove == new Vector2Int(0, -1)) return CurrentRoom.StageLinkedData.DownMap;
+                if (CurrentRoom.StageLinkedData.UpMap && whereToMove == new Vector2Int(0, 1)) return CurrentRoom.StageLinkedData.UpMap;
             }
+            return null;
         }
     }
 
-    [ContextMenu("자위중")]
-    public void Ming()
-    {
-        var startRoom = mapSpawner.current.StartRoom;
-        MoveRoom(startRoom);
-    }
-
-    public void MoveRoom(BaseStage targetRoom)
-    {
-        if (CurrentRoom != null)
-            CurrentRoom.Exit();
-        CurrentRoom = targetRoom;
-        CurrentRoom.Enter();
-        vcam.transform.position = targetRoom.transform.position + Vector3.back * 10;
-    }
-
-    public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
-    {
-        if (CurrentRoom.RoomActive && CurrentRoom.Cleared)
-        {
-            if (CurrentRoom.StageLinkedData.LeftMap && whereToMove == new Vector2Int(-1, 0)) return CurrentRoom.StageLinkedData.LeftMap;
-            if (CurrentRoom.StageLinkedData.RightMap && whereToMove == new Vector2Int(1, 0)) return CurrentRoom.StageLinkedData.RightMap;
-            if (CurrentRoom.StageLinkedData.DownMap && whereToMove == new Vector2Int(0, -1)) return CurrentRoom.StageLinkedData.DownMap;
-            if (CurrentRoom.StageLinkedData.UpMap && whereToMove == new Vector2Int(0, 1)) return CurrentRoom.StageLinkedData.UpMap;
-        }
-        return null;
-    }
 }

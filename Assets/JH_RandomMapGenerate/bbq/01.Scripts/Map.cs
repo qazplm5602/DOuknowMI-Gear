@@ -31,8 +31,6 @@ public class Map : CockSingleton<Map>
             return StartRoom;
         if (type == ROOMTYPE.Normal)
         {
-            print(Rooms[size][0]);
-            print(Rooms[size][Random.Range(0, Rooms[size].Length)].name);
             return Rooms[size][Random.Range(0, Rooms[size].Length)];
         }
         if (type == ROOMTYPE.Boss)
