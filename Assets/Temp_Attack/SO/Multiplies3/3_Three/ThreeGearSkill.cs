@@ -3,7 +3,8 @@ using UnityEngine;
 public class ThreeGearSkill : GearCogEvent
 {   
         PlayerWeapon _weaponType = PlayerWeapon.Piston;
-        public override void Use()
+
+    public override void Use()
         {
             Transform spawnPos = _player.transform.GetChild(0);
             Vector3 playerPos = _player.transform.position;
