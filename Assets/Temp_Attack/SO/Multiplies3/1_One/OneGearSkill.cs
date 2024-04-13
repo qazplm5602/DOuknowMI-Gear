@@ -3,6 +3,7 @@ using UnityEngine;
 public class OneGearSkill : GearCogEvent
 {
     PlayerWeapon _weaponType = PlayerWeapon.BoltAndNut;
+
     public override void Use()
     {
         Transform spawnPos = _player.transform.GetChild(0);

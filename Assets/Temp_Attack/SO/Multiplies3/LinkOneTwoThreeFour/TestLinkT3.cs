@@ -3,6 +3,7 @@ using UnityEngine;
 public class TestLinkT3 : GearCogEvent
 {
     PlayerWeapon _weaponType = PlayerWeapon.BoltNutWheelPistonFoghornChain;
+
     public override void Use()
     {
         print("1 2 3 4 체인");
