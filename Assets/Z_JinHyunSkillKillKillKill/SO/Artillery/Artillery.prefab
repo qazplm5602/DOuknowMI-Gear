@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7703011849892642698}
   - component: {fileID: 289132998779762820}
   - component: {fileID: -4130338246310267664}
+  - component: {fileID: -5381849499054365517}
   m_Layer: 9
   m_Name: Artillery
   m_TagString: Untagged
@@ -256,3 +257,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536d890850f0b9f4a893b6c33540a050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
+  castType: 2
+  _moveSpeed: 0
+  _maxRange: 0
+  _castPos: {x: 0, y: 0}
+  _castSize: {x: 0, y: 0}
+  _castAngle: 0
+  _castRadius: 0
+  isDamageCasting: 0
+--- !u!114 &-5381849499054365517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663472254907384932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 536d890850f0b9f4a893b6c33540a050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 0
+  castType: 2
+  _moveSpeed: 0
+  _maxRange: 0
+  _castPos: {x: 0, y: 0}
+  _castSize: {x: 0, y: 0}
+  _castAngle: 0
+  _castRadius: 0
+  isDamageCasting: 0
