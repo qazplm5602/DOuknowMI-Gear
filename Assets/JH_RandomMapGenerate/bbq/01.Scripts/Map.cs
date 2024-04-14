@@ -8,14 +8,14 @@ public class Map : CockSingleton<Map>
 
     public BaseStage CurrentStage;
 
-    public GameObject StartRoom;
-    public GameObject[] BossRoom; 
-    public GameObject PrayRoom; 
-    public GameObject[] SmallRoom;
-    public GameObject[] MediumRoom;
-    public GameObject[] LargeRoom;
+    public BaseStage StartRoom;
+    public BaseStage[] BossRoom; 
+    public BaseStage PrayRoom; 
+    public BaseStage[] SmallRoom;
+    public BaseStage[] MediumRoom;
+    public BaseStage[] LargeRoom;
 
-    private Dictionary<ROOMSIZE, GameObject[]> Rooms = new Dictionary<ROOMSIZE, GameObject[]>();
+    private Dictionary<ROOMSIZE, BaseStage[]> Rooms = new Dictionary<ROOMSIZE, BaseStage[]>();
 
     private void Start()
     { 
@@ -24,7 +24,7 @@ public class Map : CockSingleton<Map>
         Rooms[ROOMSIZE.Large] = LargeRoom;
     }
 
-    public GameObject StageLoad(ROOMTYPE type, ROOMSIZE size = ROOMSIZE.Large)
+    public BaseStage StageLoad(ROOMTYPE type, ROOMSIZE size = ROOMSIZE.Large)
     {
         //returns random room u want
         if (type == ROOMTYPE.Start)

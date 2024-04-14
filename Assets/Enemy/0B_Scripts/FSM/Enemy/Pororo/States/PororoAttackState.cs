@@ -26,7 +26,7 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
     public override void AnimationAttackTrigger() {
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyPororo.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(3, 6, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
+        bulletObject.GetComponent<EnemyProjectile>().Init(10, 4, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
         Debug.Log("탕!!");
     }
 

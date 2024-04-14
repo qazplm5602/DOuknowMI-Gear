@@ -15,6 +15,8 @@ namespace FSM {
         [HideInInspector] public Rigidbody2D RigidbodyCompo;
         [HideInInspector] public Collider2D ColliderCompo;
 
+        public EntityStat Stat;
+
         #endregion
 
         public Action<int> OnFlip;
@@ -23,6 +25,9 @@ namespace FSM {
         public bool CanStateChangeable { get; set; } = true;
 
         protected virtual void Awake() {
+            Stat = Instantiate(Stat);
+            Stat.SetOwner(this);
+
             Transform visaulTrm = transform.Find("Visual");
             SpriteRendererCompo = visaulTrm.GetComponent<SpriteRenderer>();
             AnimatorCompo = visaulTrm.GetComponent<Animator>();

@@ -1285,9 +1285,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8638308639698500272}
   - component: {fileID: 3686124002775128208}
+  - component: {fileID: 4143770235450300818}
   m_Layer: 0
   m_Name: BossMap
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1325,6 +1326,38 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &4143770235450300818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460968823504011412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e15d3487335f1419bbfd62ba07dc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2429023769178478234}
+  - {fileID: 5594209503431927592}
+  type: 2
+  StageNum: 0
+  StageLinkedData:
+    RightMap: {fileID: 0}
+    LeftMap: {fileID: 0}
+    UpMap: {fileID: 0}
+    DownMap: {fileID: 0}
+    Num: 0
+    indexX: 0
+    indexY: 0
+  Arena: {fileID: 0}
+  MaxWave: 3
+  CurrentWave: 0
+  Cleared: 0
+  RoomActive: 0
 --- !u!1 &2836410842671092312
 GameObject:
   m_ObjectHideFlags: 0
@@ -8376,7 +8409,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bcfece2019b6ed340a394bfa9e1035c5, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9708,13 +9741,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7524451992302731882, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5594209503431927592}
   m_SourcePrefab: {fileID: 100100000, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
 --- !u!4 &6221127065027042635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102866703552883576, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
   m_PrefabInstance: {fileID: 1190327035624519219}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8712456580175377497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7524451992302731882, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+  m_PrefabInstance: {fileID: 1190327035624519219}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5594209503431927592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712456580175377497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 3
 --- !u!1001 &7280172729149309640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9774,8 +9828,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7524451992302731882, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2429023769178478234}
   m_SourcePrefab: {fileID: 100100000, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+--- !u!1 &965010289978310818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7524451992302731882, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+  m_PrefabInstance: {fileID: 7280172729149309640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2429023769178478234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965010289978310818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
 --- !u!4 &2583193431675136432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102866703552883576, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
