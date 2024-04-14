@@ -8,7 +8,6 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
     [SerializeField] private GameObject _attackRangeObject;
 
     private float _groundYPosition;
-    [SerializeField] private GameObject _columnRangePrefab;
     private List<GameObject> _columnRangeObjects = new List<GameObject>();
 
     private SpriteRenderer attackObjSR;
@@ -112,11 +111,12 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
     private void ShowColumn() {
         _groundYPosition = Physics2D.Raycast(_enemy.transform.position, -Vector2.up, Mathf.Infinity, _enemy.whatIsObstacle).point.y;
 
+        attackObjSR.color = new Color(1, 0, 0, 1);
         for(int i = 0; i < 7; ++i) {
             float width = 2.5f;
             float height = 4.5f + i;
 
-            GameObject obj = Instantiate(_columnRangePrefab);
+            GameObject obj = Instantiate(_attackRangeObject);
             obj.transform.position = new Vector2(_enemy.transform.position.x + 5f * _enemy.FacingDirection + (5f * i * _enemy.FacingDirection), _groundYPosition + height * 0.5f);
             obj.transform.localScale = new Vector3(width, height, 1);
 

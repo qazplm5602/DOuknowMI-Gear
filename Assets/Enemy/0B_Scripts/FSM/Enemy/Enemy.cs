@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 namespace FSM {
     [RequireComponent(typeof(EnemyDamageCaster), typeof(EnemyHealth))]
     public abstract class Enemy : Entity
@@ -64,6 +63,8 @@ namespace FSM {
         private void OnDrawGizmos() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube((Vector2)transform.position + attackOffset * FacingDirection, attackRange);
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(transform.position, nearDistance);
         }
     }
 }

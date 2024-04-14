@@ -4,30 +4,29 @@ using FSM;
 
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
-    public int maxHealth;
-    [SerializeField] private int _currentHealth;
-    
     public event Action OnDead;
+
+    [SerializeField] private int _currentHealth;
+    private int _maxHealth;
 
     private Transform _playerTrm;
     private Enemy _owner;
 
     private void Start() {
         _playerTrm = PlayerManager.instance.playerTrm;
-
-        _currentHealth = maxHealth;
     }
 
     public void SetOwner(Enemy owner) {
         _owner = owner;
 
-        _currentHealth = maxHealth;
+        _maxHealth = owner.Stat.maxHealth.GetValue();
+        _currentHealth = _maxHealth;
     }
 
     public void ApplyDamage(int damage, Transform dealer) {
         if(_owner.isDead) return;
 
-        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, maxHealth);
+        _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
 
         if(_currentHealth == 0) {
             _owner.isDead = true;
@@ -40,7 +39,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     //test
     private void Update() {
         if(_playerTrm != null && Input.GetKeyDown(KeyCode.P)) {
-            ApplyDamage(10, _playerTrm);
+            _owner.HealthCompo.ApplyDamage(10, _playerTrm);
         }
     }
 }
