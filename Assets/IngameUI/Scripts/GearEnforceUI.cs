@@ -20,8 +20,11 @@ public class GearEnforceUI : MonoBehaviour
     [SerializeField] GearEnforceUI_SkillBox AnimBoxBefore;
     [SerializeField] GearEnforceUI_SkillBox AnimBoxAfter;
 
+    [Header("Script")]
+    [SerializeField] PlayerPart _playerMoney;
+
     // 이건 기어 교체창하고 연동하기 전까지는 임시로 사용하는 변수 (그니까 바로 키면 이 기어로 켜짐)
-    [SerializeField, System.Obsolete] GearSO tempGear;
+    // [SerializeField, System.Obsolete] GearSO tempGear;
 
     /////////////// cache
     TextMeshProUGUI subtitle;
@@ -71,7 +74,7 @@ public class GearEnforceUI : MonoBehaviour
             paySkillIco.sprite = gear.data.Icon;
         }
 
-        payNasaT.text = $"<color=red>0</color> / {_paymentCoin[gear.stat.level]}";
+        payNasaT.text = $"<color={(_playerMoney.Part >= _paymentCoin[gear.stat.level] ? "green" : "red")}>{_playerMoney.Part}</color> / {_paymentCoin[gear.stat.level]}";
 
         EnorceAnimReset();
         _mainBox.SetActive(true);

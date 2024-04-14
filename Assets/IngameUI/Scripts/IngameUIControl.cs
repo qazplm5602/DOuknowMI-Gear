@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngameUIControl : MonoBehaviour
+public class IngameUIControl : MonoSingleton<IngameUIControl>
 {
     ///////////// Config
     [SerializeField] GameObject _healthBar;
