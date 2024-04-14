@@ -15,9 +15,20 @@ public class PlayerDashState : PlayerState
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePosition.z = 0;
         dashDir = (mousePosition - player.transform.position).normalized;
-        player.MovementCompo.Flip(mousePosition);
+        //player.MovementCompo.Flip(mousePosition);   
+        Vector3 playerPos = player.transform.position;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
+        float angle = Mathf.Atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x) * Mathf.Rad2Deg;
+        if (angle < 90) {
+            player.MovementCompo.Flip(Vector2.zero, true, true);  
+        }
+        else {
+            player.MovementCompo.Flip(Vector3.zero, true, false);
+        }
         player.StartCoroutine(DashCor());
         player.isInvincibility = true;
+        player.lastDashTime = Time.time;
     }
 
     public override void Exit()

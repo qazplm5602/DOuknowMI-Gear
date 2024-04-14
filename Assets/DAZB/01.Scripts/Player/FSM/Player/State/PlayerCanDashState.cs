@@ -22,12 +22,15 @@ public abstract class PlayerCanDashState : PlayerGroundState
     }
 
     private void HadleDashEvent() {
-        stateMachine.ChangeState(PlayerStateEnum.Dash);
+        bool coolPass = player.lastDashTime + player.dashCool <= Time.time;
+        if (coolPass  && DialogueManager.instance.isEnd && !player.isDead) {
+            stateMachine.ChangeState(PlayerStateEnum.Dash);
+        }
     }
 
     private void HadleAttackEvent() {
-        bool coolPass = player.lastAttackTime + player.atkCool <= Time.time; // test;
-        if (coolPass && !player.isAttack) {
+        bool coolPass = player.lastAttackTime + player.atkCool <= Time.time;
+        if (coolPass && !player.isAttack && DialogueManager.instance.isEnd && !player.isDead) {
             stateMachine.ChangeState(PlayerStateEnum.Attack);
         }
     }
