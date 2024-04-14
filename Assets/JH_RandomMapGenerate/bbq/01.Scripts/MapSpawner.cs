@@ -86,11 +86,13 @@ public class MapSpawner : MonoBehaviour
         //들어오면 해당 위치에 방을 만들고 
         //음식점, 상점, 방 크기, 상자 스폰 등을 결정한다.
         //보스전이 있어야 하면 보스방도 스폰
+        bool isStart = false;
         if (current.Maplist[x + (y * yval)] == null)
         {
             current.Maplist[x + (y * yval)] = new StageData();
             current.Maplist[x + (y * yval)].InitSttting(current.NowCount, x, y);
             current.NowCount++;
+
 
             //각 방들은 서로 연결되어서 이동할 수 있어야 하지만 인접해 있다고 항상 연결되어 있어야 하는것은 아니다
             //따라서 탐색을 할때 자신이 현재 탐색한 위치에서 이전에 있었던 위치를 넘겨줌으로써
@@ -132,6 +134,7 @@ public class MapSpawner : MonoBehaviour
         //천번째 방은 항상 오른쪽으로간다.
         if (current.NowCount == 1)
         {
+            isStart = true; 
             MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
             //return jajiOption.MaxNum;
             return new Vector2Int(x + 1, y);
@@ -180,23 +183,24 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
+        if (isStart) return new Vector2Int(x, y);
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
-        //if (current.NowCount < jajiOption.MinCnt)
-        //{
-        //    for (int i = 3; i >= 0; i++)
-        //    {
-        //        if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
-        //        int tempx = x + dirIndex[(DIRECTION)i].x;
-        //        int tempy = y + dirIndex[(DIRECTION)i].y;
-        //        if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
-        //        {
-        //            if (current.Maplist[tempx + ((tempy + 1) * yval)] == null)
-        //            {
-        //                MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1);
-        //            }
-        //        }
-        //    }
-        //}
+        if (current.NowCount < jajiOption.MinCnt)
+        {
+            for (int i = 3; i >= 0; i++)
+            {
+                if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
+                int tempx = x + dirIndex[(DIRECTION)i].x;
+                int tempy = y + dirIndex[(DIRECTION)i].y;
+                if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
+                {
+                    if (current.Maplist[tempx + ((tempy + 1) * yval)] == null)
+                    {
+                        MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1);
+                    }
+                }
+            }
+        }
 
         return new Vector2Int(x, y);
     }
