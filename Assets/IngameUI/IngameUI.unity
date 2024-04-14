@@ -1520,9 +1520,9 @@ RectTransform:
   - {fileID: 94287408}
   m_Father: {fileID: 152067279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 379.595, y: -45.4405}
   m_SizeDelta: {x: 120, y: 85.944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &441470599
@@ -3436,6 +3436,7 @@ MonoBehaviour:
   _gearSize: {x: 130, y: 130}
   _gearManager: {fileID: 1060226318}
   _contextUI: {fileID: 545141842}
+  _enforceUI: {fileID: 1060226320}
   _gearDatas:
   - {fileID: 11400000, guid: 614b96a433df40546b4acce1af1d47ba, type: 2}
   - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
@@ -4155,7 +4156,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1411176238
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4887,9 +4888,9 @@ RectTransform:
   - {fileID: 816723517}
   m_Father: {fileID: 152067279}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 499.595, y: -45.4405}
   m_SizeDelta: {x: 120, y: 85.944}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1766225725

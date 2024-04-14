@@ -48,7 +48,7 @@ public class GearEnforceUI : MonoBehaviour
         AnimScreen_group = _animScreen.GetComponent<CanvasGroup>();
     
         // 테스트 코드
-        Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
+        // Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
     }
 
     public void Show(GearGroupDTO gear) {

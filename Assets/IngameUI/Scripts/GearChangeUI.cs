@@ -37,6 +37,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     [Header("Scripts")]
     [SerializeField] GearManager _gearManager;
     [SerializeField] ContextMenuUI _contextUI;
+    [SerializeField] GearEnforceUI _enforceUI;
 
     [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
@@ -190,19 +191,33 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                 HideDescription();
         };
         eventManager.OnRightMouseDownEvent += () => {
-            _contextUI.OpenMenu(new ContextButtonDTO[] {
-                new() {
+            List<ContextButtonDTO> menus = new()
+            {
+                new()
+                {
                     name = "장착하기",
                     callback = () => InsertGear(idx)
-                },
-                new() {
-                    name = "버리기",
+                }
+            };
+
+            if (gear.stat.level != 5)
+                menus.Add(new() {
+                    name = "강화하기",
                     callback = () => {
                         _contextUI.Close();
-                        RemoveInventory(idx);
+                        _enforceUI.Show(gear);
                     }
+                });
+
+            menus.Add(new() {
+                name = "버리기",
+                callback = () => {
+                    _contextUI.Close();
+                    RemoveInventory(idx);
                 }
             });
+
+            _contextUI.OpenMenu(menus.ToArray());
         };
         eventManager.OnLeftMouseDownEvent += () => OnPointerDown(null);
         
