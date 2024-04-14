@@ -28,12 +28,13 @@ public class GearEnforceUI : MonoBehaviour
     Image paySkillIco;
     TextMeshProUGUI payNasaT;
 
+    CanvasGroup AnimScreen_group;
     CanvasGroup AnimBoxBefore_group;
     CanvasGroup AnimBoxAfter_group;
     TextMeshProUGUI AnimText;
 
     GearGroupDTO currentGear;
-    Action<bool> callback;
+    Action callback;
     
     private void Awake() {
         subtitle = _mainBox.transform.Find("question").GetComponent<TextMeshProUGUI>();
@@ -44,11 +45,10 @@ public class GearEnforceUI : MonoBehaviour
         AnimBoxBefore_group = AnimBoxBefore.GetComponent<CanvasGroup>();
         AnimBoxAfter_group = AnimBoxAfter.GetComponent<CanvasGroup>();
         AnimText = _animScreen.Find("title").GetComponent<TextMeshProUGUI>();
+        AnimScreen_group = _animScreen.GetComponent<CanvasGroup>();
     
         // 테스트 코드
         Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
-
-        EnorceAnim();
     }
 
     public void Show(GearGroupDTO gear) {
@@ -73,6 +73,7 @@ public class GearEnforceUI : MonoBehaviour
 
         payNasaT.text = $"<color=red>0</color> / {_paymentCoin[gear.stat.level]}";
 
+        EnorceAnimReset();
         _mainBox.SetActive(true);
     }
 
@@ -83,12 +84,17 @@ public class GearEnforceUI : MonoBehaviour
     }
 
     public void EnorceAnim() {
+        EnorceAnimReset();
+        _animScreen.gameObject.SetActive(true);
+
         Sequence sequence = DOTween.Sequence();
     
         RectTransform AnimBoxBefore_trm = AnimBoxBefore.transform as RectTransform;
         AnimBoxBefore.transform.localScale = new Vector3(.8f, .8f, 1);
+        
+        sequence.Append(AnimScreen_group.DOFade(1, 0.3f));
 
-        sequence.Join(AnimBoxBefore.transform.DOScale(1, 0.5f));
+        sequence.Append(AnimBoxBefore.transform.DOScale(1, 0.5f));
         sequence.Join(AnimBoxBefore_group.DOFade(1, 0.5f));
 
         sequence.Append(AnimBoxBefore_trm.DOShakeAnchorPos(4f, 10, vibrato: 100, fadeOut: false).OnComplete(() => {
@@ -105,5 +111,15 @@ public class GearEnforceUI : MonoBehaviour
         sequence.Join(AnimBoxAfter.transform.DOLocalRotate(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
     
         sequence.Join(AnimText.DOFade(1, 0.3f).SetEase(Ease.InOutQuad));
+    }
+
+    void EnorceAnimReset() {
+        _animScreen.gameObject.SetActive(false);
+        AnimScreen_group.alpha = 0;
+
+        AnimBoxBefore.gameObject.SetActive(true);
+        AnimBoxAfter.gameObject.SetActive(false);
+
+        (AnimBoxBefore.transform as RectTransform).anchoredPosition = Vector2.zero;
     }
 }
