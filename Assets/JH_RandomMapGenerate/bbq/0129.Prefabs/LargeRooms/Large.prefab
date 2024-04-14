@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368520076706366229, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: m_Name
-      value: RoomOrigin Variant
+      value: Large
       objectReference: {fileID: 0}
     - target: {fileID: 8175358732230591011, guid: 56b21e04abbc6ed44927e61953d37497, type: 3}
       propertyPath: m_Color.b
