@@ -181,22 +181,22 @@ public class MapSpawner : MonoBehaviour
         }
 
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
-        if (current.NowCount < jajiOption.MinCnt)
-        {
-            for (int i = 3; i >= 0; i++)
-            {
-                if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
-                int tempx = x + dirIndex[(DIRECTION)i].x;
-                int tempy = y + dirIndex[(DIRECTION)i].y;
-                if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
-                {
-                    if (current.Maplist[tempx + ((tempy + 1) * yval)] == null)
-                    {
-                        MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1);
-                    }
-                }
-            }
-        }
+        //if (current.NowCount < jajiOption.MinCnt)
+        //{
+        //    for (int i = 3; i >= 0; i++)
+        //    {
+        //        if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
+        //        int tempx = x + dirIndex[(DIRECTION)i].x;
+        //        int tempy = y + dirIndex[(DIRECTION)i].y;
+        //        if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
+        //        {
+        //            if (current.Maplist[tempx + ((tempy + 1) * yval)] == null)
+        //            {
+        //                MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1);
+        //            }
+        //        }
+        //    }
+        //}
 
         return new Vector2Int(x, y);
     }
@@ -349,7 +349,7 @@ public class MapSpawner : MonoBehaviour
                 ROOMSIZE roomSize = ROOMSIZE.Small;
                 if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
                 {
-                    print($"{countDoor} {i}");
+                    //print($"{countDoor} {i}");
                     //진짜입니까??
                 }
                 else
