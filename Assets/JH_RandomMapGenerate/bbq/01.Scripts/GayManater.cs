@@ -14,6 +14,13 @@ namespace bbqCode
         public Player plr;
 
         private BaseStage StartRoom;
+        
+        public GameObject MobSpawnEffect { get; private set; }
+
+        private void Awake()
+        {
+            MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
+        }
 
         private void Start()
         {
