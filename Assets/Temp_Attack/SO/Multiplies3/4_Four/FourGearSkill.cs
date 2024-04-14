@@ -3,6 +3,8 @@ using UnityEngine;
 public class FourGearSkill : GearCogEvent
 {
     PlayerWeapon _weaponType = PlayerWeapon.Foghorn;
+
+
     public override void Use()
     {
         Transform spawnPos = _player.transform.GetChild(0);
