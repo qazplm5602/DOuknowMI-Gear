@@ -3,6 +3,7 @@ using UnityEngine;
 
 public abstract class BaseStage : MonoBehaviour
 {
+    [Header("UP DOWN RIGHT LEFT")]
     public Door[] door;
     public ROOMTYPE type;
 
@@ -108,7 +109,6 @@ public abstract class BaseStage : MonoBehaviour
 
     public virtual void Enter()
     {
-        print(Map.Instance);
         Map.Instance.CurrentStage = this;
         RoomActive = true;
 

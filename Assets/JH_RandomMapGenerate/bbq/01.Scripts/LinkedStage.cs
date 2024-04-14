@@ -6,10 +6,10 @@ using UnityEngine;
 [Serializable]
 public class LinkedStage
 {
-    public GameObject RightMap = null;
-    public GameObject LeftMap = null;
-    public GameObject UpMap = null;
-    public GameObject DownMap = null;
+    public BaseStage RightMap = null;
+    public BaseStage LeftMap = null;
+    public BaseStage UpMap = null;
+    public BaseStage DownMap = null;
 
 
     public int Num;

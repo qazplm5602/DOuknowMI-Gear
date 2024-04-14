@@ -1,3 +1,5 @@
+using bbqCode;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,8 +12,8 @@ public class Door : MonoBehaviour
     private Dictionary<DoorType, DoorType> OppoDir = new Dictionary<DoorType, DoorType>()
     {
         {DoorType.Up, DoorType.Down },
-        {DoorType.Right, DoorType.Left },
         {DoorType.Down, DoorType.Up },
+        {DoorType.Right, DoorType.Left },
         {DoorType.Left, DoorType.Right },
     };
 
@@ -19,7 +21,8 @@ public class Door : MonoBehaviour
     
     private BaseStage stageData;
 
-    private GameObject nextRoom;
+    private BaseStage nextRoom;
+    [SerializeField] private Door nextDoor;
 
     public void Awake()
     {
@@ -28,7 +31,17 @@ public class Door : MonoBehaviour
 
     private void OnEnable()
     {
-        stageData = transform.parent.GetComponent<BaseStage>();
+        GameObject stage = gameObject;
+        int tries = 0, maxTries = 25;
+        while (!stage.CompareTag("Stage"))
+        {
+            stage = stage.transform.parent.gameObject;
+            tries++;
+        }
+        if (tries > maxTries)
+            return;
+
+        stageData = stage.GetComponent<BaseStage>();
 
         switch (Type)
         {
@@ -46,14 +59,30 @@ public class Door : MonoBehaviour
                 break;
         }
 
+        try
+        {
+            if (nextRoom.door[(int)OppoDir[Type]])
+                nextDoor = nextRoom.door[(int)OppoDir[Type]];
+        }
+        catch (Exception e)
+        {
+
+        }
 
     }
 
     public void Teleport()
     {
         stageData.Exit();
-        nextRoom.GetComponent<BaseStage>().Enter();
+        nextRoom.Enter();
         //텔레포트
         //plr.transform.position = nextRoom.GetComponent<BaseStage>().door[(int)OppoDir[Type]].transform.position;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (!col.CompareTag("Player")) return;
+        if (!stageData.Cleared) return;
+        bbqCode.GayManater.Instance.MoveRoom(nextRoom,nextDoor);
     }
 }
