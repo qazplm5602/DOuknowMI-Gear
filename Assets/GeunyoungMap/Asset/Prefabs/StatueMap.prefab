@@ -2698,6 +2698,7 @@ GameObject:
   - component: {fileID: 8637462879812309710}
   - component: {fileID: 8177418216349040053}
   - component: {fileID: 4171994633135395155}
+  - component: {fileID: 7346517444090218455}
   m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
@@ -2793,6 +2794,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7346517444090218455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2540234696773003151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 3
 --- !u!1 &2799701002971682557
 GameObject:
   m_ObjectHideFlags: 0
@@ -3083,9 +3097,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3772448675704830603}
   - component: {fileID: 6537112242156830846}
+  - component: {fileID: 4749083187472490087}
   m_Layer: 0
   m_Name: StatueMap
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3123,6 +3138,38 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &4749083187472490087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843966201381268025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd3fa2a5a40a4014cb5432e7eff7094d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 5996621766262362415}
+  - {fileID: 7346517444090218455}
+  type: 3
+  StageNum: 0
+  StageLinkedData:
+    RightMap: {fileID: 0}
+    LeftMap: {fileID: 0}
+    UpMap: {fileID: 0}
+    DownMap: {fileID: 0}
+    Num: 0
+    indexX: 0
+    indexY: 0
+  Arena: {fileID: 0}
+  MaxWave: 3
+  CurrentWave: 0
+  Cleared: 0
+  RoomActive: 0
 --- !u!1 &5234495880617023583
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,6 +4927,7 @@ GameObject:
   - component: {fileID: 3278861053704606635}
   - component: {fileID: 8374034716678122536}
   - component: {fileID: 4296128617677833892}
+  - component: {fileID: 5996621766262362415}
   m_Layer: 0
   m_Name: Portal (1)
   m_TagString: Untagged
@@ -4975,6 +5023,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5996621766262362415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874408689377214276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
 --- !u!1 &6155570605815992612
 GameObject:
   m_ObjectHideFlags: 0
