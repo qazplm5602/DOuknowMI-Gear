@@ -3287,7 +3287,7 @@ GameObject:
   - component: {fileID: 1011509551}
   - component: {fileID: 1011509550}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: CancelBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4844,7 +4844,7 @@ GameObject:
   - component: {fileID: 1734505085}
   - component: {fileID: 1734505084}
   m_Layer: 5
-  m_Name: Button
+  m_Name: EnforceBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

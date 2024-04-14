@@ -31,6 +31,9 @@ public class GearEnforceUI : MonoBehaviour
     Image paySkillIco;
     TextMeshProUGUI payNasaT;
 
+    Button enforceBtn;
+    Button cancelBtn;
+
     CanvasGroup AnimScreen_group;
     CanvasGroup AnimBoxBefore_group;
     CanvasGroup AnimBoxAfter_group;
@@ -49,6 +52,9 @@ public class GearEnforceUI : MonoBehaviour
         AnimBoxAfter_group = AnimBoxAfter.GetComponent<CanvasGroup>();
         AnimText = _animScreen.Find("title").GetComponent<TextMeshProUGUI>();
         AnimScreen_group = _animScreen.GetComponent<CanvasGroup>();
+
+        enforceBtn = _mainBox.transform.Find("EnforceBtn").GetComponent<Button>();
+        cancelBtn = _mainBox.transform.Find("CancelBtn").GetComponent<Button>();
     
         // 테스트 코드
         // Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
@@ -74,7 +80,8 @@ public class GearEnforceUI : MonoBehaviour
             paySkillIco.sprite = gear.data.Icon;
         }
 
-        payNasaT.text = $"<color={(_playerMoney.Part >= _paymentCoin[gear.stat.level] ? "green" : "red")}>{_playerMoney.Part}</color> / {_paymentCoin[gear.stat.level]}";
+        bool enoughCoin = _playerMoney.Part >= _paymentCoin[gear.stat.level];
+        payNasaT.text = $"<color={(enoughCoin ? "green" : "red")}>{_playerMoney.Part}</color> / {_paymentCoin[gear.stat.level]}";
 
         EnorceAnimReset();
         _mainBox.SetActive(true);
