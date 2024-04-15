@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7709536144467850541}
-  - component: {fileID: -1715857878140975489}
+  - component: {fileID: 2750061096509212265}
   m_Layer: 0
-  m_Name: ArtillerySkillContainer
+  m_Name: ShellSkillContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1715857878140975489
+--- !u!114 &2750061096509212265
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,6 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7755477415685776989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3358b60f86d6aeb4aa4b88347526e1d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e01630eed721dd4f8e8cf67d4076b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  isDamageCasting: 0
