@@ -37,7 +37,11 @@ public class EnemyBomb : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-    public override void Attack() => StateMachine.CurrentState.AnimationAttackTrigger();
+    public override void Attack() {
+        Instantiate(boomPrefab, transform.position, Quaternion.identity);
+        
+        StateMachine.CurrentState.AnimationAttackTrigger();
+    }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 }

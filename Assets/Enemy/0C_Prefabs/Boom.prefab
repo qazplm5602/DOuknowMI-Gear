@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
-  _attackRadius: 1.5
+  _attackRadius: 2
   _whatIsEnemy:
     serializedVersion: 2
     m_Bits: 8
@@ -77,9 +77,9 @@ Transform:
   m_GameObject: {fileID: 4809421234792833470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 1.48, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: -0.16, y: 2.43, z: 0}
+  m_LocalScale: {x: 1.67, y: 1.67, z: 1.67}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 2576496801304411613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
