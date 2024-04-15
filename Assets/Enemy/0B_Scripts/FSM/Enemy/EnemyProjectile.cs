@@ -29,7 +29,7 @@ public class EnemyProjectile : PoolableMono
     private void Timer() {
         _timer += Time.deltaTime;
         if(_timer >= _lifeTime) {
-            gameObject.SetActive(true);
+            PoolManager.Instance.Push(this);
         }
     }
 

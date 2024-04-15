@@ -35,7 +35,15 @@ public class EnemyGuni : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-    public override void Attack() => StateMachine.CurrentState.AnimationAttackTrigger();
+    public override void Attack() {
+        GameObject obj = PoolManager.Instance.Pop(PoolingType.Muzzle).gameObject;
+        obj.transform.position = attackTransform.position;
+
+        Muzzle muz = obj.GetComponent<Muzzle>();
+        muz.Init(FacingDirection);
+
+        StateMachine.CurrentState.AnimationAttackTrigger();
+    }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 }
