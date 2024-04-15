@@ -31,12 +31,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ApplyDamage(int damage, Transform dealer) {
         if(owner.isDead || owner.isInvincibility) return;
-        owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         owner.MovementCompo.Knockback(dealer, 10f);
         if(currentHealth == 0) {
             owner.isDead = true;
             OnDead?.Invoke();
         }
+        owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }

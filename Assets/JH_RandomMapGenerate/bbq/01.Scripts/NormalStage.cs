@@ -10,6 +10,7 @@ public class NormalStage : BaseStage
 {
     [Header("FUCKING ENEMIES WEIGHT")]
     public Enemy[] Enemies;
+    [Tooltip("이게 무엇인가? 가중치인데 클수록 ㅈㄴ쌔고 덜나옴 ㅋㅋ")]
     public int[] Weights;
     [SerializeField] private Transform[] _spawnPoints;
     public int TotalWeight = 0;
