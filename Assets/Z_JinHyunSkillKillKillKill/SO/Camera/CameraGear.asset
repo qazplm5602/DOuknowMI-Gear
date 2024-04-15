@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: CameraGear
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  name: Bolt and Nut
+  name: Camera
   desc: 
   defaultDamage: 0
   defaultRange: 0
   activeDamage: 1
   activeRange: 1
   cogList: 0100000001000000
-  loadModule: {fileID: 7755477415685776989, guid: 9b411f092b3f93d489cac2f653886ebc, type: 3}
+  loadModule: {fileID: 7755477415685776989, guid: e02bbf0e242113847871b67a8f44af2b, type: 3}

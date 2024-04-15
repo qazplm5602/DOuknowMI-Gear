@@ -3,6 +3,7 @@ using UnityEngine;
 public class GearBNNSkill : GearCogEvent
 {
     private PlayerSkill _skillType = PlayerSkill.BNN;
+    //[SerializeField] GameObject anyObj;
 
     public override void Use()
     {

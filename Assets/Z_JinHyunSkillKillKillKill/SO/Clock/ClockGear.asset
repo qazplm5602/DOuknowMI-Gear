@@ -20,4 +20,4 @@ MonoBehaviour:
   activeDamage: 1
   activeRange: 1
   cogList: 0100000001000000
-  loadModule: {fileID: 7755477415685776989, guid: 9b411f092b3f93d489cac2f653886ebc, type: 3}
+  loadModule: {fileID: 7755477415685776989, guid: b59b1c9606fa6a54293e613a7011d795, type: 3}
