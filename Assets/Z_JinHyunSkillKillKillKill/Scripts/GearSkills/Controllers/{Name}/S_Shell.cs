@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SkillShell : SkillController
 {
-    
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
 }

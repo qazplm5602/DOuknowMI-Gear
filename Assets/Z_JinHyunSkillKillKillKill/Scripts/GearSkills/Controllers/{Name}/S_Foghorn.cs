@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SkillFoghorn : SkillController
 {
-    
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
 }
