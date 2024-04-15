@@ -693,12 +693,14 @@ MonoBehaviour:
   moveSpeed: 6
   dashPower: 25
   jumpPower: 15
+  dashCool: 0
   atk: 0
   atkCool: 0
   criticalChance: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
   lastAttackTime: 0
+  lastDashTime: 0
   isAttack: 0
 --- !u!50 &606501661
 Rigidbody2D:
@@ -1089,6 +1091,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1688932462}
   - component: {fileID: 1688932463}
+  - component: {fileID: 1688932464}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1128,6 +1131,21 @@ MonoBehaviour:
   mapSpawner: {fileID: 0}
   CurrentRoom: {fileID: 0}
   plr: {fileID: 606501660}
+--- !u!114 &1688932464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688932461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b77f4d5b1fd8f4293c0f37109a3185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 606501655}
+  playerTrm: {fileID: 606501664}
+  player: {fileID: 606501660}
 --- !u!1 &1719275712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputReader: {fileID: 0}
+  ExcuseMeUI: {fileID: 0}
   charPrintTime: 0
   DialoguePanel: {fileID: 0}
   SelectionPanel: {fileID: 0}
