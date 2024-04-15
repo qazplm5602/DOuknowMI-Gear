@@ -13,6 +13,7 @@ public class PlayerPart : MonoBehaviour
         if (!CheckPart(value)) return false;
         
         Part -= value;
+        IngameUIControl.Instance.SetCoin((int)Part);
         return true;
     }
 

@@ -91,7 +91,7 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
         float nowT = 0;
 
         while (nowT < 1) {
-            nowT += Time.deltaTime;
+            nowT += Time.deltaTime / 2;
             nowVal = (int)Mathf.Lerp(nowVal, value, nowT);
 
             coinT.text = nowVal.ToString("N0");
