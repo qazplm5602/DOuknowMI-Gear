@@ -205,7 +205,21 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                     name = "강화하기",
                     callback = () => {
                         _contextUI.Close();
-                        _enforceUI.Show(gear);
+                        _enforceUI.Show(gear, () => {
+                            _enforceUI.Hide(); // 일단 창 닫고
+
+                            // 혹시 모르니 깊은 복사 ㄱㄱ
+                            GearStat newStat = gear.stat;
+                            newStat.level ++;
+
+                            GearGroupDTO gearGroup = new() {
+                                data = gear.data,
+                                stat = newStat
+                            };
+
+                            RemoveInventory(idx);
+                            GiveInventory(gearGroup, idx);
+                        });
                     }
                 });
 

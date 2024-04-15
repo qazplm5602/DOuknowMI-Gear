@@ -55,13 +55,18 @@ public class GearEnforceUI : MonoBehaviour
 
         enforceBtn = _mainBox.transform.Find("EnforceBtn").GetComponent<Button>();
         cancelBtn = _mainBox.transform.Find("CancelBtn").GetComponent<Button>();
+
+        // enforceBtn
+        enforceBtn.onClick.AddListener(StartEnforce);
+        cancelBtn.onClick.AddListener(Hide);
     
         // 테스트 코드
         // Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
     }
 
-    public void Show(GearGroupDTO gear) {
+    public void Show(GearGroupDTO gear, Action cb) {
         currentGear = gear;
+        callback = cb;
         subtitle.text = $"{gear.data.Name}의 기어를 강화 하시겠습니까?";
 
         // 기어 박스 설정
@@ -83,6 +88,8 @@ public class GearEnforceUI : MonoBehaviour
         bool enoughCoin = _playerMoney.Part >= _paymentCoin[gear.stat.level];
         payNasaT.text = $"<color={(enoughCoin ? "green" : "red")}>{_playerMoney.Part}</color> / {_paymentCoin[gear.stat.level]}";
 
+        enforceBtn.interactable = enoughCoin;
+
         EnorceAnimReset();
         _mainBox.SetActive(true);
     }
@@ -95,6 +102,18 @@ public class GearEnforceUI : MonoBehaviour
 
     public void EnorceAnim() {
         EnorceAnimReset();
+        AnimText.text = $"{currentGear.data.Name} 기어가 {currentGear.stat.level}레벨에서 {currentGear.stat.level + 1}레벨로 강화되었습니다.";
+
+        AnimBoxBefore.SetSkill(currentGear);
+
+        GearStat newStat = currentGear.stat;
+        newStat.level ++;
+
+        AnimBoxAfter.SetSkill(new GearGroupDTO() {
+            data = currentGear.data,
+            stat = newStat
+        });
+
         _animScreen.gameObject.SetActive(true);
 
         Sequence sequence = DOTween.Sequence();
@@ -121,15 +140,31 @@ public class GearEnforceUI : MonoBehaviour
         sequence.Join(AnimBoxAfter.transform.DOLocalRotate(Vector3.zero, 0.3f).SetEase(Ease.InOutQuad));
     
         sequence.Join(AnimText.DOFade(1, 0.3f).SetEase(Ease.InOutQuad));
+        sequence.AppendInterval(3);
+        
+        sequence.OnComplete(() => callback.Invoke());
     }
 
     void EnorceAnimReset() {
         _animScreen.gameObject.SetActive(false);
         AnimScreen_group.alpha = 0;
+        AnimText.color = new Color(1, 1, 1, 0);
 
+        AnimBoxBefore_group.alpha = 0;
         AnimBoxBefore.gameObject.SetActive(true);
         AnimBoxAfter.gameObject.SetActive(false);
 
         (AnimBoxBefore.transform as RectTransform).anchoredPosition = Vector2.zero;
+    }
+
+    void StartEnforce() {
+        // 결제 실패
+        if (!_playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level])) return;
+        
+        if (currentGear.stat.level == 4) {
+            // 똑같은 기어 있는지 확인 할꺼
+        }
+
+        EnorceAnim();
     }
 }

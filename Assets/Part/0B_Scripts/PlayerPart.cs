@@ -20,4 +20,11 @@ public class PlayerPart : MonoBehaviour
     public bool CheckPart(uint value) {
         return Part >= value;
     }
+
+    #if UNITY_EDITOR
+        [ContextMenu("50개 추가")]
+        void Plus50() => IncreasePart(50);
+        [ContextMenu("500개 추가")]
+        void Plus500() => IncreasePart(500);
+    #endif
 }

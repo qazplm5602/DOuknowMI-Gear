@@ -35,7 +35,7 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
         SetLocation("도미시티");
         SetHealthLevel(53);
 
-        SetCoin(1000);
+        // SetCoin(1000);
     }
     
     public void SetHealthBar(float current, float max) {
