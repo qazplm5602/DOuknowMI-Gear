@@ -3,7 +3,7 @@ using UnityEngine;
 using FSM;
 
 public enum LJ_KStateEnum {
-    Battle, Chop, DoubleAttack, TripleAttack, SprayStone, Dead
+    Battle, Chop, DoubleAttack, TripleAttack, SprayStone, Earthquake, Dead
 }
 
 public class EnemyLJ_K : Enemy
@@ -43,6 +43,10 @@ public class EnemyLJ_K : Enemy
     [Space]
 
     public GameObject sprayStonePrefab;
+
+    [Space]
+
+    public GameObject stoneColumnPrefab;
 
     protected override void Awake() {
         base.Awake();

@@ -12,22 +12,24 @@ public class BT_KAttackState : EnemyState<CommonEnemyStateEnum>
         base.Enter();
 
         _enemyBT_K = _enemy as EnemyBT_K;
-        direction = (PlayerManager.instance.playerTrm.position - _enemyBT_K.attackTransform.position).normalized;
     }
 
     public override void UpdateState() {
         
         if(_enemy.isDead) _stateMachine.ChangeState(CommonEnemyStateEnum.Dead);
         
-        if(_triggerCalled) {
+        if(_enemyBT_K.attackCount == 10) {
+            _enemyBT_K.attackCount = 0;
             _stateMachine.ChangeState(CommonEnemyStateEnum.Chase);
         }
     }
 
     public override void AnimationAttackTrigger() {
+        direction = (PlayerManager.instance.playerTrm.position - _enemyBT_K.attackTransform.position).normalized;
+        
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyBT_K.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(3, 5.5f, direction);
+        bulletObject.GetComponent<EnemyProjectile>().Init(3, 12f, direction);
         Debug.Log("탕!!");
     }
 
