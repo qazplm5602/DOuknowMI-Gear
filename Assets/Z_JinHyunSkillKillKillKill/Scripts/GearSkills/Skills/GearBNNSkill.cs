@@ -1,12 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEditor.Timeline;
-using UnityEditor.Tilemaps;
-using UnityEditor.Rendering;
-using Cinemachine.Utility;
-using System;
 
 public class GearBNNSkill : GearCogEvent
 {
@@ -20,12 +12,12 @@ public class GearBNNSkill : GearCogEvent
 
         GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
 
-        //Pooling으로 대체?해야?겠지?
         Instantiate(prefab, playerPos, look);
 
+    }
+}
         //PlayerSkillManager.Instance.skillRoutine[_skillType]
         //    .Enqueue(StartCoroutine(MoveSkillGameObejct(_maxRange, startTrm)));
-    }
 
     //private IEnumerator MoveSkillGameObejct(float range, Transform startTrm)
     //{
@@ -69,4 +61,4 @@ public class GearBNNSkill : GearCogEvent
     //    return;
     //    //PlayerSkillManager.Instance.gearSkillDamageCaster.DamageCast(_damage, castPos, 0, 0, 0, CastingType.None);
     //}
-}
+
