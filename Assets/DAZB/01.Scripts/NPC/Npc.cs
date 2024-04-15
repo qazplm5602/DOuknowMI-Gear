@@ -20,27 +20,28 @@ public abstract class Npc : MonoBehaviour, IInteraction
         dialogue = GetComponent<Dialogue>();
     }
 
-    private void Start() {
-        pos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
-    }
-
-
     private void Update() {
         CheckPlayer();
         if (isCheck && !isDialogue) {
+            pos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
             DialogueManager.instance.ExcuseMeUI.SetActive(true);
             DialogueManager.instance.ExcuseMeUI.transform.position = pos;
+            DialogueManager.instance.SetNpc(this);
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 ExcuseMe();
             }
         }
         else {
-            DialogueManager.instance.ExcuseMeUI.SetActive(false);
+            if (DialogueManager.instance.npc == null) return;
+            if (DialogueManager.instance.npc.name == gameObject.name) {
+                DialogueManager.instance.ExcuseMeUI.SetActive(false);
+            }
         }
     }
 
     public void ExcuseMe() {
         if (DialogueManager.instance.isEnd == false) return;
+        PlayerManager.instance.player.StateMachine.ChangeState(PlayerStateEnum.Idle);
         dialogue.StartDialogue();
         DialogueManager.instance.ActiveDialoguePanel(true);
         DialogueManager.instance.Greeting();

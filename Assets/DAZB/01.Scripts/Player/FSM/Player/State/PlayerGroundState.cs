@@ -16,7 +16,7 @@ public abstract class PlayerGroundState : PlayerState
     
     public override void UpdateState() {
         base.UpdateState();
-        if (player.MovementCompo.isGround == false) {
+        if (player.MovementCompo.isGround == false && DialogueManager.instance.isEnd == true) {
             stateMachine.ChangeState(PlayerStateEnum.Fall);
         }
     }

@@ -16,12 +16,17 @@ public class PlayerState
     }
 
     public virtual void Enter() {
+        if (DialogueManager.instance.isEnd == false) {
+            stateMachine.ChangeState(PlayerStateEnum.Idle);
+        }
         player.AnimatorCompo.SetBool(animBoolHash, true);
         endTriggerCalled = false;
     }
 
     public virtual void UpdateState() {
-        
+        if (DialogueManager.instance.isEnd == false) {
+            stateMachine.ChangeState(PlayerStateEnum.Idle);
+        }
     }
 
     public virtual void Exit() {
