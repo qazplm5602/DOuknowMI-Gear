@@ -21,6 +21,7 @@ public class Player : Agent
     public float moveSpeed;
     public float dashPower;
     public float jumpPower;
+    public float dashCool;
     public float atk;
     public float atkCool;
     public float criticalChance;
@@ -30,6 +31,7 @@ public class Player : Agent
     public bool isDash;
     private PlayerStat stats;
     public float lastAttackTime;
+    public float lastDashTime;
     public bool isAttack;
 
     protected override void Awake() {

@@ -21,7 +21,7 @@ public class Door : MonoBehaviour
     
     private BaseStage stageData;
 
-    private BaseStage nextRoom;
+    [SerializeField] private BaseStage nextRoom;
     [SerializeField] private Door nextDoor;
 
     public void Awake()
@@ -83,6 +83,7 @@ public class Door : MonoBehaviour
     {
         if (!col.CompareTag("Player")) return;
         if (!stageData.Cleared) return;
+        print(bbqCode.GayManater.Instance);
         bbqCode.GayManater.Instance.MoveRoom(nextRoom,nextDoor);
     }
 }

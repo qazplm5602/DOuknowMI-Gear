@@ -27,7 +27,7 @@ public abstract class PlayerGroundState : PlayerState
 
     private void HandleJumpEvent()
     {
-        if (player.MovementCompo.isGround) {
+        if (player.MovementCompo.isGround && DialogueManager.instance.isEnd && !player.isDead && !player.ishurt) {
             stateMachine.ChangeState(PlayerStateEnum.Jump);
         }
     }
