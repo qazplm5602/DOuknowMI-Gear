@@ -12,6 +12,10 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
     [SerializeField] GameObject _location;
     [SerializeField] RectTransform _coinBox;
 
+    [Header("Scripts")]
+    [SerializeField] GearChangeUI _gearChangeUI;
+    public GearChangeUI gearChangeUI => _gearChangeUI;
+
     TextMeshProUGUI locationT;
     Image healthRed;
     Image healthGreen;

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using System;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class GearEnforceUI : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class GearEnforceUI : MonoBehaviour
     /////////////// cache
     TextMeshProUGUI subtitle;
     Image paySkillIco;
+    TextMeshProUGUI paySkillT;
     TextMeshProUGUI payNasaT;
 
     Button enforceBtn;
@@ -39,6 +41,7 @@ public class GearEnforceUI : MonoBehaviour
     CanvasGroup AnimBoxAfter_group;
     TextMeshProUGUI AnimText;
 
+    int invenIdx = -1;
     GearGroupDTO currentGear;
     Action callback;
     
@@ -46,6 +49,7 @@ public class GearEnforceUI : MonoBehaviour
         subtitle = _mainBox.transform.Find("question").GetComponent<TextMeshProUGUI>();
 
         paySkillIco = _payBoxSkill.transform.Find("Img").GetComponent<Image>();
+        paySkillT = _payBoxSkill.transform.Find("Text").GetComponent<TextMeshProUGUI>();
         payNasaT = _payBoxNasa.transform.Find("Text").GetComponent<TextMeshProUGUI>();
 
         AnimBoxBefore_group = AnimBoxBefore.GetComponent<CanvasGroup>();
@@ -64,9 +68,10 @@ public class GearEnforceUI : MonoBehaviour
         // Show(new GearGroupDTO() { data = tempGear, stat = new() { level = 1 } });
     }
 
-    public void Show(GearGroupDTO gear, Action cb) {
+    public void Show(GearGroupDTO gear, int idx, Action cb) {
         currentGear = gear;
         callback = cb;
+        invenIdx = idx;
         subtitle.text = $"{gear.data.Name}의 기어를 강화 하시겠습니까?";
 
         // 기어 박스 설정
@@ -74,21 +79,28 @@ public class GearEnforceUI : MonoBehaviour
 
         GearStat currentStat = gear.stat;
         currentStat.level ++;
+
         _enforceSkill.SetSkill(new GearGroupDTO() { 
             data = gear.data,
             stat = currentStat
         });
         
         // 소모 아이템 설정
-        _payBoxSkill.SetActive(gear.stat.level == 4);
+        bool hasSkill;
         if (gear.stat.level == 4) {
+            FindPaySkill(out var findGear);
+            hasSkill = findGear != null;
+            paySkillT.text = $"<b><size=15><color=#{(hasSkill ? "8C8C8C" : "FF6C6C")}>{(hasSkill ? $"Lv.{findGear.stat.level}" : "필요")}</color></size></b> {currentGear.data.Name}";
+
             paySkillIco.sprite = gear.data.Icon;
-        }
+        } else hasSkill = true; // 그냥 통과
+
+        _payBoxSkill.SetActive(gear.stat.level == 4);
 
         bool enoughCoin = _playerMoney.Part >= _paymentCoin[gear.stat.level];
         payNasaT.text = $"<color={(enoughCoin ? "green" : "red")}>{_playerMoney.Part}</color> / {_paymentCoin[gear.stat.level]}";
 
-        enforceBtn.interactable = enoughCoin;
+        enforceBtn.interactable = enoughCoin && hasSkill;
 
         EnorceAnimReset();
         _mainBox.SetActive(true);
@@ -97,7 +109,21 @@ public class GearEnforceUI : MonoBehaviour
     public void Hide() {
         currentGear = null;
         callback = null;
+        invenIdx = -1;
         _mainBox.SetActive(false);
+    }
+    
+    // currentGear 스킬과 같은 기어 찾음 (제일 낮은순으로)
+    int FindPaySkill(out GearGroupDTO gear) {
+        int idx = -1;
+        GearGroupDTO[] inventory = IngameUIControl.Instance.gearChangeUI.GetAllInventory();
+        
+        for (int i = 0; i < inventory.Length; i++)
+            if (inventory[i] != null && inventory[i].data == currentGear.data && i != invenIdx /* 강화중인건 제외 해야함 (강화할 스킬을 써버리면 안되자노) */ && (idx == -1 || (inventory[idx].stat.level > inventory[i].stat.level)))
+                    idx = i;
+
+        gear = (idx != -1) ? inventory[idx] : null;
+        return idx;
     }
 
     public void EnorceAnim() {
@@ -159,12 +185,19 @@ public class GearEnforceUI : MonoBehaviour
 
     void StartEnforce() {
         // 결제 실패
-        if (!_playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level])) return;
+        // if (!_playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level])) return;
+        if (!_playerMoney.CheckPart((uint)_paymentCoin[currentGear.stat.level])) return;
         
         if (currentGear.stat.level == 4) {
             // 똑같은 기어 있는지 확인 할꺼
+            int idx = FindPaySkill(out var _);
+            if (idx == -1) return;
+
+            // 사용했으니 지움
+            IngameUIControl.Instance.gearChangeUI.RemoveInventory(idx);
         }
 
+        _playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level]);
         EnorceAnim();
     }
 }

@@ -62,7 +62,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
         foreach (var item in _gearDatas) {
             // GearAdd(item);
-            print($"{item.Name} inven add {GiveInventory(new GearGroupDTO() { data = item })}");
+            print($"{item.Name} inven add {GiveInventory(new GearGroupDTO() { data = item, stat = new() { level = 4 } })}");
         }
     
         // Open();
@@ -205,7 +205,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                     name = "강화하기",
                     callback = () => {
                         _contextUI.Close();
-                        _enforceUI.Show(gear, () => {
+                        _enforceUI.Show(gear, idx, () => {
                             _enforceUI.Hide(); // 일단 창 닫고
 
                             // 혹시 모르니 깊은 복사 ㄱㄱ
@@ -245,7 +245,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         return true;
     }
     
-    bool RemoveInventory(int idx) {
+    public bool RemoveInventory(int idx) {
         if (inventory[idx] == null) return false;
         
         inventory[idx] = null;
@@ -261,6 +261,14 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         eventHandler.OnLeftMouseDownEvent += () => OnPointerDown(null);
 
         return true;
+    }
+
+    public GearGroupDTO GetInventory(int idx) {
+        return inventory[idx];
+    }
+
+    public GearGroupDTO[] GetAllInventory() {
+        return inventory;
     }
 
     int GetEmptyInventoryIdx() {
