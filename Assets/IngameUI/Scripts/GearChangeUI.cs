@@ -167,7 +167,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         gearDatas.RemoveAt(idx);
     }
 
-    bool GiveInventory(GearGroupDTO gear, int idx = -1) {
+    public bool GiveInventory(GearGroupDTO gear, int idx = -1) {
         if (idx == -1) {
             idx = GetEmptyInventoryIdx();
             if (idx == -1) return false;
@@ -245,6 +245,18 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         return true;
     }
     
+    // 스텟 없이 보낸경우 (기어 생성)
+    public bool GiveInventory(GearSO data, int idx = -1) {
+        return GiveInventory(new GearGroupDTO() {
+            data = data,
+            stat = new GearStat() { // 이 코드 나중에 함수 하나로 합쳐야할듯 (스텟 추가하거나 뺄때 초기화 GameManager.cs 에서도 수정해야됨)
+                level = 0,
+                damage = data.ActiveDamage ? data.DefaultDamage : -1,
+                range = data.ActiveRange ? data.DefaultRange : -1
+            }
+        }, idx);
+    }
+
     public bool RemoveInventory(int idx) {
         if (inventory[idx] == null) return false;
         
