@@ -210,6 +210,13 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
                             // 혹시 모르니 깊은 복사 ㄱㄱ
                             GearStat newStat = gear.stat;
+                            if (gear.data.ActiveDamage) {
+                                newStat.damage += gear.data.EnforceData.Damages[newStat.level];
+                            }
+                            if (gear.data.ActiveRange) {
+                                newStat.range += gear.data.EnforceData.Ranges[newStat.level];
+                            }
+
                             newStat.level ++;
 
                             GearGroupDTO gearGroup = new() {
