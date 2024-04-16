@@ -34,8 +34,9 @@ public abstract class SkillController : MonoBehaviour
     internal virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         bool notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
-        while (Vector3.Distance(startTrm.position, transform.position) < _maxRange == true)
+        while (notMaxDistance)
         {
+            notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
 
             //animation trigger called 일때 DamageCast
