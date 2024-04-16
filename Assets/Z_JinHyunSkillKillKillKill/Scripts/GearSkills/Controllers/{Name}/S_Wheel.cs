@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class SkillWheel : SkillController
 {
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 597182920824996605}
   - component: {fileID: 3807977366499881065}
   - component: {fileID: 2548019019231892986}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 2
+  _damage: 0
   _whatIsEnemy:
     serializedVersion: 2
     m_Bits: 72

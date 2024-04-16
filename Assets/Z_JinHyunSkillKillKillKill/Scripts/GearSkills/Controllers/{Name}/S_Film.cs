@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class SkillFilm  : SkillController
 {
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
 }

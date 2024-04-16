@@ -19,7 +19,7 @@ TagManager:
   - Enemy
   - Npc
   - PlayerWeapon
-  - Projectile
+  - EnemyAttack
   - 
   - 
   - 
