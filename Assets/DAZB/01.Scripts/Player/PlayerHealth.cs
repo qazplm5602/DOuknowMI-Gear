@@ -11,15 +11,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public event Action OnDead;
 
     private Player owner;
-    private PlayerStat stats;
 
     private void Awake() {
         owner = GetComponent<Player>();
-        stats = GetComponent<PlayerStat>();
     }
 
     private void Start() {
-        maxHealth = stats.defaultHealth;
+        maxHealth = owner.stat.maxHealth.GetValue();
         currentHealth = maxHealth;
     }
 

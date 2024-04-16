@@ -11,8 +11,15 @@ public class PlayerFallState : PlayerCanDashState
     public override void UpdateState() {
         base.UpdateState();
         HandleMovementEvent();
-        if (player.MovementCompo.isGround || DialogueManager.instance.isEnd == false) {
-            stateMachine.ChangeState(PlayerStateEnum.Idle);
+        if (DialogueManager.instance == null) {
+            if (player.MovementCompo.isGround) {
+                stateMachine.ChangeState(PlayerStateEnum.Idle);
+            }
+        }
+        else {
+            if (player.MovementCompo.isGround || DialogueManager.instance.isEnd == false) {
+                stateMachine.ChangeState(PlayerStateEnum.Idle);
+            }
         }
     }
 

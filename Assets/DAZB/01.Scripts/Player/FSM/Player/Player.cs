@@ -24,6 +24,7 @@ public class Player : Agent
     public float dashCool;
     public float atk;
     public float atkCool;
+    public int defense;
     public float criticalChance;
     public PlayerStateMachine StateMachine {get; private set;}
     [SerializeField] private InputReader inputReader;
@@ -36,11 +37,7 @@ public class Player : Agent
 
     protected override void Awake() {
         stats = GetComponent<PlayerStat>();
-        stats.OnUpdateStat += UpdateState;
-        moveSpeed = stats.defaultMoveSpeed;
-        atk = stats.defaultAtk;
-        atkCool = stats.defaultAttackCool;
-        criticalChance = stats.defaultCriticalChance;
+        SetStat();
         base.Awake();
         StateMachine = new PlayerStateMachine();
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum))) {
@@ -57,7 +54,7 @@ public class Player : Agent
     }
 
     private void OnDestroy() {
-        stats.OnUpdateStat -= UpdateState;
+
     }
 
     protected void Start() {
@@ -70,14 +67,16 @@ public class Player : Agent
     }
 
     protected void Update() {
-        if (DialogueManager.instance.isEnd == false || isDead) return;
+        if (DialogueManager.instance != null)
+            if (DialogueManager.instance.isEnd == false || isDead) return;
         StateMachine.CurrentState.UpdateState();
     }
 
-    private void UpdateState() {
-        moveSpeed = stats.currentMoveSpeed;
-        atk = stats.currentAtk;
-        atkCool = stats.currentAttckCool;
-        criticalChance = stats.currentCriticalChance;
+    private void SetStat() {
+        atk = stat.attack.GetValue();
+        atkCool = stat.GetAttackSpeed();
+        moveSpeed = stat.GetMoveSpeed();
+        criticalChance = stat.GetCriticalChance();
+        defense = stat.defense.GetValue();
     }
 }

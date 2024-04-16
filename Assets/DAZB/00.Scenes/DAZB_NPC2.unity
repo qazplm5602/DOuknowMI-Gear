@@ -319,6 +319,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de867cddb71e82b4c93a6c0056c7073e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &369786753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7678909992517132803, guid: 67760d55cdbf1ca478b8b896f58bd0cc, type: 3}
+  m_PrefabInstance: {fileID: 880227667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &402541273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,18 +1296,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPoint: 0
-  defaultAtk: 3
-  defaultHealth: 10
-  defaultAttackCool: 0.5
-  defaultMoveSpeed: 8
-  defaultDefence: 10
-  defaultCriticalChance: 50
-  atkPerPointInc: 1
-  healthPerPointInc: 1
+  atkPerPointInc: 0
+  healthPerPointInc: 0
   attackCoolPerPointInc: 1
   moveSpeedPerPointInc: 1
-  defencePerPointInc: 1
-  ciriticalChancePerPointInc: 1
+  defencePerPointInc: 0
+  criticalChancePerPointInc: 0
   _atkText: {fileID: 0}
   _healthText: {fileID: 0}
   _speedText: {fileID: 0}
@@ -1384,12 +1383,14 @@ MonoBehaviour:
   isDead: 0
   ishurt: 0
   isInvincibility: 0
-  moveSpeed: 6
+  stat: {fileID: 11400000, guid: f381fe0e589bd764ca7a019a93c08eb7, type: 2}
+  moveSpeed: 0
   dashPower: 25
   jumpPower: 10
   dashCool: 1
   atk: 0
   atkCool: 0
+  defense: 0
   criticalChance: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
@@ -1898,6 +1899,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   ExcuseMeUI: {fileID: 1304093168}
+  DotTwinkleUi: {fileID: 369786753}
   charPrintTime: 0.1
   DialoguePanel: {fileID: 930799923}
   SelectionPanel: {fileID: 1998823151}
