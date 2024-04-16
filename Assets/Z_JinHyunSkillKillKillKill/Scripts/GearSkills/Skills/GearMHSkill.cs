@@ -10,6 +10,7 @@ public class GearMHSkill : GearCogEvent
     {
         Vector3 playerPos = _player.transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
         GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
