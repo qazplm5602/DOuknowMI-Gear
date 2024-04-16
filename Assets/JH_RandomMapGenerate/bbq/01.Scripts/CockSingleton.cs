@@ -8,7 +8,7 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
     private static T instance = null;
     private static bool IsQuitting = false;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         if(instance == null)
         {
@@ -23,19 +23,19 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public static T Instance
     {
-        // ¾²·¡µå ¾ÈÀüÈ­ - Thread-Safe
+        // ì“°ë˜ë“œ ì•ˆì „í™” - Thread-Safe
         get
         {
-            // ÇÑ¹ø¿¡ ÇÑ ½º·¡µå¸¸ lockºí·° ½ÇÇà
+            // í•œë²ˆì— í•œ ìŠ¤ë˜ë“œë§Œ lockë¸”ëŸ­ ì‹¤í–‰
             lock (lockObject)
             {
-                // ºñÈ°¼ºÈ­ µÆ´Ù¸é ±âÁ¸²¨ ³»ºñµÎ°í »õ·Î ¸¸µç´Ù.
+                // ë¹„í™œì„±í™” ëë‹¤ë©´ ê¸°ì¡´êº¼ ë‚´ë¹„ë‘ê³  ìƒˆë¡œ ë§Œë“ ë‹¤.
                 if (IsQuitting)
                 {
                     return null;
                 }
 
-                // instance°¡ NULLÀÏ¶§ »õ·Î »ı¼ºÇÑ´Ù.
+                // instanceê°€ NULLì¼ë•Œ ìƒˆë¡œ ìƒì„±í•œë‹¤.
                 //if (instance == null)
                 //{
                 //    //instance = GameObject.Instantiate(Resources.Load<T>("MonoSingleton/" + typeof(T).Name));
@@ -48,7 +48,7 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     private void OnDisable()
     {
-        // ºñÈ°¼ºÈ­ µÈ´Ù¸é null·Î º¯°æ
+        // ë¹„í™œì„±í™” ëœë‹¤ë©´ nullë¡œ ë³€ê²½
         IsQuitting = true;
         instance = null;
     }

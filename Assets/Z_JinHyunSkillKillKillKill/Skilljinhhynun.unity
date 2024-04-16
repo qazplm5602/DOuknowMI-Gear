@@ -293,7 +293,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gearSkillDamageCaster: {fileID: 0}
   skillPrefabs:
-  - {fileID: 5663472254907384932, guid: d535d49a98e023c47a65d0001ed045eb, type: 3}
+  - {fileID: 5663472254907384932, guid: 7901ad5ca5a657e48bd25bf1447ca56a, type: 3}
+  - {fileID: 5663472254907384932, guid: c27b9c64fa93dc2409d730a63911f9aa, type: 3}
+  - {fileID: 5663472254907384932, guid: 0ab3c79fe71ef3a468fbc3c784b5c289, type: 3}
+  - {fileID: 5663472254907384932, guid: ed22fc2a7f8237b4b9ea706949aa1ca5, type: 3}
+  - {fileID: 5663472254907384932, guid: 6d89e2e39c063b2489f15ca5db94f0cd, type: 3}
+  - {fileID: 5663472254907384932, guid: f2949cc3f87a9a746b30698ad167492b, type: 3}
+  - {fileID: 5663472254907384932, guid: c64a1065edf3e3b4a951998181dfb3ee, type: 3}
+  - {fileID: 7586237168387870120, guid: 48773dea6e9868642a60766b5d8b3a6a, type: 3}
+  - {fileID: 5663472254907384932, guid: e9b25bbb8d0146e43a0a1217e73e0874, type: 3}
+  - {fileID: 5663472254907384932, guid: 0d955e6c2bcc3ff4587104c76dc0d4f2, type: 3}
+  - {fileID: 5663472254907384932, guid: 16c934d08b987064980f2cf0290a27de, type: 3}
+  - {fileID: 5663472254907384932, guid: 50fbb0939d01090439d73cd8d5d367de, type: 3}
+  - {fileID: 5663472254907384932, guid: 6b1885887e1d6484ba037b1017e68271, type: 3}
+  - {fileID: 5663472254907384932, guid: e26bc35b7e89a8741a3607536c6b8476, type: 3}
+  - {fileID: 5663472254907384932, guid: 886d20f6657aea142a6ede8e723d82e1, type: 3}
+  - {fileID: 5663472254907384932, guid: 9475c551f5dddf642ba8b3b7799ea832, type: 3}
 --- !u!1 &954719568
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,7 +430,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 957963070}
-  - component: {fileID: 957963071}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -439,21 +453,6 @@ Transform:
   - {fileID: 268725067}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &957963071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957963069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7d28c34ae5d00243ac334abc23dd0c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gearSkillDamageCaster: {fileID: 0}
-  skillPrefabs:
-  - {fileID: 5663472254907384932, guid: d535d49a98e023c47a65d0001ed045eb, type: 3}
 --- !u!1 &1107786006
 GameObject:
   m_ObjectHideFlags: 0

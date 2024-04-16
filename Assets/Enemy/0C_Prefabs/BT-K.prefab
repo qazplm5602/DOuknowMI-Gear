@@ -236,6 +236,7 @@ MonoBehaviour:
   AnimatorCompo: {fileID: 0}
   RigidbodyCompo: {fileID: 0}
   ColliderCompo: {fileID: 0}
+  Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
   moveSpeed: 0
@@ -243,13 +244,12 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
-  _whatIsObstacle:
+  whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   attackRange: {x: 7, y: 0.3}
   attackOffset: {x: 4, y: 0}
   attackDamage: 1
-  attackCooldown: 5
   lastAttackTime: 0
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
   attackTransform: {fileID: 7016129091395410088}
