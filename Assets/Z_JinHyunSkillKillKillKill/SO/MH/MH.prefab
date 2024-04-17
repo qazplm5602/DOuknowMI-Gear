@@ -256,10 +256,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e5ec12d95c01e4bbe4bf45cbb4fa41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 8
   castType: 2
-  _moveSpeed: 0
-  _maxRange: 0
+  _moveSpeed: 8
+  _maxRange: 10
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
