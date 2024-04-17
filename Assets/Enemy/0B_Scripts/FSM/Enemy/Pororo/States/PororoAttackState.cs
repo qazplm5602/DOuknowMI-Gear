@@ -5,13 +5,13 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
 {
     public PororoAttackState(Enemy enemy, EnemyStateMachine<CommonEnemyStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
-    private EnemyProro _enemyPororo;
+    private EnemyPororo _enemyPororo;
     
     public override void Enter() {
         base.Enter();
 
         _enemy.StopImmediately(true);
-        _enemyPororo = _enemy as EnemyProro;
+        _enemyPororo = _enemy as EnemyPororo;
     }
 
     public override void UpdateState() {
@@ -26,7 +26,7 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
     public override void AnimationAttackTrigger() {
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyPororo.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(10, 4, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
+        bulletObject.GetComponent<EnemyProjectile>().Init(10, 8f, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
         Debug.Log("탕!!");
     }
 

@@ -5,12 +5,16 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IngameUIControl : MonoBehaviour
+public class IngameUIControl : MonoSingleton<IngameUIControl>
 {
     ///////////// Config
     [SerializeField] GameObject _healthBar;
     [SerializeField] GameObject _location;
     [SerializeField] RectTransform _coinBox;
+
+    [Header("Scripts")]
+    [SerializeField] GearChangeUI _gearChangeUI;
+    public GearChangeUI gearChangeUI => _gearChangeUI;
 
     TextMeshProUGUI locationT;
     Image healthRed;
@@ -35,7 +39,7 @@ public class IngameUIControl : MonoBehaviour
         SetLocation("도미시티");
         SetHealthLevel(53);
 
-        SetCoin(1000);
+        // SetCoin(1000);
     }
     
     public void SetHealthBar(float current, float max) {
@@ -91,7 +95,7 @@ public class IngameUIControl : MonoBehaviour
         float nowT = 0;
 
         while (nowT < 1) {
-            nowT += Time.deltaTime;
+            nowT += Time.deltaTime / 2;
             nowVal = (int)Mathf.Lerp(nowVal, value, nowT);
 
             coinT.text = nowVal.ToString("N0");

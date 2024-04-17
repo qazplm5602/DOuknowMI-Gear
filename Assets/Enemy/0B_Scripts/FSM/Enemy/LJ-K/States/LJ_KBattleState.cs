@@ -32,13 +32,13 @@ public class LJ_KBattleState : EnemyState<LJ_KStateEnum>
         float distance = Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x);
         if(distance <= _enemyLJ_K.combatAttackDistance) {
             if(_enemy.CanAttack()) {
-                _stateMachine.ChangeState(LJ_KStateEnum.TripleAttack);
+                _stateMachine.ChangeState((LJ_KStateEnum)Random.Range(1, 4));
                 return;
             }
         }
         else if(distance > _enemyLJ_K.rangeAttackDistance) {
             if(_enemy.CanAttack()) {
-                _stateMachine.ChangeState(LJ_KStateEnum.Earthquake);
+                _stateMachine.ChangeState((LJ_KStateEnum)Random.Range(4, 6));
                 return;
             }
         }

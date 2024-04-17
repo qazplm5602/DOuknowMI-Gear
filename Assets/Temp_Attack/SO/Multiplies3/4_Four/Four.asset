@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
   m_Name: Four
   m_EditorClassIdentifier: 
+  icon: {fileID: 0}
   name: gear4
+  desc: 
+  defaultDamage: 0
+  defaultRange: 0
+  activeDamage: 1
+  activeRange: 1
   cogList: 010000000000000002000000000000000000000000000000000000000100000000000000000000000100000000000000
+  enforceData: {fileID: 11400000, guid: 673572a57132ea943bcf4a4ddb36eb47, type: 2}
   loadModule: {fileID: 8152039590136237335, guid: 802e451403790a346b9a5375a709eb86, type: 3}

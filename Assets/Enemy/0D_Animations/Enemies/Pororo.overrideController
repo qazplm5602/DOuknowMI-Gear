@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pororo
+  m_Controller: {fileID: 9100000, guid: 4c6c8b0730f55bb42b9a74fa20313213, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 645493b95febd124faf5b83f6d2fe79d, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 56fc54db4e8cc604f85a0c8bb36130c3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f6c4e4e0a3c8ccb4fb67d401f9c06a4b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a37387762cdaf264e9f8dd25d5c035e2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e29a4474c517755459e121a05ff57613, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 501efb714ed6bae4a874eeeff4cd9acf, type: 2}

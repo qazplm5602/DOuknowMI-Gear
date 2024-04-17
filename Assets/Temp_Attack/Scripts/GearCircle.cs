@@ -65,6 +65,25 @@ public class GearCircle : MonoBehaviour
                 return new Color32(236, 161, 47, 255);
         }
     }
+    static public Color GetLevelBorderColor(int level) {
+        switch (level)
+        {
+            case 1:
+                return Color.gray;
+            case 2:
+                return Color.yellow;
+            case 3:
+                return Color.green;
+            case 4:
+                return Color.red;
+            case 5:
+                return new Color32(95, 0, 255, 255);
+        
+
+            default:
+                return Color.black;
+        }
+    }
 
     private void OnDestroy() {
         sequence?.Kill();

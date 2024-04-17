@@ -11,6 +11,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     public InputReader inputReader;
     public GameObject ExcuseMeUI;
+    public GameObject DotTwinkleUi;
     public float charPrintTime;
     public GameObject DialoguePanel;
     public GameObject SelectionPanel;
@@ -28,7 +29,6 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("대사가 끝나면 true, 시작하면 false")]
     public bool isEnd = true;
     private TMP_Text interactionText;
-    private Tween currentTween; 
 /*     private IEnumerator _dialogue; */
     private void Awake() {
         instance = this;
@@ -36,13 +36,11 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void Init(List<DialogueData> greetingList, List<DialogueData> cancleList,
-        List<DialogueData> conversationList, List<DialogueData> interactionList, Npc npc) {
+        List<DialogueData> conversationList, List<DialogueData> interactionList) {
             this.greetingList = greetingList;
             this.cancleList = cancleList;
             this.conversationList = conversationList;
             this.interactionList = interactionList;
-            this.npc = npc;
-            SetNpcData();
     }
 
     private void SetSentence(List<DialogueData> list, int randNum) {
@@ -55,7 +53,8 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private void SetNpcData() {
+    public void SetNpc(Npc npc) {
+        this.npc = npc;
         nameText.text = npc.name;
         interactionText.text = npc.GetNpcData().InteractionName;
     }
@@ -95,6 +94,7 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator GreetingRoutine() {
         int randNum = Random.Range(1, int.Parse(greetingList[greetingList.Count - 1].RandomType) + 1);
         SetSentence(greetingList, randNum);
+        ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
             if (selectSentence.Count == 0) {
@@ -103,6 +103,13 @@ public class DialogueManager : MonoBehaviour
             sentence = selectSentence.Dequeue();
             contentText.text = sentence.Content;
             yield return StartCoroutine(TypeText(contentText));
+            if (selectSentence.Count == 0) {
+                ActiveSelectionPanel(true);
+                break;
+            }
+            yield return StartCoroutine(DotTwinkle());
+            yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
+            yield return new WaitForSeconds(0.2f);
         }
         yield return null;
     }
@@ -110,14 +117,17 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator ConversationRoutine() {
         int randNum = Random.Range(1, int.Parse(conversationList[conversationList.Count - 1].RandomType) + 1);
         SetSentence(conversationList, randNum);
+        ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
-            if (selectSentence.Count == 0) {
-                break;
-            }
             sentence = selectSentence.Dequeue();
             contentText.text = sentence.Content;
             yield return StartCoroutine(TypeText(contentText));
+            if (selectSentence.Count == 0) {
+                ActiveSelectionPanel(true);
+                break;
+            }
+            yield return StartCoroutine(DotTwinkle());
             yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
             yield return new WaitForSeconds(0.2f);
         }
@@ -127,14 +137,17 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator InteractionRoutine() {
         int randNum = Random.Range(1, int.Parse(interactionList[interactionList.Count - 1].RandomType) + 1);
         SetSentence(interactionList, randNum);
+        ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
             if (selectSentence.Count == 0) {
+                ActiveSelectionPanel(true);
                 break;
             }
             sentence = selectSentence.Dequeue();
             contentText.text = sentence.Content;
             yield return StartCoroutine(TypeText(contentText));
+            yield return StartCoroutine(DotTwinkle());
             yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
             yield return new WaitForSeconds(0.2f);
         }
@@ -145,15 +158,19 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator CancleRoutine() {
         int randNum = Random.Range(1, int.Parse(cancleList[cancleList.Count - 1].RandomType) + 1);
         SetSentence(cancleList, randNum);
+        ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
+            sentence = selectSentence.Dequeue();
+            contentText.text = sentence.Content;
+            yield return StartCoroutine(TypeText(contentText));
             if (selectSentence.Count == 0) {
                 yield return new WaitForSeconds(1f);
                 break;
             }
-            sentence = selectSentence.Dequeue();
-            contentText.text = sentence.Content;
-            yield return StartCoroutine(TypeText(contentText));
+            yield return StartCoroutine(DotTwinkle());
+            yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
+            yield return new WaitForSeconds(0.2f);
         }
         ActiveDialoguePanel(false);
         yield return null;
@@ -175,6 +192,24 @@ public class DialogueManager : MonoBehaviour
             SkipTween(tween);
         }
         yield return null;
+    }
+
+    private IEnumerator DotTwinkle() {
+        float currentTime = 0.0f;
+        bool isActive = true;
+        while (true) {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame) {
+                DotTwinkleUi.SetActive(false);
+                yield break;
+            }
+            if (currentTime > 0.5) {
+                isActive = !isActive;
+                DotTwinkleUi.SetActive(isActive);
+                currentTime = 0.0f;
+            }
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
     }
 
     public void SkipTween(Tween tween) {

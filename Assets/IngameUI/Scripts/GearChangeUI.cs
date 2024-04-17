@@ -37,6 +37,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     [Header("Scripts")]
     [SerializeField] GearManager _gearManager;
     [SerializeField] ContextMenuUI _contextUI;
+    [SerializeField] GearEnforceUI _enforceUI;
 
     [SerializeField] GearSO[] _gearDatas; // 테스트만 하고 삭제 예정 (나중에 gearManager에서 가져올 예정)
 
@@ -61,7 +62,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
 
         foreach (var item in _gearDatas) {
             // GearAdd(item);
-            print($"{item.Name} inven add {GiveInventory(new GearGroupDTO() { data = item })}");
+            print($"{item.Name} inven add {GiveInventory(new GearGroupDTO() { data = item, stat = new() { level = 4 } })}");
         }
     
         // Open();
@@ -166,7 +167,7 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         gearDatas.RemoveAt(idx);
     }
 
-    bool GiveInventory(GearGroupDTO gear, int idx = -1) {
+    public bool GiveInventory(GearGroupDTO gear, int idx = -1) {
         if (idx == -1) {
             idx = GetEmptyInventoryIdx();
             if (idx == -1) return false;
@@ -190,26 +191,73 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
                 HideDescription();
         };
         eventManager.OnRightMouseDownEvent += () => {
-            _contextUI.OpenMenu(new ContextButtonDTO[] {
-                new() {
+            List<ContextButtonDTO> menus = new()
+            {
+                new()
+                {
                     name = "장착하기",
                     callback = () => InsertGear(idx)
-                },
-                new() {
-                    name = "버리기",
+                }
+            };
+
+            if (gear.stat.level != 5)
+                menus.Add(new() {
+                    name = "강화하기",
                     callback = () => {
                         _contextUI.Close();
-                        RemoveInventory(idx);
+                        _enforceUI.Show(gear, idx, () => {
+                            _enforceUI.Hide(); // 일단 창 닫고
+
+                            // 혹시 모르니 깊은 복사 ㄱㄱ
+                            GearStat newStat = gear.stat;
+                            if (gear.data.ActiveDamage) {
+                                newStat.damage += gear.data.EnforceData.Damages[newStat.level];
+                            }
+                            if (gear.data.ActiveRange) {
+                                newStat.range += gear.data.EnforceData.Ranges[newStat.level];
+                            }
+
+                            newStat.level ++;
+
+                            GearGroupDTO gearGroup = new() {
+                                data = gear.data,
+                                stat = newStat
+                            };
+
+                            RemoveInventory(idx);
+                            GiveInventory(gearGroup, idx);
+                        });
                     }
+                });
+
+            menus.Add(new() {
+                name = "버리기",
+                callback = () => {
+                    _contextUI.Close();
+                    RemoveInventory(idx);
                 }
             });
+
+            _contextUI.OpenMenu(menus.ToArray());
         };
         eventManager.OnLeftMouseDownEvent += () => OnPointerDown(null);
         
         return true;
     }
     
-    bool RemoveInventory(int idx) {
+    // 스텟 없이 보낸경우 (기어 생성)
+    public bool GiveInventory(GearSO data, int idx = -1) {
+        return GiveInventory(new GearGroupDTO() {
+            data = data,
+            stat = new GearStat() { // 이 코드 나중에 함수 하나로 합쳐야할듯 (스텟 추가하거나 뺄때 초기화 GameManager.cs 에서도 수정해야됨)
+                level = 0,
+                damage = data.ActiveDamage ? data.DefaultDamage : -1,
+                range = data.ActiveRange ? data.DefaultRange : -1
+            }
+        }, idx);
+    }
+
+    public bool RemoveInventory(int idx) {
         if (inventory[idx] == null) return false;
         
         inventory[idx] = null;
@@ -225,6 +273,14 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
         eventHandler.OnLeftMouseDownEvent += () => OnPointerDown(null);
 
         return true;
+    }
+
+    public GearGroupDTO GetInventory(int idx) {
+        return inventory[idx];
+    }
+
+    public GearGroupDTO[] GetAllInventory() {
+        return inventory;
     }
 
     int GetEmptyInventoryIdx() {

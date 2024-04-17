@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GearArtillerySkill : GearCogEvent
 {
-    private PlayerSkill _skillType = PlayerSkill.Artillery;
 
     public override void Use()
     {
@@ -11,8 +10,6 @@ public class GearArtillerySkill : GearCogEvent
         mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
-        GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
-
-        Instantiate(prefab, playerPos, look);
+        Instantiate(_prefab, playerPos, look);
     }
 }

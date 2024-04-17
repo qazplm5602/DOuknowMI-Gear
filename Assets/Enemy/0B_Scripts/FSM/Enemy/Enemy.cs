@@ -60,7 +60,7 @@ namespace FSM {
             return Physics2D.Raycast(transform.position, direction, distance, whatIsObstacle);
         }
 
-        private void OnDrawGizmos() {
+        protected virtual void OnDrawGizmos() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube((Vector2)transform.position + attackOffset * FacingDirection, attackRange);
             Gizmos.color = Color.yellow;

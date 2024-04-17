@@ -8,7 +8,6 @@ public class Dialogue : MonoBehaviour
     private List<DialogueData> cancleList = new();
     private List<DialogueData> conversationList = new();
     private List<DialogueData> interactionList = new();
-    private Npc npc;
 
     private void Awake()
     {
@@ -28,11 +27,10 @@ public class Dialogue : MonoBehaviour
                 interactionList.Add(iter);
             }
         }
-        npc = GetComponent<Npc>();
     }
 
     public void StartDialogue() {
-        DialogueManager.instance.Init(greetingList, cancleList, conversationList, interactionList, npc);
+        DialogueManager.instance.Init(greetingList, cancleList, conversationList, interactionList);
     }
 
  /*    private void Start() {

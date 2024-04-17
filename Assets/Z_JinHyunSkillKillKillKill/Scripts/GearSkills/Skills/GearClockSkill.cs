@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GearClockSkill : GearCogEvent
 {
-    private PlayerSkill _skillType = PlayerSkill.Clock;
 
     public override void Use()
     {
@@ -11,9 +10,6 @@ public class GearClockSkill : GearCogEvent
         mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
-        GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
-
-        Instantiate(prefab, playerPos, look);
-
+        Instantiate(_prefab, playerPos, look);
     }
 }

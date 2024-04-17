@@ -12,21 +12,13 @@ public class PlayerStat : MonoBehaviour
     
     #region Stats
 
-    [Header("default")]
-    public int defaultAtk;
-    public int defaultHealth;
-    public float defaultAttackCool;
-    public float defaultMoveSpeed;
-    public float defaultDefence;
-    public float defaultCriticalChance;
-
     [Header("point per increas value")]
-    public float atkPerPointInc;
-    public float healthPerPointInc;
+    public int atkPerPointInc;
+    public int healthPerPointInc;
     public float attackCoolPerPointInc;
     public float moveSpeedPerPointInc;
-    public float defencePerPointInc;
-    public float ciriticalChancePerPointInc;
+    public int defencePerPointInc;
+    public float criticalChancePerPointInc;
 
     public Action OnUpdateStat;
 
@@ -38,21 +30,18 @@ public class PlayerStat : MonoBehaviour
     private int _money;
     private int _exp;
 
-    #region current stat
-    public int currentAtk {get; private set;}
-    public int currentHealth {get; private set;}
-    public int currentMoveSpeed {get; private set;}
-    public int currentDefence {get; private set;}
-    public float currentCriticalChance {get; private set;}
-    public float currentAttckCool {get; private set;}
-    #endregion
+    private Player player;
+
+    private void Start() {
+        player = GetComponent<Player>();
+    }
 
     [HideInInspector] public int Atk {
         get => _atk;
         set {
             _atk = value;
+            player.stat.attack.SetDefaultValue((int)(player.stat.attack.GetDefaultValue() + value * atkPerPointInc));
             _atkText.text = _atk.ToString();
-            currentAtk = (int)(defaultAtk + _atk * atkPerPointInc);
             OnUpdateStat?.Invoke();
         }
     }
@@ -60,8 +49,8 @@ public class PlayerStat : MonoBehaviour
         get => _health;
         set {
             _health = value;
+            player.stat.maxHealth.SetDefaultValue((int)(player.stat.maxHealth.GetDefaultValue() + value * healthPerPointInc));
             _healthText.text = _health.ToString();
-            currentHealth = (int)(defaultHealth + _health * healthPerPointInc);
             OnUpdateStat?.Invoke();
         }
     }
@@ -69,9 +58,9 @@ public class PlayerStat : MonoBehaviour
         get => _speed;
         set {
             _speed = value;
+            player.stat.moveSpeed.SetDefaultValue((int)(player.stat.moveSpeed.GetDefaultValue() + value * moveSpeedPerPointInc  * 1000));
+            player.stat.attackSpeed.SetDefaultValue((int)(player.stat.attackSpeed.GetDefaultValue() + value * attackCoolPerPointInc * 1000));
             _speedText.text = _speed.ToString();
-            currentAttckCool = defaultAttackCool - _speed * attackCoolPerPointInc;
-            currentMoveSpeed = (int)(defaultMoveSpeed + _speed * moveSpeedPerPointInc);
             OnUpdateStat?.Invoke();
         }
     }
@@ -80,8 +69,8 @@ public class PlayerStat : MonoBehaviour
         get => _defence;
         set {
             _defence = value;
+            player.stat.defense.SetDefaultValue((int)(player.stat.defense.GetDefaultValue() + value * defencePerPointInc));
             _defenceText.text = _defence.ToString();
-            currentDefence = (int)(defaultDefence + _defence * defencePerPointInc);
             OnUpdateStat?.Invoke();
         }
     }
@@ -90,8 +79,9 @@ public class PlayerStat : MonoBehaviour
         get => _criticalChance;
         set {
             _criticalChance = value;
+            player.stat.criticalChance.SetDefaultValue((int)
+                (player.stat.criticalChance.GetDefaultValue() + value * criticalChancePerPointInc) * 1000);
             _criticalChanceText.text = _criticalChance.ToString();
-            currentCriticalChance = defaultCriticalChance + _criticalChance * ciriticalChancePerPointInc;
             OnUpdateStat?.Invoke();
         }
     }

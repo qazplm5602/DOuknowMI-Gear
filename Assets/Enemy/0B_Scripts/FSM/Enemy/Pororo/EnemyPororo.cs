@@ -2,11 +2,14 @@ using System;
 using UnityEngine;
 using FSM;
 
-public class EnemyProro : Enemy
+public class EnemyPororo : Enemy
 {
     public EnemyStateMachine<CommonEnemyStateEnum> StateMachine { get; private set; }
 
+    [Space]
+
     public Transform attackTransform;
+    public float attackDistance;
 
     protected override void Awake() {
         base.Awake();
@@ -36,8 +39,21 @@ public class EnemyProro : Enemy
     }
 
     public override void Attack() {
+        GameObject obj = PoolManager.Instance.Pop(PoolingType.Muzzle).gameObject;
+        obj.transform.position = attackTransform.position;
+
+        Muzzle muz = obj.GetComponent<Muzzle>();
+        muz.Init(FacingDirection);
+
         StateMachine.CurrentState.AnimationAttackTrigger();
     }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
+
+    protected override void OnDrawGizmos() {
+        base.OnDrawGizmos();
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
+    }
 }
