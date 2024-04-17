@@ -8,6 +8,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
     [SerializeField] private Vector2 checkBoxSize;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Transform excuseMeUiPos;
+
     protected bool isCheck;
     private Dialogue dialogue;
     private Vector2 pos;

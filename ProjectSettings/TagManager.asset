@@ -8,6 +8,7 @@ TagManager:
   - Room
   - Enemy
   - Wall
+  - Stage
   layers:
   - Default
   - TransparentFX
