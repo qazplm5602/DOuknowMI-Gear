@@ -11,19 +11,38 @@ public class Dialogue : MonoBehaviour
 
     private void Awake()
     {
-        string data = dialogueDataFile.text;
+        string data = "...,...,...,...";
+        if (dialogueDataFile == null)
+        {
+            SaveDataCSV(data);
+            return;
+        }
+        else
+        {
+            data = dialogueDataFile.text;
+            SaveDataCSV(data);
+        }
+    }
+
+    private void SaveDataCSV(string data)
+    {
         List<DialogueData> datas = CSVParser.parse(data);
-        foreach(var iter in datas) {
-            if (iter.Type == "Cancle") {
+        foreach (var iter in datas)
+        {
+            if (iter.Type == "Cancle")
+            {
                 cancleList.Add(iter);
             }
-            else if (iter.Type == "Conversation") {
+            else if (iter.Type == "Conversation")
+            {
                 conversationList.Add(iter);
             }
-            else if (iter.Type == "Greeting") {
+            else if (iter.Type == "Greeting")
+            {
                 greetingList.Add(iter);
             }
-            else if (iter.Type == "Interaction") {
+            else if (iter.Type == "Interaction")
+            {
                 interactionList.Add(iter);
             }
         }
