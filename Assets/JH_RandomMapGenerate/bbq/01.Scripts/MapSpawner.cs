@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class MapSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject mapParent;
+
+    public int tries = 0;
     public enum DIRECTION { NODATA = -1, UP, RIGHT, DOWN, LEFT, MAX };
 
     public Dictionary<DIRECTION, Vector2Int> dirIndex = new Dictionary<DIRECTION, Vector2Int>()
@@ -51,6 +53,7 @@ public class MapSpawner : MonoBehaviour
     public CurrentMapState current = new CurrentMapState();
     public void InitSetting()
     {
+        Map.Instance.Init();
         current.PrayRoomCandidates = new List<int>();
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.MapObjList = new BaseStage[jajiOption.MaxListSize * jajiOption.MaxListSize];
@@ -63,18 +66,23 @@ public class MapSpawner : MonoBehaviour
     }
 
 
-    private void Start()
+    private void Awake()
     {
         InitSetting();
+      
+        
         MapSpawn(0, 2, null, 0);
+
+        print(tries + " " + current.NowCount);
         MakeMapMotherfuker();
         //MakeStatueRoom();
         ShowMaps();
     }
 
-    public Vector2Int MapSpawn(int x, int y, StageData Parent, int depth)
+    public Vector2Int MapSpawn(int x, int y, StageData Parent, int depth, bool force = false)
     {
         //맵이 최대 개수까지 만들어 지면 종료한다.
+        tries++;
         if (current.NowCount >= jajiOption.MaxCnt)
         {
             return new Vector2Int(x, y);
@@ -82,21 +90,13 @@ public class MapSpawner : MonoBehaviour
 
         int RandNum;
         int yval = jajiOption.MaxListSize;
-
-        //들어오면 해당 위치에 방을 만들고 
-        //음식점, 상점, 방 크기, 상자 스폰 등을 결정한다.
-        //보스전이 있어야 하면 보스방도 스폰
-        bool isStart = false;
+        
         if (current.Maplist[x + (y * yval)] == null)
         {
             current.Maplist[x + (y * yval)] = new StageData();
-            current.Maplist[x + (y * yval)].InitSttting(current.NowCount, x, y);
+            current.Maplist[x + (y * yval)].InitSetting(current.NowCount, x, y);
             current.NowCount++;
 
-
-            //각 방들은 서로 연결되어서 이동할 수 있어야 하지만 인접해 있다고 항상 연결되어 있어야 하는것은 아니다
-            //따라서 탐색을 할때 자신이 현재 탐색한 위치에서 이전에 있었던 위치를 넘겨줌으로써
-            //탐색을 수행한 경로가 방을 이어주는 통로가 될 수 있도록 해준다.
             if (Parent != null)
             {
                 if (Parent.indexX == x)
@@ -128,66 +128,88 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
             }
-
+            
+        }
+        else
+        {
+            return new Vector2Int(x, y) ;
         }
 
         //천번째 방은 항상 오른쪽으로간다.
-        if (current.NowCount == 1)
+        if (force == false)
         {
-            isStart = true; 
-            MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
-            //return jajiOption.MaxNum;
-            return new Vector2Int(x + 1, y);
-        }
-
-        //왼쪽
-        RandNum = Random.Range(0, 100);
-        //Debug.Log($"랜덤{RandNum}");
-        if (RandNum <= 50)
-        {
-            if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
-            {
-                MapSpawn(x - 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
-            }
-        }
-
-        //오른쪽
-        RandNum = Random.Range(0, 100);
-
-        if (RandNum <= 70)
-        {
-            if (x + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[(x + 1) + (y * yval)] == null)
+            if (current.NowCount == 1)
             {
                 MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                //return jajiOption.MaxNum;
+                return new Vector2Int(x + 1, y);
             }
-        }
 
-        //위쪽
-        RandNum = Random.Range(0, 100);
-        if (RandNum <= 50)
-        {
-            if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
+            //왼쪽
+            RandNum = Random.Range(0, 100);
+            //Debug.Log($"랜덤{RandNum}");
+            if (RandNum <= 50)
             {
-                MapSpawn(x, y - 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
+                {
+                    MapSpawn(x - 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                }
             }
-        }
 
-        //아래쪽
-        RandNum = Random.Range(0, 100);
+            //오른쪽
+            RandNum = Random.Range(0, 100);
 
-        if (RandNum <= 50)
-        {
-            if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
+            if (RandNum <= 70)
             {
-                MapSpawn(x, y + 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                if (x + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[(x + 1) + (y * yval)] == null)
+                {
+                    MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                }
+            }
+
+            //위쪽
+            RandNum = Random.Range(0, 100);
+            if (RandNum <= 50)
+            {
+                if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
+                {
+                    MapSpawn(x, y - 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                }
+            }
+
+            //아래쪽
+            RandNum = Random.Range(0, 100);
+
+            if (RandNum <= 50)
+            {
+                if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
+                {
+                    MapSpawn(x, y + 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                }
             }
         }
 
-        if (isStart) return new Vector2Int(x, y);
+        //if (isStart) return new Vector2Int(x, y);
+
+        // print(current.NowCount);
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
         if (current.NowCount < jajiOption.MinCnt)
         {
-            for (int i = 3; i >= 0; i++)
+            for (int i = 3; i >= 0; i--)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {
                 if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
                 int tempx = x + dirIndex[(DIRECTION)i].x;
@@ -196,7 +218,7 @@ public class MapSpawner : MonoBehaviour
                 {
                     if (current.Maplist[tempx + ((tempy + 1) * yval)] == null)
                     {
-                        MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1);
+                        MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy * yval)], depth + 1, true);
                     }
                 }
             }
@@ -227,7 +249,7 @@ public class MapSpawner : MonoBehaviour
 
                     if (stageData.type == ROOMTYPE.Start)
                     {
-                        Debug.Log(stageData.type + stageData.transform.name);
+                        //Debug.Log(stageData.type + stageData.transform.name);
                         current.StartRoom = stageData as StartStage;
                     }
                 }
