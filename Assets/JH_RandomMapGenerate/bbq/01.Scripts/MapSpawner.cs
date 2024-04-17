@@ -196,20 +196,6 @@ public class MapSpawner : MonoBehaviour
         if (current.NowCount < jajiOption.MinCnt)
         {
             for (int i = 3; i >= 0; i--)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             {
                 if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
                 int tempx = x + dirIndex[(DIRECTION)i].x;

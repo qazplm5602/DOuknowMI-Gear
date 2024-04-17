@@ -598,18 +598,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPoint: 0
-  defaultAtk: 3
-  defaultHealth: 10
-  defaultAttackCool: 0
-  defaultMoveSpeed: 8
-  defaultDefence: 0
-  defaultCriticalChance: 0
   atkPerPointInc: 0
   healthPerPointInc: 0
   attackCoolPerPointInc: 0
   moveSpeedPerPointInc: 0
   defencePerPointInc: 0
-  ciriticalChancePerPointInc: 0
+  criticalChancePerPointInc: 0
   _atkText: {fileID: 0}
   _healthText: {fileID: 0}
   _speedText: {fileID: 0}
@@ -691,12 +685,14 @@ MonoBehaviour:
   isDead: 0
   ishurt: 0
   isInvincibility: 0
+  stat: {fileID: 0}
   moveSpeed: 6
   dashPower: 25
   jumpPower: 15
   dashCool: 0
   atk: 0
   atkCool: 0
+  defense: 0
   criticalChance: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
@@ -1247,6 +1243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 0}
   ExcuseMeUI: {fileID: 0}
+  DotTwinkleUi: {fileID: 0}
   charPrintTime: 0
   DialoguePanel: {fileID: 0}
   SelectionPanel: {fileID: 0}
@@ -1405,6 +1402,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2144721490}
+  - component: {fileID: 2144721491}
   m_Layer: 0
   m_Name: Chest
   m_TagString: Untagged
@@ -1428,6 +1426,18 @@ Transform:
   - {fileID: 858116692}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2144721491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144721489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba7a2b3af78461489e1349f3985a967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
