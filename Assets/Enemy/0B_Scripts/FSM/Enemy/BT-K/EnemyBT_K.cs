@@ -6,7 +6,12 @@ public class EnemyBT_K : Enemy
 {
     public EnemyStateMachine<CommonEnemyStateEnum> StateMachine { get; private set; }
 
+    [Space]
+
     public Transform attackTransform;
+
+    public int bulletCount;
+    [HideInInspector] public int attackCount = 0;
 
     protected override void Awake() {
         base.Awake();
@@ -35,7 +40,16 @@ public class EnemyBT_K : Enemy
         StateMachine.CurrentState.UpdateState();
     }
 
-    public override void Attack() => StateMachine.CurrentState.AnimationAttackTrigger();
+    public override void Attack() {
+        GameObject obj = PoolManager.Instance.Pop(PoolingType.Muzzle).gameObject;
+        obj.transform.position = attackTransform.position;
+
+        Muzzle muz = obj.GetComponent<Muzzle>();
+        muz.Init(FacingDirection);
+
+        ++attackCount;
+        StateMachine.CurrentState.AnimationAttackTrigger();
+    }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 }

@@ -12,6 +12,7 @@ public abstract class Agent : MonoBehaviour
     [HideInInspector] public bool isDead = false;
     [HideInInspector] public bool ishurt = false;
     [HideInInspector] public bool isInvincibility = false;
+    public AgentStat stat;
 
     protected virtual void Awake()
     {
@@ -20,7 +21,8 @@ public abstract class Agent : MonoBehaviour
         RigidCompo = GetComponent<Rigidbody2D>();
         HealthCompo = GetComponent<PlayerHealth>();
         MovementCompo.Initialize(this);
-        HealthCompo.OnDead += HandleDeadEvent;
+        if (HealthCompo != null)
+            HealthCompo.OnDead += HandleDeadEvent;
     }
 
     private void OnDestroy() {

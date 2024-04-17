@@ -39,6 +39,7 @@ public class PlayerSkillManager : MonoSingleton<PlayerSkillManager>
     {
         for (int i = 0; i < skillPrefabs.Length; i++)
         {
+            if (skillPrefabs[i] == null) return;
             playerSkill[(PlayerSkill)i] = skillPrefabs[i];
         }
         gearSkillDamageCaster = GetComponent<GearSkillDamageCaster>();

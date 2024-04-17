@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3492244719702136554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.131, y: -0.354, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5328027300995696822}
-  - component: {fileID: 8402353062598354599}
+  - component: {fileID: 7999551906734203496}
   - component: {fileID: 796388025624380511}
   - component: {fileID: 3980459699171738975}
   - component: {fileID: 3042940509989342945}
@@ -69,8 +69,8 @@ Transform:
   - {fileID: 7130382085490325220}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &8402353062598354599
-CircleCollider2D:
+--- !u!61 &7999551906734203496
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -101,9 +101,19 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.05231327, y: -0.2197156}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 1.2134379, y: 1.4394311}
+  m_EdgeRadius: 0
 --- !u!50 &796388025624380511
 Rigidbody2D:
   serializedVersion: 4
@@ -148,6 +158,7 @@ MonoBehaviour:
   AnimatorCompo: {fileID: 0}
   RigidbodyCompo: {fileID: 0}
   ColliderCompo: {fileID: 0}
+  Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
   moveSpeed: 5
@@ -155,13 +166,12 @@ MonoBehaviour:
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
-  _whatIsObstacle:
+  whatIsObstacle:
     serializedVersion: 2
     m_Bits: 64
   attackRange: {x: 4, y: 0.2}
-  attackOffset: {x: 2.5, y: 0}
+  attackOffset: {x: 2, y: -0.36}
   attackDamage: 2
-  attackCooldown: 1.5
   lastAttackTime: 0
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
   attackTransform: {fileID: 7130382085490325220}
@@ -192,7 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff397a78f93413943ab50c6a03f80419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
   _currentHealth: 0
 --- !u!1 &8961426347479207972
 GameObject:
@@ -204,8 +213,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7586441896131042201}
   - component: {fileID: 3444266839852226972}
-  - component: {fileID: 1678628063306824439}
   - component: {fileID: 2527784501397799707}
+  - component: {fileID: 2931289333456602039}
   m_Layer: 7
   m_Name: Visual
   m_TagString: Untagged
@@ -269,8 +278,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9811321, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: -112359793, guid: 028b63cd19e96c7448071cabcf297b1c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -280,27 +289,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1678628063306824439
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8961426347479207972}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c6c8b0730f55bb42b9a74fa20313213, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2527784501397799707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,3 +301,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6214c6dcad9198040986ca1ab9cea705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2931289333456602039
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8961426347479207972}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3d04061d7dc371545bfce9535e7f2186, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

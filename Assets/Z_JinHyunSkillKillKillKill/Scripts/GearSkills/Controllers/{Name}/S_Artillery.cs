@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class SkillArtillery : SkillController
 {
-   
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
 }
