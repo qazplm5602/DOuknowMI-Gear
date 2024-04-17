@@ -3757,6 +3757,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d047c6a9e4cc9524b844ff39061574c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClearChanged:
+    m_PersistentCalls:
+      m_Calls: []
   door:
   - {fileID: 6407766458847083592}
   - {fileID: 3771286377969854704}
@@ -3775,7 +3778,6 @@ MonoBehaviour:
   Arena: {fileID: 0}
   MaxWave: 3
   CurrentWave: 0
-  Cleared: 0
   RoomActive: 0
   Enemies:
   - {fileID: 677558411895270366, guid: e4cb332f7526a324aad5150cce81171d, type: 3}
@@ -10579,6 +10581,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
   nextDoor: {fileID: 0}
 --- !u!1001 &3976038127701562277
 PrefabInstance:
@@ -10658,6 +10662,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 1
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
   nextDoor: {fileID: 0}
 --- !u!4 &8213650546117032157 stripped
 Transform:
@@ -10747,6 +10753,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
   nextDoor: {fileID: 0}
 --- !u!1001 &6714973509512675948
 PrefabInstance:
@@ -10831,4 +10839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
   nextDoor: {fileID: 0}
