@@ -36,7 +36,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
         healthFilled.fillAmount = (float)_currentHealth / _maxHealth;
 
-        ShowDamageText(damage);
+        if(GameManager.Instance.showDamageText)
+            ShowDamageText(damage);
 
         if(_currentHealth == 0) {
             _owner.isDead = true;
