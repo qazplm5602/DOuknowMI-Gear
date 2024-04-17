@@ -9,7 +9,7 @@ public class EnemyHealthBar : PoolableMono
         transform.localScale = Vector3.one * scale;
     }
 
-    private void LateUpdate() {
+    private void FixedUpdate() {
         if(_healthBarTransform != null) {
             transform.position = Camera.main.WorldToScreenPoint(_healthBarTransform.position);
         }

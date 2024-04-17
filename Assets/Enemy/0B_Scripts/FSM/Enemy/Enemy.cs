@@ -94,7 +94,7 @@ namespace FSM {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, nearDistance);
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.2f, 0.7f) * healthBarScale);
+            Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
         }
     }
 }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3041356147505429900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: 1.66, z: 0}
+  m_LocalPosition: {x: 0.01, y: 1.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +175,7 @@ MonoBehaviour:
   attackDamage: 1
   lastAttackTime: 0
   healthBarTransform: {fileID: 8130426953710783353}
-  healthBarScale: 0.6
+  healthBarScale: 0.3
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
   attackTransform: {fileID: 4699430479525074254}
   bulletCount: 6
