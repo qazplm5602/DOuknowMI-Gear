@@ -36,16 +36,24 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
         healthFilled.fillAmount = (float)_currentHealth / _maxHealth;
 
+        ShowDamageText(damage);
+
         if(_currentHealth == 0) {
             _owner.isDead = true;
 
             dealer.GetComponent<PlayerExperience>().GetExp(_owner.dropTable.experience);
             OnDead?.Invoke();
         }
-        else HitEvent();
+        else Blink();
     }
 
-    private void HitEvent() {
+    private void ShowDamageText(int damage) {
+        DamageText damageText = PoolManager.Instance.Pop(PoolingType.DamageText) as DamageText;
+        damageText.transform.position = new Vector3(transform.position.x, transform.position.y, -1f);
+        damageText.Init(damage);
+    }
+
+    private void Blink() {
         _owner.SpriteRendererCompo.material = _whiteMat;
         healthFilled.material = _whiteMat;
         _owner.StartDelayCallback(0.1f, () => {

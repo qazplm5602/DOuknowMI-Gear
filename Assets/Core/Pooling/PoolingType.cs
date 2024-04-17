@@ -6,5 +6,6 @@ public enum PoolingType
     Muzzle,
     MGBullet,
     Boom,
-    HealthBar
+    HealthBar,
+    DamageText
 }
