@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class GearCarSkill : GearCogEvent
 {
-    private PlayerSkill _skillType = PlayerSkill.Car;
 
     public override void Use()
     {
@@ -11,9 +10,7 @@ public class GearCarSkill : GearCogEvent
         mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
-        GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
-
-        Instantiate(prefab, playerPos, look);
+        Instantiate(_prefab, playerPos, look);
 
     }
 }
