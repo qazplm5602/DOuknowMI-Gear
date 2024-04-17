@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PoolManager : MonoSingleton<PoolManager>
 {
+    public Canvas _poolingCanvas;
     [SerializeField] private PoolingListSO _poolingList;
 
     private Dictionary<PoolingType, Pool<PoolableMono>> _pools = new Dictionary<PoolingType, Pool<PoolableMono>>();

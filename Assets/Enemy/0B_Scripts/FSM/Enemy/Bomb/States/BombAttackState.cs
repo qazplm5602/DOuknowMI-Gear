@@ -6,6 +6,8 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
 {
     public BombAttackState(Enemy enemy, EnemyStateMachine<CommonEnemyStateEnum> stateMachine, string animationBoolName) : base(enemy, stateMachine, animationBoolName) { }
 
+    private Transform _playerTrm;
+
     public override void Enter() {
         base.Enter();
 
@@ -13,10 +15,13 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
 
         _enemy.StartCoroutine(Blink());
         _enemy.StartDelayCallback(2, () => _stateMachine.ChangeState(CommonEnemyStateEnum.Dead));
+
+        _playerTrm = PlayerManager.instance.playerTrm;
     }
 
     public override void UpdateState() {
-        _enemy.SetVelocity(_enemy.FacingDirection * _enemy.moveSpeed, _rigidbody.velocity.y);
+        Vector2 direction = _playerTrm.position - _enemy.transform.position;
+        _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.moveSpeed, _rigidbody.velocity.y);
     }
 
     private IEnumerator Blink() {

@@ -14,13 +14,14 @@ public class BombChaseState : EnemyState<CommonEnemyStateEnum>
     }
 
     public override void UpdateState() {
-        if(Vector2.Distance(_enemy.transform.position, _playerTrm.position) <= _enemy.nearDistance) {
+        Vector2 direction = _playerTrm.position - _enemy.transform.position;
+        if(direction.magnitude <= _enemy.nearDistance) {
             if(_enemy.CanAttack()) {
                 _stateMachine.ChangeState(CommonEnemyStateEnum.Attack);
             }
         }
         else {
-            _enemy.SetVelocity(_enemy.FacingDirection * _enemy.moveSpeed, _rigidbody.velocity.y);
+            _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.moveSpeed, _rigidbody.velocity.y);
         }
     }
 }

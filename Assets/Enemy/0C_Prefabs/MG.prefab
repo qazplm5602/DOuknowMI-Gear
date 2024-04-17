@@ -180,6 +180,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 0
+  _whiteMat: {fileID: 2100000, guid: 4178510c235d54240b0ab3a60d242c43, type: 2}
+  _healthFilled: {fileID: 0}
 --- !u!1 &1899390696102579450
 GameObject:
   m_ObjectHideFlags: 0

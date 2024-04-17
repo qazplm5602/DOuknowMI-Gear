@@ -15,7 +15,6 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
     }
 
     public override void UpdateState() {
-        
         if(_enemy.isDead) _stateMachine.ChangeState(CommonEnemyStateEnum.Dead);
         
         if(_triggerCalled) {
@@ -26,7 +25,9 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
     public override void AnimationAttackTrigger() {
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyPororo.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(10, 8f, (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized);
+
+        Vector2 direction = (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized;
+        bulletObject.GetComponent<EnemyProjectile>().Init(10, 8f, direction, _enemy.Stat.attack.GetValue());
         Debug.Log("탕!!");
     }
 
