@@ -1338,6 +1338,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e15d3487335f1419bbfd62ba07dc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClearChanged:
+    m_PersistentCalls:
+      m_Calls: []
   door:
   - {fileID: 0}
   - {fileID: 0}
@@ -1356,7 +1359,6 @@ MonoBehaviour:
   Arena: {fileID: 0}
   MaxWave: 3
   CurrentWave: 0
-  Cleared: 0
   RoomActive: 0
 --- !u!1 &2836410842671092312
 GameObject:
@@ -9769,6 +9771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
+  nextDoor: {fileID: 0}
 --- !u!1001 &7280172729149309640
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9851,6 +9856,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
+  nextDoor: {fileID: 0}
 --- !u!4 &2583193431675136432 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102866703552883576, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
