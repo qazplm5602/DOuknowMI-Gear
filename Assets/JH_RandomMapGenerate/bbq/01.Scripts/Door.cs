@@ -68,7 +68,7 @@ public class Door : MonoBehaviour
         }
         catch (Exception e)
         {
-
+            UnityEngine.Debug.Log(e);
         }
 
     }
