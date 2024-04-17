@@ -207,18 +207,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statPoint: 0
-  defaultAtk: 3
-  defaultHealth: 10
-  defaultAttackCool: 0
-  defaultMoveSpeed: 8
-  defaultDefence: 0
-  defaultCriticalChance: 0
   atkPerPointInc: 0
   healthPerPointInc: 0
   attackCoolPerPointInc: 0
   moveSpeedPerPointInc: 0
   defencePerPointInc: 0
-  ciriticalChancePerPointInc: 0
+  criticalChancePerPointInc: 0
   _atkText: {fileID: 0}
   _healthText: {fileID: 0}
   _speedText: {fileID: 0}
@@ -300,12 +294,14 @@ MonoBehaviour:
   isDead: 0
   ishurt: 0
   isInvincibility: 0
+  stat: {fileID: 11400000, guid: f381fe0e589bd764ca7a019a93c08eb7, type: 2}
   moveSpeed: 6
   dashPower: 25
   jumpPower: 10
   dashCool: 0
   atk: 0
   atkCool: 0
+  defense: 0
   criticalChance: 0
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   isDash: 0
@@ -421,7 +417,7 @@ Transform:
   m_GameObject: {fileID: 23035014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0.6, z: 0}
+  m_LocalPosition: {x: 10.35, y: -0.95, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -473,6 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   ExcuseMeUI: {fileID: 0}
+  DotTwinkleUi: {fileID: 0}
   charPrintTime: 0.1
   DialoguePanel: {fileID: 0}
   SelectionPanel: {fileID: 0}
@@ -552,42 +549,11 @@ Transform:
   m_GameObject: {fileID: 224262204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0.6, z: -10}
+  m_LocalPosition: {x: 10.35, y: -0.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1837884795}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &426982641
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 426982642}
-  m_Layer: 0
-  m_Name: MG
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &426982642
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426982641}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619340186
@@ -2887,7 +2853,7 @@ Transform:
   m_GameObject: {fileID: 1726027112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.8, y: 0.6, z: -10}
+  m_LocalPosition: {x: 10.35, y: -0.95, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3112,4 +3078,3 @@ SceneRoots:
   - {fileID: 23035025}
   - {fileID: 631368160}
   - {fileID: 224262206}
-  - {fileID: 426982642}

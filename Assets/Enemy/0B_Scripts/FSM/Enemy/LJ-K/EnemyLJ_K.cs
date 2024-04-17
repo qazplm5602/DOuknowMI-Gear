@@ -81,7 +81,9 @@ public class EnemyLJ_K : Enemy
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-    private void OnDrawGizmos() {
+    protected override void OnDrawGizmos() {
+        base.OnDrawGizmos();
+
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube((Vector2)transform.position + chopOffset * FacingDirection, chopRange);
         Gizmos.color = Color.green;
