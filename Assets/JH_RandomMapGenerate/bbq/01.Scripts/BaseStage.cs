@@ -1,8 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public abstract class BaseStage : MonoBehaviour
 {
+    public UnityEvent OnClearChanged;
+
     [Header("UP DOWN RIGHT LEFT")]
     public Door[] door;
     public ROOMTYPE type;
@@ -16,7 +20,21 @@ public abstract class BaseStage : MonoBehaviour
     public int MaxWave = 3;
     public int CurrentWave = 0;
 
-    public bool Cleared = false;
+    private bool cleared = false;
+
+    //public bool Cleared = false;
+    public bool Cleared
+    {
+        get
+        {
+            return cleared;
+        }
+        set
+        {
+            cleared = value;
+            OnClearChanged?.Invoke();
+        }
+    }
     public bool RoomActive = false;
 
     public virtual void LoadDoors()
@@ -95,9 +113,7 @@ public abstract class BaseStage : MonoBehaviour
     {
         ++CurrentWave;
         if (CurrentWave > MaxWave)
-        {
             Clear();
-        }
         // do something for wavesa
     }
 
@@ -120,11 +136,16 @@ public abstract class BaseStage : MonoBehaviour
         Cleared = true;
         RoomActive = false;
     }
+
+
+    [ContextMenu("ClearRoom")]
     public virtual void Clear()
     {
         RoomActive = true;
         Cleared = true;
     }
+
+   
 
     ///////적이 스폰하는 아레나 안에 넣을것
     //private void OnTransformChildrenChanged()

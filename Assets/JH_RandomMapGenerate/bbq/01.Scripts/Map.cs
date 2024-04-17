@@ -17,7 +17,7 @@ public class Map : CockSingleton<Map>
 
     private Dictionary<ROOMSIZE, BaseStage[]> Rooms = new Dictionary<ROOMSIZE, BaseStage[]>();
 
-    private void Start()
+    public void Init()
     { 
         Rooms[ROOMSIZE.Small] = SmallRoom;
         Rooms[ROOMSIZE.Medium] = MediumRoom;

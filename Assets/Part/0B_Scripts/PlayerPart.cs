@@ -1,11 +1,31 @@
 using UnityEngine;
 
-[System.Obsolete] // ㄹㅇ 이거 똥 코드니 사용중이면 즉시 중단하사길.
 public class PlayerPart : MonoBehaviour
 {
     public uint Part { get; private set; }
 
     public void IncreasePart(uint value) {
         Part += value;
+        IngameUIControl.Instance.SetCoin((int)Part);
     }
+
+    public bool TryPayPart(uint value) {
+        if (!CheckPart(value)) return false;
+        
+        Part -= value;
+        IngameUIControl.Instance.SetCoin((int)Part);
+        return true;
+    }
+
+    // 결제 ㄱㄴ?
+    public bool CheckPart(uint value) {
+        return Part >= value;
+    }
+
+    #if UNITY_EDITOR
+        [ContextMenu("50개 추가")]
+        void Plus50() => IncreasePart(50);
+        [ContextMenu("500개 추가")]
+        void Plus500() => IncreasePart(500);
+    #endif
 }

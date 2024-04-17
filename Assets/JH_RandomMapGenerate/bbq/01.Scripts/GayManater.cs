@@ -15,12 +15,13 @@ namespace bbqCode
 
         private BaseStage StartRoom;
         
-        public GameObject MobSpawnEffect { get; private set; }
+        public GameObject MobSpawnEffect ;//{ get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
-            MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
+            //MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
+           // print(MobSpawnEffect);
         }
 
         private void Start()
@@ -58,6 +59,7 @@ namespace bbqCode
             if (CurrentRoom != null)
                 CurrentRoom.Exit();
             CurrentRoom = targetRoom;
+            print(targetRoom);
             CurrentRoom.Enter();
             Transform doorToGo = door != null ? door.transform : targetRoom.transform;
             plr.transform.position = doorToGo.position;
