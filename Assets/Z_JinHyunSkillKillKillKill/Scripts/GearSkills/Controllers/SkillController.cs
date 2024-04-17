@@ -34,7 +34,7 @@ public abstract class SkillController : MonoBehaviour
     internal virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         bool notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
-        while (notMaxDistance)
+        while (notMaxDistance)  
         {
             notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
@@ -48,7 +48,7 @@ public abstract class SkillController : MonoBehaviour
             yield return null;
         }
         if (isDamageCasting) DamageCasting();
-        //Destroy(gameObject);
+        Destroy(gameObject);
         yield break;
     }
 
