@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemyProjectile : PoolableMono
 {
-    [SerializeField] private int _damage;
-    [SerializeField] private LayerMask _whatIsEnemy;
+    [SerializeField] protected int _damage;
+    [SerializeField] protected LayerMask _whatIsEnemy;
 
     private float _lifeTime;
     private float _speed;
@@ -24,12 +24,14 @@ public class EnemyProjectile : PoolableMono
         _direction = direction;
 
         _isInit = true;
+
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
     }
 
     private void Timer() {
         _timer += Time.deltaTime;
         if(_timer >= _lifeTime) {
-            gameObject.SetActive(true);
+            PoolManager.Instance.Push(this);
         }
     }
 
@@ -37,7 +39,7 @@ public class EnemyProjectile : PoolableMono
         transform.position += (Vector3)_direction.normalized * _speed * Time.deltaTime;
     }
     
-    private void OnCollisionEnter2D(Collision2D other) {
+    protected virtual void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.TryGetComponent(out IDamageable health)) {
             health.ApplyDamage(_damage, transform);
         }
