@@ -169,6 +169,8 @@ MonoBehaviour:
   - {x: 433.7, y: -165.5}
   loadLinkData:
   - {fileID: 11400000, guid: 2e6d0f28fc098c14ebbe03033f48d2ad, type: 2}
+  - {fileID: 11400000, guid: a73886985bd404b40a3686090fe8aead, type: 2}
+  - {fileID: 11400000, guid: b128eebc3c6e26040a78370f0aee0af8, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 359083434}
 --- !u!114 &63214943

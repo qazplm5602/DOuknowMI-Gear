@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b3d50876239cd9c4caa060eb074484d7, type: 3}
-  m_Name: ChainSHGear
+  m_Name: ChainMHGear
   m_EditorClassIdentifier: 
   combine:
   - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
   - {fileID: 11400000, guid: 5d8dbb8d2d2214b46abe0a3ab59d766b, type: 2}
   - {fileID: 11400000, guid: 8c7cbbd9fa5de6c46b5be9c7be05125d, type: 2}
-  - {fileID: 11400000, guid: 00637fdfa72238347b8b5e60d88b2de4, type: 2}
-  loadModule: {fileID: 7755477415685776989, guid: b59b1c9606fa6a54293e613a7011d795, type: 3}
+  loadModule: {fileID: 7755477415685776989, guid: c5db4a8ab9fe4e44cbbe257c69d804e9, type: 3}
