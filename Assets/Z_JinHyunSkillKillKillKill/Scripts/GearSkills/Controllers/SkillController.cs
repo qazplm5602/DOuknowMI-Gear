@@ -33,23 +33,25 @@ public abstract class SkillController : MonoBehaviour
 
     internal virtual IEnumerator MoveRoutine(Transform startTrm)
     {
-        bool notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
-        while (notMaxDistance)
+        Vector3 firstPos = startTrm.position;
+        bool notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
+        while (notMaxDistance)  
         {
-            notMaxDistance = Vector3.Distance(startTrm.position, transform.position) < _maxRange;
+            notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
+
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
-
-            //animation trigger called 일때 DamageCast
-            if (isDamageCasting && _attackTriggerCalled)
-                DamageCasting();
-
-            //뭔가 종료조건 추가하ㅣ고싶은데 애매하다
+            if (isDamageCasting && _attackTriggerCalled) DamageCasting();
 
             yield return null;
         }
         if (isDamageCasting) DamageCasting();
-        //Destroy(gameObject);
+        Destroy(gameObject);
         yield break;
+    }
+
+    bool IsInRange(Vector3 firstPos, Vector3 currentPos)
+    {
+        return Vector3.Distance(firstPos, currentPos) < _maxRange;
     }
 
     public void BNNAttackTrigger()
