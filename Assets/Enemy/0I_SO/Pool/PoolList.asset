@@ -22,3 +22,12 @@ MonoBehaviour:
   - type: 2
     prefab: {fileID: 2548019019231892986, guid: 14147c92f7a03bf478803784c1f15f2e, type: 3}
     count: 4
+  - type: 3
+    prefab: {fileID: 7615001104028337685, guid: 86edc3e9eed672a47bab47fe3d205b30, type: 3}
+    count: 4
+  - type: 4
+    prefab: {fileID: 2025623556151299478, guid: 7cb3f408c8ec30e40bce25556ac84cc7, type: 3}
+    count: 2
+  - type: 5
+    prefab: {fileID: 6118585324808555707, guid: bb10397d5f314d54f9f5db464688c5d1, type: 3}
+    count: 2

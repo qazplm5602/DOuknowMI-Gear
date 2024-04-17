@@ -2,5 +2,8 @@ public enum PoolingType
 {
     SmallPart,
     BigPart,
-    Bullet
+    Bullet,
+    Muzzle,
+    MGBullet,
+    Boom
 }
