@@ -14,6 +14,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Awake() {
         owner = GetComponent<Player>();
+        print(owner);
     }
 
     private void Start() {
@@ -22,8 +23,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     private void Update() {
-        if (Keyboard.current.kKey.wasPressedThisFrame) {
-            ApplyDamage(1, test);
+        if(currentHealth == 0 && !owner.isDead) {
+            owner.isDead = true;
+            OnDead?.Invoke();
         }
     }
 
@@ -31,10 +33,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if(owner.isDead || owner.isInvincibility) return;
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         owner.MovementCompo.Knockback(dealer, 10f);
-        if(currentHealth == 0) {
+/*         if(currentHealth == 0) {
             owner.isDead = true;
             OnDead?.Invoke();
-        }
+        } */
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }

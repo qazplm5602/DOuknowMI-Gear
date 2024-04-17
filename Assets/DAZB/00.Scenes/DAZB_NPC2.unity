@@ -259,7 +259,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3.25, z: 0}
-  m_LocalScale: {x: 20, y: 1, z: 1}
+  m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   moveSpeed: 0
   dashPower: 25
   jumpPower: 10
-  dashCool: 1
+  dashCool: 2
   atk: 0
   atkCool: 0
   defense: 0
@@ -1863,6 +1863,7 @@ GameObject:
   - component: {fileID: 1373166848}
   - component: {fileID: 1373166847}
   - component: {fileID: 1373166850}
+  - component: {fileID: 1373166851}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1885,6 +1886,7 @@ MonoBehaviour:
   stats: {fileID: 986396549}
   playerTrm: {fileID: 986396558}
   player: {fileID: 986396554}
+  playerSpriteRenderer: {fileID: 986396557}
 --- !u!114 &1373166848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,6 +1961,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8495e13052858df45ad1ae33b042222d, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 986396547}
+--- !u!114 &1373166851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373166846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59b5c5a614cc6b43b5b733e2a0ea403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolingList: {fileID: 11400000, guid: 4f44fb5e36816864486ef2f6c2f36766, type: 2}
 --- !u!1 &1436438809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2244,8 +2259,8 @@ SceneRoots:
   - {fileID: 848831198}
   - {fileID: 1373166849}
   - {fileID: 1072728006}
-  - {fileID: 986396558}
   - {fileID: 236824529}
   - {fileID: 1253672563}
   - {fileID: 769599675}
   - {fileID: 402541279}
+  - {fileID: 986396558}

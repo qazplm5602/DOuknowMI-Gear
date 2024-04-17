@@ -5,5 +5,6 @@ public enum PoolingType
     Bullet,
     Muzzle,
     MGBullet,
-    Boom
+    Boom,
+    Afterimage
 }

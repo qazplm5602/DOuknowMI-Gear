@@ -32,7 +32,8 @@ public class DialogueManager : MonoBehaviour
 /*     private IEnumerator _dialogue; */
     private void Awake() {
         instance = this;
-        interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
+        if (interactionText != null)
+            interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
     }
 
     public void Init(List<DialogueData> greetingList, List<DialogueData> cancleList,
