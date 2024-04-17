@@ -15,6 +15,8 @@ public class EnemyPororo : Enemy
         base.Awake();
 
         StateMachine = new EnemyStateMachine<CommonEnemyStateEnum>();
+        
+        HealthCompo.OnDead += () => StateMachine.ChangeState(CommonEnemyStateEnum.Dead);
 
         foreach(CommonEnemyStateEnum stateEnum in Enum.GetValues(typeof(CommonEnemyStateEnum))) {
             string typeName = stateEnum.ToString();

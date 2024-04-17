@@ -28,6 +28,7 @@ public class EnemyLJ_KStone : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.TryGetComponent(out PlayerHealth playerHealth)) {
             playerHealth.ApplyDamage(_damage, transform);
+            Destroy(gameObject);
         }
     }
 }

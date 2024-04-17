@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace FSM {
     [RequireComponent(typeof(EnemyDamageCaster), typeof(EnemyHealth))]
@@ -21,10 +22,15 @@ namespace FSM {
         public int attackDamage;
         [HideInInspector] public float lastAttackTime;
 
+        [Header("HealthBar Settings")]
+        public Transform healthBarTransform;
+        public float healthBarScale = 1f;
+
         [Header("ETC Settings")]
         public DropTableSO dropTable;
 
         protected int _lastAnimationBoolHash;
+        private EnemyHealthBar _healthBar;
 
         protected override void Awake() {
             base.Awake();
@@ -33,6 +39,10 @@ namespace FSM {
             HealthCompo.SetOwner(this);
 
             lastAttackTime = -Stat.GetAttackSpeed();
+
+            _healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
+            _healthBar.Init(healthBarTransform, healthBarScale);
+            HealthCompo.healthFilled = _healthBar.transform.Find("Filled").GetComponent<Image>();
         }
 
         public virtual void AssignLastAnimationHash(int hashCode) {
@@ -60,11 +70,31 @@ namespace FSM {
             return Physics2D.Raycast(transform.position, direction, distance, whatIsObstacle);
         }
 
+        public virtual void SetDead() {
+            PoolManager.Instance.Push(_healthBar);
+            DropItems();
+        }
+
+        public virtual void DropItems() {
+            int randomSmallPartAmount = Random.Range(dropTable.smallPartAmount.x, dropTable.smallPartAmount.y + 1);
+            int randomBigPartAmount = Random.Range(dropTable.bigPartAmount.x, dropTable.bigPartAmount.y + 1);
+            for(int i = 0; i < randomSmallPartAmount; ++i) {
+                Transform trm = PoolManager.Instance.Pop(PoolingType.SmallPart).transform;
+                trm.position = transform.position;
+            }
+            for(int i = 0; i < randomBigPartAmount; ++i) {
+                Transform trm = PoolManager.Instance.Pop(PoolingType.BigPart).transform;
+                trm.position = transform.position;
+            }
+        }
+
         protected virtual void OnDrawGizmos() {
             Gizmos.color = Color.red;
             Gizmos.DrawWireCube((Vector2)transform.position + attackOffset * FacingDirection, attackRange);
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, nearDistance);
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
         }
     }
 }
