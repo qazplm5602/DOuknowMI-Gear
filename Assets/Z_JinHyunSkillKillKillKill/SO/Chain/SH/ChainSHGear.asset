@@ -15,6 +15,4 @@ MonoBehaviour:
   combine:
   - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
   - {fileID: 11400000, guid: 5d8dbb8d2d2214b46abe0a3ab59d766b, type: 2}
-  - {fileID: 11400000, guid: 8c7cbbd9fa5de6c46b5be9c7be05125d, type: 2}
-  - {fileID: 11400000, guid: 00637fdfa72238347b8b5e60d88b2de4, type: 2}
-  loadModule: {fileID: 7755477415685776989, guid: b59b1c9606fa6a54293e613a7011d795, type: 3}
+  loadModule: {fileID: 7755477415685776989, guid: fb9b0a037d3593d4b8865f2770a85555, type: 3}

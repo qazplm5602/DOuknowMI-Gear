@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7709536144467850541}
   - component: {fileID: -9074473672172450720}
   m_Layer: 0
-  m_Name: ChainSHSkillContainer
+  m_Name: ChainMHSkillContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
-  _prefab: {fileID: 5663472254907384932, guid: cd127bf7a6edb374ea00b226bc435ea2, type: 3}
+  _prefab: {fileID: 5663472254907384932, guid: 783c0030c20036244ac294b5eb010786, type: 3}

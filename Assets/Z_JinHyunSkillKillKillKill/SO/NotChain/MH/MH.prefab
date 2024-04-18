@@ -259,7 +259,7 @@ MonoBehaviour:
   _damage: 8
   castType: 2
   _moveSpeed: 8
-  _maxRange: 10
+  _maxRange: 12
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
