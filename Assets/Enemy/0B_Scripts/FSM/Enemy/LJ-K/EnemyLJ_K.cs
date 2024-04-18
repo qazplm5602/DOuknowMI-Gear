@@ -73,7 +73,9 @@ public class EnemyLJ_K : Enemy
         StateMachine.Initialize(LJ_KStateEnum.Battle, this);
     }
 
-    private void Update() {
+    protected override void Update() {
+        base.Update();
+        
         StateMachine.CurrentState.UpdateState();
     }
 

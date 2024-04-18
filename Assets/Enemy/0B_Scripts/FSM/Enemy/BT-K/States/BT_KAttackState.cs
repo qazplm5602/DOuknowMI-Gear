@@ -29,7 +29,7 @@ public class BT_KAttackState : EnemyState<CommonEnemyStateEnum>
 
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyBT_K.attackTransform.position;
-        bulletObject.GetComponent<EnemyProjectile>().Init(3, 12f, direction, _enemy.Stat.attack.GetValue());
+        bulletObject.GetComponent<EnemyProjectile>().Init(3, 12f, direction, (int)_enemy.Stat.attack.GetValue());
         Debug.Log("탕!!");
     }
 

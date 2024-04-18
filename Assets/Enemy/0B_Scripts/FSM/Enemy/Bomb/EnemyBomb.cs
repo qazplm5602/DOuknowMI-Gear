@@ -35,7 +35,9 @@ public class EnemyBomb : Enemy
         StateMachine.Initialize(CommonEnemyStateEnum.Chase, this);
     }
 
-    private void Update() {
+    protected override void Update() {
+        base.Update();
+        
         StateMachine.CurrentState.UpdateState();
     }
 
