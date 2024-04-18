@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,6 +13,10 @@ struct PauseSettingSOPair {
 
 public class PauseSettingMenu : MonoBehaviour
 {
+    // 이벤트 등록할때 Start에서 등록하는걸 매우 권장함 (Awake에서 초기화함)
+    static Dictionary<string, Action<string>> OnSetValue;
+    static Dictionary<string, Func<string>> OnGetValue;
+
     [Header("Section")]
     [SerializeField] Transform _categorys;
     [SerializeField] Transform _scrollContent;
@@ -19,12 +24,15 @@ public class PauseSettingMenu : MonoBehaviour
 
     [Header("Prefab")]
     [SerializeField] Button _sectionBtn;
-    [SerializeField] GameObject _box;
+    [SerializeField] PauseSettingBox _box;
     
     [Header("Config")]
     [SerializeField] PauseSettingSOPair[] menus;
 
     private void Awake() {
+        OnSetValue = new();
+        OnGetValue = new();
+
         for (int i = 0; i < menus.Length; i++)
         {
             int idx = i;
@@ -39,6 +47,11 @@ public class PauseSettingMenu : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        OnSetValue = null;
+        OnGetValue = null;
+    }
+
     void ClickCategory(int idx) {
         int i = 0;
         foreach (Transform item in _categorys)
@@ -51,7 +64,44 @@ public class PauseSettingMenu : MonoBehaviour
         foreach (Transform item in _scrollContent)
             Destroy(item.gameObject);
 
+        foreach (var item in menus[idx].so.datas)
+        {
+            var box = Instantiate(_box, _scrollContent);
+            box.Init(this, item);
+        }
+    }
 
-        
+    //////////////////////// EVENT
+
+    public void AddSetEvent(string id, Action<string> callback) {
+        if (OnSetValue.TryGetValue(id, out var _)) {
+            OnSetValue[id] += callback;
+        } else {
+            OnSetValue[id] = callback;
+        }
+    }
+    
+    public void RemoveSetEvent(string id, Action<string> callback) {
+        OnSetValue[id] -= callback;
+    }
+
+    public void AddGetEvent(string id, Func<string> callback) {
+        if (OnGetValue.TryGetValue(id, out var _)) {
+            OnGetValue[id] += callback;
+        } else {
+            OnGetValue[id] = callback;
+        }
+    }
+    
+    public void RemoveGetEvent(string id, Func<string> callback) {
+        OnGetValue[id] -= callback;
+    }
+
+    public void TriggerSetEvent(string id, string value) {
+        OnSetValue[id]?.Invoke(value);
+    }
+
+    public string TriggerGetEvent(string id) {
+        return OnGetValue[id]?.Invoke();
     }
 }

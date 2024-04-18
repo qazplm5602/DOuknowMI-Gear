@@ -673,6 +673,7 @@ GameObject:
   - component: {fileID: 1986496433068163189}
   - component: {fileID: 7803827042094230743}
   - component: {fileID: 4360482885021825945}
+  - component: {fileID: 405060260284604727}
   m_Layer: 5
   m_Name: SettingBox
   m_TagString: Untagged
@@ -741,6 +742,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &405060260284604727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033942733135987684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 018e5e70579166c438daf86d90ea299f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _title: {fileID: 8885994737009389888}
+  _dropdown: {fileID: 7764063504060905808}
+  _slider: {fileID: 2148616714881622312}
+  _toggle: {fileID: 543501077072204094}
 --- !u!1 &2232526954648843244
 GameObject:
   m_ObjectHideFlags: 0

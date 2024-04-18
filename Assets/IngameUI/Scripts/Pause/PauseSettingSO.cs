@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct PauseSettingBox {
+public struct PauseSettingConfig {
     public enum Type {
         Check,
         Slider,
@@ -28,5 +28,5 @@ public struct PauseSettingBox {
 [CreateAssetMenu(menuName = "SO/UI/PauseSetting")]
 public class PauseSettingSO : ScriptableObject
 {
-    public PauseSettingBox[] datas;
+    public PauseSettingConfig[] datas;
 }

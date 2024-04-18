@@ -13,10 +13,27 @@ MonoBehaviour:
   m_Name: generic
   m_EditorClassIdentifier: 
   datas:
-  - title: 
-    eventName: 
+  - title: "\uBC0D\uAE00\uB9C1"
+    eventName: generic.mingling
     type: 0
-    description: 
+    description: "\u3141\u3139\t\t"
     sliderMin: 0
     sliderMax: 0
     options: []
+  - title: "\uB3C4\uBC0D"
+    eventName: generic.doming
+    type: 1
+    description: 
+    sliderMin: 0
+    sliderMax: 100
+    options: []
+  - title: "\uB3C4\uBBF8web"
+    eventName: generic.doming
+    type: 2
+    description: 
+    sliderMin: 0
+    sliderMax: 0
+    options:
+    - domi.kr
+    - domi@domi.kr
+    - ggm.domi.kr
