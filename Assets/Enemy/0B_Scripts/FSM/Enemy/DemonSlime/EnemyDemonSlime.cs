@@ -62,7 +62,9 @@ public class EnemyDemonSlime : Enemy
         StateMachine.ChangeState(DemonSlimeStateEnum.Dead);
     }
 
-    private void OnDrawGizmos() {
+    protected override void OnDrawGizmos() {
+        base.OnDrawGizmos();
+        
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(transform.position + (Vector3)smashOffset * FacingDirection, smashRange);
         Gizmos.color = Color.white;

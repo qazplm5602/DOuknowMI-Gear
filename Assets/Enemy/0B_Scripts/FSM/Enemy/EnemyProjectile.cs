@@ -18,10 +18,11 @@ public class EnemyProjectile : PoolableMono
         Move();
     }
 
-    public void Init(float lifeTime, float speed, Vector2 direction) {
+    public void Init(float lifeTime, float speed, Vector2 direction, int damage) {
         _lifeTime = lifeTime;
         _speed = speed;
         _direction = direction;
+        _damage = damage;
 
         _isInit = true;
 
