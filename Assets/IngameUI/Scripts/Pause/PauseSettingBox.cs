@@ -31,6 +31,11 @@ public class PauseSettingBox : MonoBehaviour
                 _dropdown.onValueChanged.AddListener((int i) => {
                     menu.TriggerSetEvent(data.eventName, i.ToString());
                 });
+                
+                if (int.TryParse(loadValue, out int result)) {
+                    _dropdown.value = result;
+                }
+
                 break;
             
             case PauseSettingConfig.Type.Check:
@@ -38,6 +43,7 @@ public class PauseSettingBox : MonoBehaviour
                 _toggle.onValueChanged.AddListener((bool newValue) => {
                     menu.TriggerSetEvent(data.eventName, newValue.ToString());
                 });
+                _toggle.isOn = loadValue.Equals("true");
                 break;
 
             case PauseSettingConfig.Type.Slider:
@@ -51,6 +57,10 @@ public class PauseSettingBox : MonoBehaviour
                     domiT.text = newValue.ToString();
                     menu.TriggerSetEvent(data.eventName, newValue.ToString());
                 });
+                if (int.TryParse(loadValue, out int result2)) {
+                    _slider.value = result2;
+                    domiT.text = result2.ToString();
+                }
                 break;
 
             default:

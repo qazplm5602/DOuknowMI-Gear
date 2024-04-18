@@ -19,6 +19,7 @@ MonoBehaviour:
     description: "\u3141\u3139\t\t"
     sliderMin: 0
     sliderMax: 0
+    sliderFloat: 0
     options: []
   - title: "\uB3C4\uBC0D"
     eventName: generic.doming
@@ -26,13 +27,15 @@ MonoBehaviour:
     description: 
     sliderMin: 0
     sliderMax: 100
+    sliderFloat: 0
     options: []
   - title: "\uB3C4\uBBF8web"
-    eventName: generic.doming
+    eventName: generic.domiweb
     type: 2
     description: 
     sliderMin: 0
     sliderMax: 0
+    sliderFloat: 0
     options:
     - domi.kr
     - domi@domi.kr
