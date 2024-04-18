@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class GearCogEvent : MonoBehaviour {
     public GameObject _player;
+    public GameObject _prefab;
     public GearStat _stat;
     
     // public abstract void Init();

@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -20,6 +21,8 @@ public class Door : MonoBehaviour
     public DoorType Type;
     
     private BaseStage stageData;
+
+    public bool IsCooldown = false;
 
     [SerializeField] private BaseStage nextRoom;
     [SerializeField] private Door nextDoor;
@@ -61,12 +64,15 @@ public class Door : MonoBehaviour
 
         try
         {
+            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}");
             if (nextRoom.door[(int)OppoDir[Type]])
+            {
                 nextDoor = nextRoom.door[(int)OppoDir[Type]];
+            }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-
+            //UnityEngine.Debug.Log(e);
         }
 
     }
@@ -81,9 +87,18 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (IsCooldown) return;
         if (!col.CompareTag("Player")) return;
         if (!stageData.Cleared) return;
         print(bbqCode.GayManater.Instance);
+        StartCoroutine(TPCooldown());
         bbqCode.GayManater.Instance.MoveRoom(nextRoom,nextDoor);
+    }
+
+    private IEnumerator TPCooldown()
+    {
+        nextDoor.IsCooldown = true;
+        yield return new WaitForSeconds(.5f);
+        nextDoor.IsCooldown = false;
     }
 }

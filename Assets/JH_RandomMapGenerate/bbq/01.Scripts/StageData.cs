@@ -8,8 +8,8 @@ using UnityEngine;
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 /// <summary>
-/// ´øÀüÀ» »ı¼ºÇÒ¶§ ¸ÊÀÌ »ı¼ºµÉ ÀÚ¸®¸¦ ¹Ì¸® Á¤ÇØ³õÀ»¶§ »ç¿ë ÇÕ´Ï´Ù.
-/// ÀÚ½ÅÀÇ ÀÎµ¦½º ¹øÈ£¿Í ¿¬°áµÈ ¹æµéÀÇ Á¤º¸¸¦ °¡Áö°í ÀÖ½À´Ï´Ù.
+/// ë˜ì „ì„ ìƒì„±í• ë•Œ ë§µì´ ìƒì„±ë  ìë¦¬ë¥¼ ë¯¸ë¦¬ ì •í•´ë†“ì„ë•Œ ì‚¬ìš© í•©ë‹ˆë‹¤.
+/// ìì‹ ì˜ ì¸ë±ìŠ¤ ë²ˆí˜¸ì™€ ì—°ê²°ëœ ë°©ë“¤ì˜ ì •ë³´ë¥¼ ê°€ì§€ê³  ìˆìŠµë‹ˆë‹¤.
 /// </summary>
 /////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,7 @@ public class StageData
     public int indexX;
     public int indexY;
 
-    public void InitSttting(int num, int x, int y, MapType type)
+    public void InitSetting(int num, int x, int y, MapType type)
     {
         this.Num = num;
         this.indexX = x;
@@ -36,7 +36,7 @@ public class StageData
 
     }
 
-    public void InitSttting(int num, int x, int y)
+    public void InitSetting(int num, int x, int y)
     {
         this.Num = num;
         this.indexX = x;

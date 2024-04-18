@@ -26,6 +26,6 @@ public class MGHookState : EnemyState<MGStateEnum>
     }
 
     public override void AnimationAttackTrigger() {
-        _enemy.DamageCasterCompo.Damage(_enemyMG.hookDamage, (Vector2)_enemy.transform.position + _enemyMG.hookOffset, _enemyMG.hookRange);
+        _enemy.DamageCasterCompo.Damage(_enemyMG.hookDamage, (Vector2)_enemy.transform.position + _enemyMG.hookOffset * _enemy.FacingDirection, _enemyMG.hookRange);
     }
 }

@@ -55,9 +55,13 @@ public class Part : PoolableMono
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.TryGetComponent(out PlayerPart playerPart)) {
-            playerPart.IncreasePart(GetPartAmount());
-            gameObject.SetActive(false);
-            PoolManager.Instance.Push(this);
+            try {
+                playerPart.IncreasePart(GetPartAmount());
+            }
+            finally {
+                gameObject.SetActive(false);
+                PoolManager.Instance.Push(this);
+            }
         }
     }
 

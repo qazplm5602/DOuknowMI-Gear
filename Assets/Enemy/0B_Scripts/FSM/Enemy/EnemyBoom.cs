@@ -9,7 +9,7 @@ public class EnemyBoom : PoolableMono
     private Animator _animator;
 
     private void Awake() {
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public override void ResetItem() {
@@ -26,7 +26,7 @@ public class EnemyBoom : PoolableMono
         }
     }
 
-    private void AnimationFinishTrigger() {
+    public void AnimationFinishTrigger() {
         PoolManager.Instance.Push(this);
     }
 

@@ -52,6 +52,8 @@ public class EnemyLJ_K : Enemy
         base.Awake();
 
         StateMachine = new EnemyStateMachine<LJ_KStateEnum>();
+        
+        HealthCompo.OnDead += () => StateMachine.ChangeState(LJ_KStateEnum.Dead);
 
         foreach(LJ_KStateEnum stateEnum in Enum.GetValues(typeof(LJ_KStateEnum))) {
             string typeName = stateEnum.ToString();
@@ -71,7 +73,9 @@ public class EnemyLJ_K : Enemy
         StateMachine.Initialize(LJ_KStateEnum.Battle, this);
     }
 
-    private void Update() {
+    protected override void Update() {
+        base.Update();
+        
         StateMachine.CurrentState.UpdateState();
     }
 
