@@ -11,6 +11,7 @@ public class EntityStat : ScriptableObject
     public Stat attack;
     public Stat moveSpeed;
     public Stat attackSpeed;
+    public Stat attackCooldown;
     public Stat attackRange;
 
     protected Entity _onwer;
@@ -41,8 +42,4 @@ public class EntityStat : ScriptableObject
     }
 
     private string LowerFirstChar(string input) => char.ToLower(input[0]) + input[1..];
-
-    public float GetAttackSpeed() {
-        return attackSpeed.GetValue() * 0.001f;
-    }
 }

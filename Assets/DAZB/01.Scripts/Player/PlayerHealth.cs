@@ -17,7 +17,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     private void Start() {
-        maxHealth = owner.stat.maxHealth.GetValue();
+        maxHealth = (int)owner.stat.maxHealth.GetValue();
         currentHealth = maxHealth;
     }
 

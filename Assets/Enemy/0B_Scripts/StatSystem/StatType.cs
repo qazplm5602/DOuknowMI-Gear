@@ -4,5 +4,6 @@ public enum StatType
     Attack,
     MoveSpeed,
     AttackSpeed,
+    AttackCooldown,
     AttackRange
 }

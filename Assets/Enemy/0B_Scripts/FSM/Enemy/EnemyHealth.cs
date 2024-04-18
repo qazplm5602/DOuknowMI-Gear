@@ -25,7 +25,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     public void SetOwner(Enemy owner) {
         _owner = owner;
 
-        _maxHealth = owner.Stat.maxHealth.GetValue();
+        _maxHealth = (int)owner.Stat.maxHealth.GetValue();
         _currentHealth = _maxHealth;
         _originMat = _owner.SpriteRendererCompo.material;
     }
