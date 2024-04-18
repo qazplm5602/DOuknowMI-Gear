@@ -19,6 +19,7 @@ public struct PauseSettingConfig {
     [Header("Slider")]
     public int sliderMin;
     public int sliderMax;
+    public bool sliderFloat;
 
     [Header("Option")]
     // public Dropdown.OptionDataList options;

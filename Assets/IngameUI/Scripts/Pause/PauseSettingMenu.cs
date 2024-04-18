@@ -102,6 +102,11 @@ public class PauseSettingMenu : MonoBehaviour
     }
 
     public string TriggerGetEvent(string id) {
+        if (!OnGetValue.TryGetValue(id, out var cb)) {
+            Debug.LogError($"[PauseSetting] {id} 이벤트 값을 가져올 수 없습니다.");
+            return string.Empty;
+        }
+
         return OnGetValue[id]?.Invoke();
     }
 }

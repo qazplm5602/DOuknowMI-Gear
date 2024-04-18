@@ -9692,6 +9692,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingBox
       objectReference: {fileID: 0}
+    - target: {fileID: 4749936215458333301, guid: 9ce8cb3b7206c2e4a963a47d02371913, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8420782700234464660, guid: 9ce8cb3b7206c2e4a963a47d02371913, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
