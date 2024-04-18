@@ -6,5 +6,7 @@ public enum PoolingType
     Muzzle,
     MGBullet,
     Boom,
-    Afterimage
+    Afterimage,
+    MoveStartSmoke,
+    MoveSmoke
 }
