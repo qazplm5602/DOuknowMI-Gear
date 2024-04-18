@@ -83,7 +83,7 @@ public abstract class SkillController : MonoBehaviour
         }
     }
 
-    protected virtual void ModifyEnemyStat(StatType statFieldName, int percent, bool isAdd) 
+    protected virtual void ModifyEnemyStat(StatType statFieldName, float percent, bool isAdd) 
     {
         //string statFieldString = statFieldName.ToString();
         //string firstLowerStatFieldName = $"{char.ToLower(statFieldString[0])}{statFieldString[1..]};
@@ -107,12 +107,12 @@ public abstract class SkillController : MonoBehaviour
             if (isAdd)
             {
                 float value = modifyingStat.GetValue() * percent;
-                //modifyingStat.AddModifier(value);
+                modifyingStat.AddModifier(value);
             }
             else
             {
                 float value = modifyingStat.GetValue() / percent;
-                //modifyingStat.RemoveModifier(value);
+                modifyingStat.RemoveModifier(value);
             }
         }
     }
