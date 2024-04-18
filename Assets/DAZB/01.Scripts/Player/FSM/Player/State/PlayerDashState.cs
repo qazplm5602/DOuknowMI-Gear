@@ -27,6 +27,7 @@ public class PlayerDashState : PlayerState
             player.MovementCompo.Flip(Vector3.zero, true, false);
         }
         player.StartCoroutine(DashCor());
+        player.StartCoroutine(GenerateAfterimageRoutine());
         player.isInvincibility = true;
         player.lastDashTime = Time.time;
     }
@@ -54,5 +55,21 @@ public class PlayerDashState : PlayerState
         player.RigidCompo.velocity = Vector2.zero;
         player.RigidCompo.gravityScale = 3;
         player.isDash = false;
+    }
+
+    private IEnumerator GenerateAfterimageRoutine() {
+        float currentTime = 0;
+        while (true) {
+            if (endTriggerCalled) {
+                yield break;
+            }
+            if (currentTime >= 0.05) {
+                PoolManager.Instance.Pop(PoolingType.Afterimage);
+                currentTime = 0;
+                continue;
+            }
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }
