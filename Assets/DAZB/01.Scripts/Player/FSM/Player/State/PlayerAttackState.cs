@@ -8,6 +8,10 @@ public class PlayerAttackState : PlayerState
 
     public override void Enter()
     {
+        if (GearManager.Instance == null) {
+            Debug.Log("Gear manager is null");
+            stateMachine.ChangeState(PlayerStateEnum.Idle);
+        }
         player.isAttack = true;
         player.lastAttackTime = Time.time;
         var gearList = GearManager.Instance.GetGearResult();

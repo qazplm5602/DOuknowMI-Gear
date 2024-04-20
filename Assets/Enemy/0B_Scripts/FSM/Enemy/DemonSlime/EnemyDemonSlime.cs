@@ -44,7 +44,7 @@ public class EnemyDemonSlime : Enemy
         HealthCompo.OnDead -= HandleDeadEvent;
     }
 
-    private void Update() {
+    protected override void Update() {
         StateMachine.CurrentState.UpdateState();
     }
 

@@ -27,7 +27,7 @@ public class GuniAttackState : EnemyState<CommonEnemyStateEnum>
     public override void AnimationAttackTrigger() {
         EnemyProjectile bullet = PoolManager.Instance.Pop(PoolingType.Bullet) as EnemyProjectile;
         bullet.transform.position = _enemyGuni.attackTransform.position;
-        bullet.Init(3, 6, direction, _enemy.Stat.attack.GetValue());
+        bullet.Init(3, 6, direction, (int)_enemy.Stat.attack.GetValue());
         Debug.Log("탕!!");
     }
 

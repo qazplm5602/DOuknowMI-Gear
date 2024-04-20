@@ -38,11 +38,15 @@ namespace FSM {
             HealthCompo = GetComponent<EnemyHealth>();
             HealthCompo.SetOwner(this);
 
-            lastAttackTime = -Stat.GetAttackSpeed();
+            lastAttackTime = -Stat.attackCooldown.GetValue();
 
             _healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
             _healthBar.Init(healthBarTransform, healthBarScale);
             HealthCompo.healthFilled = _healthBar.transform.Find("Filled").GetComponent<Image>();
+        }
+
+        protected virtual void Update() {
+            AnimatorCompo.speed = Stat.attackSpeed.GetValue();
         }
 
         public virtual void AssignLastAnimationHash(int hashCode) {
@@ -54,7 +58,7 @@ namespace FSM {
         public abstract void AnimationFinishTrigger();
 
         public bool CanAttack() {
-            return Time.time >= lastAttackTime + Stat.GetAttackSpeed();
+            return Time.time >= lastAttackTime + Stat.attackCooldown.GetValue();
         }
 
         public override void ReturnDefaultSpeed() {

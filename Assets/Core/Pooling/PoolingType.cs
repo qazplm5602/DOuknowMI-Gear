@@ -7,5 +7,8 @@ public enum PoolingType
     MGBullet,
     Boom,
     HealthBar,
-    DamageText
+    DamageText,
+    Afterimage,
+    MoveStartSmoke,
+    MoveSmoke
 }
