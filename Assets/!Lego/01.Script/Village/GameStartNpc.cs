@@ -7,7 +7,6 @@ using static UnityEditor.PlayerSettings;
 
 public class GameStartNpc : MonoBehaviour, IInteraction
 {
-    [SerializeField] private string _stageSceneName;
     [SerializeField] private LayerMask whatIsPlayer;
     [SerializeField] private Vector2 checkBoxSize;
     [SerializeField] private Vector3 offset;
@@ -18,11 +17,11 @@ public class GameStartNpc : MonoBehaviour, IInteraction
 
     public void Interaction()
     {
-        SceneManager.LoadScene(_stageSceneName);
+        VillageManager.Instance.ChangeSceneToStage();
     }
 
     private void Update()
-    {
+    {   
         CheckPlayer();
         if (_isCheck)
         {
