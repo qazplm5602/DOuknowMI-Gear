@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ROOMTYPE { Start, Normal, Boss ,Pray }
+public enum ROOMTYPE { Start, Normal, Boss ,Statue }
 public enum ROOMSIZE { NODATA = -1, Small, Medium, Large }
 public class Map : CockSingleton<Map>
 {
@@ -37,7 +37,7 @@ public class Map : CockSingleton<Map>
         {
             return BossRoom[Random.Range(0, BossRoom.Length)];
         }
-        if (type == ROOMTYPE.Pray)
+        if (type == ROOMTYPE.Statue)
             return PrayRoom;
         throw new System.NotImplementedException();
     }

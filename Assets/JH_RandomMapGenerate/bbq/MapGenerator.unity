@@ -305,7 +305,7 @@ MonoBehaviour:
   StartRoom: {fileID: 5353938931063013475, guid: d41c11fcdd6313944b5bdd86d2c74fae, type: 3}
   BossRoom:
   - {fileID: 4143770235450300818, guid: 8f2cb6d18d14bd1408aa9bf3ad1cb9c5, type: 3}
-  PrayRoom: {fileID: 4749083187472490087, guid: 2f63b5c6d161d164983562b692422053, type: 3}
+  PrayRoom: {fileID: 878025332417020420, guid: 269f85bc666c35e4887033e3df13896b, type: 3}
   SmallRoom:
   - {fileID: 7242360341026066563, guid: f6ad1c74306434c4e8d764f00a791524, type: 3}
   - {fileID: 7242360341026066563, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}

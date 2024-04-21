@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -72,40 +73,38 @@ public class MapSpawner : MonoBehaviour
     {
         InitSetting();
       
-        
-        MapSpawn(0, 2, null, 0);
-        //SetBossRoom();
-        print(tries + " " + current.NowCount);
+        MapSpawn(0, jajiOption.MaxListSize/2, null, 0);
+        SetBossRoom();
         MakeMapMotherfuker();
-        //MakeStatueRoom();
+        MakeStatueRoom();
         ShowMaps();
     }
 
-    //private void SetBossRoom()
-    //{
-    //    for (int i = 0; i < mapIndexStackByNum.Count; i++)
-    //    {
-    //        int index = mapIndexStackByNum.Pop();
+    private void SetBossRoom()
+    {
+        var yval = jajiOption.MaxListSize;
+        for (int i = 0; i < mapIndexStackByNum.Count; i++)
+        {
+            int index = mapIndexStackByNum.Pop();
 
-    //        int yval = jajiOption.MaxListSize;
+            //Debug.Log(index);
 
+            int _x = index % yval;
+            int _y = index / yval;
 
-    //        int x = index % yval;
-    //        int y = index / yval;
-
-    //        StageData Parent = current.Maplist[index];
-
-    //        if (x + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[index+1] == null)
-    //        {
-    //            current.Maplist[index + 1] = new StageData();
-    //            current.Maplist[index + 1].InitSetting(current.NowCount, x, y);
-    //            current.NowCount++;
-
-    //            current.Maplist[x + (y * yval)].LeftMap = Parent;
-    //            Parent.RightMap = current.Maplist[index + 1];
-    //        }
-    //    }
-    //}
+            int tx = _x + 1;
+            int ty = _y;
+            if (tx >= 0 && ty < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
+            {
+                if (current.Maplist[tx + ((ty + 1) * yval)] == null)
+                {
+                    print($"{tx}, {ty}");
+                    if (MapSpawn(tx, ty, current.Maplist[(tx) + (ty * yval)], 598) != new Vector2Int(-1, -1))
+                        return;
+                }
+            }
+        }
+    }
 
     public Vector2Int MapSpawn(int x, int y, StageData Parent, int depth, bool force = false)
     {
@@ -126,6 +125,7 @@ public class MapSpawner : MonoBehaviour
             current.NowCount++;
 
             mapIndexStackByNum.Push(x + (y * yval));
+            print("PUSHED" + mapIndexStackByNum.Count);
 
             if (Parent != null)
             {
@@ -162,7 +162,7 @@ public class MapSpawner : MonoBehaviour
         }
         else
         {
-            return new Vector2Int(x, y) ;
+            return new Vector2Int(-1,-1);
         }
 
         //천번째 방은 항상 오른쪽으로간다.
@@ -241,24 +241,7 @@ public class MapSpawner : MonoBehaviour
         }
 
         //print("GYATT");
-        //for (int i = 0; i < mapIndexStackByNum.Count; i++)
-        //{
-        //    int index = mapIndexStackByNum.Pop();
-
-        //    int _x = index % yval;
-        //    int _y = index / yval;
-
-        //    int tx = _x + 1;
-        //    int ty = _y;
-        //    if (tx >= 0 && ty < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
-        //    {
-        //        if (current.Maplist[tx + ((ty + 1) * yval)] == null)
-        //        {
-        //            MapSpawn(tx, ty, current.Maplist[(tx) + (ty * yval)], depth + 1, true);
-        //            return new Vector2Int(x, y);
-        //        }
-        //    }
-        //}
+        
 
 
         return new Vector2Int(x, y);
@@ -381,10 +364,10 @@ public class MapSpawner : MonoBehaviour
             {
                 current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Start));
             }
-            //else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
-            //{
-            //    current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
-            //}
+            else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
+            {
+                current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
+            }
             else
             {
                 if (current.Maplist[i].RightMap != null)
@@ -418,12 +401,11 @@ public class MapSpawner : MonoBehaviour
                 else
                 {
                     print("Spawning Large Or Medium...");
-                    int rnd = Random.Range(1, 101);
-                    if (rnd <= 70)
+                    if (50 >= Random.Range(1, 101))
                     {
                         roomSize = ROOMSIZE.Medium;
                     }
-                    else
+                    else if (35 >= Random.Range(1, 101))
                     {
                         roomSize = ROOMSIZE.Large;
                     }
@@ -481,10 +463,11 @@ public class MapSpawner : MonoBehaviour
         {
             int randomIndex = Random.Range(0, current.PrayRoomCandidates.Count);
             int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
-            BaseStage prayRoom = map.StageLoad(ROOMTYPE.Pray);
+            BaseStage prayRoom = map.StageLoad(ROOMTYPE.Statue);
             GameObject.Destroy(current.MapObjList[prayRoomIndex]);
             current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom,map.transform);
             current.StatueCount++;
+            Debug.Log(prayRoom.transform.name);
 
             if (current.MapObjList[prayRoomIndex].StageLinkedData != null)
             {
