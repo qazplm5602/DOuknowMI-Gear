@@ -27,7 +27,7 @@ MonoBehaviour:
   attackSpeed:
     _baseValue: 1
     modifiers: []
-    isPercent: 1
+    isPercent: 0
   attackCooldown:
     _baseValue: 4
     modifiers: []
