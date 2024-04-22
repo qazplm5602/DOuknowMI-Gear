@@ -9,6 +9,6 @@ public enum PoolingType
     HealthBar,
     DamageText,
     Afterimage,
-    MoveStartSmoke,
-    MoveSmoke
+    //MoveStartSmoke,
+    //MoveSmoke
 }
