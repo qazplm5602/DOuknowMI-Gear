@@ -18,6 +18,7 @@ public class PauseSettingMenu : MonoBehaviour
     static Dictionary<string, Func<string>> OnGetValue;
 
     [Header("Section")]
+    [SerializeField] GameObject _mainScreen;
     [SerializeField] Transform _categorys;
     [SerializeField] Transform _scrollContent;
     [SerializeField] TextMeshProUGUI _description;
@@ -28,6 +29,13 @@ public class PauseSettingMenu : MonoBehaviour
     
     [Header("Config")]
     [SerializeField] PauseSettingSOPair[] menus;
+
+    public void Show() {
+        _mainScreen.SetActive(true);
+    }
+    public void Hide() {
+        _mainScreen.SetActive(false);
+    }
 
     private void Awake() {
         OnSetValue = new();
@@ -67,8 +75,12 @@ public class PauseSettingMenu : MonoBehaviour
         foreach (var item in menus[idx].so.datas)
         {
             var box = Instantiate(_box, _scrollContent);
-            box.Init(this, item);
+            box.Init(this, item, () => SetDescription(item.description), () => SetDescription());
         }
+    }
+
+    void SetDescription(string description = null) {
+        _description.text = description == null ? "설명을 보려면 박스를 마우스에 올려두세요." : description;
     }
 
     //////////////////////// EVENT

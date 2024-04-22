@@ -1,22 +1,29 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class PauseSettingBox : MonoBehaviour
+public class PauseSettingBox : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] TextMeshProUGUI _title;
     [SerializeField] TMP_Dropdown _dropdown;
     [SerializeField] Slider _slider;
     [SerializeField] Toggle _toggle;
+
+    Action onMouseOver;
+    Action onMouseLeave;
     
     // string eventName;
 
-    public void Init(PauseSettingMenu menu, PauseSettingConfig data) {
+    public void Init(PauseSettingMenu menu, PauseSettingConfig data, Action mouseEnter, Action mouseLeave) {
         _title.text = data.title;
-        // eventName = data.eventName;
+        onMouseOver = mouseEnter;
+        onMouseLeave = mouseLeave;
+        
 
         // 불러온 값
         string loadValue = menu.TriggerGetEvent(data.eventName);
@@ -66,5 +73,15 @@ public class PauseSettingBox : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        onMouseOver?.Invoke();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        onMouseLeave?.Invoke();
     }
 }

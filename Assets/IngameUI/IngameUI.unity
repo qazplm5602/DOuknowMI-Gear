@@ -6878,6 +6878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf44a22ca48dbbe409647f78b5fe7dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainScreen: {fileID: 1429117687}
   _categorys: {fileID: 40268744}
   _scrollContent: {fileID: 1851954604}
   _description: {fileID: 227108988}
