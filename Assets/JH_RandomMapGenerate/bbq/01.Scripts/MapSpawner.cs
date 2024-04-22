@@ -22,16 +22,27 @@ public class MapSpawner : MonoBehaviour
 
     public Map map;
 
+    #region 기본값ㅄ
+    private int _statueChance = 8;
+    private int _mediumChance = 50;
+    private int _largeChance = 35;
+    #endregion
+
     [Serializable]
     public struct MapSettings
     {
-        public int MaxCnt;
-        public int MinCnt;
-
         [HideInInspector]
         public int MaxListSize;
 
+        [Header("Rooms Count Config")]
+        public int MaxCnt;
+        public int MinCnt;
         public int MaxStatue;
+
+        [Header("Chances")]
+        public int StatueChance;
+        public int MediumRoomChance;
+        public int LargeRoomChance;
     }
 
     [Serializable]
@@ -61,6 +72,14 @@ public class MapSpawner : MonoBehaviour
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.MapObjList = new BaseStage[jajiOption.MaxListSize * jajiOption.MaxListSize];
         current.CurrentRoomObjs = new List<GameObject>();
+
+        if (jajiOption.LargeRoomChance == 0)
+            jajiOption.LargeRoomChance = _largeChance;
+        if (jajiOption.MediumRoomChance == 0)
+            jajiOption.MediumRoomChance = _mediumChance;
+        if (jajiOption.StatueChance == 0)
+            jajiOption.StatueChance = _statueChance;
+
         for (int i = 0; i < jajiOption.MaxListSize * jajiOption.MaxListSize - 1; i++)
         {
             current.Maplist[i] = null;
@@ -96,7 +115,7 @@ public class MapSpawner : MonoBehaviour
             int ty = _y;
             if (tx >= 0 && ty < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
             {
-                if (current.Maplist[tx + ((ty + 1) * yval)] == null)
+                if (current.Maplist[tx + ((ty ) * yval)] == null)
                 {
                     print($"{tx}, {ty}");
                     if (MapSpawn(tx, ty, current.Maplist[(tx) + (ty * yval)], 598) != new Vector2Int(-1, -1))
@@ -125,7 +144,6 @@ public class MapSpawner : MonoBehaviour
             current.NowCount++;
 
             mapIndexStackByNum.Push(x + (y * yval));
-            print("PUSHED" + mapIndexStackByNum.Count);
 
             if (Parent != null)
             {
@@ -219,9 +237,6 @@ public class MapSpawner : MonoBehaviour
             }
         }
 
-        //if (isStart) return new Vector2Int(x, y);
-
-        // print(current.NowCount);
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
         if (current.NowCount < jajiOption.MinCnt)
         { 
@@ -239,10 +254,6 @@ public class MapSpawner : MonoBehaviour
                 }
             }
         }
-
-        //print("GYATT");
-        
-
 
         return new Vector2Int(x, y);
     }
@@ -446,13 +457,11 @@ public class MapSpawner : MonoBehaviour
                 continue;
             }
 
-            //프리팹 리스트에 값이 들어갔으면 주변에 있는 방들을 검사해서 링크데이터를 넣어준다.
+            //link close rooms
             if (current.MapObjList[i] != null)
             {
                 LinkedStage data = SetLinkingData(i);
                 current.MapObjList[i].StageLinkedData = data;
-                //obj.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
-                //Debug.Log($"{i}번방 링크세팅");
             }
         }
     }
@@ -463,17 +472,19 @@ public class MapSpawner : MonoBehaviour
         {
             int randomIndex = Random.Range(0, current.PrayRoomCandidates.Count);
             int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
-            BaseStage prayRoom = map.StageLoad(ROOMTYPE.Statue);
-            GameObject.Destroy(current.MapObjList[prayRoomIndex]);
-            current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom,map.transform);
-            current.StatueCount++;
-            Debug.Log(prayRoom.transform.name);
+            current.PrayRoomCandidates.Remove(randomIndex);
 
-            if (current.MapObjList[prayRoomIndex].StageLinkedData != null)
-            {
-                LinkedStage data = SetLinkingData(prayRoomIndex);
-                current.MapObjList[prayRoomIndex].StageLinkedData = data;
-            }
+            GameObject.Destroy(current.MapObjList[prayRoomIndex].gameObject);
+            BaseStage prayRoom = map.StageLoad(ROOMTYPE.Statue);
+            current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom);
+            current.StatueCount++;
+
+            LinkedStage data = SetLinkingData(prayRoomIndex);
+            current.MapObjList[prayRoomIndex].StageLinkedData = data;
+            //if (7 >= Random.Range(1, 101))
+            //{
+            //    MakeStatueRoom();
+            //}
         }
     }
 }

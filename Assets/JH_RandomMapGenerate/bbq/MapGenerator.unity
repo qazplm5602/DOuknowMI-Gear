@@ -329,10 +329,13 @@ MonoBehaviour:
   tries: 0
   map: {fileID: 573908938}
   jajiOption:
+    MaxListSize: 14
     MaxCnt: 14
     MinCnt: 12
-    MaxListSize: 14
-    MaxStatue: 1
+    MaxStatue: 2
+    StatueChance: 50
+    MediumRoomChance: 0
+    LargeRoomChance: 0
   current:
     NowCount: 0
     CurrentRoomObjs: []
