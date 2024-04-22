@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -63,12 +64,15 @@ public class Door : MonoBehaviour
 
         try
         {
+            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}");
             if (nextRoom.door[(int)OppoDir[Type]])
+            {
                 nextDoor = nextRoom.door[(int)OppoDir[Type]];
+            }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-
+            //UnityEngine.Debug.Log(e);
         }
 
     }

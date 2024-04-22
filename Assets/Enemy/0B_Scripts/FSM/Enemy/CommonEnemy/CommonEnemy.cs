@@ -33,7 +33,7 @@ public class CommonEnemy : Enemy
         StateMachine.Initialize(CommonEnemyStateEnum.Chase, this);
     }
 
-    private void Update() {
+    protected override void Update() {
         StateMachine.CurrentState.UpdateState();
     }
 

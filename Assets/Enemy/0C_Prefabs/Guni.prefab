@@ -67,6 +67,7 @@ Transform:
   m_Children:
   - {fileID: 7586441896131042201}
   - {fileID: 7130382085490325220}
+  - {fileID: 8899532595701357591}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &7999551906734203496
@@ -173,6 +174,8 @@ MonoBehaviour:
   attackOffset: {x: 2, y: -0.36}
   attackDamage: 2
   lastAttackTime: 0
+  healthBarTransform: {fileID: 8899532595701357591}
+  healthBarScale: 0.3
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
   attackTransform: {fileID: 7130382085490325220}
 --- !u!114 &3042940509989342945
@@ -203,6 +206,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 0
+  _whiteMat: {fileID: 0}
+  healthFilled: {fileID: 0}
+--- !u!1 &7473951697476317542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8899532595701357591}
+  m_Layer: 7
+  m_Name: HealthBarTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8899532595701357591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7473951697476317542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08, y: 0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5328027300995696822}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8961426347479207972
 GameObject:
   m_ObjectHideFlags: 0

@@ -10408,6 +10408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 2
+  IsCooldown: 0
   nextRoom: {fileID: 0}
   nextDoor: {fileID: 0}
 --- !u!4 &2583193431675136432 stripped

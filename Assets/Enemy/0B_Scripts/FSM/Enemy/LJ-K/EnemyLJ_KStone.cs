@@ -19,7 +19,6 @@ public class EnemyLJ_KStone : MonoBehaviour
     public void Explode(float spawnX) {
         float randomMultiplier = Random.Range(0.5f, 0.75f);
         Vector2 dir = new Vector2(spawnX, Mathf.Abs(spawnX) * randomMultiplier);
-        Debug.Log(dir);
 
         _rigidbody.AddForce(dir * _force, ForceMode2D.Impulse);
         _rigidbody.AddTorque(10 * randomMultiplier);
@@ -28,6 +27,7 @@ public class EnemyLJ_KStone : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other) {
         if(other.transform.TryGetComponent(out PlayerHealth playerHealth)) {
             playerHealth.ApplyDamage(_damage, transform);
+            Destroy(gameObject);
         }
     }
 }

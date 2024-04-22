@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GearEngineSkill : GearCogEvent
 {
-    private PlayerSkill _skillType = PlayerSkill.Engine;
-
     public override void Use()
     {
         Vector3 playerPos = _player.transform.position;
@@ -13,9 +11,7 @@ public class GearEngineSkill : GearCogEvent
         mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
-        GameObject prefab = PlayerSkillManager.Instance.playerSkill[_skillType];
-
-        Instantiate(prefab, playerPos, look);
+        Instantiate(_prefab, playerPos, look);
 
     }
 }

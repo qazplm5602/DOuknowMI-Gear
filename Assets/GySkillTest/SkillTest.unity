@@ -159,9 +159,16 @@ MonoBehaviour:
   scriptModule: {fileID: 1489899756}
   spawnGears:
   - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
+  - {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
   spawnGearCoords:
-  - {x: 150, y: -150}
-  loadLinkData: []
+  - {x: 50, y: -180}
+  - {x: 177.6, y: -165.5}
+  - {x: 306, y: -180}
+  - {x: 433.7, y: -165.5}
+  loadLinkData:
+  - {fileID: 11400000, guid: 2e6d0f28fc098c14ebbe03033f48d2ad, type: 2}
+  - {fileID: 11400000, guid: a73886985bd404b40a3686090fe8aead, type: 2}
+  - {fileID: 11400000, guid: b128eebc3c6e26040a78370f0aee0af8, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 359083434}
 --- !u!114 &63214943

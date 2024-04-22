@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,7 +6,7 @@ using UnityEngine.Events;
 
 public abstract class BaseStage : MonoBehaviour
 {
-    public UnityEvent OnClearChanged;
+    public Action OnClearChanged;
 
     [Header("UP DOWN RIGHT LEFT")]
     public Door[] door;

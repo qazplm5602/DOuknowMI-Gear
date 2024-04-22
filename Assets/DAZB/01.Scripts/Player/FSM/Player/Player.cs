@@ -77,6 +77,6 @@ public class Player : Agent
         atkCool = stat.GetAttackSpeed();
         moveSpeed = stat.GetMoveSpeed();
         criticalChance = stat.GetCriticalChance();
-        defense = stat.defense.GetValue();
+        defense = (int)stat.defense.GetValue();
     }
 }
