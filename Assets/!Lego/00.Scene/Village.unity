@@ -1457,7 +1457,7 @@ MonoBehaviour:
   stats: {fileID: 224108353}
   playerTrm: {fileID: 224108362}
   player: {fileID: 224108358}
-  playerSpriteRenderer: {fileID: 0}
+  playerSpriteRenderer: {fileID: 224108361}
 --- !u!4 &1467112197
 Transform:
   m_ObjectHideFlags: 0
