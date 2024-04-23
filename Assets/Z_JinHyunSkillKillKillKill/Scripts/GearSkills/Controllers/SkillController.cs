@@ -94,7 +94,7 @@ public abstract class SkillController : MonoBehaviour
         //FieldInfo fieldInfo = t.GetField(firstLowerStatFieldName);
 
 
-        List<Enemy> enemies = new List<Enemy>();
+        List<Enemy> enemies = StageManager.Instance._enemies;
         //enemies.Add(FindObjectOfType<Enemy>());
         //현재맵.적들
 
@@ -103,6 +103,8 @@ public abstract class SkillController : MonoBehaviour
             Stat modifyingStat = fieldInfo.GetValue(item.Stat) as Stat;
 
             if (modifyingStat == null) return;
+
+            print(item.name);
 
             if (isAdd)
             {
