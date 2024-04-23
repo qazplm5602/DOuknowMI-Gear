@@ -10,7 +10,12 @@ using UnityEngine.UIElements;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] private List<Enemy> _enemies = new();
+    public static StageManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
+    public List<Enemy> _enemies = new();
 
     [SerializeField] private TextMeshProUGUI _clearText;
     [SerializeField] private TextMeshProUGUI _gameOverText;
