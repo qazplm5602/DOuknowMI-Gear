@@ -30,8 +30,7 @@ public class AgentStat : ScriptableObject
                 string fieldName = LowerFirstChar(statEnum.ToString());
                 FieldInfo statField = playerStatType.GetField(fieldName);
 
-                Stat statInstance = statField.GetValue(this) as Stat;
-                statInstance.Init();
+                Stat statInstance = statField.GetValue(this) as Stat;;
 
                 _statDictionary.Add(statEnum, statInstance);
             }
