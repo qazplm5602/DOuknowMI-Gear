@@ -5425,7 +5425,7 @@ MonoBehaviour:
   _location: {fileID: 603670675}
   _coinBox: {fileID: 1884725952}
   _gearChangeUI: {fileID: 1060226317}
-  _gearPauseUI: {fileID: 0}
+  _gearPauseUI: {fileID: 1060226321}
 --- !u!114 &1060226320
 MonoBehaviour:
   m_ObjectHideFlags: 0
