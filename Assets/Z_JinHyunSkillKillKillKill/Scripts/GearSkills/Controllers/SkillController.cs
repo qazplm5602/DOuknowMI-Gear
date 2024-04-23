@@ -85,36 +85,36 @@ public abstract class SkillController : MonoBehaviour
 
     protected virtual void ModifyEnemyStat(StatType statFieldName, float percent, bool isAdd) 
     {
-        //string statFieldString = statFieldName.ToString();
-        //string firstLowerStatFieldName = $"{char.ToLower(statFieldString[0])}{statFieldString[1..]};
+        string statFieldString = statFieldName.ToString();
+        string firstLowerStatFieldName = $"{char.ToLower(statFieldString[0])}{statFieldString[1..]}";
 
         Type t = typeof(EntityStat);
-        FieldInfo fieldInfo = t.GetField(statFieldName.ToString(), BindingFlags.IgnoreCase);
 
-        //FieldInfo fieldInfo = t.GetField(firstLowerStatFieldName);
+        //FieldInfo fieldInfo = t.GetField(statFieldName.ToString(), BindingFlags.IgnoreCase);
+        FieldInfo fieldInfo = t.GetField(firstLowerStatFieldName);
 
 
-        List<Enemy> enemies = StageManager.Instance._enemies;
+        
         //enemies.Add(FindObjectOfType<Enemy>());
         //현재맵.적들
 
-        foreach (Enemy item in enemies)
+        foreach (Enemy item in StageManager.Instance._enemies)
         {
             Stat modifyingStat = fieldInfo.GetValue(item.Stat) as Stat;
 
             if (modifyingStat == null) return;
 
-            print(item.name);
-
             if (isAdd)
             {
                 float value = modifyingStat.GetValue() * percent;
                 modifyingStat.AddModifier(value);
+                print($"Add : {modifyingStat.GetValue()}");
             }
             else
             {
                 float value = modifyingStat.GetValue() / percent;
                 modifyingStat.RemoveModifier(value);
+                print($"Remove : {modifyingStat}");
             }
         }
     }
