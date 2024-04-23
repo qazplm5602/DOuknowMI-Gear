@@ -5,9 +5,9 @@ using UnityEngine;
 public class Stat
 {
     [SerializeField] private float _baseValue;
+    [SerializeField] float defaultValue;
     public List<float> modifiers;
     public bool isPercent;
-    private float defaultValue;
 
     public float GetValue() {
         float finalValue = _baseValue;
@@ -15,10 +15,6 @@ public class Stat
             finalValue += value;
         }
         return finalValue;
-    }
-
-    public void Init() {
-        defaultValue = _baseValue;
     }
 
     public void AddModifier(float value) {
