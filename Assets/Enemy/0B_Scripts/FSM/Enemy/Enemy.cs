@@ -8,9 +8,6 @@ namespace FSM {
         [HideInInspector] public EnemyDamageCaster DamageCasterCompo;
         [HideInInspector] public EnemyHealth HealthCompo;
 
-        [Header("Move Settings")]
-        public float moveSpeed;
-
         [Header("Check Settings")]
         public float nearDistance;
         [SerializeField] private  LayerMask _whatIsPlayer;
@@ -62,7 +59,6 @@ namespace FSM {
         }
 
         public override void ReturnDefaultSpeed() {
-            moveSpeed = Stat.moveSpeed.GetValue();
             AnimatorCompo.speed = 1f;
         }
 

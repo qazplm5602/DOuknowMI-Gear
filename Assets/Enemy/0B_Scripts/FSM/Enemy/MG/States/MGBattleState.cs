@@ -36,7 +36,7 @@ public class MGBattleState : EnemyState<MGStateEnum>
         }
         else {
             _enemy.AnimatorCompo.SetFloat(_enemyMG.battleModeHash, 1);
-            _enemy.SetVelocity(_enemy.FacingDirection * _enemy.moveSpeed, _rigidbody.velocity.y);
+            _enemy.SetVelocity(_enemy.FacingDirection * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
         }
     }
 }
