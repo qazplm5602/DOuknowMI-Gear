@@ -32,17 +32,31 @@ public class LoadManager : MonoBehaviour
         StartCoroutine(StartLoadScene());
     }
 
+    class FakeAsync {
+        public float progress;
+        public bool allowSceneActivation;
+        public bool isDone;
+    }
+
     IEnumerator StartLoadScene() {
-        AsyncOperation data = SceneManager.LoadSceneAsync(goScene);
+        // AsyncOperation data = SceneManager.LoadSceneAsync(goScene);
+        FakeAsync data = new();
         data.allowSceneActivation = false;
         
         float lastProgress = data.progress;
         float progress = 0;
+
+        float testTime = Time.time;
         
         while (!data.isDone && progress < 0.9f) {
             yield return null;
+            if (Time.time - testTime > 3) {
+                testTime = Time.time;
+                data.progress += 0.1f;
+            }
+            
             progress = Mathf.Lerp(progress, data.progress, Time.deltaTime * 5);
-            if (Mathf.Abs(progress - data.progress) < 0.005f) {
+            if (Mathf.Abs(progress - data.progress) < 0.001f) {
                 progress = data.progress;
             }
 
