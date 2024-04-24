@@ -45,4 +45,4 @@ MonoBehaviour:
     count: 5
   - type: 7
     prefab: {fileID: 5229729143776453791, guid: 4af930c086c26234ab24a0f7adfe4c0b, type: 3}
-    count: 50
+    count: 10

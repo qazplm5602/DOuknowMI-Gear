@@ -342,7 +342,7 @@ MonoBehaviour:
   - {fileID: 5663472254907384932, guid: 6d89e2e39c063b2489f15ca5db94f0cd, type: 3}
   - {fileID: 5663472254907384932, guid: f2949cc3f87a9a746b30698ad167492b, type: 3}
   - {fileID: 5663472254907384932, guid: c64a1065edf3e3b4a951998181dfb3ee, type: 3}
-  - {fileID: 7586237168387870120, guid: 48773dea6e9868642a60766b5d8b3a6a, type: 3}
+  - {fileID: 5663472254907384932, guid: 41347bf9ba99da54eba19cb39a1b8184, type: 3}
   - {fileID: 5663472254907384932, guid: e9b25bbb8d0146e43a0a1217e73e0874, type: 3}
   - {fileID: 5663472254907384932, guid: 0d955e6c2bcc3ff4587104c76dc0d4f2, type: 3}
   - {fileID: 5663472254907384932, guid: 16c934d08b987064980f2cf0290a27de, type: 3}
@@ -786,6 +786,7 @@ MonoBehaviour:
   _enemies:
   - {fileID: 1883840805}
   _clearText: {fileID: 1951125552}
+  _gameOverText: {fileID: 0}
   _clearSceneName: Ending
   _gameOverSceneName: Dead
 --- !u!4 &1465006932
