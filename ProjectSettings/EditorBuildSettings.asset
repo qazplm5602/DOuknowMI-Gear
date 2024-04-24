@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/!Lego/00.Scene/Dead.unity
     guid: bc6d11add4d1ad045a8d56890d574668
+  - enabled: 1
+    path: Assets/Loading/Loading.unity
+    guid: 054dbcbd74830d24d9a3666d2d459db4
   m_configObjects: {}
