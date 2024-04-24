@@ -12,7 +12,8 @@ public enum PlayerStateEnum {
     Jump,
     Hurt,
     Attack,
-    Dead
+    Dead,
+    Interaction
 }
 
 public class Player : Agent
@@ -30,15 +31,15 @@ public class Player : Agent
     [SerializeField] private InputReader inputReader;
     public InputReader InputReader => inputReader;
     public bool isDash;
-    private PlayerStat stats;
     public float lastAttackTime;
     public float lastDashTime;
     public bool isAttack;
 
     protected override void Awake() {
-        stats = GetComponent<PlayerStat>();
         SetStat();
         base.Awake();
+        PlayerStat.Instance.OnUpdateStat += SetStat;
+        SetStat();
         StateMachine = new PlayerStateMachine();
         foreach (PlayerStateEnum stateEnum in Enum.GetValues(typeof(PlayerStateEnum))) {
             string typeName = stateEnum.ToString();
@@ -51,10 +52,6 @@ public class Player : Agent
                 Debug.LogError($"{typeName} is loading error check Message : {ex.Message}");
             }
         }
-    }
-
-    private void OnDestroy() {
-
     }
 
     protected void Start() {
@@ -77,6 +74,6 @@ public class Player : Agent
         atkCool = stat.GetAttackSpeed();
         moveSpeed = stat.GetMoveSpeed();
         criticalChance = stat.GetCriticalChance();
-        defense = stat.defense.GetValue();
+        defense = (int)stat.defense.GetValue();
     }
 }

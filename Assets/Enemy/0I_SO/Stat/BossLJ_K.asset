@@ -14,21 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth:
     _baseValue: 300
-    modifiers: 
+    modifiers: []
     isPercent: 0
   attack:
     _baseValue: 0
-    modifiers: 
+    modifiers: []
     isPercent: 0
   moveSpeed:
     _baseValue: 0
-    modifiers: 
+    modifiers: []
     isPercent: 0
   attackSpeed:
-    _baseValue: 4000
-    modifiers: 
-    isPercent: 1
+    _baseValue: 1
+    modifiers: []
+    isPercent: 0
+  attackCooldown:
+    _baseValue: 4
+    modifiers: []
+    isPercent: 0
   attackRange:
     _baseValue: 0
-    modifiers: 
+    modifiers: []
     isPercent: 0

@@ -11,6 +11,7 @@ public class PlayerHurtState : PlayerState
     {
         base.Enter();
         player.isInvincibility = true;
+        player.MovementCompo.StopImmediately();
     }
 
     public override void UpdateState()
@@ -18,6 +19,7 @@ public class PlayerHurtState : PlayerState
         base.UpdateState();
         if (endTriggerCalled) {
             stateMachine.ChangeState(PlayerStateEnum.Idle);
+            Debug.Log("hurt 상태 나옴");
         }
     }
 

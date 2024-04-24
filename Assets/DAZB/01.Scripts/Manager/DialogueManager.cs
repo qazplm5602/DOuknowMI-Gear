@@ -32,7 +32,8 @@ public class DialogueManager : MonoBehaviour
 /*     private IEnumerator _dialogue; */
     private void Awake() {
         instance = this;
-        interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
+        if (interactionText != null)
+            interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
     }
 
     public void Init(List<DialogueData> greetingList, List<DialogueData> cancleList,
@@ -92,6 +93,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     private IEnumerator GreetingRoutine() {
+        PlayerManager.instance.player.StateMachine.ChangeState(PlayerStateEnum.Interaction);
         int randNum = Random.Range(1, int.Parse(greetingList[greetingList.Count - 1].RandomType) + 1);
         SetSentence(greetingList, randNum);
         ActiveSelectionPanel(false);

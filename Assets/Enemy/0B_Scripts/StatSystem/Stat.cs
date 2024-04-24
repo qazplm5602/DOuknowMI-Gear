@@ -4,32 +4,28 @@ using UnityEngine;
 [System.Serializable]
 public class Stat
 {
-    [SerializeField] private int _baseValue;
-    public List<int> modifiers;
+    [SerializeField] private float _baseValue;
+    [SerializeField] float defaultValue;
+    public List<float> modifiers;
     public bool isPercent;
-    private int defaultValue;
 
-    public int GetValue() {
-        int finalValue = _baseValue;
-        foreach(int value in modifiers) {
+    public float GetValue() {
+        float finalValue = _baseValue;
+        foreach(float value in modifiers) {
             finalValue += value;
         }
         return finalValue;
     }
 
-    public void Init() {
-        defaultValue = _baseValue;
-    }
-
-    public void AddModifier(int value) {
+    public void AddModifier(float value) {
         if(value != 0) modifiers.Add(value);
     }
 
-    public void RemoveModifier(int value) {
+    public void RemoveModifier(float value) {
         if(value != 0) modifiers.Remove(value);
     }
 
-    public void SetDefaultValue(int value) {
+    public void SetDefaultValue(float value) {
         _baseValue = value;
     }
 
@@ -37,7 +33,7 @@ public class Stat
         _baseValue = defaultValue;
     }
 
-    public int GetDefaultValue() {
+    public float GetDefaultValue() {
         return defaultValue;
     }
 }

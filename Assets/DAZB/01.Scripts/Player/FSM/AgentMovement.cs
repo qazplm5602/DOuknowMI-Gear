@@ -69,7 +69,7 @@ public class AgentMovement : MonoBehaviour
 
     private void Move() {
         //rigid.velocity = new Vector2(velocity.x, rigid.velocity.y);
-        if (agent.isDash) return;
+        if (agent.isDash || agent.isDead || agent.ishurt) return;
         agent.RigidCompo.velocity = new Vector2(velocity.x, agent.RigidCompo.velocity.y);
     }
 

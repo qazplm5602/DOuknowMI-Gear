@@ -28,6 +28,8 @@ public class EnemyMG : Enemy
         base.Awake();
 
         StateMachine = new EnemyStateMachine<MGStateEnum>();
+        
+        HealthCompo.OnDead += () => StateMachine.ChangeState(MGStateEnum.Dead);
 
         foreach(MGStateEnum stateEnum in Enum.GetValues(typeof(MGStateEnum))) {
             string typeName = stateEnum.ToString();
@@ -47,7 +49,9 @@ public class EnemyMG : Enemy
         StateMachine.Initialize(MGStateEnum.Battle, this);
     }
 
-    private void Update() {
+    protected override void Update() {
+        base.Update();
+        
         StateMachine.CurrentState.UpdateState();
     }
 

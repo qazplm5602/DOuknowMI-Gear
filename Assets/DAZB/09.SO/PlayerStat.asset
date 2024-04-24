@@ -13,26 +13,32 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   maxHealth:
-    _baseValue: 0
-    modifiers: 
+    _baseValue: 20
+    defaultValue: 20
+    modifiers: []
     isPercent: 0
   attack:
     _baseValue: 2
-    modifiers: 
+    defaultValue: 2
+    modifiers: []
     isPercent: 0
   moveSpeed:
     _baseValue: 6000
-    modifiers: 
+    defaultValue: 6000
+    modifiers: []
     isPercent: 0
   attackSpeed:
-    _baseValue: 500
-    modifiers: 
+    _baseValue: 1000
+    defaultValue: 1000
+    modifiers: []
     isPercent: 0
   defense:
     _baseValue: 10
-    modifiers: 
+    defaultValue: 10
+    modifiers: []
     isPercent: 0
   criticalChance:
     _baseValue: 55000
-    modifiers: 
+    defaultValue: 55000
+    modifiers: []
     isPercent: 0

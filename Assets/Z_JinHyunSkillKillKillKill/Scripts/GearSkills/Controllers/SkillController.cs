@@ -1,7 +1,13 @@
+using FSM;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public abstract class SkillController : MonoBehaviour
 {
@@ -31,7 +37,7 @@ public abstract class SkillController : MonoBehaviour
     private bool _attackTriggerCalled;
     #endregion
 
-    internal virtual IEnumerator MoveRoutine(Transform startTrm)
+    protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         Vector3 firstPos = startTrm.position;
         bool notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
@@ -74,6 +80,42 @@ public abstract class SkillController : MonoBehaviour
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?
             target.ApplyDamage(_damage, null);
+        }
+    }
+
+    protected virtual void ModifyEnemyStat(StatType statFieldName, float percent, bool isAdd) 
+    {
+        //string statFieldString = statFieldName.ToString();
+        //string firstLowerStatFieldName = $"{char.ToLower(statFieldString[0])}{statFieldString[1..]};
+
+        Type t = typeof(EntityStat);
+        FieldInfo fieldInfo = t.GetField(statFieldName.ToString(), BindingFlags.IgnoreCase);
+
+        //FieldInfo fieldInfo = t.GetField(firstLowerStatFieldName);
+
+
+        List<Enemy> enemies = StageManager.Instance._enemies;
+        //enemies.Add(FindObjectOfType<Enemy>());
+        //현재맵.적들
+
+        foreach (Enemy item in enemies)
+        {
+            Stat modifyingStat = fieldInfo.GetValue(item.Stat) as Stat;
+
+            if (modifyingStat == null) return;
+
+            print(item.name);
+
+            if (isAdd)
+            {
+                float value = modifyingStat.GetValue() * percent;
+                modifyingStat.AddModifier(value);
+            }
+            else
+            {
+                float value = modifyingStat.GetValue() / percent;
+                modifyingStat.RemoveModifier(value);
+            }
         }
     }
 }

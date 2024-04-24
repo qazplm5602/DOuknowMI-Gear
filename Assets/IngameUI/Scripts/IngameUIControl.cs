@@ -14,6 +14,7 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
 
     [Header("Scripts")]
     [SerializeField] GearChangeUI _gearChangeUI;
+    [SerializeField] GearPauseUI _gearPauseUI;
     public GearChangeUI gearChangeUI => _gearChangeUI;
 
     TextMeshProUGUI locationT;
