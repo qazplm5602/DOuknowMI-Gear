@@ -44,13 +44,11 @@ public class LoadManager : MonoBehaviour
         // FakeAsync data = new();
         data.allowSceneActivation = false;
         
-        float lastProgress;
         float progress = 0;
 
         float testTime = Time.time;
 
         float curveTime = 0;
-        lastProgress = 0;
         while (curveTime < 1) {
             yield return null;
             curveTime += Time.deltaTime / 8;
@@ -58,35 +56,50 @@ public class LoadManager : MonoBehaviour
             
             UpdateUI(progress);
         }
-        
-        lastProgress = data.progress;
-        // while (!data.isDone && progress < 0.9f) {
-        while (!data.isDone && data.progress < 0.9f) {
-            yield return null;
 
-            if (progress > data.progress) {
-                yield return new WaitUntil(() => data.progress < progress);
-            }
+        // data.progress = 0.5f;
+        
+        while (!data.isDone && data.progress < 0.9f) {
             // if (Time.time - testTime > 0.05f) {
             //     testTime = Time.time;
             //     data.progress += 0.01f;
             // }
 
-            
-            progress = Mathf.Lerp(progress, data.progress, Time.deltaTime * 5);
-            // progress = _curve.Evaluate(progress);
-            // print($"{_curve.Evaluate(0)} / {_curve.Evaluate(0.5f)} / {_curve.Evaluate(1)}");
-            
-            if (Mathf.Abs(progress - data.progress) < 0.001f) {
-                progress = data.progress;
-            }
-
-            if (Mathf.Abs(lastProgress - progress) < 0.01f) {
-                UpdateUI(progress);
-            }
-
-            lastProgress = progress;
+            print(data.progress);
+            yield return null;
         }
+
+        // float lastProgress;
+        // lastProgress = data.progress;
+        
+
+        // while (!data.isDone && progress < 0.9f) {
+        // while (!data.isDone && data.progress < 0.9f) {
+        //     yield return null;
+
+        //     if (progress > data.progress) {
+        //         yield return new WaitUntil(() => data.progress >= progress);
+        //     }
+        //     if (Time.time - testTime > 0.05f) {
+        //         testTime = Time.time;
+        //         data.progress += 0.01f;
+        //     }
+
+            
+        //     progress = Mathf.Lerp(progress, data.progress, Time.deltaTime * 5);
+        //     // progress = _curve.Evaluate(progress);
+        //     // print($"{_curve.Evaluate(0)} / {_curve.Evaluate(0.5f)} / {_curve.Evaluate(1)}");
+            
+        //     if (Mathf.Abs(progress - data.progress) < 0.001f) {
+        //         progress = data.progress;
+        //     }
+
+        //     if (Mathf.Abs(lastProgress - progress) < 0.01f) {
+        //         UpdateUI(progress);
+        //     }
+
+        //     lastProgress = progress;
+        // }
 
         UpdateUI(data.progress);
         data.allowSceneActivation = true;
