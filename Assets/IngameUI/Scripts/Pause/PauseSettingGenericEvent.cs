@@ -1,13 +1,20 @@
     using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PauseSettingGenericEvent : MonoBehaviour
 {
     PauseSettingMenu _menu;
+    bool init = false;
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
+    }
+
+    private void OnEnable() {
+        if (!init) return;
+        transform.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
     }
 
     private void Start() {
@@ -19,6 +26,11 @@ public class PauseSettingGenericEvent : MonoBehaviour
 
         _menu.AddSetEvent("generic.domiweb", OnChangeDomiweb);
         _menu.AddGetEvent("generic.domiweb", GetDomiweb);
+
+        if (!init) {
+            init = true;
+            transform.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
+        }
     }
 
     // 밍글링
