@@ -33,6 +33,18 @@ public class PauseSettingGenericEvent : MonoBehaviour
         }
     }
 
+    private void OnDestroy() {
+        _menu.RemoveSetEvent("generic.mingling", OnChangeMingling);
+        _menu.RemoveGetEvent("generic.mingling", GetMingling);
+
+        _menu.RemoveSetEvent("generic.doming", OnChangeDoming);
+        _menu.RemoveGetEvent("generic.doming", GetDoming);
+
+        _menu.RemoveSetEvent("generic.domiweb", OnChangeDomiweb);
+        _menu.RemoveGetEvent("generic.domiweb", GetDomiweb);
+
+    }
+
     // 밍글링
     void OnChangeMingling(string value) {
         print($"OnChangeMingling {value}");
