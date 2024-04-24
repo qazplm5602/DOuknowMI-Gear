@@ -14,7 +14,7 @@ public class DemonSlimeMoveState : DemonSlimeGroundState
     }
 
     public override void UpdateState() {
-        _enemy.SetVelocity(_enemy.moveSpeed * _enemy.FacingDirection, _rigidbody.velocity.y);
+        _enemy.SetVelocity(_enemy.Stat.moveSpeed.GetValue() * _enemy.FacingDirection, _rigidbody.velocity.y);
 
         _enemy.FlipController(_playerTrm.position.x - _enemy.transform.position.x);
     }

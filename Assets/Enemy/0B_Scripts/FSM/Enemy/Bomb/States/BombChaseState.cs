@@ -21,7 +21,7 @@ public class BombChaseState : EnemyState<CommonEnemyStateEnum>
             }
         }
         else {
-            _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.moveSpeed, _rigidbody.velocity.y);
+            _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
         }
     }
 }

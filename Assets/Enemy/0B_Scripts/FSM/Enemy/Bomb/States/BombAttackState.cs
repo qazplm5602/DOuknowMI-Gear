@@ -11,7 +11,7 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
     public override void Enter() {
         base.Enter();
 
-        _enemy.moveSpeed = 1;
+        _enemy.Stat.moveSpeed.AddModifier(-6f);
 
         _enemy.StartCoroutine(Blink());
         _enemy.StartDelayCallback(2, () => _stateMachine.ChangeState(CommonEnemyStateEnum.Dead));
@@ -21,7 +21,7 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
 
     public override void UpdateState() {
         Vector2 direction = _playerTrm.position - _enemy.transform.position;
-        _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.moveSpeed, _rigidbody.velocity.y);
+        _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
     }
 
     private IEnumerator Blink() {

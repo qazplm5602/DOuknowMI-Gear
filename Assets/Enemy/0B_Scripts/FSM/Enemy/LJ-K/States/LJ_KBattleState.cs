@@ -50,7 +50,7 @@ public class LJ_KBattleState : EnemyState<LJ_KStateEnum>
         else {
             _enemy.AnimatorCompo.SetFloat(_enemyLJ_K.battleModeHash, 1);
             _enemy.FlipController(_playerTrm.position.x - _enemy.transform.position.x);
-            _enemy.SetVelocity(_enemy.moveSpeed * _enemy.FacingDirection, _rigidbody.velocity.y);
+            _enemy.SetVelocity(_enemy.Stat.moveSpeed.GetValue() * _enemy.FacingDirection, _rigidbody.velocity.y);
         }
     }
 }
