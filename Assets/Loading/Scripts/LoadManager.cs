@@ -37,17 +37,24 @@ public class LoadManager : MonoBehaviour
         data.allowSceneActivation = false;
         
         float lastProgress = data.progress;
-
-        print(data.progress);
-        while (!data.isDone && data.progress < 0.9f) {
-            if (lastProgress != data.progress) {
-                lastProgress = data.progress;
-                UpdateUI(data.progress);
-            }
+        float progress = 0;
+        
+        while (!data.isDone && progress < 0.9f) {
             yield return null;
+            progress = Mathf.Lerp(progress, data.progress, Time.deltaTime * 5);
+            if (Mathf.Abs(progress - data.progress) < 0.005f) {
+                progress = data.progress;
+            }
+
+            if (Mathf.Abs(lastProgress - progress) < 0.01f) {
+                UpdateUI(progress);
+            }
+
+            lastProgress = progress;
         }
 
         UpdateUI(data.progress);
+        data.allowSceneActivation = true;
     }
 
     void UpdateUI(float progress) {
