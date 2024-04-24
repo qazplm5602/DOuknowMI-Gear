@@ -59,6 +59,6 @@ public class LoadManager : MonoBehaviour
         bar.localScale = new(progress, 1, 1);
 
         foreach (var item in spinners)
-            item.Set(progress * 10);
+            item.Set(progress);
     }
 }

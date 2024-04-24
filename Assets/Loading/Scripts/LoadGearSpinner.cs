@@ -6,30 +6,32 @@ public class LoadGearSpinner : MonoBehaviour
 {
     [SerializeField] int cogAmount;
     [SerializeField] bool reverse = false;
-    float oneTurnAngle;
-
-    float nowZ = 0;
-    float goalZ = 0;
+    float firstAngle;
 
     private void Awake() {
-        oneTurnAngle = 360f / cogAmount;
+        firstAngle = transform.eulerAngles.z;
     }
 
-    public void Set(float value /* 0 ~ 10 */) {
-        goalZ = value * oneTurnAngle * (reverse ? -1 : 1);
-        print(goalZ);
+    IEnumerator process;
+
+    public void Set(float value /* 0 ~ 1 */) {
+        if (process != null)
+            StopCoroutine(process);
+
+        process = SmoothSpinGear(value * (reverse ? -1 : 1));
+        StartCoroutine(process);
     }
 
-    private void Update() {
+    IEnumerator SmoothSpinGear(float loaded) {
+        float time = 0;
         Vector3 rotate = transform.localEulerAngles;
-
-        if (Mathf.Abs(nowZ - goalZ) > 0.5f) {
-            rotate = Vector3.MoveTowards(new(rotate.x, rotate.y, nowZ), new(rotate.x, rotate.y, goalZ), Time.deltaTime * 50);
-            nowZ = rotate.z;
-
-            print($"{nowZ} / {goalZ}");
-
-            transform.localEulerAngles = rotate;
+        
+        while (time < 1) {
+            yield return null;
+            time += Time.deltaTime;
+            transform.localEulerAngles = Vector3.Lerp(rotate, new Vector3(rotate.x, rotate.y, (360f * loaded) + firstAngle), time);
         }
+
+        process = null;
     }
 }
