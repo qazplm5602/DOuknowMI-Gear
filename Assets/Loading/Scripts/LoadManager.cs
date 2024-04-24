@@ -50,7 +50,7 @@ public class LoadManager : MonoBehaviour
         
         while (!data.isDone && progress < 0.9f) {
             yield return null;
-            if (Time.time - testTime > 3) {
+            if (Time.time - testTime > Random.Range(.5f, 6)) {
                 testTime = Time.time;
                 data.progress += 0.1f;
             }
