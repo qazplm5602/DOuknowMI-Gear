@@ -113,7 +113,7 @@ public class MapSpawner : MonoBehaviour
 
             int tx = _x + 1;
             int ty = _y;
-            if (tx >= 0 && ty < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
+            if (tx >= 0 && tx < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
             {
                 if (current.Maplist[tx + ((ty ) * yval)] == null)
                 {
@@ -326,7 +326,7 @@ public class MapSpawner : MonoBehaviour
         }
         if (current.Maplist[index].UpMap != null)
         {
-            var mapObj = current.MapObjList[x + ((y - 1) * yval)];
+            var mapObj = current.MapObjList[x + ((y + 1) * yval)];
             if (mapObj != null)
             {
                 linkeddata.UpMap = mapObj;
@@ -339,7 +339,7 @@ public class MapSpawner : MonoBehaviour
         }
         if (current.Maplist[index].DownMap != null)
         {
-            var mapObj = current.MapObjList[x + ((y + 1) * yval)];
+            var mapObj = current.MapObjList[x + ((y - 1) * yval)];
             if (mapObj != null)
             {
                 linkeddata.DownMap = mapObj;
@@ -481,10 +481,10 @@ public class MapSpawner : MonoBehaviour
 
             LinkedStage data = SetLinkingData(prayRoomIndex);
             current.MapObjList[prayRoomIndex].StageLinkedData = data;
-            //if (7 >= Random.Range(1, 101))
-            //{
-            //    MakeStatueRoom();
-            //}
+            if (7 >= Random.Range(1, 101))
+            {
+                MakeStatueRoom();
+            }
         }
     }
 }
