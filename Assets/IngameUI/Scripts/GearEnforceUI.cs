@@ -152,7 +152,7 @@ public class GearEnforceUI : MonoBehaviour
         sequence.Append(AnimBoxBefore.transform.DOScale(1, 0.5f));
         sequence.Join(AnimBoxBefore_group.DOFade(1, 0.5f));
 
-        sequence.Append(AnimBoxBefore_trm.DOShakeAnchorPos(4f, 10, vibrato: 100, fadeOut: false).OnComplete(() => {
+        sequence.Append(AnimBoxBefore_trm.DOShakeAnchorPos(1.5f, 10, vibrato: 100, fadeOut: false).OnComplete(() => {
             AnimBoxBefore.gameObject.SetActive(false);
 
             // 위치는 같게

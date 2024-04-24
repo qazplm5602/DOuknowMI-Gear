@@ -16,6 +16,8 @@ public abstract class Agent : MonoBehaviour
 
     protected virtual void Awake()
     {
+        stat = Instantiate(stat);
+        stat.SetOwner(this);
         AnimatorCompo = GetComponent<Animator>();
         MovementCompo = GetComponent<AgentMovement>();
         RigidCompo = GetComponent<Rigidbody2D>();

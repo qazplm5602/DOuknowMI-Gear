@@ -3,10 +3,10 @@ using TMPro;
 using UnityEngine;
 
 public enum PlayerStatEnum {
-    Atk, Health, Speed, CriticalChance, Defence, Money, Exp
+    Atk, Health, Speed, Defence, CriticalChance
 }
 
-public class PlayerStat : MonoBehaviour
+public class PlayerStat : MonoSingleton<PlayerStat>
 {
     public int statPoint;
     
@@ -27,13 +27,11 @@ public class PlayerStat : MonoBehaviour
     private int _defence;
     private int _speed;
     private int _criticalChance;
-    private int _money;
-    private int _exp;
 
     private Player player;
 
     private void Start() {
-        player = GetComponent<Player>();
+        player = PlayerManager.instance.player;
     }
 
     [HideInInspector] public int Atk {
@@ -59,7 +57,7 @@ public class PlayerStat : MonoBehaviour
         set {
             _speed = value;
             player.stat.moveSpeed.SetDefaultValue((int)(player.stat.moveSpeed.GetDefaultValue() + value * moveSpeedPerPointInc  * 1000));
-            player.stat.attackSpeed.SetDefaultValue((int)(player.stat.attackSpeed.GetDefaultValue() + value * attackCoolPerPointInc * 1000));
+            player.stat.attackSpeed.SetDefaultValue((int)(player.stat.attackSpeed.GetDefaultValue() - value * attackCoolPerPointInc * 1000));
             _speedText.text = _speed.ToString();
             OnUpdateStat?.Invoke();
         }
@@ -80,24 +78,9 @@ public class PlayerStat : MonoBehaviour
         set {
             _criticalChance = value;
             player.stat.criticalChance.SetDefaultValue((int)
-                (player.stat.criticalChance.GetDefaultValue() + value * criticalChancePerPointInc) * 1000);
+                (player.stat.criticalChance.GetDefaultValue() + value * criticalChancePerPointInc * 1000) * 1000);
             _criticalChanceText.text = _criticalChance.ToString();
             OnUpdateStat?.Invoke();
-        }
-    }
-
-    [HideInInspector] public int Money {
-        get => _money;
-        set {
-            _money = value;
-            _moneyText.text = _money.ToString();
-        }
-    }
-    [HideInInspector] public int Exp {
-        get => _exp;
-        set {
-            _exp = value;
-            _expText.text = _exp.ToString();
         }
     }
 
@@ -107,10 +90,8 @@ public class PlayerStat : MonoBehaviour
     public TextMeshProUGUI _atkText;
     public TextMeshProUGUI _healthText;
     public TextMeshProUGUI _speedText;
-    public TextMeshProUGUI _criticalChanceText;
     public TextMeshProUGUI _defenceText;
-    public TextMeshProUGUI _moneyText;
-    public TextMeshProUGUI _expText;
+    public TextMeshProUGUI _criticalChanceText;
 
     public TextMeshProUGUI _statPointText;
 
@@ -136,12 +117,6 @@ public class PlayerStat : MonoBehaviour
             case PlayerStatEnum.Defence:
                 ++Defence;
                 break;
-            case PlayerStatEnum.Money:
-                ++Money;
-                break;
-            case PlayerStatEnum.Exp:
-                ++Exp;
-                break;
         }
     }
 
@@ -159,14 +134,6 @@ public class PlayerStat : MonoBehaviour
                 if(Speed > 0) --Speed;
                 else return;
                 break;
-            case PlayerStatEnum.Money:
-                if(Money > 0) --Money;
-                else return;
-                break;
-            case PlayerStatEnum.Exp:
-                if(Exp > 0) --Exp;
-                else return;
-                break;
         }
         
         ++statPoint;
@@ -177,10 +144,8 @@ public class PlayerStat : MonoBehaviour
         statPoint += Atk;
         statPoint += Health;
         statPoint += Speed;
-        statPoint += Money;
         statPoint += Defence;
         statPoint += CriticalChance;
-        statPoint += Exp;
         
         _statPointText.text = $"StatPoint: {statPoint}";
 
@@ -189,7 +154,5 @@ public class PlayerStat : MonoBehaviour
         Speed = 0;
         Defence = 0;
         CriticalChance = 0;
-        Money = 0;
-        Exp = 0;
     }
 }

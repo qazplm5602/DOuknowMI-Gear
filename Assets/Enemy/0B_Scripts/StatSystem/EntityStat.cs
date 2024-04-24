@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
@@ -14,11 +15,11 @@ public class EntityStat : ScriptableObject
     public Stat attackCooldown;
     public Stat attackRange;
 
-    protected Entity _onwer;
+    protected Entity _owner;
     protected Dictionary<StatType, Stat> _statDictionary;
 
     public void SetOwner(Entity entity) {
-        _onwer = entity;
+        _owner = entity;
     }
 
     protected virtual void OnEnable() {
@@ -42,4 +43,24 @@ public class EntityStat : ScriptableObject
     }
 
     private string LowerFirstChar(string input) => char.ToLower(input[0]) + input[1..];
+
+    public void AddModifierByTime(float value, StatType statType, float time)
+    {
+        _owner.StartCoroutine(StatRoutine(value, statType, time));
+    }
+
+    private IEnumerator StatRoutine(float value, StatType statType, float time)
+    {
+        Type entityStatType = typeof(EntityStat);
+        string fieldName = LowerFirstChar(statType.ToString());
+        FieldInfo statField = entityStatType.GetField(fieldName);
+
+        Stat statInstance = statField.GetValue(this) as Stat;
+        float amount = statInstance.GetValue() * value * -1;
+
+        Debug.Log($"[{statInstance}]{statField} modify value : {amount}");
+        statInstance.AddModifier(amount);
+        yield return new WaitForSeconds(time);
+        statInstance.RemoveModifier(amount);
+    }
 }

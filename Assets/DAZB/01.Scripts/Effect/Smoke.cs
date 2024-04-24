@@ -19,7 +19,6 @@ public class Smoke : PoolableMono
         //anim.speed = 2;
         playerTrm = PlayerManager.instance.playerTrm;
         StartCoroutine(SmokeRoutine());
-        print("dddDdd");
     }
 
     public void AnimationEnd() {

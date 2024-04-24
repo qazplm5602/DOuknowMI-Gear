@@ -20,6 +20,8 @@ public abstract class SkillController : MonoBehaviour
     private float _moveSpeed;
     [SerializeField] 
     private float _maxRange;
+    [SerializeField]
+    protected float _debuffTime;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -83,37 +85,16 @@ public abstract class SkillController : MonoBehaviour
         }
     }
 
-    protected virtual void ModifyEnemyStat(StatType statFieldName, float percent, bool isAdd) 
+    protected virtual void ModifyEnemyStat(float value, StatType statType, float time) 
     {
-        //string statFieldString = statFieldName.ToString();
-        //string firstLowerStatFieldName = $"{char.ToLower(statFieldString[0])}{statFieldString[1..]};
-
-        Type t = typeof(EntityStat);
-        FieldInfo fieldInfo = t.GetField(statFieldName.ToString(), BindingFlags.IgnoreCase);
-
-        //FieldInfo fieldInfo = t.GetField(firstLowerStatFieldName);
-
-
-        List<Enemy> enemies = new List<Enemy>();
-        //enemies.Add(FindObjectOfType<Enemy>());
-        //현재맵.적들
-
-        foreach (Enemy item in enemies)
+        foreach (Entity item in StageManager.Instance._enemies)
         {
-            Stat modifyingStat = fieldInfo.GetValue(item.Stat) as Stat;
+            EntityStat modifyingStat = item.Stat;
 
             if (modifyingStat == null) return;
 
-            if (isAdd)
-            {
-                float value = modifyingStat.GetValue() * percent;
-                modifyingStat.AddModifier(value);
-            }
-            else
-            {
-                float value = modifyingStat.GetValue() / percent;
-                modifyingStat.RemoveModifier(value);
-            }
+            modifyingStat.AddModifierByTime(value, statType, time);
+            print($"Add : {statType}");
         }
     }
 }
