@@ -1126,6 +1126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bb777e4448c934cb6b072be7482f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cogAmount: 4
+  reverse: 1
 --- !u!1 &541894979
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,7 +1172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21a2b0fcaa9d06f4ca9a20c82a159442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinners: []
+  spinners:
+  - {fileID: 689852295}
+  - {fileID: 537416879}
   character: {fileID: 1375253320}
   progressT: {fileID: 1882664440}
   bar: {fileID: 536786156}
@@ -1327,6 +1331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6bb777e4448c934cb6b072be7482f6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cogAmount: 6
+  reverse: 0
 --- !u!1001 &791879794
 PrefabInstance:
   m_ObjectHideFlags: 0

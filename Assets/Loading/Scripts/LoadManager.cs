@@ -57,5 +57,8 @@ public class LoadManager : MonoBehaviour
 
         progressT.text = $"{Mathf.FloorToInt(progress * 100)}%";
         bar.localScale = new(progress, 1, 1);
+
+        foreach (var item in spinners)
+            item.Set(progress * 10);
     }
 }
