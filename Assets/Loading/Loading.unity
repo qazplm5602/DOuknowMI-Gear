@@ -1178,6 +1178,39 @@ MonoBehaviour:
   character: {fileID: 1375253320}
   progressT: {fileID: 1882664440}
   bar: {fileID: 536786156}
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8233519
+      value: 0.29664803
+      inSlope: 1.1259722
+      outSlope: 1.1259722
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08084589
+      outWeight: 0.06790885
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &606009729 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}

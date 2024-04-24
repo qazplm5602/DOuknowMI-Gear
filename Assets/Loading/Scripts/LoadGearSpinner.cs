@@ -30,7 +30,7 @@ public class LoadGearSpinner : MonoBehaviour
             yield return null;
             time += Time.deltaTime;
             // transform.localEulerAngles = Vector3.Lerp(rotate, new Vector3(rotate.x, rotate.y, (360f * loaded) + firstAngle), time);
-            transform.localEulerAngles = new(rotate.x, rotate.y, Mathf.LerpAngle(rotate.z, (360f * loaded * 2) + firstAngle, time));
+            transform.localEulerAngles = new(rotate.x, rotate.y, Mathf.LerpAngle(rotate.z, (360f * loaded) + firstAngle, time));
         }
 
         process = null;
