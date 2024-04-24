@@ -16,7 +16,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
 
     public NpcData GetNpcData() => npcData;
     public abstract void Interaction();
-    
+    // ui 닫는 함수 추가해야함
     private void Awake() {
         dialogue = GetComponent<Dialogue>();
     }

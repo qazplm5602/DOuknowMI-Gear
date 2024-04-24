@@ -8,11 +8,21 @@ public class PlayerInteractionState : PlayerState
     {
     }
 
+    public override void Enter()
+    {
+        DialogueManager.Instance.isEnd = false;
+    }
+
     public override void UpdateState()
     {
         base.UpdateState();
         if(DialogueManager.instance.isEnd) {
             stateMachine.ChangeState(PlayerStateEnum.Idle);
         }
+    }
+
+    public override void Exit()
+    {
+        DialogueManager.Instance.isEnd = false;
     }
 }

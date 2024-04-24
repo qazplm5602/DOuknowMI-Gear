@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : MonoSingleton<DialogueManager>
 {
     public static DialogueManager instance;
     public InputReader inputReader;
@@ -31,8 +31,7 @@ public class DialogueManager : MonoBehaviour
     private TMP_Text interactionText;
 /*     private IEnumerator _dialogue; */
     private void Awake() {
-        instance = this;
-        if (interactionText != null)
+        if (InteractionBtn != null)
             interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
     }
 
@@ -63,7 +62,6 @@ public class DialogueManager : MonoBehaviour
     public void ActiveDialoguePanel(bool isActive) {
         DialoguePanel.SetActive(isActive);
         PlayerManager.instance.player.enabled = !!!isActive;
-        isEnd = !!!isActive;
         npc.SetIsDialogue(isActive);
     }
 
@@ -80,15 +78,18 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void Conversation() {
+        print("인");
         StartCoroutine(ConversationRoutine());
     }
 
     public void Cancle() {
+        print("캔");
         StartCoroutine(CancleRoutine());
     }
 
     public void Interaction() {
         //npc.Interaction();
+        print("상");
         StartCoroutine(InteractionRoutine());
     }
 
@@ -154,6 +155,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         npc.Interaction();
+        ActiveDialoguePanel(false);
         yield return null;
     }
 
