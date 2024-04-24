@@ -260,6 +260,7 @@ MonoBehaviour:
   castType: 2
   _moveSpeed: 20
   _maxRange: 60
+  _debuffTime: 10
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
