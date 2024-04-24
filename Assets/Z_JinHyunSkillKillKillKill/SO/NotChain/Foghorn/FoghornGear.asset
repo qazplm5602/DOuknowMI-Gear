@@ -19,5 +19,6 @@ MonoBehaviour:
   defaultRange: 0
   activeDamage: 1
   activeRange: 1
-  cogList: 0100000001000000
+  cogList: 000000000000000001000000000000000000000001000000000000000000000002000000
+  enforceData: {fileID: 0}
   loadModule: {fileID: 7755477415685776989, guid: ca36a3a41d9cc5242a7583eb745ee5a4, type: 3}
