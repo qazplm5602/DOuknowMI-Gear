@@ -1,4 +1,5 @@
-    using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +8,16 @@ public class PauseSettingGenericEvent : MonoBehaviour
 {
     PauseSettingMenu _menu;
     bool init = false;
+
+    readonly string HITDAMAGE_EVENT = "generic.hitdamage";
+    readonly string CAMSHARE_EVENT = "generic.camerashake";
+    readonly string ENEMYHEALTH_EVENT = "generic.enemyhelath";
+
+    GameManager gameManager;
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        gameManager = GameManager.Instance;
     }
 
     private void OnEnable() {
@@ -18,14 +26,14 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     private void Start() {
-        _menu.AddSetEvent("generic.mingling", OnChangeMingling);
-        _menu.AddGetEvent("generic.mingling", GetMingling);
+        _menu.AddSetEvent(CAMSHARE_EVENT, SetCamShake);
+        _menu.AddGetEvent(CAMSHARE_EVENT, GetCamShake);
 
-        _menu.AddSetEvent("generic.doming", OnChangeDoming);
-        _menu.AddGetEvent("generic.doming", GetDoming);
+        _menu.AddSetEvent(ENEMYHEALTH_EVENT, SetEnemyHealth);
+        _menu.AddGetEvent(ENEMYHEALTH_EVENT, GetEnemyHealth);
 
-        _menu.AddSetEvent("generic.domiweb", OnChangeDomiweb);
-        _menu.AddGetEvent("generic.domiweb", GetDomiweb);
+        _menu.AddSetEvent(HITDAMAGE_EVENT, SetHitDamage);
+        _menu.AddGetEvent(HITDAMAGE_EVENT, GetHitDamage);
 
         if (!init) {
             init = true;
@@ -33,28 +41,41 @@ public class PauseSettingGenericEvent : MonoBehaviour
         }
     }
 
-    // 밍글링
-    void OnChangeMingling(string value) {
-        print($"OnChangeMingling {value}");
+    private void OnDestroy() {
+        _menu.RemoveSetEvent(CAMSHARE_EVENT, SetCamShake);
+        _menu.RemoveGetEvent(CAMSHARE_EVENT, GetCamShake);
+
+        _menu.RemoveSetEvent(ENEMYHEALTH_EVENT, SetEnemyHealth);
+        _menu.RemoveGetEvent(ENEMYHEALTH_EVENT, GetEnemyHealth);
+
+        _menu.RemoveSetEvent(HITDAMAGE_EVENT, SetHitDamage);
+        _menu.RemoveGetEvent(HITDAMAGE_EVENT, GetHitDamage);
     }
 
-    string GetMingling() {
-        return "true";
+    void SetHitDamage(string value) {
+        PlayerPrefs.SetInt(HITDAMAGE_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
+
+        if (gameManager)
+            gameManager.showDamageText = value == "True" ? true : false;
     }
 
-    void OnChangeDoming(string value) {
-        print($"OnChangeDoming {value}");
+    string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 1) == 1 ? "true" : "false";
+
+    void SetCamShake(string value) {
+        PlayerPrefs.SetInt(CAMSHARE_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
+
+        if (gameManager)
+            gameManager.cameraShake = value == "True" ? true : false;
     }
 
-    string GetDoming() {
-        return "38";
+    string GetCamShake() => PlayerPrefs.GetInt(CAMSHARE_EVENT, 1) == 1 ? "true" : "false";
+
+    void SetEnemyHealth(string value) {
+        PlayerPrefs.SetInt(ENEMYHEALTH_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
-    void OnChangeDomiweb(string value) {
-        print($"OnChangeDoming {value}");
-    }
-
-    string GetDomiweb() {
-        return "1";
-    }
+    string GetEnemyHealth() => PlayerPrefs.GetInt(ENEMYHEALTH_EVENT, 1) == 1 ? "true" : "false";
 }

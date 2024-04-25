@@ -13,30 +13,30 @@ MonoBehaviour:
   m_Name: generic
   m_EditorClassIdentifier: 
   datas:
-  - title: "\uBC0D\uAE00\uB9C1"
-    eventName: generic.mingling
+  - title: "\uB370\uBBF8\uC9C0 \uD45C\uC2DC"
+    eventName: generic.hitdamage
     type: 0
-    description: "\u3141\u3139\t\t"
+    description: "\uACF5\uACA9\uC2DC \uB370\uBBF8\uC9C0\uAC00 \uD45C\uC2DC\uB420\uC9C0
+      \uC5EC\uBD80 \uC785\uB2C8\uB2E4."
     sliderMin: 0
     sliderMax: 0
     sliderFloat: 0
     options: []
-  - title: "\uB3C4\uBC0D"
-    eventName: generic.doming
-    type: 1
-    description: 
-    sliderMin: 0
-    sliderMax: 100
-    sliderFloat: 0
-    options: []
-  - title: "\uB3C4\uBBF8web"
-    eventName: generic.domiweb
-    type: 2
-    description: 
+  - title: "\uD654\uBA74 \uD754\uB4E4\uB9BC"
+    eventName: generic.camerashake
+    type: 0
+    description: "\uC774\uBCA4\uD2B8 \uC2DC \uD654\uBA74 \uD754\uB4E4\uB9BC\uC774
+      \uBC1C\uC0DD\uD560\uC9C0 \uC5EC\uBD80 \uC785\uB2C8\uB2E4."
     sliderMin: 0
     sliderMax: 0
     sliderFloat: 0
-    options:
-    - domi.kr
-    - domi@domi.kr
-    - ggm.domi.kr
+    options: []
+  - title: "\uC801 \uCCB4\uB825\uBC14 \uD45C\uC2DC"
+    eventName: generic.enemyhelath
+    type: 0
+    description: "\uC801 \uC704\uC5D0 \uCCB4\uB825\uBC14\uAC00 \uD45C\uC2DC\uB420\uC9C0
+      \uC5EC\uBD80 \uC785\uB2C8\uB2E4."
+    sliderMin: 0
+    sliderMax: 0
+    sliderFloat: 0
+    options: []

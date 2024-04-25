@@ -27,7 +27,6 @@ public class PauseSettingBox : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         // 불러온 값
         string loadValue = menu.TriggerGetEvent(data.eventName);
-        print(loadValue);
 
         switch (data.type)
         {
