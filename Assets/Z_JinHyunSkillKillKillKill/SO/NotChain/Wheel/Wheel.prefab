@@ -215,8 +215,8 @@ MonoBehaviour:
   castType: 2
   _moveSpeed: 10
   _maxRange: 20
-  _destroyByTime: 0
-  _destroyTime: 0
+  _destroyByTime: 1
+  _destroyTime: 5
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   _debuffValue: 0
   rotateImageTrm: {fileID: 3802719296657816280}
   _rigid2d: {fileID: 7703011849892642698}
-  _force: {x: 10, y: 0}
+  _force: {x: 7, y: 0}
 --- !u!58 &8492415021059837911
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

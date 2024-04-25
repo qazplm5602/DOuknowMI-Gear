@@ -25,33 +25,27 @@ public class SkillWheel : SkillController
         else return 1; // 오른쪽
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        print(directionSign);
-        StartCoroutine(MoveRoutine(transform));
+        rotateImageTrm.transform.Rotate(0, 0, 160 * Time.deltaTime);
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            print("아이");
+            _rigid2d.gravityScale = 0;
+            _rigid2d.velocity = Vector2.zero;
+            StartCoroutine(MoveRoutine(transform));
+        }
+        base.OnTriggerEnter2D(collision);
     }
 
     protected override IEnumerator MoveRoutine(Transform startTrm)
     {
-        if (_destroyByTime)
-        {
-            yield return new WaitForSeconds(_destroyTime);
-            Destroy(gameObject);
-            yield break;
-        }
-        Vector3 firstPos = startTrm.position;
-        bool notMaxDistance = IsInRange(firstPos, currentPos: transform.position);
-        while (notMaxDistance)
-        {
-            notMaxDistance = IsInRange(firstPos, currentPos: transform.position);
+        _rigid2d.AddForce(_force * directionSign, ForceMode2D.Impulse);
 
-            transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
-            if (isDamageCasting && _attackTriggerCalled) DamageCasting();
-
-            yield return null;
-        }
-        if (isDamageCasting) DamageCasting();
-        Destroy(gameObject);
-        yield break;
+        yield return base.MoveRoutine(startTrm);
     }
 }
