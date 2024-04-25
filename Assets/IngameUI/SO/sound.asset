@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: sound
   m_EditorClassIdentifier: 
   datas:
-  - title: "\uC804\uCCB4 \uC18C\uB9AC"
+  - title: "\uC804\uCCB4 \uC74C\uB7C9"
     eventName: sound.master
     type: 1
     description: 
     sliderMin: 0
     sliderMax: 100
+    sliderFloat: 0
     options: []
   - title: "\uD6A8\uACFC\uC74C"
     eventName: sound.effect
@@ -26,6 +27,7 @@ MonoBehaviour:
     description: 
     sliderMin: 0
     sliderMax: 100
+    sliderFloat: 0
     options: []
   - title: "\uBC30\uACBD\uC74C\uC545"
     eventName: sound.bgm
@@ -33,4 +35,5 @@ MonoBehaviour:
     description: 
     sliderMin: 0
     sliderMax: 100
+    sliderFloat: 0
     options: []

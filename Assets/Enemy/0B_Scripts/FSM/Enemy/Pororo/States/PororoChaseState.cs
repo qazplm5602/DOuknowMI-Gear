@@ -38,7 +38,7 @@ public class PororoChaseState : EnemyState<CommonEnemyStateEnum>
     private void Move() {
         Vector2 direction = _playerTrm.position - _enemy.transform.position;
         direction.Normalize();
-        direction *= _enemy.moveSpeed;
+        direction *= _enemy.Stat.moveSpeed.GetValue();
         _enemy.SetVelocity(direction.x, direction.y);
     }
 }

@@ -21,7 +21,7 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   moveSpeed:
-    _baseValue: 0
+    _baseValue: 5
     modifiers: []
     isPercent: 0
   attackSpeed:

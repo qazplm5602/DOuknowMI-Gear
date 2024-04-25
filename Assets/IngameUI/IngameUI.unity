@@ -5372,13 +5372,12 @@ MonoBehaviour:
   _contextUI: {fileID: 545141842}
   _enforceUI: {fileID: 1060226320}
   _gearDatas:
-  - {fileID: 11400000, guid: 614b96a433df40546b4acce1af1d47ba, type: 2}
-  - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
-  - {fileID: 11400000, guid: 9396b46b57cfa4642ae3d41dfbba44e7, type: 2}
-  - {fileID: 11400000, guid: 26a263a51d3758d4c9a086b1045a64c6, type: 2}
-  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
-  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
-  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
+  - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
+  - {fileID: 11400000, guid: 704689f42372e5b47a8023be2b1d12ef, type: 2}
+  - {fileID: 11400000, guid: 3fd8dd0a9fc2e6b4bbce757ae20d1bf8, type: 2}
+  - {fileID: 11400000, guid: bf501d50d45dde74abe98830ce3fcdac, type: 2}
+  - {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+  - {fileID: 11400000, guid: f35782c5b4f64184a9c4aab804e2d0d7, type: 2}
 --- !u!114 &1060226318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5394,19 +5393,15 @@ MonoBehaviour:
   section: {fileID: 875012583}
   scriptModule: {fileID: 1886806770}
   spawnGears:
-  - {fileID: 11400000, guid: 8d76a657d42c3c24cb712bf2d8d69e93, type: 2}
-  - {fileID: 11400000, guid: 9396b46b57cfa4642ae3d41dfbba44e7, type: 2}
-  - {fileID: 11400000, guid: 2f18c919c6b812e4ea6ef6e6c48a2659, type: 2}
-  - {fileID: 11400000, guid: 614b96a433df40546b4acce1af1d47ba, type: 2}
+  - {fileID: 11400000, guid: 704689f42372e5b47a8023be2b1d12ef, type: 2}
+  - {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+  - {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
   spawnGearCoords:
   - {x: 50, y: 50}
   - {x: 177.6, y: 65.5}
   - {x: 306, y: 50}
   - {x: 433.7, y: 65.5}
-  loadLinkData:
-  - {fileID: 11400000, guid: e325461c085ca804c93b811c84e33bf1, type: 2}
-  - {fileID: 11400000, guid: f936439df70a1844d977eaef575abb3d, type: 2}
-  - {fileID: 11400000, guid: 8495e13052858df45ad1ae33b042222d, type: 2}
+  loadLinkData: []
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 0}
 --- !u!114 &1060226319
@@ -5425,7 +5420,7 @@ MonoBehaviour:
   _location: {fileID: 603670675}
   _coinBox: {fileID: 1884725952}
   _gearChangeUI: {fileID: 1060226317}
-  _gearPauseUI: {fileID: 0}
+  _gearPauseUI: {fileID: 1060226321}
 --- !u!114 &1060226320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6800,6 +6795,8 @@ MonoBehaviour:
     so: {fileID: 11400000, guid: 344b3c7f098b6504e90d7fdd81447e2f, type: 2}
   - category: "\uC0AC\uC6B4\uB4DC"
     so: {fileID: 11400000, guid: b256e6907ace48242b9c1a5998fecc3e, type: 2}
+  - category: "\uBE44\uB514\uC624"
+    so: {fileID: 11400000, guid: 6cb424d694f2acd4bbd0a53bd050b821, type: 2}
 --- !u!1 &1411176237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6972,6 +6969,8 @@ GameObject:
   - component: {fileID: 1429117690}
   - component: {fileID: 1429117689}
   - component: {fileID: 1429117691}
+  - component: {fileID: 1429117692}
+  - component: {fileID: 1429117693}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -7051,6 +7050,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 445713a673f816243b840c3d8f2c9683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1429117692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429117687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00cf1630798916c429e871858b423478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1429117693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429117687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 224b2ba902e7a854bbc6157a099024a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1447365253
