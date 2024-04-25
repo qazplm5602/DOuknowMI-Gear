@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SkillClock : SkillController
 {
-    private float _slowPercent = 0.7f;
-
     private void Start()
     {
         StartCoroutine(MoveRoutine(transform));
@@ -14,8 +12,10 @@ public class SkillClock : SkillController
     protected override IEnumerator MoveRoutine(Transform startTrm)
     {
         print("moving");
-        ModifyEnemyStat(_slowPercent, StatType.AttackSpeed, _debuffTime);
-        ModifyEnemyStat(_slowPercent, StatType.MoveSpeed, _debuffTime);
+        foreach (StatType t in _willModify)
+        {
+            ModifyEnemyStat(_debuffValue, t, _debuffTime);
+        }
         yield return StartCoroutine(base.MoveRoutine(startTrm));
     }
 }
