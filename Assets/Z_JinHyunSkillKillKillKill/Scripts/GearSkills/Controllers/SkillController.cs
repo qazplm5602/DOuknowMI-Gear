@@ -76,7 +76,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         yield break;
     }
 
-    bool IsInRange(Vector3 firstPos, Vector3 currentPos)
+    protected bool IsInRange(Vector3 firstPos, Vector3 currentPos)
     {
         return Vector3.Distance(firstPos, currentPos) < _maxRange;
     }
