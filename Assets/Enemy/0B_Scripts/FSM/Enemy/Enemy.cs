@@ -27,7 +27,7 @@ namespace FSM {
         public DropTableSO dropTable;
 
         protected int _lastAnimationBoolHash;
-        private EnemyHealthBar _healthBar;
+        protected EnemyHealthBar _healthBar;
 
         protected override void Awake() {
             base.Awake();
