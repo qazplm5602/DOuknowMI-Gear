@@ -94,6 +94,7 @@ public class PauseSettingMenu : MonoBehaviour
     }
     
     public void RemoveSetEvent(string id, Action<string> callback) {
+        if (OnSetValue == null) return;
         OnSetValue[id] -= callback;
     }
 
@@ -106,6 +107,7 @@ public class PauseSettingMenu : MonoBehaviour
     }
     
     public void RemoveGetEvent(string id, Func<string> callback) {
+        if (OnGetValue == null) return;
         OnGetValue[id] -= callback;
     }
 

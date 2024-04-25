@@ -11,15 +11,28 @@ public class PauseSettingVideoEvent : MonoBehaviour
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
     }
 
+    readonly string RESOLUTION_EVENT = "video.resolution";
     readonly string VSYNC_EVENT = "video.vsync";
     readonly string SCREENMODE_EVENT = "video.screenmode";
 
     private void Start() {
+        _menu.AddSetEvent(RESOLUTION_EVENT, SetResoution);
+        _menu.AddGetEvent(RESOLUTION_EVENT, GetResoution);
+        
         _menu.AddSetEvent(VSYNC_EVENT, SetvSync);
         _menu.AddGetEvent(VSYNC_EVENT, GetvSync);
 
         _menu.AddSetEvent(SCREENMODE_EVENT, SetScreenMode);
         _menu.AddGetEvent(SCREENMODE_EVENT, GetScreenMode);
+    }
+
+    private void SetResoution(string obj)
+    {
+    }
+
+    private string GetResoution()
+    {
+        return string.Empty;
     }
 
     private void OnDestroy() {
@@ -32,12 +45,12 @@ public class PauseSettingVideoEvent : MonoBehaviour
 
     private void SetvSync(string boolean)
     {
-        QualitySettings.vSyncCount = int.Parse(boolean);
+        QualitySettings.vSyncCount = boolean == "True" ? 1 : 0;
         PlayerPrefs.SetInt(VSYNC_EVENT, QualitySettings.vSyncCount);
         PlayerPrefs.Save();
     }
 
-    private string GetvSync() => QualitySettings.vSyncCount.ToString();
+    private string GetvSync() => QualitySettings.vSyncCount == 1 ? "true" : "false";
 
     private string GetScreenMode()
     {
@@ -57,17 +70,24 @@ public class PauseSettingVideoEvent : MonoBehaviour
 
     private void SetScreenMode(string obj)
     {
-        
+        FullScreenMode mode;
+
         switch (obj) {
             case "0":
-
+                mode = FullScreenMode.ExclusiveFullScreen;
                 break;
-
+            case "1":
+                mode = FullScreenMode.FullScreenWindow;
+                break;
+            case "2":
+                mode = FullScreenMode.Windowed;
+                break;
             default:
-                break;
+                return;
         }
 
-        // Screen.fullScreenMode = ;
-        // PlayerPrefs.SetInt();
+        Screen.fullScreenMode = mode;
+        PlayerPrefs.SetInt(SCREENMODE_EVENT, int.Parse(obj));
+        PlayerPrefs.Save();
     }
 }

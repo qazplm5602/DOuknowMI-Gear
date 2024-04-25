@@ -7,6 +7,8 @@ public class PauseSettingGenericEvent : MonoBehaviour
 {
     PauseSettingMenu _menu;
     bool init = false;
+
+    readonly string HITDAMAGE_EVENT = "generic.hitdamage";
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
@@ -18,14 +20,8 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     private void Start() {
-        _menu.AddSetEvent("generic.mingling", OnChangeMingling);
-        _menu.AddGetEvent("generic.mingling", GetMingling);
-
-        _menu.AddSetEvent("generic.doming", OnChangeDoming);
-        _menu.AddGetEvent("generic.doming", GetDoming);
-
-        _menu.AddSetEvent("generic.domiweb", OnChangeDomiweb);
-        _menu.AddGetEvent("generic.domiweb", GetDomiweb);
+        _menu.AddSetEvent(HITDAMAGE_EVENT, SetHitDamage);
+        _menu.AddGetEvent(HITDAMAGE_EVENT, GetHitDamage);
 
         if (!init) {
             init = true;
@@ -34,39 +30,14 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     private void OnDestroy() {
-        _menu.RemoveSetEvent("generic.mingling", OnChangeMingling);
-        _menu.RemoveGetEvent("generic.mingling", GetMingling);
-
-        _menu.RemoveSetEvent("generic.doming", OnChangeDoming);
-        _menu.RemoveGetEvent("generic.doming", GetDoming);
-
-        _menu.RemoveSetEvent("generic.domiweb", OnChangeDomiweb);
-        _menu.RemoveGetEvent("generic.domiweb", GetDomiweb);
-
+        _menu.RemoveSetEvent(HITDAMAGE_EVENT, SetHitDamage);
+        _menu.RemoveGetEvent(HITDAMAGE_EVENT, GetHitDamage);
     }
 
-    // 밍글링
-    void OnChangeMingling(string value) {
-        print($"OnChangeMingling {value}");
+    void SetHitDamage(string value) {
+        PlayerPrefs.SetInt(HITDAMAGE_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
     }
 
-    string GetMingling() {
-        return "true";
-    }
-
-    void OnChangeDoming(string value) {
-        print($"OnChangeDoming {value}");
-    }
-
-    string GetDoming() {
-        return "38";
-    }
-
-    void OnChangeDomiweb(string value) {
-        print($"OnChangeDoming {value}");
-    }
-
-    string GetDomiweb() {
-        return "1";
-    }
+    string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 0) == 1 ? "true" : "false";
 }
