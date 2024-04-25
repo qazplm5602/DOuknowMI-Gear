@@ -54,19 +54,21 @@ public class PauseSettingGenericEvent : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 0) == 1 ? "true" : "false";
+    string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 1) == 1 ? "true" : "false";
 
     void SetCamShake(string value) {
         PlayerPrefs.SetInt(CAMSHARE_EVENT, value == "True" ? 1 : 0);
         PlayerPrefs.Save();
+
+        CameraManager.Instance.LoadConfig();
     }
 
-    string GetCamShake() => PlayerPrefs.GetInt(CAMSHARE_EVENT, 0) == 1 ? "true" : "false";
+    string GetCamShake() => PlayerPrefs.GetInt(CAMSHARE_EVENT, 1) == 1 ? "true" : "false";
 
     void SetEnemyHealth(string value) {
         PlayerPrefs.SetInt(ENEMYHEALTH_EVENT, value == "True" ? 1 : 0);
         PlayerPrefs.Save();
     }
 
-    string GetEnemyHealth() => PlayerPrefs.GetInt(ENEMYHEALTH_EVENT, 0) == 1 ? "true" : "false";
+    string GetEnemyHealth() => PlayerPrefs.GetInt(ENEMYHEALTH_EVENT, 1) == 1 ? "true" : "false";
 }
