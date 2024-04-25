@@ -22,3 +22,21 @@ MonoBehaviour:
     sliderMax: 0
     sliderFloat: 0
     options: []
+  - title: "\uD654\uBA74 \uD754\uB4E4\uB9BC"
+    eventName: generic.camerashake
+    type: 0
+    description: "\uC774\uBCA4\uD2B8 \uC2DC \uD654\uBA74 \uD754\uB4E4\uB9BC\uC774
+      \uBC1C\uC0DD\uD560\uC9C0 \uC5EC\uBD80 \uC785\uB2C8\uB2E4."
+    sliderMin: 0
+    sliderMax: 0
+    sliderFloat: 0
+    options: []
+  - title: "\uC801 \uCCB4\uB825\uBC14 \uD45C\uC2DC"
+    eventName: generic.enemyhelath
+    type: 0
+    description: "\uC801 \uC704\uC5D0 \uCCB4\uB825\uBC14\uAC00 \uD45C\uC2DC\uB420\uC9C0
+      \uC5EC\uBD80 \uC785\uB2C8\uB2E4."
+    sliderMin: 0
+    sliderMax: 0
+    sliderFloat: 0
+    options: []

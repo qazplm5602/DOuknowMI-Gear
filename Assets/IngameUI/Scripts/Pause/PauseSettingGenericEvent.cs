@@ -1,4 +1,5 @@
-    using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class PauseSettingGenericEvent : MonoBehaviour
     bool init = false;
 
     readonly string HITDAMAGE_EVENT = "generic.hitdamage";
+    readonly string CAMSHARE_EVENT = "generic.camerashake";
+    readonly string ENEMYHEALTH_EVENT = "generic.enemyhelath";
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
@@ -20,6 +23,12 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     private void Start() {
+        _menu.AddSetEvent(CAMSHARE_EVENT, SetCamShake);
+        _menu.AddGetEvent(CAMSHARE_EVENT, GetCamShake);
+
+        _menu.AddSetEvent(ENEMYHEALTH_EVENT, SetEnemyHealth);
+        _menu.AddGetEvent(ENEMYHEALTH_EVENT, GetEnemyHealth);
+
         _menu.AddSetEvent(HITDAMAGE_EVENT, SetHitDamage);
         _menu.AddGetEvent(HITDAMAGE_EVENT, GetHitDamage);
 
@@ -30,6 +39,12 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     private void OnDestroy() {
+        _menu.RemoveSetEvent(CAMSHARE_EVENT, SetCamShake);
+        _menu.RemoveGetEvent(CAMSHARE_EVENT, GetCamShake);
+
+        _menu.RemoveSetEvent(ENEMYHEALTH_EVENT, SetEnemyHealth);
+        _menu.RemoveGetEvent(ENEMYHEALTH_EVENT, GetEnemyHealth);
+
         _menu.RemoveSetEvent(HITDAMAGE_EVENT, SetHitDamage);
         _menu.RemoveGetEvent(HITDAMAGE_EVENT, GetHitDamage);
     }
@@ -40,4 +55,18 @@ public class PauseSettingGenericEvent : MonoBehaviour
     }
 
     string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 0) == 1 ? "true" : "false";
+
+    void SetCamShake(string value) {
+        PlayerPrefs.SetInt(CAMSHARE_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    string GetCamShake() => PlayerPrefs.GetInt(CAMSHARE_EVENT, 0) == 1 ? "true" : "false";
+
+    void SetEnemyHealth(string value) {
+        PlayerPrefs.SetInt(ENEMYHEALTH_EVENT, value == "True" ? 1 : 0);
+        PlayerPrefs.Save();
+    }
+
+    string GetEnemyHealth() => PlayerPrefs.GetInt(ENEMYHEALTH_EVENT, 0) == 1 ? "true" : "false";
 }
