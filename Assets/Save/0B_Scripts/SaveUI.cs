@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using LitJson;
 
 [Serializable]
 public class SaveInfo {
@@ -9,13 +10,39 @@ public class SaveInfo {
     public SkillController[] _skills;
     public int level;
     public int parts;
+
+    public SaveInfo() {
+        level = -1234;
+        parts = -1234;
+    }
+
+    public SaveInfo(DateTime date, int level, int parts) {
+        this.date = date;
+        this.level = level;
+        this.parts = parts;
+    }
 }
 
 public class SaveUI : MonoBehaviour
 {
     [SerializeField] private GameObject _savePanel;
-    [SerializeField] private SaveInfo[] _saveInfos;
+    [SerializeField] private SaveInfo[] _saveInfos = new SaveInfo[3];
     [SerializeField] private GameObject _questionPanel;
+
+    private void Awake() {
+        for(int i = 1; i <= 3; ++i) {
+            string jsonData = SaveManager.Instance.Load($"Save{i}")["info"].ToJson();
+            SaveInfo savedData = JsonMapper.ToObject<SaveInfo>(jsonData);
+
+            _saveInfos[i - 1] = savedData;
+            if(savedData.level == -1234 && savedData.parts == -1234) {
+                Delete(i);
+            }
+            else {
+                SaveAndOverwrite(i);
+            }
+        }
+    }
 
     private void Update() {
         if(Input.GetKeyDown(KeyCode.P)) {
@@ -50,6 +77,11 @@ public class SaveUI : MonoBehaviour
         saveNOverwriteButton.onClick.AddListener(() => OverwriteQuestion(index));
         Find($"Content/Save{index}/BottomBtn/DeleteBtn").GetComponent<Button>().interactable = true;
         Find($"Content/Save{index}/BottomBtn/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = Color.black;
+
+        SaveInfo newInfo = new SaveInfo(DateTime.Now, saveInfo.level, saveInfo.parts);
+        SaveData newData = new SaveData($"Save{index}", newInfo);
+        SaveManager.Instance.Save(newData);
+        _saveInfos[index - 1] = newInfo;
     }
 
     private void Delete(int index) {
@@ -64,6 +96,11 @@ public class SaveUI : MonoBehaviour
         saveNOverwriteButton.onClick.AddListener(() => SaveQuestion(index));
         Find($"Content/Save{index}/BottomBtn/DeleteBtn").GetComponent<Button>().interactable = false;
         Find($"Content/Save{index}/BottomBtn/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = new Color(0.41f, 0.41f, 0.41f);
+        
+        SaveInfo newInfo = new SaveInfo();
+        SaveData newData = new SaveData($"Save{index}", newInfo);
+        SaveManager.Instance.Save(newData);
+        _saveInfos[index - 1] = newInfo;
     }
 
     public void SaveQuestion(int index) {

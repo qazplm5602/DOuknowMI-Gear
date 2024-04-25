@@ -12,6 +12,8 @@ public class CameraManager : MonoSingleton<CameraManager>
     }
 
     public void ShakeCamera(float amplitude, float frequency, float time) {
+        if(!GameManager.Instance.cameraShaking) return;
+        
         v_perlin.m_AmplitudeGain = amplitude;
         v_perlin.m_FrequencyGain = frequency;
         StartCoroutine(ShakeRoutine(time));

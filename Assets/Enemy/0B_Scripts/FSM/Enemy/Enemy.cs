@@ -40,6 +40,7 @@ namespace FSM {
             _healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
             _healthBar.Init(healthBarTransform, healthBarScale);
             HealthCompo.healthFilled = _healthBar.transform.Find("Filled").GetComponent<Image>();
+            _healthBar.gameObject.SetActive(GameManager.Instance.showHealthBar);
         }
 
         protected virtual void Update() {
