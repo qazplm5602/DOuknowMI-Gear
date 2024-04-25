@@ -10,9 +10,12 @@ public class PauseSettingSoundEvent : MonoBehaviour
     readonly string MASTER_EVENT = "sound.master";
     readonly string EFFECT_EVENT = "sound.effect";
     readonly string BGM_EVENT = "sound.bgm";
+
+    SoundManager soundManager;
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        soundManager = SoundManager.Instance;
     }
 
     private void Start() {
@@ -40,6 +43,9 @@ public class PauseSettingSoundEvent : MonoBehaviour
     void SetMaster(string value) {
         PlayerPrefs.SetInt(MASTER_EVENT, int.Parse(value));
         PlayerPrefs.Save();
+
+        if (soundManager)
+            soundManager.SetVolume("Master", int.Parse(value));
     }
 
     string GetMaster() {
@@ -49,6 +55,9 @@ public class PauseSettingSoundEvent : MonoBehaviour
     void SetEffect(string value) {
         PlayerPrefs.SetInt(EFFECT_EVENT, int.Parse(value));
         PlayerPrefs.Save();
+
+        if (soundManager)
+            soundManager.SetVolume("SFX", int.Parse(value));
     }
 
     string GetEffect() {
@@ -58,6 +67,9 @@ public class PauseSettingSoundEvent : MonoBehaviour
     void SetBGM(string value) {
         PlayerPrefs.SetInt(BGM_EVENT, int.Parse(value));
         PlayerPrefs.Save();
+
+        if (soundManager)
+            soundManager.SetVolume("BGM", int.Parse(value));
     }
 
     string GetBGM() {

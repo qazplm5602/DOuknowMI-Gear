@@ -20,10 +20,15 @@ public class SoundManager : MonoSingleton<SoundManager>
         foreach(AudioClip clip in _audios) {
             _audioClipDictionary.Add(clip.name, clip);
         }
+        
+        SetVolume("Master", PlayerPrefs.GetInt("sound.master", 100));
+        SetVolume("SFX", PlayerPrefs.GetInt("sound.effect", 100));
+        SetVolume("BGM", PlayerPrefs.GetInt("sound.bgm", 100));
     }
 
-    public void SetVolume(string name, int value) {
-        _audioMixer.SetFloat(name, value);
+    public void SetVolume(string name, int value /* 0 ~ 100 */) {
+        // print($"{name} {-((100 - value) * 0.8f)}");
+        _audioMixer.SetFloat(name, -((100 - value) * 0.8f));
     }
 
     public void PlaySound(string clipName) {
