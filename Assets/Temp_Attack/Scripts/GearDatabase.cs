@@ -11,7 +11,7 @@ public class GearDatabase : ScriptableObject
     void StartIndex() {
         indexing = new();
         foreach (var item in list)
-            indexing[item.Name] = item;
+            indexing[item.id] = item;
     }
 
     public GearSO GetGearById(string id) {
