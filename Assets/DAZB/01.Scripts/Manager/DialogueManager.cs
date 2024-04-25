@@ -6,10 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class DialogueManager : MonoBehaviour
-{
-    public static DialogueManager instance;
-    public InputReader inputReader;
+public class DialogueManager : MonoSingleton<DialogueManager>
+{    public InputReader inputReader;
     public GameObject ExcuseMeUI;
     public GameObject DotTwinkleUi;
     public float charPrintTime;
@@ -31,8 +29,7 @@ public class DialogueManager : MonoBehaviour
     private TMP_Text interactionText;
 /*     private IEnumerator _dialogue; */
     private void Awake() {
-        instance = this;
-        if (interactionText != null)
+        if (InteractionBtn != null)
             interactionText = InteractionBtn.GetComponentInChildren<TMP_Text>();
     }
 
@@ -63,8 +60,12 @@ public class DialogueManager : MonoBehaviour
     public void ActiveDialoguePanel(bool isActive) {
         DialoguePanel.SetActive(isActive);
         PlayerManager.instance.player.enabled = !!!isActive;
-        isEnd = !!!isActive;
+        //isEnd = !!!isActive;
         npc.SetIsDialogue(isActive);
+    }
+
+    public void SetEnd(bool value) {
+        isEnd = value;
     }
 
     public void ActiveSelectionPanel(bool isActive) {
@@ -80,19 +81,23 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void Conversation() {
+        print("인");
         StartCoroutine(ConversationRoutine());
     }
 
     public void Cancle() {
+        print("캔");
         StartCoroutine(CancleRoutine());
     }
 
     public void Interaction() {
         //npc.Interaction();
+        print("상");
         StartCoroutine(InteractionRoutine());
     }
 
     private IEnumerator GreetingRoutine() {
+        SetEnd(false);
         PlayerManager.instance.player.StateMachine.ChangeState(PlayerStateEnum.Interaction);
         int randNum = Random.Range(1, int.Parse(greetingList[greetingList.Count - 1].RandomType) + 1);
         SetSentence(greetingList, randNum);
@@ -154,6 +159,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         npc.Interaction();
+        ActiveDialoguePanel(false);
         yield return null;
     }
 
@@ -175,6 +181,7 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
         ActiveDialoguePanel(false);
+        SetEnd(true);
         yield return null;
     } 
 

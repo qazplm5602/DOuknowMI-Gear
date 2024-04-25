@@ -16,7 +16,6 @@ public abstract class Npc : MonoBehaviour, IInteraction
 
     public NpcData GetNpcData() => npcData;
     public abstract void Interaction();
-    
     private void Awake() {
         dialogue = GetComponent<Dialogue>();
     }
@@ -25,27 +24,27 @@ public abstract class Npc : MonoBehaviour, IInteraction
         CheckPlayer();
         if (isCheck && !isDialogue) {
             pos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
-            DialogueManager.instance.ExcuseMeUI.SetActive(true);
-            DialogueManager.instance.ExcuseMeUI.transform.position = pos;
-            DialogueManager.instance.SetNpc(this);
+            DialogueManager.Instance.ExcuseMeUI.SetActive(true);
+            DialogueManager.Instance.ExcuseMeUI.transform.position = pos;
+            DialogueManager.Instance.SetNpc(this);
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 ExcuseMe();
             }
         }
         else {
-            if (DialogueManager.instance.npc == null) return;
-            if (DialogueManager.instance.npc.name == gameObject.name) {
-                DialogueManager.instance.ExcuseMeUI.SetActive(false);
+            if (DialogueManager.Instance.npc == null) return;
+            if (DialogueManager.Instance.npc.name == gameObject.name) {
+                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
             }
         }
     }
 
     public void ExcuseMe() {
-        if (DialogueManager.instance.isEnd == false) return;
+        if (DialogueManager.Instance.isEnd == false) return;
         PlayerManager.instance.player.StateMachine.ChangeState(PlayerStateEnum.Idle);
         dialogue.StartDialogue();
-        DialogueManager.instance.ActiveDialoguePanel(true);
-        DialogueManager.instance.Greeting();
+        DialogueManager.Instance.ActiveDialoguePanel(true);
+        DialogueManager.Instance.Greeting();
     }
 
     public void SetIsDialogue(bool val) {
