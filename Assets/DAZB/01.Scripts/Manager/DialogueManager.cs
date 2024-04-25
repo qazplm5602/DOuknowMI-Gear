@@ -7,9 +7,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoSingleton<DialogueManager>
-{
-    public static DialogueManager instance;
-    public InputReader inputReader;
+{    public InputReader inputReader;
     public GameObject ExcuseMeUI;
     public GameObject DotTwinkleUi;
     public float charPrintTime;
@@ -62,6 +60,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     public void ActiveDialoguePanel(bool isActive) {
         DialoguePanel.SetActive(isActive);
         PlayerManager.instance.player.enabled = !!!isActive;
+        isEnd = !!!isActive;
         npc.SetIsDialogue(isActive);
     }
 
@@ -155,7 +154,6 @@ public class DialogueManager : MonoSingleton<DialogueManager>
             yield return new WaitForSeconds(0.2f);
         }
         npc.Interaction();
-        ActiveDialoguePanel(false);
         yield return null;
     }
 

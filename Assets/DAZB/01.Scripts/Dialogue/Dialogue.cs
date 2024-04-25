@@ -49,7 +49,7 @@ public class Dialogue : MonoBehaviour
     }
 
     public void StartDialogue() {
-        DialogueManager.instance.Init(greetingList, cancleList, conversationList, interactionList);
+        DialogueManager.Instance.Init(greetingList, cancleList, conversationList, interactionList);
     }
 
  /*    private void Start() {

@@ -27,8 +27,8 @@ public class GameStartNpc : MonoBehaviour, IInteraction
         {
             //여기
             _pos = Camera.main.WorldToScreenPoint(excuseMeUIPos.position);
-            DialogueManager.instance.ExcuseMeUI.SetActive(true);
-            DialogueManager.instance.ExcuseMeUI.transform.position = _pos;
+            DialogueManager.Instance.ExcuseMeUI.SetActive(true);
+            DialogueManager.Instance.ExcuseMeUI.transform.position = _pos;
 
             if (Keyboard.current.fKey.wasPressedThisFrame)
             {
@@ -37,7 +37,7 @@ public class GameStartNpc : MonoBehaviour, IInteraction
         }
         else
         {
-            DialogueManager.instance.ExcuseMeUI.SetActive(false);
+            DialogueManager.Instance.ExcuseMeUI.SetActive(false);
         }
     }
     private void CheckPlayer() => _isCheck = Physics2D.OverlapBox(transform.position + offset, checkBoxSize, 0, whatIsPlayer);
