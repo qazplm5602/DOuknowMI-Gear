@@ -23,13 +23,13 @@ public abstract class PlayerCanDashState : PlayerGroundState
 
     private void HadleDashEvent() {
         bool coolPass = player.lastDashTime + player.dashCool <= Time.time;
-        if (DialogueManager.instance == null) {
+        if (DialogueManager.Instance == null) {
             if (coolPass && !player.isDead) {
                 stateMachine.ChangeState(PlayerStateEnum.Dash);
             }
         }
         else {
-            if (coolPass  && DialogueManager.instance.isEnd && !player.isDead) {
+            if (coolPass  && DialogueManager.Instance.isEnd && !player.isDead) {
                 stateMachine.ChangeState(PlayerStateEnum.Dash);
             }
         }
@@ -37,13 +37,13 @@ public abstract class PlayerCanDashState : PlayerGroundState
 
     private void HadleAttackEvent() {
         bool coolPass = player.lastAttackTime + player.atkCool <= Time.time;
-        if (DialogueManager.instance == null) {
+        if (DialogueManager.Instance == null) {
             if (coolPass && !player.isAttack && !player.isDead) {
                 stateMachine.ChangeState(PlayerStateEnum.Attack);
             }
         }
         else {
-            if (coolPass && !player.isAttack && DialogueManager.instance.isEnd && !player.isDead) {
+            if (coolPass && !player.isAttack && DialogueManager.Instance.isEnd && !player.isDead) {
                 stateMachine.ChangeState(PlayerStateEnum.Attack);
             }
         }

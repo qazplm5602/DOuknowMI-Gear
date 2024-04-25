@@ -104,6 +104,16 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         }
     }
 
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent(out IDamageable target))
+        {
+            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
+            //PlayerManager.instance.transform 넣으면 되는거임?
+            target.ApplyDamage(_damage, null);
+        }
+    }
+
     protected virtual void ModifyEnemyStat(float value, StatType statType, float time) 
     {
         foreach (Entity item in StageManager.Instance._enemies)

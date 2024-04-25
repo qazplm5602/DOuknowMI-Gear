@@ -16,13 +16,13 @@ public abstract class PlayerGroundState : PlayerState
     
     public override void UpdateState() {
         base.UpdateState();
-        if (DialogueManager.instance == null) {
+        if (DialogueManager.Instance == null) {
             if (player.MovementCompo.isGround == false) {
                 stateMachine.ChangeState(PlayerStateEnum.Fall);
             }
         }
         else {
-            if (player.MovementCompo.isGround == false && DialogueManager.instance.isEnd == true) {
+            if (player.MovementCompo.isGround == false && DialogueManager.Instance.isEnd == true) {
                 stateMachine.ChangeState(PlayerStateEnum.Fall);
             }
         }
@@ -34,13 +34,13 @@ public abstract class PlayerGroundState : PlayerState
 
     private void HandleJumpEvent()
     {
-        if (DialogueManager.instance == null) {
+        if (DialogueManager.Instance == null) {
             if (player.MovementCompo.isGround && !player.isDead && !player.ishurt) {
                 stateMachine.ChangeState(PlayerStateEnum.Jump);
             }
         }
         else {
-            if (player.MovementCompo.isGround && DialogueManager.instance.isEnd && !player.isDead && !player.ishurt) {
+            if (player.MovementCompo.isGround && DialogueManager.Instance.isEnd && !player.isDead && !player.ishurt) {
             stateMachine.ChangeState(PlayerStateEnum.Jump);
         }
         }

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Wall
   - Stage
+  - Ground
   layers:
   - Default
   - TransparentFX

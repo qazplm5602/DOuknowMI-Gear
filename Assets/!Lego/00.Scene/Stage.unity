@@ -414,6 +414,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3083441366341385940, guid: 7c8047cad63e0d649bba40e34ef718db, type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 6844279645882108796, guid: 7c8047cad63e0d649bba40e34ef718db, type: 3}
       propertyPath: m_Name
       value: StartMapTest1
@@ -623,6 +627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showDamageText: 1
+  cameraShake: 1
 --- !u!1001 &1273809819
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public enum PlayerStatEnum {
 
 public class PlayerStat : MonoSingleton<PlayerStat>
 {
+    [SerializeField] private GameObject statUI;
+
     public int statPoint;
     
     #region Stats
@@ -94,6 +96,14 @@ public class PlayerStat : MonoSingleton<PlayerStat>
     public TextMeshProUGUI _criticalChanceText;
 
     public TextMeshProUGUI _statPointText;
+
+    public void Open() {
+        statUI.SetActive(true);
+    }
+
+    public void Close() {
+        statUI.SetActive(false);
+    }
 
     public void IncreaseStat(int stat) {
         if(statPoint <= 0) return;
