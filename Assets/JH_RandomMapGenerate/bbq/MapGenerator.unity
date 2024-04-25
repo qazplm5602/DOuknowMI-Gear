@@ -313,6 +313,8 @@ MonoBehaviour:
   - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
   LargeRoom:
   - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
+  EliteRoom:
+  - {fileID: 7997709606546354505, guid: 94761ce833471c54eab35fb581bfd2af, type: 3}
 --- !u!114 &573908939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -333,6 +335,7 @@ MonoBehaviour:
     MaxCnt: 14
     MinCnt: 12
     MaxStatue: 2
+    MaxEliteRooms: 4
     StatueChance: 50
     MediumRoomChance: 0
     LargeRoomChance: 0
@@ -345,6 +348,7 @@ MonoBehaviour:
     LargeRoomChance: 0
     MediumRoomChance: 0
     StatueCount: 0
+    EliteRoomCount: 0
 --- !u!1 &585963655
 GameObject:
   m_ObjectHideFlags: 0

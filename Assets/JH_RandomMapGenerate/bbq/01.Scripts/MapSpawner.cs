@@ -38,6 +38,7 @@ public class MapSpawner : MonoBehaviour
         public int MaxCnt;
         public int MinCnt;
         public int MaxStatue;
+        public int MaxEliteRooms;
 
         [Header("Chances")]
         public int StatueChance;
@@ -53,6 +54,7 @@ public class MapSpawner : MonoBehaviour
         public StageData[] Maplist;
         public List<GameObject> CurrentRoomObjs;
         public List<int> PrayRoomCandidates; // 조각상 방으로 가능한 방들의 인덱스 목록
+        public List<int> EliteRoomCandidates; // 엘리트 방으로 가능한 방들의 인덱스 목록
         public BaseStage[] MapObjList;
         public StartStage StartRoom;
 
@@ -60,6 +62,7 @@ public class MapSpawner : MonoBehaviour
         public int MediumRoomChance;
 
         public int StatueCount;
+        public int EliteRoomCount;
     }
 
     public MapSettings jajiOption = new MapSettings();
@@ -96,6 +99,7 @@ public class MapSpawner : MonoBehaviour
         SetBossRoom();
         MakeMapMotherfuker();
         MakeStatueRoom();
+        MakeEliteRoom();
         ShowMaps();
     }
 
@@ -111,14 +115,19 @@ public class MapSpawner : MonoBehaviour
             int _x = index % yval;
             int _y = index / yval;
 
+            if (current.Maplist[_x + ((_y) * yval)] == null)
+            {
+                continue;
+            }
+
             int tx = _x + 1;
             int ty = _y;
             if (tx >= 0 && tx < jajiOption.MaxListSize - 1 && ty >= 0 && ty < jajiOption.MaxListSize - 1)
             {
                 if (current.Maplist[tx + ((ty ) * yval)] == null)
                 {
-                    print($"{tx}, {ty}");
-                    if (MapSpawn(tx, ty, current.Maplist[(tx) + (ty * yval)], 598) != new Vector2Int(-1, -1))
+                    print($"{tx}, {ty}");   
+                    if (MapSpawn(tx, ty, current.Maplist[(_x) + (_y * yval)], 598, true) != new Vector2Int(-1, -1))
                         return;
                 }
             }
@@ -136,12 +145,15 @@ public class MapSpawner : MonoBehaviour
 
         int RandNum;
         int yval = jajiOption.MaxListSize;
-        
+
+        //tageData thisRoom = current.Maplist[(x) + (y * yval)];
+
         if (current.Maplist[x + (y * yval)] == null)
         {
             current.Maplist[x + (y * yval)] = new StageData();
             current.Maplist[x + (y * yval)].InitSetting(current.NowCount, x, y);
             current.NowCount++;
+            //print($"{current.Maplist[x + (y * yval)].Num} from {Parent.Num}");
 
             mapIndexStackByNum.Push(x + (y * yval));
 
@@ -176,7 +188,10 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
             }
-            
+            //print($"{current.Maplist[x + (y * yval)].Num} : {current.Maplist[x + (y * yval)].UpMap}");
+            //print($"{current.Maplist[x + (y * yval)].Num} : {current.Maplist[x + (y * yval)].RightMap}");
+            //print($"{current.Maplist[x + (y * yval)].Num} : {current.Maplist[x + (y * yval)].LeftMap}");
+            //print($"{current.Maplist[x + (y * yval)].Num} : {current.Maplist[x + (y * yval)].DownMap}");
         }
         else
         {
@@ -247,9 +262,9 @@ public class MapSpawner : MonoBehaviour
                 int tempy = y + dirIndex[(DIRECTION)i].y;
                 if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
                 {
-                    if (current.Maplist[tempx + ((tempy+1) * yval)] == null)
+                    if (current.Maplist[tempx + ((tempy) * yval)] == null)
                     {
-                        MapSpawn(tempx, tempy, current.Maplist[(tempx) + (tempy+1 * yval)], depth + 1, true);
+                        MapSpawn(tempx, tempy, current.Maplist[(x) + (y * yval)], depth + 1, true);
                     }
                 }
             }
@@ -326,7 +341,7 @@ public class MapSpawner : MonoBehaviour
         }
         if (current.Maplist[index].UpMap != null)
         {
-            var mapObj = current.MapObjList[x + ((y + 1) * yval)];
+            var mapObj = current.MapObjList[x + ((y - 1) * yval)];
             if (mapObj != null)
             {
                 linkeddata.UpMap = mapObj;
@@ -339,7 +354,7 @@ public class MapSpawner : MonoBehaviour
         }
         if (current.Maplist[index].DownMap != null)
         {
-            var mapObj = current.MapObjList[x + ((y - 1) * yval)];
+            var mapObj = current.MapObjList[x + ((y + 1) * yval)];
             if (mapObj != null)
             {
                 linkeddata.DownMap = mapObj;
@@ -402,7 +417,6 @@ public class MapSpawner : MonoBehaviour
                     countDoor++;
                 }
 
-                bool pray = false;
                 ROOMSIZE roomSize = ROOMSIZE.Small;
                 if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
                 {
@@ -423,15 +437,13 @@ public class MapSpawner : MonoBehaviour
                 }
 
 
+                current.EliteRoomCandidates.Add(i);
                 BaseStage obj = map.StageLoad(ROOMTYPE.Normal, roomSize);
                 current.MapObjList[i] = Instantiate(obj, mapParent.transform);
 
                 if (roomSize == ROOMSIZE.Small)
                 {
-                    if (!pray) // Pray가 아닌 경우에만 후보 목록에 추가
-                    {
-                        current.PrayRoomCandidates.Add(i);
-                    }
+                    current.PrayRoomCandidates.Add(i);
                 }
             }         
 
@@ -445,6 +457,7 @@ public class MapSpawner : MonoBehaviour
                         if (current.MapObjList[i].door[a] == null)
                         {
                             flag = true;
+                            current.PrayRoomCandidates.Remove(i);
                             Destroy(current.MapObjList[i]);
                             break;
                         }
@@ -473,6 +486,7 @@ public class MapSpawner : MonoBehaviour
             int randomIndex = Random.Range(0, current.PrayRoomCandidates.Count);
             int prayRoomIndex = current.PrayRoomCandidates[randomIndex];
             current.PrayRoomCandidates.Remove(randomIndex);
+            current.EliteRoomCandidates.Remove(randomIndex);
 
             GameObject.Destroy(current.MapObjList[prayRoomIndex].gameObject);
             BaseStage prayRoom = map.StageLoad(ROOMTYPE.Statue);
@@ -481,9 +495,31 @@ public class MapSpawner : MonoBehaviour
 
             LinkedStage data = SetLinkingData(prayRoomIndex);
             current.MapObjList[prayRoomIndex].StageLinkedData = data;
-            if (7 >= Random.Range(1, 101))
+            if (50 >= Random.Range(1, 101))
             {
                 MakeStatueRoom();
+            }
+        }
+    }
+
+    public void MakeEliteRoom()
+    {
+        if (jajiOption.MaxEliteRooms > current.EliteRoomCount)
+        {
+            int randomIndex = Random.Range(0, current.EliteRoomCandidates.Count);
+            int eliteRoomIndex = current.EliteRoomCandidates[randomIndex];
+            current.EliteRoomCandidates.Remove(randomIndex);
+            current.EliteRoomCount++;
+
+            GameObject.Destroy(current.MapObjList[eliteRoomIndex].gameObject);
+            BaseStage eliteRoom = map.StageLoad(ROOMTYPE.Elite);
+            current.MapObjList[eliteRoomIndex] = GameObject.Instantiate(eliteRoom);
+
+            LinkedStage data = SetLinkingData(eliteRoomIndex);
+            current.MapObjList[eliteRoomIndex].StageLinkedData = data;
+            if (14 >= Random.Range(1, 101))
+            {
+                MakeEliteRoom();
             }
         }
     }
