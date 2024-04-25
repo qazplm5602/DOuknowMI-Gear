@@ -25,6 +25,18 @@ public class GearPauseButtonTooltip : MonoBehaviour
         }
     }
 
+    // 강제로 숨김
+    public void ForceHide() {
+        if (process != null) {
+            StopCoroutine(process);
+            process = null;
+        }
+
+        showing = false;
+        _group.alpha = 0;
+        rectTrm.anchoredPosition = new(0, rectTrm.anchoredPosition.y);
+    }
+
     IEnumerator SmoothAnim() {
         while (true) {
             float ming = Time.unscaledDeltaTime * 20;
