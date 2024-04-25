@@ -565,7 +565,7 @@ MonoBehaviour:
   scriptModule: {fileID: 484720567}
   spawnGears:
   - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
-  - {fileID: 11400000, guid: 5d8dbb8d2d2214b46abe0a3ab59d766b, type: 2}
+  - {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
   - {fileID: 11400000, guid: 8c7cbbd9fa5de6c46b5be9c7be05125d, type: 2}
   - {fileID: 11400000, guid: 00637fdfa72238347b8b5e60d88b2de4, type: 2}
   spawnGearCoords:
