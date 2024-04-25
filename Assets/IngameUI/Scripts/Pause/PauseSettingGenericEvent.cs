@@ -12,9 +12,12 @@ public class PauseSettingGenericEvent : MonoBehaviour
     readonly string HITDAMAGE_EVENT = "generic.hitdamage";
     readonly string CAMSHARE_EVENT = "generic.camerashake";
     readonly string ENEMYHEALTH_EVENT = "generic.enemyhelath";
+
+    GameManager gameManager;
     
     private void Awake() {
         _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        gameManager = GameManager.Instance;
     }
 
     private void OnEnable() {
@@ -52,6 +55,9 @@ public class PauseSettingGenericEvent : MonoBehaviour
     void SetHitDamage(string value) {
         PlayerPrefs.SetInt(HITDAMAGE_EVENT, value == "True" ? 1 : 0);
         PlayerPrefs.Save();
+
+        if (gameManager)
+            gameManager.showDamageText = value == "True" ? true : false;
     }
 
     string GetHitDamage() => PlayerPrefs.GetInt(HITDAMAGE_EVENT, 1) == 1 ? "true" : "false";
@@ -60,7 +66,8 @@ public class PauseSettingGenericEvent : MonoBehaviour
         PlayerPrefs.SetInt(CAMSHARE_EVENT, value == "True" ? 1 : 0);
         PlayerPrefs.Save();
 
-        CameraManager.Instance.LoadConfig();
+        if (gameManager)
+            gameManager.cameraShake = value == "True" ? true : false;
     }
 
     string GetCamShake() => PlayerPrefs.GetInt(CAMSHARE_EVENT, 1) == 1 ? "true" : "false";
