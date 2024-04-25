@@ -15,6 +15,10 @@ public abstract class SkillController : MonoBehaviour
     private float _moveSpeed;
     [SerializeField] 
     private float _maxRange;
+    [SerializeField]
+    private bool _destroyByTime = false;
+    [SerializeField]
+    private float _destroyTime = 0.0f;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -50,6 +54,12 @@ public abstract class SkillController : MonoBehaviour
 
 protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
+        if (_destroyByTime)
+        {
+            yield return new WaitForSeconds(_destroyTime);
+            Destroy(gameObject);
+            yield break;
+        }
         Vector3 firstPos = startTrm.position;
         bool notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
         while (notMaxDistance)  
