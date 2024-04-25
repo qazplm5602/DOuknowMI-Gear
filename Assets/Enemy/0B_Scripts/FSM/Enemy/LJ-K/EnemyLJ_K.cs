@@ -50,6 +50,7 @@ public class EnemyLJ_K : Enemy
 
     protected override void Awake() {
         base.Awake();
+        _healthBar.gameObject.SetActive(false);
 
         StateMachine = new EnemyStateMachine<LJ_KStateEnum>();
         
