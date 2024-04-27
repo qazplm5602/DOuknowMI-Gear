@@ -19,7 +19,7 @@ public class DemonSlimeBattleState : EnemyState<DemonSlimeStateEnum>
         base.UpdateState();
         
         if(Mathf.Abs(_playerTrm.position.x - _enemy.transform.position.x) > _enemy.nearDistance)
-            _enemy.SetVelocity(_enemy.moveSpeed * _enemy.FacingDirection, _rigidbody.velocity.y);
+            _enemy.SetVelocity(_enemy.Stat.moveSpeed.GetValue() * _enemy.FacingDirection, _rigidbody.velocity.y);
         else
             _stateMachine.ChangeState(DemonSlimeStateEnum.Idle);
 

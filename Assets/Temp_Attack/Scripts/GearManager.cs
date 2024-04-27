@@ -59,6 +59,7 @@ public class GearManager : MonoSingleton<GearManager>
     List<GearInfo> gears;
 
     public GameObject _player;
+    public GearScriptModule ScriptModule => scriptModule;
 
     private void Start() {
         Init();

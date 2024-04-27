@@ -1,13 +1,8 @@
 using FSM;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public abstract class SkillController : MonoBehaviour
 {
@@ -21,7 +16,9 @@ public abstract class SkillController : MonoBehaviour
     [SerializeField] 
     private float _maxRange;
     [SerializeField]
-    protected float _debuffTime;
+    private bool _destroyByTime = false;
+    [SerializeField]
+    private float _destroyTime = 0.0f;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -33,14 +30,36 @@ public abstract class SkillController : MonoBehaviour
     private float _castAngle;
     [SerializeField]
     private float _castRadius;
-
     [SerializeField] 
     private bool isDamageCasting;
-    private bool _attackTriggerCalled;
     #endregion
 
-    protected virtual IEnumerator MoveRoutine(Transform startTrm)
+    private bool _attackTriggerCalled;
+
+    #region 스탯을 건드리는 아이들
+    [SerializeField]
+    protected List<StatType> _willModify = new();
+    [SerializeField]
+    protected float _debuffTime;
+    [Tooltip("0.5를 넣으면 현재 스탯의 50%만큼 감소시킴. *-1 된 값으로 적용")][SerializeField]
+    protected float _debuffValue = 0f;
+    #endregion
+
+    #region 스탯 건드는 코드
+    //foreach (StatType t in _willModify)
+    //{
+    //        ModifyEnemyStat(_debuffValue, t, _debuffTime);
+    //}
+    #endregion
+
+protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
+        if (_destroyByTime)
+        {
+            yield return new WaitForSeconds(_destroyTime);
+            Destroy(gameObject);
+            yield break;
+        }
         Vector3 firstPos = startTrm.position;
         bool notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
         while (notMaxDistance)  
@@ -57,7 +76,7 @@ public abstract class SkillController : MonoBehaviour
         yield break;
     }
 
-    bool IsInRange(Vector3 firstPos, Vector3 currentPos)
+    protected bool IsInRange(Vector3 firstPos, Vector3 currentPos)
     {
         return Vector3.Distance(firstPos, currentPos) < _maxRange;
     }
@@ -78,6 +97,16 @@ public abstract class SkillController : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out IDamageable target))
+        {
+            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
+            //PlayerManager.instance.transform 넣으면 되는거임?
+            target.ApplyDamage(_damage, null);
+        }
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.TryGetComponent(out IDamageable target))
         {
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?

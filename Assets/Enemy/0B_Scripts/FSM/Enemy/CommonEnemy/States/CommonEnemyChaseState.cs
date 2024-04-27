@@ -30,6 +30,6 @@ public class CommonEnemyChaseState : EnemyState<CommonEnemyStateEnum>
     }
 
     private void Move() {
-        _enemy.SetVelocity(_enemy.moveSpeed * _enemy.FacingDirection, _rigidbody.velocity.y);
+        _enemy.SetVelocity(_enemy.Stat.moveSpeed.GetValue() * _enemy.FacingDirection, _rigidbody.velocity.y);
     }
 }

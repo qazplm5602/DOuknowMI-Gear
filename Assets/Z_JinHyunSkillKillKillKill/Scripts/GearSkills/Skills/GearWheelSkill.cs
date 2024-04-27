@@ -10,6 +10,5 @@ public class GearWheelSkill : GearCogEvent
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
         Instantiate(_prefab, playerPos, look);
-
     }
 }

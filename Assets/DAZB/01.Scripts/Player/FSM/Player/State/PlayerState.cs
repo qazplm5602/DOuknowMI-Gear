@@ -24,8 +24,8 @@ public class PlayerState
     }
 
     public virtual void UpdateState() {
-        if (DialogueManager.instance != null) {
-            if (DialogueManager.instance.isEnd == false) {
+        if (DialogueManager.Instance != null) {
+            if (DialogueManager.Instance.isEnd == false) {
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
             }
         }

@@ -64,8 +64,8 @@ public class Player : Agent
     }
 
     protected void Update() {
-        if (DialogueManager.instance != null)
-            if (DialogueManager.instance.isEnd == false || isDead) return;
+        if (DialogueManager.Instance != null)
+            if (DialogueManager.Instance.isEnd == false || isDead) return;
         StateMachine.CurrentState.UpdateState();
     }
 
