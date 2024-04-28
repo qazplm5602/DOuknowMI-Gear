@@ -8,17 +8,17 @@ public abstract class SkillController : MonoBehaviour
 {
     #region 스킬 정보
     [SerializeField] 
-    private int _damage;
+    protected float _damage;
     [SerializeField] 
-    private CastingType castType = CastingType.None;
+    protected CastingType castType = CastingType.None;
     [SerializeField]
-    private float _moveSpeed;
+    protected float _moveSpeed;
     [SerializeField] 
-    private float _maxRange;
+    protected float _maxRange;
     [SerializeField]
-    private bool _destroyByTime = false;
+    protected bool _destroyByTime = false;
     [SerializeField]
-    private float _destroyTime = 0.0f;
+    protected float _destroyTime = 0.0f;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -54,6 +54,7 @@ public abstract class SkillController : MonoBehaviour
 
 protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
+        _damage += PlayerManager.instance.player.stat.attack.GetValue();
         if (_destroyByTime)
         {
             yield return new WaitForSeconds(_destroyTime);
@@ -90,7 +91,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
     private void DamageCasting()
     {
         _attackTriggerCalled = false;
-        PlayerSkillManager.Instance.gearSkillDamageCaster.DamageCast(_damage, _castPos, _castSize, _castAngle, _castRadius, castType);
+        PlayerSkillManager.Instance.gearSkillDamageCaster.DamageCast(Mathf.FloorToInt(_damage), _castPos, _castSize, _castAngle, _castRadius, castType);
         return;
     }
 
@@ -100,7 +101,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         {
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?
-            target.ApplyDamage(_damage, null);
+            target.ApplyDamage(Mathf.FloorToInt(_damage), null);
         }
     }
 
@@ -110,7 +111,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         {
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?
-            target.ApplyDamage(_damage, null);
+            target.ApplyDamage(Mathf.FloorToInt(_damage), null);
         }
     }
 
