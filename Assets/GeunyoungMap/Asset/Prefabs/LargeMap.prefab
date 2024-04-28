@@ -3757,9 +3757,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d047c6a9e4cc9524b844ff39061574c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClearChanged:
-    m_PersistentCalls:
-      m_Calls: []
   door:
   - {fileID: 6407766458847083592}
   - {fileID: 3771286377969854704}
@@ -3780,7 +3777,7 @@ MonoBehaviour:
   CurrentWave: 0
   RoomActive: 0
   Enemies:
-  - {fileID: 677558411895270366, guid: e4cb332f7526a324aad5150cce81171d, type: 3}
+  - {fileID: 1654401717239364482, guid: 9c0bb8d773041bc49b89fce7ff1726d5, type: 3}
   Weights: 01000000
   _spawnPoints:
   - {fileID: 6408606393246746803}
