@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 764508ceb0dd73b469fd21f7a2eec2af, type: 3}
-  m_Name: BossLJ_K
+  m_Name: EnemyBT-K
   m_EditorClassIdentifier: 
   maxHealth:
-    _baseValue: 300
+    _baseValue: 20
     defaultValue: 0
     modifiers: []
     isPercent: 0
   attack:
-    _baseValue: 10
+    _baseValue: 1
     defaultValue: 0
     modifiers: []
     isPercent: 0
   moveSpeed:
-    _baseValue: 4
+    _baseValue: 0
     defaultValue: 0
     modifiers: []
     isPercent: 0
@@ -33,12 +33,12 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   attackCooldown:
-    _baseValue: 4
+    _baseValue: 5
     defaultValue: 0
     modifiers: []
     isPercent: 0
   attackRange:
-    _baseValue: 0
+    _baseValue: 7.5
     defaultValue: 0
     modifiers: []
     isPercent: 0
