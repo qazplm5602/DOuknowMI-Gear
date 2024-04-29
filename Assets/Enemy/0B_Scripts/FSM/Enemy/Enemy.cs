@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -84,6 +85,17 @@ namespace FSM {
         public virtual void SetDead() {
             PoolManager.Instance.Push(_healthBar);
             DropItems();
+        }
+
+        public void DownJump() {
+            StartCoroutine(DownJumpRoutine());
+        }
+
+        private IEnumerator DownJumpRoutine() {
+            ColliderCompo.forceSendLayers = ~_whatIsPlatform;
+            yield return new WaitForSeconds(0.65f);
+            ColliderCompo.forceSendLayers = -1;
+
         }
 
         public virtual void DropItems() {
