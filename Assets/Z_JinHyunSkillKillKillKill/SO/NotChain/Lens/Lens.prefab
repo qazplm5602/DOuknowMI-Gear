@@ -256,12 +256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10db1019379dde48b0316307aa0409a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 5
   castType: 2
   _moveSpeed: 0
   _maxRange: 0
   _destroyByTime: 1
-  _destroyTime: 10
+  _destroyTime: 20
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
@@ -270,3 +270,6 @@ MonoBehaviour:
   _willModify: 
   _debuffTime: 0
   _debuffValue: 0
+  _weaponLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
