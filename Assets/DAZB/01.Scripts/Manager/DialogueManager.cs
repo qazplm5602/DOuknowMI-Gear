@@ -26,6 +26,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     public Npc npc;
     [Tooltip("대사가 끝나면 true, 시작하면 false")]
     public bool isEnd = true;
+    public bool checkInteractiveObejct;
     private TMP_Text interactionText;
 /*     private IEnumerator _dialogue; */
     private void Awake() {
@@ -54,7 +55,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     public void SetNpc(Npc npc) {
         this.npc = npc;
         nameText.text = npc.name;
-        interactionText.text = npc.GetNpcData().InteractionName;
+        interactionText.text = npc.GetNpcData().NpcInteractionName;
     }
 
     public void ActiveDialoguePanel(bool isActive) {
