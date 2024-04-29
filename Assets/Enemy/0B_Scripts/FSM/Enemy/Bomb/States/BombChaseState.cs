@@ -23,8 +23,11 @@ public class BombChaseState : EnemyState<CommonEnemyStateEnum>
         else if(_enemy.IsOnPlatform()) {
             if(Mathf.Abs(direction.y) >= 2f && Mathf.Abs(direction.x) < 3f) {
                 _enemy.downJumpTimer += Time.deltaTime;
-                _enemy.DownJump();
-                _enemy.downJumpTimer = 0f;
+
+                if(_enemy.downJumpTimer >= 2f) {
+                    _enemy.DownJump();
+                    _enemy.downJumpTimer = 0f;
+                }
             }
             else {
                 _enemy.downJumpTimer -= Time.deltaTime / 2f;
@@ -32,6 +35,7 @@ public class BombChaseState : EnemyState<CommonEnemyStateEnum>
         }
         else {
             _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
+            _enemy.downJumpTimer = 0f;
         }
     }
 }
