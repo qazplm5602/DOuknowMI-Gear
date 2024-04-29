@@ -51,7 +51,7 @@ public class SkillLens : SkillController
                 for (int i = 0; i < 3; i++)
                 {
                     int idx = Random.Range(0, _enemies.Count);
-                    print($"TargetIdx : {idx} ||| TargetName : {_enemies[idx].name} ||| ");
+                    print($"TargetIdx : {idx} ||| TargetName : {_enemies[idx].name}");
                     if (_enemies[idx].TryGetComponent(out IDamageable target))
                     {
                         target.ApplyDamage(Mathf.FloorToInt(_damage), transform);
