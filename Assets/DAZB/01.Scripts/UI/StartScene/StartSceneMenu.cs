@@ -15,6 +15,7 @@ public class StartSceneMenu : MonoBehaviour
     private Button menuObjButton;
     private GameObject newSelectButton;
 
+
     private void Awake() {
         menuObjCanvasGroup = menuObj.GetComponent<CanvasGroup>();
         newGameUiCanvasGroup = newGameUI.GetComponent<CanvasGroup>();
