@@ -5,7 +5,7 @@ using System.Reflection;
 using UnityEngine;
 using FSM;
 
-[CreateAssetMenu(menuName = "SO/Stat")]
+[CreateAssetMenu(menuName = "SO/EntityStat")]
 public class EntityStat : ScriptableObject
 {
     public Stat maxHealth;

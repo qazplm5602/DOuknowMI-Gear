@@ -19,8 +19,6 @@ public class SkillWheel : SkillController
     {
         float rotationZ = transform.localEulerAngles.z;
 
-        print(transform.localEulerAngles.z);
-
         if (rotationZ > 90f && rotationZ < 270f) return -1; 
         else return 1; // 오른쪽
     }

@@ -12,14 +12,11 @@ public class PlayerDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
         dashDir = (mousePosition - player.transform.position).normalized;
         //player.MovementCompo.Flip(mousePosition);   
         Vector3 playerPos = player.transform.position;
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0;
-        float angle = Mathf.Atan2(mousePos.y - playerPos.y, mousePos.x - playerPos.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(mousePosition.y - playerPos.y, mousePosition.x - playerPos.x) * Mathf.Rad2Deg;
         if (angle < 90) {
             player.MovementCompo.Flip(Vector2.zero, true, true);  
         }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7305283601423220759}
   m_Layer: 9
   m_Name: Clock
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,6 +175,8 @@ MonoBehaviour:
   castType: 2
   _moveSpeed: 60
   _maxRange: 60
+  _destroyByTime: 0
+  _destroyTime: 0
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
