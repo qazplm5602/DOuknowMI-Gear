@@ -19,6 +19,8 @@ public abstract class SkillController : MonoBehaviour
     protected bool _destroyByTime = false;
     [SerializeField]
     protected float _destroyTime = 0.0f;
+    [SerializeField]
+    protected int _pierceCount;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -70,6 +72,12 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
 
+            if (_pierceCount <= 0)
+            {
+                Destroy(gameObject);
+                yield break;
+            }
+
             yield return null;
         }
         if (isDamageCasting) DamageCasting();
@@ -102,6 +110,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?
             target.ApplyDamage(Mathf.FloorToInt(_damage), null);
+            --_pierceCount;
         }
     }
 
