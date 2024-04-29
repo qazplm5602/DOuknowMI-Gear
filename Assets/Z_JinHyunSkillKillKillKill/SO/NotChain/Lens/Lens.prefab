@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -1434261502539941089}
   m_Layer: 9
   m_Name: Lens
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -228,10 +228,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -242,7 +242,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 10, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &-1434261502539941089
 MonoBehaviour:
@@ -256,12 +256,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10db1019379dde48b0316307aa0409a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 5
   castType: 2
   _moveSpeed: 0
   _maxRange: 0
   _destroyByTime: 1
-  _destroyTime: 10
+  _destroyTime: 20
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
@@ -270,3 +270,6 @@ MonoBehaviour:
   _willModify: 
   _debuffTime: 0
   _debuffValue: 0
+  _weaponLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
