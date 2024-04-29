@@ -4,65 +4,6 @@ using UnityEngine.UI;
 using TMPro;
 using LitJson;
 
-[Serializable]
-public class SaveInfo {
-    public DateTime date;
-    public Sprite[] skillSprites;
-    public GearSaveInfo[] gearInfos;
-    public int level;
-    public int parts;
-
-    public SaveInfo() {
-        level = -1234;
-        parts = -1234;
-    }
-
-    public SaveInfo(DateTime date, GearGroupDTO[] gearGroup, int level, int parts) {
-        this.date = date;
-        skillSprites = new Sprite[gearGroup.Length];
-        gearInfos = new GearSaveInfo[gearGroup.Length];
-
-        for(int i = 0; i < gearGroup.Length; ++i) {
-            skillSprites[i] = gearGroup[i].data.Icon;
-            gearInfos[i] = new GearSaveInfo() {
-                id = gearGroup[i].data.id,
-                gearStat = new GearSaveStat(gearGroup[i].stat)
-            };
-        }
-
-        this.level = level;
-        this.parts = parts;
-    }
-}
-
-[Serializable]
-public class GearSaveInfo {
-    public string id;
-    public GearSaveStat gearStat;
-}
-
-[Serializable]
-public class GearSaveStat {
-    public int level;
-    public int damage;
-    public double range;
-
-    public GearSaveStat(GearStat stat) {
-        level = stat.level;
-        damage = stat.damage;
-        range = stat.range;
-    }
-
-    public GearStat GetGearStat() {
-        GearStat gearStat = new GearStat() {
-            level = level,
-            damage = damage,
-            range = (float)range
-        };
-        return gearStat;
-    }
-}
-
 public class SaveUI : MonoBehaviour
 {
     [SerializeField] private GameObject _savePanel;
@@ -101,6 +42,14 @@ public class SaveUI : MonoBehaviour
     }
 
     private void SaveAndOverwrite(int index) {
+        RenderSaveUI(index, "덮어쓰기");
+    }
+
+    private void Load(int index) {
+        RenderSaveUI(index, "불러오기");
+    }
+
+    private void RenderSaveUI(int index, string buttonName) {
         SaveInfo saveInfo = _saveInfos[index - 1];
 
         saveInfo.date = DateTime.Now;
@@ -133,17 +82,12 @@ public class SaveUI : MonoBehaviour
         Find($"{contentPath}/Layout").gameObject.SetActive(true);
         Find($"{contentPath}/Layout/LevelNPart/Text").GetComponent<TextMeshProUGUI>().text = $"레벨: {saveInfo.level}\n부품: {saveInfo.parts}";
 
-        Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "덮어쓰기";
+        Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = buttonName;
         Button saveNOverwriteButton = Find($"{bottomBtnPath}/SaveNOverwriteBtn").GetComponent<Button>();
         saveNOverwriteButton.onClick.RemoveAllListeners();
-        saveNOverwriteButton.onClick.AddListener(() => OverwriteQuestion(index));
+        saveNOverwriteButton.onClick.AddListener(() => LoadQuestion(index));
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = true;
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = Color.black;
-
-        SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), saveInfo.level, saveInfo.parts);
-        SaveData newData = new SaveData($"Save{index}", newInfo);
-        SaveManager.Instance.Save(newData);
-        _saveInfos[index - 1] = newInfo;
     }
 
     private void Delete(int index) {
@@ -161,11 +105,6 @@ public class SaveUI : MonoBehaviour
         saveNOverwriteButton.onClick.AddListener(() => SaveQuestion(index));
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = false;
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = new Color(0.41f, 0.41f, 0.41f);
-        
-        SaveInfo newInfo = new SaveInfo();
-        SaveData newData = new SaveData($"Save{index}", newInfo);
-        SaveManager.Instance.Save(newData);
-        _saveInfos[index - 1] = newInfo;
     }
 
     public void SaveQuestion(int index) {
@@ -176,6 +115,10 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
+            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 2, 20);
+            SaveData newData = new SaveData($"Save{index}", newInfo);
+            SaveManager.Instance.Save(newData);
+            _saveInfos[index - 1] = newInfo;
             SaveAndOverwrite(index);
             _questionPanel.SetActive(false);
         });
@@ -187,7 +130,7 @@ public class SaveUI : MonoBehaviour
     public void OverwriteQuestion(int index) {
         _questionPanel.SetActive(true);
         string questionPanelPath = "QuestionBackground/QuestionPanel";
-        Find($"{questionPanelPath}/QuestionText").GetComponent<TextMeshProUGUI>().text = $"정말 {index}번 슬롯에 진행 상황을\n 덮어쓰시겠습니까?";
+        Find($"{questionPanelPath}/QuestionText").GetComponent<TextMeshProUGUI>().text = $"정말 {index}번 슬롯에 진행 상황을\n덮어쓰시겠습니까?";
         TextMeshProUGUI warningText = Find($"{questionPanelPath}/WarningText").GetComponent<TextMeshProUGUI>();
         warningText.gameObject.SetActive(true);
         warningText.text = "(기존의 데이터는 삭제됩니다.)";
@@ -195,7 +138,30 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
+            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 2, 20);
+            SaveData newData = new SaveData($"Save{index}", newInfo);
+            SaveManager.Instance.Save(newData);
+            _saveInfos[index - 1] = newInfo;
             SaveAndOverwrite(index);
+            _questionPanel.SetActive(false);
+        });
+        Button noBtn = Find($"{questionPanelPath}/Btns/NoBtn").GetComponent<Button>();
+        noBtn.onClick.RemoveAllListeners();
+        noBtn.onClick.AddListener(() => _questionPanel.SetActive(false));
+    }
+
+    public void LoadQuestion(int index) {
+        _questionPanel.SetActive(true);
+        string questionPanelPath = "QuestionBackground/QuestionPanel";
+        Find($"{questionPanelPath}/QuestionText").GetComponent<TextMeshProUGUI>().text = $"정말 {index}번 슬롯에 저장된 데이터를\n불러오시겠습니까?";
+        TextMeshProUGUI warningText = Find($"{questionPanelPath}/WarningText").GetComponent<TextMeshProUGUI>();
+        warningText.gameObject.SetActive(false);
+
+        Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
+        yesBtn.onClick.RemoveAllListeners();
+        yesBtn.onClick.AddListener(() => {
+            //Load
+            Load(index);
             _questionPanel.SetActive(false);
         });
         Button noBtn = Find($"{questionPanelPath}/Btns/NoBtn").GetComponent<Button>();
@@ -206,7 +172,7 @@ public class SaveUI : MonoBehaviour
     public void DeleteQuestion(int index) {
         _questionPanel.SetActive(true);
         string questionPanelPath = "QuestionBackground/QuestionPanel";
-        Find($"{questionPanelPath}/QuestionText").GetComponent<TextMeshProUGUI>().text = $"정말 {index}번 슬롯에 저장된 데이터를\n 삭제하시겠습니까?";
+        Find($"{questionPanelPath}/QuestionText").GetComponent<TextMeshProUGUI>().text = $"정말 {index}번 슬롯에 저장된 데이터를\n삭제하시겠습니까?";
         TextMeshProUGUI warningText = Find($"{questionPanelPath}/WarningText").GetComponent<TextMeshProUGUI>();
         warningText.gameObject.SetActive(true);
         warningText.text = "(삭제한 데이터는 복구할 수 없습니다.)";
@@ -214,6 +180,10 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
+            SaveInfo newInfo = new SaveInfo();
+            SaveData newData = new SaveData($"Save{index}", newInfo);
+            SaveManager.Instance.Save(newData);
+            _saveInfos[index - 1] = newInfo;
             Delete(index);
             _questionPanel.SetActive(false);
         });

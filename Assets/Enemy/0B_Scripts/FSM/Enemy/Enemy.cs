@@ -8,6 +8,12 @@ namespace FSM {
         [HideInInspector] public EnemyDamageCaster DamageCasterCompo;
         [HideInInspector] public EnemyHealth HealthCompo;
 
+        [Header("Movement Settings")]
+        public bool _downJumpable = true;
+        [SerializeField] private float _downJumpDistance;
+        [SerializeField] private LayerMask _whatIsPlatform;
+        public float downJumpTimer = 0f;
+
         [Header("Check Settings")]
         public float nearDistance;
         [SerializeField] private  LayerMask _whatIsPlayer;
@@ -71,6 +77,10 @@ namespace FSM {
             return Physics2D.Raycast(transform.position, direction, distance, whatIsObstacle);
         }
 
+        public virtual bool IsOnPlatform() {
+            return Physics2D.Raycast(transform.position, Vector2.down, _downJumpDistance, _whatIsPlatform);
+        }
+
         public virtual void SetDead() {
             PoolManager.Instance.Push(_healthBar);
             DropItems();
@@ -96,6 +106,8 @@ namespace FSM {
             Gizmos.DrawWireSphere(transform.position, nearDistance);
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(transform.position, Vector2.down * _downJumpDistance);
         }
     }
 }
