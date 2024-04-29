@@ -21,6 +21,8 @@ public abstract class SkillController : MonoBehaviour
     protected float _destroyTime = 0.0f;
     [SerializeField]
     protected int _pierceCount;
+    [SerializeField]
+    protected bool _canPierce = false;
     #endregion
 
     #region 캐스팅 관련 정보
@@ -72,7 +74,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
 
-            if (_pierceCount <= 0)
+            if (_canPierce && _pierceCount <= 0)
             {
                 Destroy(gameObject);
                 yield break;
