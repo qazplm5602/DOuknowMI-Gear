@@ -54,7 +54,7 @@ public class SkillLens : SkillController
                     print($"TargetIdx : {idx} ||| TargetName : {_enemies[idx].name} ||| ");
                     if (_enemies[idx].TryGetComponent(out IDamageable target))
                     {
-                        target.ApplyDamage(Mathf.FloorToInt(_damage), transform);s
+                        target.ApplyDamage(Mathf.FloorToInt(_damage), transform);
                     }
                 }
             }
