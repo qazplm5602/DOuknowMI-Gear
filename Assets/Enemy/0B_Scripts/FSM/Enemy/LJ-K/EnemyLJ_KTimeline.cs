@@ -4,7 +4,7 @@ using UnityEngine.Playables;
 public class EnemyLJ_KTimeline : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyLJ_KPrefab;
-    [SerializeField] private Vector2 _spawnPosition;
+    [SerializeField] private Transform _spawnTransform;
 
     private PlayableDirector _playableDirector;
 
@@ -18,7 +18,7 @@ public class EnemyLJ_KTimeline : MonoBehaviour
     }
 
     private void EndTimeline() {
-        Instantiate(_enemyLJ_KPrefab, _spawnPosition, Quaternion.identity);
+        Instantiate(_enemyLJ_KPrefab, _spawnTransform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }

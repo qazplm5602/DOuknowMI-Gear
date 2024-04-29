@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 764508ceb0dd73b469fd21f7a2eec2af, type: 3}
+  m_Name: EnemyBomb
+  m_EditorClassIdentifier: 
+  maxHealth:
+    _baseValue: 20
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
+  attack:
+    _baseValue: 10
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
+  moveSpeed:
+    _baseValue: 7
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
+  attackSpeed:
+    _baseValue: 1
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
+  attackCooldown:
+    _baseValue: 2
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
+  attackRange:
+    _baseValue: 2.5
+    defaultValue: 0
+    modifiers: []
+    isPercent: 0
