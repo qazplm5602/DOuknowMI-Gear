@@ -208,7 +208,7 @@ CircleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2047
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -268,10 +268,9 @@ MonoBehaviour:
   AnimatorCompo: {fileID: 0}
   RigidbodyCompo: {fileID: 0}
   ColliderCompo: {fileID: 0}
-  Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
+  Stat: {fileID: 11400000, guid: da0b88793e4ccca4c8c824ac76cf659d, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  moveSpeed: 2.5
   nearDistance: 4
   _whatIsPlayer:
     serializedVersion: 2
@@ -316,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 0
-  _whiteMat: {fileID: 0}
+  _whiteMat: {fileID: 2100000, guid: 4178510c235d54240b0ab3a60d242c43, type: 2}
   healthFilled: {fileID: 0}
 --- !u!1 &6959223950427154759
 GameObject:
