@@ -65,10 +65,10 @@ public class SkillLens : SkillController
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Vector3 mapSizeHalfExtents = new Vector3(50, 20, 1);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(PlayerManager.instance.playerTrm.position, mapSizeHalfExtents);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Vector3 mapSizeHalfExtents = new Vector3(50, 20, 1);
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireCube(PlayerManager.instance.playerTrm.position, mapSizeHalfExtents);
+    //}
 }
