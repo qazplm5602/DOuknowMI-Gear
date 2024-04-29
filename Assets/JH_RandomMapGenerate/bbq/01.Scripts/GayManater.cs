@@ -1,7 +1,9 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace bbqCode
 {
@@ -14,6 +16,8 @@ namespace bbqCode
         public Player plr;
 
         private BaseStage StartRoom;
+
+        public Image BlackScreen;
         
         public GameObject MobSpawnEffect ;//{ get; private set; }
 
@@ -49,22 +53,39 @@ namespace bbqCode
         public void Ming()
         {
             var startRoom = mapSpawner.current.StartRoom;
-            MoveRoom(startRoom);
+            MoveRoom(startRoom,null,false);
             plr.transform.position = startRoom.SpawnPoint.position;
             //plr.gameObject.SetActive(true);
         }
 
-        public void MoveRoom(BaseStage targetRoom, Door door = null)
+        public void MoveRoom(BaseStage targetRoom, Door door = null, bool transition = true)
         {
-            if (CurrentRoom != null)
-                CurrentRoom.Exit();
-            CurrentRoom = targetRoom;
-            print(targetRoom);
-            CurrentRoom.Enter();
-            Transform doorToGo = door != null ? door.transform : targetRoom.transform;
-            plr.transform.position = doorToGo.position;
-            vcam.transform.position = targetRoom.transform.position + Vector3.back * 10;
-        }
+            //BlackScreen.color
+            if (transition == true)
+            {
+                BlackScreen.DOColor(new Color(0, 0, 0, 1), .5f).OnComplete(() =>
+                {
+
+                    if (CurrentRoom != null)
+                        CurrentRoom.Exit();
+                    CurrentRoom = targetRoom;
+                    CurrentRoom.Enter();
+                    Transform doorToGo = door != null ? door.transform : targetRoom.transform;
+                    plr.transform.position = doorToGo.position;
+                    BlackScreen.DOColor(new Color(0, 0, 0, 0), .5f);
+                });
+            }
+            else
+            {
+                if (CurrentRoom != null)
+                    CurrentRoom.Exit();
+                CurrentRoom = targetRoom;
+                CurrentRoom.Enter();
+                Transform doorToGo = door != null ? door.transform : targetRoom.transform;
+                plr.transform.position = doorToGo.position;
+            }
+           
+        } 
 
         public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
         {
@@ -79,4 +100,4 @@ namespace bbqCode
         }
     }
 
-}
+} 

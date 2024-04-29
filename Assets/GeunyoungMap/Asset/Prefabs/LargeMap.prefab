@@ -3778,7 +3778,8 @@ MonoBehaviour:
   RoomActive: 0
   Enemies:
   - {fileID: 1654401717239364482, guid: 9c0bb8d773041bc49b89fce7ff1726d5, type: 3}
-  Weights: 01000000
+  - {fileID: 6073386756807436646, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
+  Weights: 0100000005000000
   _spawnPoints:
   - {fileID: 6408606393246746803}
   - {fileID: 8372446502641924377}
@@ -3788,6 +3789,7 @@ MonoBehaviour:
   TotalWeight: 0
   MaxWeight: 25
   HighestWeight: 0
+  CurrentEnemies: []
 --- !u!1 &7995048015980371134
 GameObject:
   m_ObjectHideFlags: 0

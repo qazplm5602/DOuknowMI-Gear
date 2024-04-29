@@ -102,6 +102,7 @@ public class NormalStage : BaseStage
         int curr = 0, amountSpawnPoint = _spawnPoints.Length;
         var spawnDelay = new WaitForSeconds(.2f);
         Enemy[] _enemies = GetRandomEnemies();
+        print(_enemies.Length);
         foreach (var _enemy in _enemies)
         {
             Transform spawnPoint = _spawnPoints[curr];
@@ -112,7 +113,7 @@ public class NormalStage : BaseStage
             CurrentEnemies.Add(enemy);
 
             ++curr;
-            if (curr > amountSpawnPoint) curr = 0;
+            if (curr >= amountSpawnPoint) curr = 0;
 
             yield return spawnDelay;
         }
