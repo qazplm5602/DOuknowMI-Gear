@@ -173,4 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeTime: 2
   _force: 1
-  _damage: 1
+  _damage: 3

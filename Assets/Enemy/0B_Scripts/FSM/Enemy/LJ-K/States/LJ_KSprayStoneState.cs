@@ -16,7 +16,7 @@ public class LJ_KSprayStoneState : EnemyState<LJ_KStateEnum>
         _enemyLJ_K = _enemy as EnemyLJ_K;
 
         BoxCollider2D boxCollider = _enemy.ColliderCompo as BoxCollider2D;
-        paddingX = boxCollider.size.x * 1.3f;
+        paddingX = boxCollider.size.x * 2f;
 
         _enemy.StartCoroutine(MoveRoutine());
     }
@@ -51,6 +51,8 @@ public class LJ_KSprayStoneState : EnemyState<LJ_KStateEnum>
             _enemy.SetVelocity(direction * 12f, _enemy.RigidbodyCompo.velocity.y);
             return Mathf.Abs(_enemy.transform.position.x - goalX) < paddingX;
         });
+
+        _enemy.StopImmediately(false);
 
         _enemy.AnimatorCompo.speed = 1f;
         _enemy.AnimatorCompo.SetTrigger(_enemyLJ_K.arriveHash);

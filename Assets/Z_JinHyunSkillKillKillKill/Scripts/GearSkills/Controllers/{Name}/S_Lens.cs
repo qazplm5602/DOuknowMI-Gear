@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SkillLens : SkillController
 {
-    List<Enemy> _enemies = new List<Enemy>();
+    public List<Enemy> _enemies = new List<Enemy>();
     Enemy[] _targetEnemies;
     [SerializeField] private LayerMask _weaponLayerMask;
+    [SerializeField] private LayerMask _enemyLayerMask;
     private void Start()
     {
         StartCoroutine(MoveRoutine(transform));
@@ -17,39 +21,50 @@ public class SkillLens : SkillController
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        print("시작1");
+        print("OnTrigger");
         if (collision.CompareTag("PlayerWeapon"))
         {
-            print("시작");
+            print("collision with Object has PlayerWeapon Tag");
             Vector3 center = PlayerManager.instance.playerTrm.position;
-            Vector3 mapSizeHalfExtents = new Vector3(30, 15, 1);
+            Vector3 mapSizeHalfExtents = new Vector3(50, 20, 1);
 
 
 
+
+            Collider2D[] cols = Physics2D.OverlapBoxAll(center, mapSizeHalfExtents, 0, _enemyLayerMask);
+
+            //map 있어야 쓸수있음
             //NormalStage currentMap = Map.Instance.CurrentStage as NormalStage;
-            
-            //foreach (var enemy in currentMap.CurrentEnemies)
-            //{
-            //    if (enemy.TryGetComponent(out IDamageable target))
-            //    {
-            //        _enemies.Add(enemy);
-            //    }
-            //}
-            //print(_enemies.Count);
-            //_targetEnemies = _enemies.OrderByDescending(x => Vector2.Distance(transform.position, x.transform.position)).ToArray();
-            foreach (Enemy item in _targetEnemies)
+            //_enemies = currentMap.CurrentEnemies;
+            foreach (Collider2D col in cols)
             {
-                print(item.name);
+                if (col.TryGetComponent(out Enemy enemy))
+                {
+                    _enemies.Add(enemy);
+                }
             }
 
-            if (_targetEnemies.Length > 0)
+            print($"Enemy : {_enemies.Count}");
+
+            if (_enemies.Count > 0)
             {
-                for(int i = 0; Mathf.Clamp(i, 0, 3) < _targetEnemies.Length; i++)
+                for (int i = 0; i < 3; i++)
                 {
-                    _targetEnemies[i].GetComponent<IDamageable>().ApplyDamage(Mathf.FloorToInt(_damage), transform);
-                    print($"damage to {_targetEnemies[i].name}");
+                    int idx = Random.Range(0, _enemies.Count);
+                    print($"TargetIdx : {idx} ||| TargetName : {_enemies[idx].name} ||| ");
+                    if (_enemies[idx].TryGetComponent(out IDamageable target))
+                    {
+                        target.ApplyDamage(Mathf.FloorToInt(_damage), transform);s
+                    }
                 }
             }
         }
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector3 mapSizeHalfExtents = new Vector3(50, 20, 1);
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireCube(PlayerManager.instance.playerTrm.position, mapSizeHalfExtents);
+    //}
 }
