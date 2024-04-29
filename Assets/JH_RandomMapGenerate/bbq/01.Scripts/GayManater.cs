@@ -51,7 +51,7 @@ namespace bbqCode
             var startRoom = mapSpawner.current.StartRoom;
             MoveRoom(startRoom);
             plr.transform.position = startRoom.SpawnPoint.position;
-            plr.gameObject.SetActive(true);
+            //plr.gameObject.SetActive(true);
         }
 
         public void MoveRoom(BaseStage targetRoom, Door door = null)

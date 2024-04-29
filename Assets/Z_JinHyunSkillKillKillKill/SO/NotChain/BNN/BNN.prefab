@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -3004310371394667033}
   m_Layer: 9
   m_Name: BNN
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,8 +260,13 @@ MonoBehaviour:
   castType: 2
   _moveSpeed: 12
   _maxRange: 10
+  _destroyByTime: 0
+  _destroyTime: 0
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
   _castRadius: 0
   isDamageCasting: 0
+  _willModify: 
+  _debuffTime: 0
+  _debuffValue: 0
