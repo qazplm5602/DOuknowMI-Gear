@@ -21,10 +21,10 @@ public class SkillLens : SkillController
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        print("시작1");
+        print("OnTrigger");
         if (collision.CompareTag("PlayerWeapon"))
         {
-            print("시작");
+            print("collision with Object has PlayerWeapon Tag");
             Vector3 center = PlayerManager.instance.playerTrm.position;
             Vector3 mapSizeHalfExtents = new Vector3(50, 20, 1);
 
@@ -36,7 +36,6 @@ public class SkillLens : SkillController
             //map 있어야 쓸수있음
             //NormalStage currentMap = Map.Instance.CurrentStage as NormalStage;
             //_enemies = currentMap.CurrentEnemies;
-            print("overlap 끝");
             foreach (Collider2D col in cols)
             {
                 if (col.TryGetComponent(out Enemy enemy))
@@ -45,20 +44,17 @@ public class SkillLens : SkillController
                 }
             }
 
-            print(_enemies.Count);
+            print($"Enemy : {_enemies.Count}");
 
             if (_enemies.Count > 0)
             {
                 for (int i = 0; i < 3; i++)
                 {
                     int idx = Random.Range(0, _enemies.Count);
-                    print(idx);
-                    print(_enemies[idx].name);
-                    print(_enemies[idx].GetComponent<IDamageable>());
-
+                    print($"TargetIdx : {idx} ||| TargetName : {_enemies[idx].name} ||| ");
                     if (_enemies[idx].TryGetComponent(out IDamageable target))
                     {
-                        target.ApplyDamage(Mathf.FloorToInt(_damage), transform);
+                        target.ApplyDamage(Mathf.FloorToInt(_damage), transform);s
                     }
                 }
             }
