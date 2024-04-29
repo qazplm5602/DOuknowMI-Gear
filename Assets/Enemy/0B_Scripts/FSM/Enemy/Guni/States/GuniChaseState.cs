@@ -29,6 +29,21 @@ public class GuniChaseState : EnemyState<CommonEnemyStateEnum>
             _enemy.FlipController(_playerTrm.position.x - _enemy.transform.position.x);
             _enemy.StopImmediately(false);
         }
+        
+        if(_enemy.IsOnPlatform()) {
+            if(Mathf.Abs(direction.y) >= 2f && Mathf.Abs(direction.x) < 3f) {
+                _enemy.downJumpTimer += Time.deltaTime;
+
+                if(_enemy.downJumpTimer >= 2f) {
+                    _enemy.DownJump();
+                    _enemy.downJumpTimer = 0f;
+                }
+            }
+            else {
+                _enemy.downJumpTimer -= Time.deltaTime / 2f;
+            }
+        }
+        else _enemy.downJumpTimer = 0f;
     }
 
     private void Move() {

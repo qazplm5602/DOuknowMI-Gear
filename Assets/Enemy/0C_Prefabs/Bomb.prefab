@@ -280,6 +280,12 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: 65adc5bd4f4000543a31d17471d13bad, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
+  _downJumpable: 1
+  _downJumpDistance: 1.7
+  _whatIsPlatform:
+    serializedVersion: 2
+    m_Bits: 2048
+  downJumpTimer: 0
   nearDistance: 2.5
   _whatIsPlayer:
     serializedVersion: 2

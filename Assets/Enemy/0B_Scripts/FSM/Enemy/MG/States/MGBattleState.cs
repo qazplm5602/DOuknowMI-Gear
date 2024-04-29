@@ -38,5 +38,20 @@ public class MGBattleState : EnemyState<MGStateEnum>
             _enemy.AnimatorCompo.SetFloat(_enemyMG.battleModeHash, 1);
             _enemy.SetVelocity(_enemy.FacingDirection * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
         }
+        
+        if(_enemy.IsOnPlatform()) {
+            if(Mathf.Abs(direction.y) >= 2f && Mathf.Abs(direction.x) < 3f) {
+                _enemy.downJumpTimer += Time.deltaTime;
+
+                if(_enemy.downJumpTimer >= 2f) {
+                    _enemy.DownJump();
+                    _enemy.downJumpTimer = 0f;
+                }
+            }
+            else {
+                _enemy.downJumpTimer -= Time.deltaTime / 2f;
+            }
+        }
+        else _enemy.downJumpTimer = 0f;
     }
 }

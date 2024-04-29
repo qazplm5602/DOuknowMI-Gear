@@ -13,7 +13,7 @@ namespace FSM {
         public bool _downJumpable = true;
         [SerializeField] private float _downJumpDistance;
         [SerializeField] private LayerMask _whatIsPlatform;
-        public float downJumpTimer = 0f;
+        [HideInInspector] public float downJumpTimer = 0f;
 
         [Header("Check Settings")]
         public float nearDistance;
