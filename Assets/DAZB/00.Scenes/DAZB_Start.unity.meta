@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/GeunyoungMap/Asset/Prefabs/PrayForYoMama.prefab.meta
+guid: ed5db513e5e43674eb187fabff4b01ae
+PrefabImporter:
+========
 guid: f491efe35aecf0c499022450e6ac2373
 DefaultImporter:
+>>>>>>>> main:Assets/DAZB/00.Scenes/DAZB_Start.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

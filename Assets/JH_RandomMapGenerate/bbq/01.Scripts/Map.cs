@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ROOMTYPE { Start, Normal, Boss ,Pray }
+public enum ROOMTYPE { Start, Normal, Boss, Statue, Elite }
 public enum ROOMSIZE { NODATA = -1, Small, Medium, Large }
 public class Map : CockSingleton<Map>
 {
@@ -14,6 +14,7 @@ public class Map : CockSingleton<Map>
     public BaseStage[] SmallRoom;
     public BaseStage[] MediumRoom;
     public BaseStage[] LargeRoom;
+    public BaseStage[] EliteRoom;
 
     private Dictionary<ROOMSIZE, BaseStage[]> Rooms = new Dictionary<ROOMSIZE, BaseStage[]>();
 
@@ -27,18 +28,20 @@ public class Map : CockSingleton<Map>
     public BaseStage StageLoad(ROOMTYPE type, ROOMSIZE size = ROOMSIZE.Large)
     {
         //returns random room u want
-        if (type == ROOMTYPE.Start)
-            return StartRoom;
-        if (type == ROOMTYPE.Normal)
+
+        switch (type)
         {
-            return Rooms[size][Random.Range(0, Rooms[size].Length)];
+            case ROOMTYPE.Start:
+                return StartRoom;
+            case ROOMTYPE.Normal:
+                return Rooms[size][Random.Range(0, Rooms[size].Length)];
+            case ROOMTYPE.Boss:
+                return BossRoom[Random.Range(0, BossRoom.Length)];
+            case ROOMTYPE.Statue:
+                return PrayRoom;
+            case ROOMTYPE.Elite:
+                return EliteRoom[Random.Range(0, EliteRoom.Length)];
         }
-        if (type == ROOMTYPE.Boss)
-        {
-            return BossRoom[Random.Range(0, BossRoom.Length)];
-        }
-        if (type == ROOMTYPE.Pray)
-            return PrayRoom;
         throw new System.NotImplementedException();
     }
 }

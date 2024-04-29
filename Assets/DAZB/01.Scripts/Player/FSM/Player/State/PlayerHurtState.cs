@@ -25,7 +25,7 @@ public class PlayerHurtState : PlayerState
 
     public override void Exit()
     {
-        player.isInvincibility = false;
+        player.StartDelayCallback(1.5f, () => player.isInvincibility = false);
         base.Exit();
     }
 }
