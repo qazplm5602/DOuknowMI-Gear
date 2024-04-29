@@ -273,3 +273,6 @@ MonoBehaviour:
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
