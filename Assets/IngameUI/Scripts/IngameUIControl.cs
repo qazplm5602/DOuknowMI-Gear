@@ -15,6 +15,7 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
     [Header("Scripts")]
     [SerializeField] GearChangeUI _gearChangeUI;
     [SerializeField] GearPauseUI _gearPauseUI;
+    [SerializeField] StatueUI _statueUI;
     public GearChangeUI gearChangeUI => _gearChangeUI;
 
     TextMeshProUGUI locationT;
@@ -116,5 +117,13 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
         });
 
         coinCoroutine = null;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            _statueUI.Show();
+        } else if (Input.GetKeyDown(KeyCode.O)) {
+            _statueUI.Hide();
+        }
     }
 }
