@@ -72,7 +72,11 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
 
-            if (_pierceCount <= 0) yield break;
+            if (_pierceCount <= 0)
+            {
+                Destroy(gameObject);
+                yield break;
+            }
 
             yield return null;
         }
