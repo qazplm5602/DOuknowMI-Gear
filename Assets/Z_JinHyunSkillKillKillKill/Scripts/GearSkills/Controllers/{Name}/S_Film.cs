@@ -6,7 +6,6 @@ public class SkillFilm  : SkillController
 {
     private void Start()
     {
-        print("sohwan");
         StartCoroutine(MoveRoutine(transform));
     }
 
