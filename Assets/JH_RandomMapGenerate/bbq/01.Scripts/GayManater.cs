@@ -57,6 +57,11 @@ namespace bbqCode
             plr.transform.position = startRoom.SpawnPoint.position;
             //plr.gameObject.SetActive(true);
         }
+        [ContextMenu("TP TO ELITE ROOM")]
+        public void TPELITEROOM()
+        {
+            MoveRoom(FindAnyObjectByType<EliteMobStage>(),null,true);
+        }
 
         public void MoveRoom(BaseStage targetRoom, Door door = null, bool transition = true)
         {

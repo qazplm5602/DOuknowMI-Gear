@@ -3769,7 +3769,8 @@ MonoBehaviour:
   Enemies:
   - {fileID: 6073386756807436646, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
   - {fileID: 1654401717239364482, guid: 9c0bb8d773041bc49b89fce7ff1726d5, type: 3}
-  Weights: 0a0000000a000000
+  Weights: 0a00000019000000
+  WeightsFromPower: 0700000009000000
   _spawnPoints:
   - {fileID: 45299111667588753}
   - {fileID: 1195009568857117101}

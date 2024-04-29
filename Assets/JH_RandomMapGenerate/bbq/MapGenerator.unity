@@ -373,7 +373,7 @@ MonoBehaviour:
   StartRoom: {fileID: 5353938931063013475, guid: d41c11fcdd6313944b5bdd86d2c74fae, type: 3}
   BossRoom:
   - {fileID: 4143770235450300818, guid: 8f2cb6d18d14bd1408aa9bf3ad1cb9c5, type: 3}
-  PrayRoom: {fileID: 878025332417020420, guid: 269f85bc666c35e4887033e3df13896b, type: 3}
+  PrayRoom: {fileID: 878025332417020420, guid: a8377d28433699d43bbd93c1314de0c3, type: 3}
   SmallRoom:
   - {fileID: 7242360341026066563, guid: f6ad1c74306434c4e8d764f00a791524, type: 3}
   - {fileID: 7242360341026066563, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}
@@ -750,7 +750,7 @@ Transform:
   m_GameObject: {fileID: 858116691}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.054, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1596,6 +1596,7 @@ MonoBehaviour:
   interactionList: []
   npc: {fileID: 0}
   isEnd: 1
+  checkInteractiveObejct: 0
 --- !u!4 &1602170370
 Transform:
   m_ObjectHideFlags: 0
@@ -2147,6 +2148,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   groundCheckRadius: 1.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2112
 --- !u!114 &2005022607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2401,6 +2405,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba7a2b3af78461489e1349f3985a967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  checkSize: {x: 3.57, y: 2.31, z: 0.22}
+  offset: {x: 0, y: 0, z: 0}
+  excuseMeUiPos: {fileID: 0}
+  interactionName: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
