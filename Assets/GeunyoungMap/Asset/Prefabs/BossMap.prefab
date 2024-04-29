@@ -1338,9 +1338,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3e15d3487335f1419bbfd62ba07dc13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnClearChanged:
-    m_PersistentCalls:
-      m_Calls: []
   door:
   - {fileID: 0}
   - {fileID: 0}

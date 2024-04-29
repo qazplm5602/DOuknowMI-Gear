@@ -17,9 +17,12 @@ public class NormalStage : BaseStage
     public int MaxWeight;
     public int HighestWeight = 0;
 
+    public List<Enemy> CurrentEnemies;
+
     public override void Init()
     {
         base.Init();
+        CurrentEnemies = new();
         for (int i = 0; i < Weights.Length; i++)
         {
             if (Weights[i] > HighestWeight)
@@ -33,6 +36,16 @@ public class NormalStage : BaseStage
     public override void Enter()
     {
         base.Enter();
+        SpawnEnemy();
+    }
+
+    public override void NextWave()
+    {
+        base.NextWave();
+        if (CurrentWave > MaxWave)
+        {
+            return;
+        }
         SpawnEnemy();
     }
 
@@ -93,12 +106,24 @@ public class NormalStage : BaseStage
         {
             Transform spawnPoint = _spawnPoints[curr];
 
-            Enemy enemy = Instantiate(_enemy, Arena.transform);
+            Enemy enemy = Instantiate(_enemy, transform);
             enemy.transform.position = spawnPoint.position;
+
+            CurrentEnemies.Add(enemy);
 
             ++curr;
             if (curr > amountSpawnPoint) curr = 0;
+
             yield return spawnDelay;
+        }
+    }
+
+    private void OnTransformChildrenChanged()
+    {
+        var enemy = GetComponentInChildren<Enemy>();
+        if (enemy == null)
+        {
+            NextWave();
         }
     }
 }
