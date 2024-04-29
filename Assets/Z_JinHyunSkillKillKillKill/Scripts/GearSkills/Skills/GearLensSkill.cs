@@ -9,7 +9,7 @@ public class GearLensSkill : GearCogEvent
         print(_player);
         if(_lensPrefab != null)
         {
-            print("이미있습니다. 그런고로이미있는녀석을삭제합니다람쥐");
+            print("이미있어서삭제");
             Destroy(_lensPrefab);
         }
         Vector3 playerPos = _player.transform.position;
