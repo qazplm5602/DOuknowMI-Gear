@@ -256,12 +256,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc3e30d6c52d866429f8aad97516cc1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 6
+  _damage: 1
   castType: 2
   _moveSpeed: 12
   _maxRange: 10
   _destroyByTime: 0
   _destroyTime: 0
+  _pierceCount: 0
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
