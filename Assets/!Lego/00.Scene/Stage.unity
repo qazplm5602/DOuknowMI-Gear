@@ -672,6 +672,18 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1513629315}
+    - target: {fileID: 2575861499705724382, guid: 19303002e3bf57f4aa705b556d6f83cc, type: 3}
+      propertyPath: spawnGears.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
+    - target: {fileID: 2575861499705724382, guid: 19303002e3bf57f4aa705b556d6f83cc, type: 3}
+      propertyPath: spawnGears.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+    - target: {fileID: 2575861499705724382, guid: 19303002e3bf57f4aa705b556d6f83cc, type: 3}
+      propertyPath: spawnGears.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 69d071d13af06fb4b80a50ea1eb295c8, type: 2}
     - target: {fileID: 5570375966899994597, guid: 19303002e3bf57f4aa705b556d6f83cc, type: 3}
       propertyPath: m_Name
       value: GearManager + Module + Canvas
