@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearCameraSkill : GearCogEvent
+public class ChainCameraSkill : GearCogEvent
 {
     public override void Use()
     {
@@ -11,7 +11,6 @@ public class GearCameraSkill : GearCogEvent
         mousePos.z = 0;
         Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
 
-        Instantiate(_prefab, playerPos, look);
-
+        Instantiate(_prefab, playerPos - new Vector3(0, 0.5f, 0), Quaternion.identity);
     }
 }
