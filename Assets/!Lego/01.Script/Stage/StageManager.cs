@@ -6,22 +6,26 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
     public static StageManager Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    public List<Enemy> _enemies = new();
 
+    public List<Enemy> _enemies = new();
     [SerializeField] private TextMeshProUGUI _clearText;
     [SerializeField] private TextMeshProUGUI _gameOverText;
 
     [SerializeField] private string _clearSceneName;
     [SerializeField] private string _gameOverSceneName;
+    public Image _screenshotImage;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
 
     bool _isClear = false;  
     bool _isGameOver = false;  
