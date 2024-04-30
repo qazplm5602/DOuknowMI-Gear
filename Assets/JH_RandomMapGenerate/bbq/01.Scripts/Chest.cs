@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour, IInteraction
+public class Chest : InteractiveObject
 {
-    public void Interaction()
+    public override void Interaction()
     {
-        print("MIGN");
+        print("KINGOFTHEHELL");
     }
 }

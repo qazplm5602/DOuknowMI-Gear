@@ -2,26 +2,26 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using 자지 = System.Boolean;
 
 public abstract class BaseStage : MonoBehaviour
 {
-    public Action OnClearChanged;
+    public event Action<자지> OnClearChanged;
 
     [Header("UP DOWN RIGHT LEFT")]
-    public Door[] door;
+    [HideInInspector] public Door[] door;
     public ROOMTYPE type;
 
     public int StageNum;
 
-    public LinkedStage StageLinkedData;
+    [HideInInspector] public LinkedStage StageLinkedData;
 
-    public GameObject Arena; //적의 스폰 Parent
+    [HideInInspector] public GameObject Arena; //적의 스폰 Parent
 
     public int MaxWave = 3;
-    public int CurrentWave = 0;
+    [HideInInspector] public int CurrentWave = 0;
 
-    private bool cleared = false;
+    private bool cleared = true;
 
     //public bool Cleared = false;
     public bool Cleared
@@ -33,7 +33,7 @@ public abstract class BaseStage : MonoBehaviour
         set
         {
             cleared = value;
-            OnClearChanged?.Invoke();
+            OnClearChanged?.Invoke(cleared);
         }
     }
     public bool RoomActive = false;

@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912217b41a19b1d498edb07c75f0a87e
-      internalID: -2133438930
+      spriteID: b55196739037cbe4d8b47890d387b99f
+      internalID: 2081078218
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a319550eddad3254180a9243eac5ffaf
-      internalID: 1654880084
+      spriteID: 3da4a9158966c3f4fa84442c0db2ac69
+      internalID: 165102988
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1349d70aaf7acf4a8dd21b81cfdaa43
-      internalID: 1351653886
+      spriteID: e36d2c49d223a56409331d91d35e43cc
+      internalID: -1148446290
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c674d5ac7d71674288739176058673f
-      internalID: -1942047937
+      spriteID: e11e1baba29d3174e8e88012b2375937
+      internalID: -250356575
       vertices: []
       indices: 
       edges: []
@@ -208,8 +208,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba4ac00d446b753409092d8b4f5e722b
-      internalID: 965451015
+      spriteID: 3d9daa300d601494fb07b3a70e221b75
+      internalID: -51124652
       vertices: []
       indices: 
       edges: []
@@ -229,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbe6f0f409eb89941b635d5534e09427
-      internalID: 897448119
+      spriteID: 77c4184a2314bb34596680dd523a9122
+      internalID: 1654915477
       vertices: []
       indices: 
       edges: []
@@ -250,8 +250,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d155e4aec635ae549a1c5c44b57d7f01
-      internalID: 494321155
+      spriteID: 640187005f91f5f4b9dd8a7736858cc8
+      internalID: 999115191
       vertices: []
       indices: 
       edges: []
@@ -271,8 +271,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82822445f88a34147a861f2ff4d8896a
-      internalID: -1118518141
+      spriteID: 3cb06d4a75483f44db190cf75fe3508d
+      internalID: 1903222044
       vertices: []
       indices: 
       edges: []
@@ -292,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 069efbeb30965ba49bdd16982cffcf7c
-      internalID: 17055844
+      spriteID: 97873411fb6cc3146a43a7d74ba41bc1
+      internalID: 1850894800
       vertices: []
       indices: 
       edges: []
@@ -313,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa77efb6dd9d79c4c9184e2e4345bcb3
-      internalID: 499196358
+      spriteID: e03828076fd43014d8188f56405948ef
+      internalID: -1357774867
       vertices: []
       indices: 
       edges: []
@@ -330,16 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      teleport inactivated_0: -2133438930
-      teleport inactivated_1: 1654880084
-      teleport inactivated_2: 1351653886
-      teleport inactivated_3: -1942047937
-      teleport inactivated_4: 965451015
-      teleport inactivated_5: 897448119
-      teleport inactivated_6: 494321155
-      teleport inactivated_7: -1118518141
-      teleport inactivated_8: 17055844
-      teleport inactivated_9: 499196358
+      teleport inactivated_0: 2081078218
+      teleport inactivated_1: 165102988
+      teleport inactivated_2: -1148446290
+      teleport inactivated_3: -250356575
+      teleport inactivated_4: -51124652
+      teleport inactivated_5: 1654915477
+      teleport inactivated_6: 999115191
+      teleport inactivated_7: 1903222044
+      teleport inactivated_8: 1850894800
+      teleport inactivated_9: -1357774867
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
