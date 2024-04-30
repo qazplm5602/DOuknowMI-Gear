@@ -92,9 +92,12 @@ namespace FSM {
         }
 
         private IEnumerator DownJumpRoutine() {
+            SetVelocity(RigidbodyCompo.velocity.x, 5f);
             ColliderCompo.forceSendLayers = ~_whatIsPlatform;
+            ColliderCompo.forceReceiveLayers = ~_whatIsPlatform;
             yield return new WaitForSeconds(0.65f);
             ColliderCompo.forceSendLayers = -1;
+            ColliderCompo.forceReceiveLayers = -1;
 
         }
 
@@ -119,7 +122,7 @@ namespace FSM {
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, Vector2.down * _downJumpDistance);
+            Gizmos.DrawLine(transform.position, transform.position + Vector3.down * _downJumpDistance);
         }
     }
 }

@@ -186,7 +186,7 @@ public class GearEnforceUI : MonoBehaviour
     void StartEnforce() {
         // 결제 실패
         // if (!_playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level])) return;
-        if (!_playerMoney.CheckPart((uint)_paymentCoin[currentGear.stat.level])) return;
+        if (!_playerMoney.CheckPart(_paymentCoin[currentGear.stat.level])) return;
         
         if (currentGear.stat.level == 4) {
             // 똑같은 기어 있는지 확인 할꺼
@@ -197,7 +197,7 @@ public class GearEnforceUI : MonoBehaviour
             IngameUIControl.Instance.gearChangeUI.RemoveInventory(idx);
         }
 
-        _playerMoney.TryPayPart((uint)_paymentCoin[currentGear.stat.level]);
+        _playerMoney.TryPayPart(_paymentCoin[currentGear.stat.level]);
         EnorceAnim();
     }
 }

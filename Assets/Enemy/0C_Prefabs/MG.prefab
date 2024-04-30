@@ -132,7 +132,7 @@ MonoBehaviour:
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
   _downJumpable: 1
-  _downJumpDistance: 3.64
+  _downJumpDistance: 2.25
   _whatIsPlatform:
     serializedVersion: 2
     m_Bits: 2048
