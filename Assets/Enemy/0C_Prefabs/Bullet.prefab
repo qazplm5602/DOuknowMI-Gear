@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5451509631364258889}
   - component: {fileID: 597182920824996605}
   - component: {fileID: 3807977366499881065}
+  - component: {fileID: -6685161558860606058}
   - component: {fileID: 2548019019231892986}
   m_Layer: 10
   m_Name: Bullet
@@ -105,7 +106,7 @@ CapsuleCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 247
+    m_Bits: 4343
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -121,6 +122,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 1}
   m_Direction: 0
+--- !u!50 &-6685161558860606058
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5107836092431285546}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &2548019019231892986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,4 +165,9 @@ MonoBehaviour:
   _damage: 0
   _whatIsEnemy:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 8
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4160
+  _impactPrefab: {fileID: 4107845016683362029, guid: 42fcb79f17bc2164cbd88ffd8894045f, type: 3}
+  _wallPrefab: {fileID: 5382312913734474567, guid: f145af891dcf1f84a9d96638ed517002, type: 3}

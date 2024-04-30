@@ -52,6 +52,6 @@ public class MGBattleState : EnemyState<MGStateEnum>
                 _enemy.downJumpTimer -= Time.deltaTime / 2f;
             }
         }
-        else _enemy.downJumpTimer = 0f;
+        else _enemy.downJumpTimer -= Time.deltaTime / 2f;
     }
 }

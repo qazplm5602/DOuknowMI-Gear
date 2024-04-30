@@ -4,6 +4,11 @@ public class EnemyProjectile : PoolableMono
 {
     [SerializeField] protected int _damage;
     [SerializeField] protected LayerMask _whatIsEnemy;
+    [SerializeField] protected LayerMask _whatIsGround;
+
+    [Header("Effect Prefabs")]
+    [SerializeField] private GameObject _impactPrefab;
+    [SerializeField] private GameObject _wallPrefab;
 
     private float _lifeTime;
     private float _speed;
@@ -44,9 +49,15 @@ public class EnemyProjectile : PoolableMono
         if(other.transform.TryGetComponent(out IDamageable health)) {
             health.ApplyDamage(_damage, transform);
         }
+
         int otherLayer = 1 << other.gameObject.layer;
         if((otherLayer & _whatIsEnemy.value) > 0) {
             gameObject.SetActive(false);
+            Destroy(Instantiate(_impactPrefab, transform.position, Quaternion.identity), 1f);
+        }
+        else if((otherLayer & _whatIsGround.value) > 0) {
+            gameObject.SetActive(false);
+            Destroy(Instantiate(_wallPrefab, transform.position, Quaternion.identity), 1f);
         }
     }
 

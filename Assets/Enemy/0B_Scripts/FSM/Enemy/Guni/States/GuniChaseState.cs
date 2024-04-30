@@ -37,7 +37,6 @@ public class GuniChaseState : EnemyState<CommonEnemyStateEnum>
         if(_enemy.IsOnPlatform()) {
             if(Mathf.Abs(direction.y) >= 2f && Mathf.Abs(direction.x) < 3f) {
                 _enemy.downJumpTimer += Time.deltaTime;
-                Debug.Log(_enemy.downJumpTimer);
 
                 if(_enemy.downJumpTimer >= 2f) {
                     _enemy.DownJump();
