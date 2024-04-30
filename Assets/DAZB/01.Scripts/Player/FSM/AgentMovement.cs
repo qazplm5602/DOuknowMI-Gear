@@ -7,6 +7,7 @@ public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
     [SerializeField] private float groundCheckRadius;
+    [SerializeField] private LayerMask groundLayer;
     private Player agent;
 
     private Vector2 velocity;
@@ -80,7 +81,7 @@ public class AgentMovement : MonoBehaviour
 
 
     private bool IsGround() {
-        if (Physics2D.Raycast(transform.position, Vector2.down, groundCheckRadius, LayerMask.GetMask("Ground"))) {
+        if (Physics2D.Raycast(transform.position, Vector2.down, groundCheckRadius, groundLayer)) {
             return true;
         }
         else {

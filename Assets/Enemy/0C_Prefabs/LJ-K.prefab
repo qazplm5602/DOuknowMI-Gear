@@ -179,7 +179,7 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 2551
   m_ForceReceiveLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -252,7 +252,6 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  moveSpeed: 4
   nearDistance: 6
   _whatIsPlayer:
     serializedVersion: 2
@@ -272,17 +271,17 @@ MonoBehaviour:
   currentAttackOffset: {x: 0, y: 0}
   combatAttackDistance: 7.5
   rangeAttackDistance: 12
-  chopDamage: 5
+  chopDamage: 10
   chopRange: {x: 7, y: 7}
   chopOffset: {x: 4.5, y: 0}
   chopStonePrefab: {fileID: 4062814298076577425, guid: 9f5a691142ff3094a8f5f364706d2209, type: 3}
   stoneSpawnPosTrm: {fileID: 4697035221138629022}
-  doubleAttackDamage: 5
+  doubleAttackDamage: 10
   doubleAttack1Range: {x: 14, y: 7.3}
   doubleAttack1Offset: {x: 7, y: 0}
   doubleAttack2Range: {x: 9.6, y: 3.65}
   doubleAttack2Offset: {x: 4.8, y: -1.825}
-  tripleAttackDamage: 0
+  tripleAttackDamage: 10
   sprayStonePrefab: {fileID: 4062814298076577425, guid: 1b03feba9b35e7a4393614d7d0ecfd7a, type: 3}
   stoneColumnPrefab: {fileID: 3500622615105846852, guid: 7a7eaa03b2aa83e4396d1ee6bd73c0ae, type: 3}
 --- !u!114 &7944402148712977633
@@ -313,7 +312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentHealth: 0
-  _whiteMat: {fileID: 0}
+  _whiteMat: {fileID: 2100000, guid: 4178510c235d54240b0ab3a60d242c43, type: 2}
   healthFilled: {fileID: 0}
 --- !u!1 &4938662333478307976
 GameObject:

@@ -88,6 +88,10 @@ public class EnemyLJ_K : Enemy
 
     protected override void OnDrawGizmos() {
         base.OnDrawGizmos();
+        
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, combatAttackDistance);
+        Gizmos.DrawWireSphere(transform.position, rangeAttackDistance);
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube((Vector2)transform.position + chopOffset * FacingDirection, chopRange);

@@ -262,6 +262,7 @@ MonoBehaviour:
   _maxRange: 0
   _destroyByTime: 1
   _destroyTime: 20
+  _pierceCount: 0
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
@@ -270,6 +271,10 @@ MonoBehaviour:
   _willModify: 
   _debuffTime: 0
   _debuffValue: 0
+  _enemies: []
   _weaponLayerMask:
     serializedVersion: 2
     m_Bits: 512
+  _enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128

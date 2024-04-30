@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d50876239cd9c4caa060eb074484d7, type: 3}
   m_Name: ChainCameraGear
   m_EditorClassIdentifier: 
-  combine: []
+  combine:
+  - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
+  - {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
+  - {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+  - {fileID: 11400000, guid: 69d071d13af06fb4b80a50ea1eb295c8, type: 2}
   loadModule: {fileID: 7755477415685776989, guid: e02bbf0e242113847871b67a8f44af2b, type: 3}

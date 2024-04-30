@@ -159,10 +159,9 @@ MonoBehaviour:
   AnimatorCompo: {fileID: 0}
   RigidbodyCompo: {fileID: 0}
   ColliderCompo: {fileID: 0}
-  Stat: {fileID: 11400000, guid: 448896b7a1d8e054e9e669aad83f517f, type: 2}
+  Stat: {fileID: 11400000, guid: ade23f05dddd8a648a3a9e74e59adac6, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  moveSpeed: 0
   nearDistance: 0
   _whatIsPlayer:
     serializedVersion: 2
