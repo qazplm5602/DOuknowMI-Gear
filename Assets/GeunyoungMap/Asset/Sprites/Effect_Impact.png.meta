@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7697bd03bd6010446bf3fa564187b939
+guid: d13965fda14f92540a08e814af24d5e8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 128
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,118 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: teleport inactivated_0
+      name: Effect_Impact_0
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1204
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5fd104ac8334594c8a85c07b968dad8
+      internalID: 1506520601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_1
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 1204
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60db3221e15b6cd43a605e74050ff7c5
+      internalID: 1454387911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_2
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 1204
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 904e511573861ad4db23fb961cb53302
+      internalID: 1516539258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_3
+      rect:
+        serializedVersion: 2
+        x: 1164
+        y: 1204
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 555915a4a703ad2449b633463c15557f
+      internalID: 1384615484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_4
+      rect:
+        serializedVersion: 2
+        x: 1455
+        y: 1204
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce077a6543f6ff4581b1d3a712e01b6
+      internalID: -421954039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 64
-        height: 64
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912217b41a19b1d498edb07c75f0a87e
-      internalID: -2133438930
+      spriteID: abf926c6e45c71e4991ccbf6efdd9dad
+      internalID: -743611153
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_1
+      name: Effect_Impact_6
       rect:
         serializedVersion: 2
-        x: 64
-        y: 128
-        width: 64
-        height: 64
+        x: 291
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a319550eddad3254180a9243eac5ffaf
-      internalID: 1654880084
+      spriteID: 422a30ed1e786f144afad0ec8ff03412
+      internalID: 761452009
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_2
+      name: Effect_Impact_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 64
-        height: 64
+        x: 582
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1349d70aaf7acf4a8dd21b81cfdaa43
-      internalID: 1351653886
+      spriteID: 8b88bfcad571af942bcfeefb0e25ac4d
+      internalID: 1154517431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_3
+      name: Effect_Impact_8
       rect:
         serializedVersion: 2
-        x: 192
-        y: 128
-        width: 64
-        height: 64
+        x: 873
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c674d5ac7d71674288739176058673f
-      internalID: -1942047937
+      spriteID: 8e0017a160d577a45ab4e1c8cf6256a4
+      internalID: -225353781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_4
+      name: Effect_Impact_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
+        x: 1164
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -208,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba4ac00d446b753409092d8b4f5e722b
-      internalID: 965451015
+      spriteID: f2628e55e06491f44915c340b32c6109
+      internalID: 906289346
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_5
+      name: Effect_Impact_10
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
+        x: 1455
+        y: 903
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,62 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dbe6f0f409eb89941b635d5534e09427
-      internalID: 897448119
+      spriteID: 60dad5bccf5da674fb7a35221b9b27d1
+      internalID: 244840704
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_6
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d155e4aec635ae549a1c5c44b57d7f01
-      internalID: 494321155
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: teleport inactivated_7
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82822445f88a34147a861f2ff4d8896a
-      internalID: -1118518141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: teleport inactivated_8
+      name: Effect_Impact_11
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 64
-        height: 64
+        y: 602
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 069efbeb30965ba49bdd16982cffcf7c
-      internalID: 17055844
+      spriteID: dbf9d1bfef598fb47a9d6dd95a88cb5a
+      internalID: -1432361143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: teleport inactivated_9
+      name: Effect_Impact_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
-        width: 64
-        height: 64
+        x: 291
+        y: 602
+        width: 291
+        height: 301
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,8 +376,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa77efb6dd9d79c4c9184e2e4345bcb3
-      internalID: 499196358
+      spriteID: 5e3ba1c5485b39046a0bf977b7f84b84
+      internalID: 1847228256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Impact_13
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 602
+        width: 291
+        height: 301
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffd3199b4f0d7d84f9754ce5b21f0c8a
+      internalID: 287234271
       vertices: []
       indices: 
       edges: []
@@ -330,16 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      teleport inactivated_0: -2133438930
-      teleport inactivated_1: 1654880084
-      teleport inactivated_2: 1351653886
-      teleport inactivated_3: -1942047937
-      teleport inactivated_4: 965451015
-      teleport inactivated_5: 897448119
-      teleport inactivated_6: 494321155
-      teleport inactivated_7: -1118518141
-      teleport inactivated_8: 17055844
-      teleport inactivated_9: 499196358
+      Effect_Impact_0: 1506520601
+      Effect_Impact_1: 1454387911
+      Effect_Impact_10: 244840704
+      Effect_Impact_11: -1432361143
+      Effect_Impact_12: 1847228256
+      Effect_Impact_13: 287234271
+      Effect_Impact_2: 1516539258
+      Effect_Impact_3: 1384615484
+      Effect_Impact_4: -421954039
+      Effect_Impact_5: -743611153
+      Effect_Impact_6: 761452009
+      Effect_Impact_7: 1154517431
+      Effect_Impact_8: -225353781
+      Effect_Impact_9: 906289346
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
