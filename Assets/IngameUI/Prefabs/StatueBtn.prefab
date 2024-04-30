@@ -360,6 +360,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b366bf1fd012624f98d8dd3673eac9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  title: {fileID: 1383169326771147110}
+  desc: {fileID: 3751948416857620395}
+  border: {fileID: 1949416487114722162}
 --- !u!225 &6399535666800505965
 CanvasGroup:
   m_ObjectHideFlags: 0

@@ -1,8 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
+public struct StatueBtnDTO {
+    public string title;
+    public string desc;
+    public Color color;
+    public Action OnSelect;
+}
 
 public class StatueUI : MonoBehaviour
 {
@@ -10,12 +19,17 @@ public class StatueUI : MonoBehaviour
     [SerializeField] RectTransform _button1;
     [SerializeField] RectTransform _button2;
 
+    [SerializeField] TextMeshProUGUI title;
+    [SerializeField] TextMeshProUGUI subTitle;
+    [SerializeField] Image thumbnail;
+
     bool init = false;
 
     CanvasGroup group1;
     CanvasGroup group2;
 
     StatueBtnUI _script1, _script2;
+    Action leftCb, rightCb;
 
     Sequence sequence;
 
@@ -33,13 +47,23 @@ public class StatueUI : MonoBehaviour
         _button2.GetComponent<Button>().onClick.AddListener(() => ClickButton(false));
     }
 
-    public void Show() {
+    public void Show(string _title, string desc, Sprite image, StatueBtnDTO leftBtn, StatueBtnDTO rightBtn) {
         Awake();
         if (sequence != null) {
             sequence.Kill();
             sequence = null;
         }
-        
+
+        title.text = _title;
+        subTitle.text = desc;
+        thumbnail.sprite = image;
+
+        _script1.Init(leftBtn);
+        _script2.Init(rightBtn);
+
+        leftCb = leftBtn.OnSelect;
+        rightCb = rightBtn.OnSelect;
+
         gameObject.SetActive(true);
         _mainGroup.blocksRaycasts = group1.blocksRaycasts = group2.blocksRaycasts = true;
 
@@ -84,14 +108,16 @@ public class StatueUI : MonoBehaviour
         if (left) {
             _script1.enabled = false;
             _button1.DOKill();
-            sequence.Join(_button1.DOAnchorPosX(halfWidth, 0.5f).SetEase(Ease.OutQuad));
+            sequence.Join(_button1.DOAnchorPosX(halfWidth, 0.3f).SetEase(Ease.OutQuad));
         } else {
             _script1.enabled = false;
             _button2.DOKill();
-            sequence.Join(_button2.DOAnchorPosX(-halfWidth, 0.5f).SetEase(Ease.OutQuad));
+            sequence.Join(_button2.DOAnchorPosX(-halfWidth, 0.3f).SetEase(Ease.OutQuad));
         }
 
-        sequence.Join(_mainGroup.DOFade(0, 0.5f).SetEase(Ease.OutQuad));
+        sequence.Join(_mainGroup.DOFade(0, 0.3f).SetEase(Ease.OutQuad));
         sequence.AppendCallback(() => Hide());
+
+        (left ? leftCb : rightCb).Invoke();
     }
 }

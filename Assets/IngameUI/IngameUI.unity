@@ -4996,7 +4996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &923551408
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5074,6 +5074,9 @@ MonoBehaviour:
   _mainGroup: {fileID: 923551412}
   _button1: {fileID: 1304978555}
   _button2: {fileID: 671750755}
+  title: {fileID: 1009175535}
+  subTitle: {fileID: 182203610}
+  thumbnail: {fileID: 251088799}
 --- !u!225 &923551412
 CanvasGroup:
   m_ObjectHideFlags: 0

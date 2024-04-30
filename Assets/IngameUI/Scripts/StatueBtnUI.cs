@@ -1,11 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class StatueBtnUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField] TextMeshProUGUI title;
+    [SerializeField] TextMeshProUGUI desc;
+    [SerializeField] Image border;
+
+    public void Init(StatueBtnDTO data) {
+        title.text = data.title;
+        desc.text = data.desc;
+        border.color = data.color;
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         transform.DOKill();
