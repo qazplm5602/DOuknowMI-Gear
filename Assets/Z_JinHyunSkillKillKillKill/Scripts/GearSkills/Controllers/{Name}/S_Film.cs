@@ -24,7 +24,7 @@ public class SkillFilm  : SkillController
             }
             --_pierceCount;
 
-            target.ApplyDamage(Mathf.FloorToInt(_damage), null);
+            target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
         }
     }
 }
