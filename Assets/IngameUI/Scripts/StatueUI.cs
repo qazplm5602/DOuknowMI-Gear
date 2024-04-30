@@ -15,6 +15,8 @@ public class StatueUI : MonoBehaviour
     CanvasGroup group1;
     CanvasGroup group2;
 
+    StatueBtnUI _script1, _script2;
+
     Sequence sequence;
 
     private void Awake() {
@@ -24,12 +26,19 @@ public class StatueUI : MonoBehaviour
         group1 = _button1.GetComponent<CanvasGroup>();
         group2 = _button2.GetComponent<CanvasGroup>();
 
+        _script1 = _button1.GetComponent<StatueBtnUI>();
+        _script2 = _button2.GetComponent<StatueBtnUI>();
+
         _button1.GetComponent<Button>().onClick.AddListener(() => ClickButton(true));
         _button2.GetComponent<Button>().onClick.AddListener(() => ClickButton(false));
     }
 
     public void Show() {
         Awake();
+        if (sequence != null) {
+            sequence.Kill();
+            sequence = null;
+        }
         
         gameObject.SetActive(true);
         _mainGroup.blocksRaycasts = group1.blocksRaycasts = group2.blocksRaycasts = true;
@@ -47,6 +56,11 @@ public class StatueUI : MonoBehaviour
     }
 
     public void Hide() {
+        if (sequence != null) {
+            sequence.Kill();
+            sequence = null;
+        }
+
         gameObject.SetActive(false);
 
         _mainGroup.alpha = group1.alpha = group2.alpha = 0;
@@ -54,15 +68,30 @@ public class StatueUI : MonoBehaviour
 
         _button1.anchoredPosition = new Vector2(100, 0);
         _button2.anchoredPosition = new Vector2(-100, 0);
+        _button1.localScale = _button2.localScale = new Vector3(1, 1, 1);
+
+        _script1.enabled = true;
+        _script2.enabled = true;
     }
 
     void ClickButton(bool left) {
         _mainGroup.blocksRaycasts = group1.blocksRaycasts = group2.blocksRaycasts = false;
+        
+        float halfWidth = (transform as RectTransform).rect.width / 2;
+
+        sequence = DOTween.Sequence();
 
         if (left) {
-            
+            _script1.enabled = false;
+            _button1.DOKill();
+            sequence.Join(_button1.DOAnchorPosX(halfWidth, 0.5f).SetEase(Ease.OutQuad));
         } else {
-            
+            _script1.enabled = false;
+            _button2.DOKill();
+            sequence.Join(_button2.DOAnchorPosX(-halfWidth, 0.5f).SetEase(Ease.OutQuad));
         }
+
+        sequence.Join(_mainGroup.DOFade(0, 0.5f).SetEase(Ease.OutQuad));
+        sequence.AppendCallback(() => Hide());
     }
 }
