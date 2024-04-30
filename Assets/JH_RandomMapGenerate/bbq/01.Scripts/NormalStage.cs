@@ -40,7 +40,11 @@ public class NormalStage : BaseStage
     public override void Enter()
     {
         base.Enter();
-        SpawnEnemy();
+        if (CurrentWave <= MaxWave)
+        {
+            Cleared = false;
+            SpawnEnemy();
+        }
     }
 
     public override void NextWave()

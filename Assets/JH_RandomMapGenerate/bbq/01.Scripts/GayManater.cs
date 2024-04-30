@@ -66,6 +66,7 @@ namespace bbqCode
         public void MoveRoom(BaseStage targetRoom, Door door = null, bool transition = true)
         {
             //BlackScreen.color
+            transition = false;
             if (transition == true)
             {
                 BlackScreen.DOColor(new Color(0, 0, 0, 1), .5f).OnComplete(() =>

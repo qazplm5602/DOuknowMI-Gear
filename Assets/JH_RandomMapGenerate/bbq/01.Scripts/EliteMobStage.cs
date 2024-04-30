@@ -22,6 +22,9 @@ public class EliteMobStage : BaseStage
     public Enemy[] EliteEnemies;
     //public int TotalWeight = 0;
 
+   
+
+
     public override void Init()
     {
         base.Init();
@@ -33,7 +36,6 @@ public class EliteMobStage : BaseStage
     public override void Enter()
     {
         base.Enter();
-        Cleared = true;
     }
 
     [ContextMenu("Start Elite ASS")]

@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-
+using 자지 = System.Boolean;
 
 public abstract class BaseStage : MonoBehaviour
 {
-    public Action OnClearChanged;
+    public event Action<자지> OnClearChanged;
 
     [Header("UP DOWN RIGHT LEFT")]
     [HideInInspector] public Door[] door;
@@ -21,7 +21,7 @@ public abstract class BaseStage : MonoBehaviour
     public int MaxWave = 3;
     [HideInInspector] public int CurrentWave = 0;
 
-    private bool cleared = false;
+    private bool cleared = true;
 
     //public bool Cleared = false;
     public bool Cleared
@@ -33,7 +33,7 @@ public abstract class BaseStage : MonoBehaviour
         set
         {
             cleared = value;
-            OnClearChanged?.Invoke();
+            OnClearChanged?.Invoke(cleared);
         }
     }
     public bool RoomActive = false;
