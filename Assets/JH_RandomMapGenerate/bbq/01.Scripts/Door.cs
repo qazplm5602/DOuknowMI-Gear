@@ -27,13 +27,16 @@ public class Door : MonoBehaviour
     [SerializeField] private BaseStage nextRoom;
     [SerializeField] private Door nextDoor;
 
-    public void Awake()
-    {
-        
-    }
+    [Space(10)]
+    [Header("애니메이션시발")]
+    [SerializeField] private Animator animator;
 
     private void OnEnable()
     {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
         GameObject stage = gameObject;
         int tries = 0, maxTries = 25;
         while (!stage.CompareTag("Stage"))
@@ -75,6 +78,18 @@ public class Door : MonoBehaviour
             //UnityEngine.Debug.Log(e);
         }
 
+        stageData.OnClearChanged += ACTIVE_PORTAL;
+    }
+
+    private void OnDisable()
+    {
+        stageData.OnClearChanged -= ACTIVE_PORTAL;
+    }
+
+    private void ACTIVE_PORTAL(bool isActive)
+    {
+        print(isActive);
+        animator.SetBool("Activate", isActive);
     }
 
     public void Teleport()

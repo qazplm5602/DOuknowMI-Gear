@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class SkillCamera : SkillController
 {
     [SerializeField] private LayerMask _enemyLayerMask;
-    List<Collider2D> _targets;
+    List<Enemy> _targets;
 
     private void Start()
     {
@@ -28,7 +28,20 @@ public class SkillCamera : SkillController
         string filePath = $"C:/Develop/GitHubDesktop/DOuknowMI-Gear/Screenshots/{fileName}";
         ScreenCapture.CaptureScreenshot($"Screenshots/{fileName}");
 
-        _targets = Physics2D.OverlapBoxAll(transform.position, new Vector2(50, 20), 0, _enemyLayerMask).ToList();
+        //(Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
+        try
+        {
+            _targets = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
+        }
+        catch
+        {
+            Debug.LogError("맵없어서그냥FIndObjectsOfType시작 ㅅㄱ개똥같은거 ToList까지한다ㅋㅋ");
+            _targets = FindObjectsOfType<Enemy>().ToList();
+            if (_targets.Count <= 0)
+            {
+                Debug.LogError("적도없음님아ㅈ[ㅔ바ㅣㄹ");
+            }
+        }
         yield return new WaitForSeconds(0.15f);
 
         Texture2D texture = LoadTextureFromFile(filePath);
@@ -37,17 +50,21 @@ public class SkillCamera : SkillController
         StageManager.Instance._screenshotImage.gameObject.SetActive(true);
         StageManager.Instance._screenshotImage.sprite = sprite;
 
-        yield return new WaitForSeconds(_destroyTime - (_destroyTime * 0.3f));
         for (int i = 0; i < 3; ++i)
         {
-            foreach (Collider2D coll in _targets)
+            foreach (Enemy enemy in _targets)
             {
-                if (coll.TryGetComponent(out IDamageable health))
+                if (enemy.TryGetComponent(out IDamageable health))
                 {
                     health.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+                    print("님아");
                 }
             }
         }
+
+        yield return new WaitForSeconds(_destroyTime - (_destroyTime * 0.3f));
+
+        print("set");
 
         StageManager.Instance._screenshotImage.gameObject.SetActive(false);
         StageManager.Instance._screenshotImage.sprite = null;
