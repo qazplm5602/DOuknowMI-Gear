@@ -65,12 +65,12 @@ public class Part : PoolableMono
         }
     }
 
-    private uint GetPartAmount() {
+    private int GetPartAmount() {
         switch (_partSize) {
             case PartSize.Small:
-                return (uint)Random.Range(10, 51);
+                return Random.Range(10, 51);
             case PartSize.Big:
-                return (uint)Random.Range(150, 301);
+                return Random.Range(150, 301);
         }
 
         Debug.LogError("[Part] PartSize not found");

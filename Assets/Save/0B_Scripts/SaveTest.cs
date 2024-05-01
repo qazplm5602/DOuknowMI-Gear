@@ -5,10 +5,10 @@ public class SaveTest : MonoBehaviour
 {
     private void Update() {
         if(Input.GetKeyDown(KeyCode.I)) {
-            SaveManager.Instance.Save(new SaveData("Save1", new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 1, 10)));
+            //SaveManager.Instance.Save(new SaveData("Save1", new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 1, 10)));
         }
         else if(Input.GetKeyDown(KeyCode.U)) {
-            Debug.Log(SaveManager.Instance.Load("Save1")["data"].ToString());
+            Debug.Log(SaveManager.Instance.Load("Save1").ToString());
         }
     }
 }

@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerExperience : MonoBehaviour
 {
-    [SerializeField] private int _level = 1;
-    [SerializeField] private int _currentExp = 0;
+    public int level = 1;
+    public int currentExp = 0;
     [SerializeField] private int _needExp = 1;
 
     [SerializeField] private PlayerStat _playerStat;
@@ -12,15 +12,15 @@ public class PlayerExperience : MonoBehaviour
     public event Action LevelUpEvent;
 
     public void GetExp(int value) {
-        _currentExp += value;
+        currentExp += value;
 
         CheckExp();
     }
 
     private void CheckExp() {
-        if(_currentExp > _needExp) {
-            _currentExp -= _needExp;
-            ++_level;
+        if(currentExp >= _needExp) {
+            currentExp -= _needExp;
+            ++level;
             _playerStat.statPoint += 3;
             
             LevelUpEvent?.Invoke();

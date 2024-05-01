@@ -33,7 +33,7 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   attackCooldown:
-    _baseValue: 1
+    _baseValue: 3
     defaultValue: 0
     modifiers: []
     isPercent: 0

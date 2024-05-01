@@ -2,23 +2,28 @@ using UnityEngine;
 
 public class PlayerPart : MonoBehaviour
 {
-    public uint Part { get; private set; }
+    public int Part { get; private set; }
 
-    public void IncreasePart(uint value) {
-        Part += value;
-        IngameUIControl.Instance.SetCoin((int)Part);
+    public void InitPart(int value) {
+        Part = value;
+        IngameUIControl.Instance.SetCoin(Part);
     }
 
-    public bool TryPayPart(uint value) {
+    public void IncreasePart(int value) {
+        Part += value;
+        IngameUIControl.Instance.SetCoin(Part);
+    }
+
+    public bool TryPayPart(int value) {
         if (!CheckPart(value)) return false;
         
         Part -= value;
-        IngameUIControl.Instance.SetCoin((int)Part);
+        IngameUIControl.Instance.SetCoin(Part);
         return true;
     }
 
     // 결제 ㄱㄴ?
-    public bool CheckPart(uint value) {
+    public bool CheckPart(int value) {
         return Part >= value;
     }
 

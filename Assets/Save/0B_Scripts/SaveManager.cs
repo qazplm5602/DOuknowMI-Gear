@@ -21,6 +21,9 @@ public class SaveInfo {
     public Sprite[] skillSprites;
     public GearSaveInfo[] gearInfos;
     public int level;
+    public int exp;
+    public int statPoint;
+    public PlayerSaveStat stat;
     public int parts;
 
     public SaveInfo() {
@@ -28,7 +31,7 @@ public class SaveInfo {
         parts = -1234;
     }
 
-    public SaveInfo(DateTime date, GearGroupDTO[] gearGroup, int level, int parts) {
+    public SaveInfo(DateTime date, GearGroupDTO[] gearGroup, int level, int exp, int statPoint, PlayerSaveStat stat, int parts) {
         this.date = date;
         skillSprites = new Sprite[gearGroup.Length];
         gearInfos = new GearSaveInfo[gearGroup.Length];
@@ -42,6 +45,9 @@ public class SaveInfo {
         }
 
         this.level = level;
+        this.exp = exp;
+        this.statPoint = statPoint;
+        this.stat = stat;
         this.parts = parts;
     }
 }
@@ -71,6 +77,31 @@ public class GearSaveStat {
             range = (float)range
         };
         return gearStat;
+    }
+}
+
+[Serializable]
+public class PlayerSaveStat {
+    public int atk;
+    public int health;
+    public int defence;
+    public int speed;
+    public int criticalChance;
+
+    public PlayerSaveStat(int atk, int health, int defence, int speed, int critChance) {
+        this.atk = atk;
+        this.health = health;
+        this.defence = defence;
+        this.speed = speed;
+        criticalChance = critChance;
+    }
+
+    public PlayerSaveStat(PlayerStat playerStat) {
+        atk = playerStat.Atk;
+        health = playerStat.Health;
+        defence = playerStat.Defence;
+        speed = playerStat.Speed;
+        criticalChance = playerStat.CriticalChance;
     }
 }
 
