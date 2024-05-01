@@ -6443,17 +6443,17 @@ MonoBehaviour:
   MaxWave: 4
   CurrentWave: 0
   RoomActive: 0
-  Enemies:
-  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
-  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
-  Weights: 0a00000005000000
-  WeightsFromPower: 
   _spawnPoints:
   - {fileID: 6408606393246746803}
   - {fileID: 8372446502641924377}
   - {fileID: 2517163953597304882}
   - {fileID: 1439313395348943333}
   - {fileID: 44676237524599330}
+  Enemies:
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
+  Weights: 0a00000005000000
+  WeightsFromPower: 0300000005000000
   TotalWeight: 0
   MaxWeight: 23
   HighestWeight: 0

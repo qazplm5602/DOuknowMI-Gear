@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
     public DoorType Type;
     
     private BaseStage stageData;
+    private bool _active = false;
 
     public bool IsCooldown = false;
 
@@ -88,8 +89,22 @@ public class Door : MonoBehaviour
 
     private void ACTIVE_PORTAL(bool isActive)
     {
-        print(isActive);
-        animator.SetBool("Activate", isActive);
+        _active = isActive;
+        if (isActive == false)
+        {
+            StartCoroutine(sibal());
+        }
+        else
+        {
+            animator.SetBool("Activate", _active);
+        }
+    }
+
+    private IEnumerator sibal()
+    {
+        yield return new WaitForSeconds(.7f);
+        if (_active == false)
+            animator.SetBool("Activate", _active);
     }
 
     public void Teleport()

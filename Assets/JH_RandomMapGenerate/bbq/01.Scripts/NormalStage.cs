@@ -8,14 +8,14 @@ using Random = UnityEngine.Random;
 
 public class NormalStage : BaseStage
 {
+    [Header("스폰 포인트들인.")]
+    [SerializeField] private Transform[] _spawnPoints;
     [Header("FUCKING ENEMIES WEIGHT")]
     public Enemy[] Enemies;
     [Header("무게, 스폰 확률인. 적배열의 크기와 같아야한다.")]
     public int[] Weights;
     [Header("무게, 방의 총 적들의 크기를 알기 위함 (약한 몹은 가볍고 높은 몹은 높다). 적배열의 크기와 같아야한다.")]
     public int[] WeightsFromPower;
-    [Header("스폰 포인트들인.")]
-    [SerializeField] private Transform[] _spawnPoints;
     [Header("방상태 ㅅㅂ")]
     public int TotalWeight = 0;
     public int MaxWeight;
