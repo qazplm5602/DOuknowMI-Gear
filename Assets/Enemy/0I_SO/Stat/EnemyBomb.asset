@@ -23,7 +23,7 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   moveSpeed:
-    _baseValue: 7
+    _baseValue: 11
     defaultValue: 0
     modifiers: []
     isPercent: 0
@@ -38,7 +38,7 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   attackRange:
-    _baseValue: 2.5
+    _baseValue: 4
     defaultValue: 0
     modifiers: []
     isPercent: 0

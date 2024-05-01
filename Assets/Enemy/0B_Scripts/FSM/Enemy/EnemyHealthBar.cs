@@ -11,6 +11,7 @@ public class EnemyHealthBar : PoolableMono
     }
 
     private void OnDestroy() {
+        if (!GameManager.Instance) return;
         GameManager.Instance.ShowHealthBarEvent -= ShowAndHide;
     }
 
