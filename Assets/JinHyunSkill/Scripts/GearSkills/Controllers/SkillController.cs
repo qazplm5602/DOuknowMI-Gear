@@ -1,7 +1,6 @@
 using FSM;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public abstract class SkillController : MonoBehaviour
@@ -41,19 +40,13 @@ public abstract class SkillController : MonoBehaviour
     private bool _attackTriggerCalled;
 
     #region 스탯을 건드리는 아이들
+    [Header("Modify Stat")]
     [SerializeField]
     protected List<StatType> _willModify = new();
     [SerializeField]
     protected float _debuffTime;
     [Tooltip("0.5를 넣으면 현재 스탯의 50%만큼 감소시킴. *-1 된 값으로 적용")][SerializeField]
     protected float _debuffValue = 0f;
-    #endregion
-
-    #region 스탯 건드는 코드
-    //foreach (StatType t in _willModify)
-    //{
-    //        ModifyEnemyStat(_debuffValue, t, _debuffTime);
-    //}
     #endregion
 
 protected virtual IEnumerator MoveRoutine(Transform startTrm)
