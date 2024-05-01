@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class Smoke : PoolableMono
 {
-    [SerializeField] private Transform pos;
     private Transform playerTrm;
     private bool endCall = false;
     private Animator anim;
     private readonly int smokeHash = Animator.StringToHash("Smoke");
+
+    private void Awake() {
+        anim = GetComponent<Animator>();
+    }
 
     public override void ResetItem()
     {
@@ -15,8 +18,7 @@ public class Smoke : PoolableMono
             PoolManager.Instance.Push(this);
             return;
         } */
-        anim = GetComponent<Animator>();
-        //anim.speed = 2;
+        anim.speed = 2;
         playerTrm = PlayerManager.instance.playerTrm;
         StartCoroutine(SmokeRoutine());
     }
@@ -26,7 +28,7 @@ public class Smoke : PoolableMono
     }
 
     private IEnumerator SmokeRoutine() {
-        transform.position = playerTrm.position;
+        transform.position = playerTrm.position + new Vector3(0, -0.7f, 0);
         transform.eulerAngles = playerTrm.eulerAngles;
         yield return new WaitUntil(() => endCall == true);
         endCall = false;
