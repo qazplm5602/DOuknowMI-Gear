@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChainMHSkill : GearCogEvent
@@ -11,7 +8,6 @@ public class ChainMHSkill : GearCogEvent
     {
         _shPrefab = GearManager.Instance.ScriptModule.GetSkillScript("SHGear")._prefab;
         _mhPrefab = GearManager.Instance.ScriptModule.GetSkillScript("MHGear")._prefab;
-        print("ChainMH");
 
         Vector3 playerPos = _player.transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

@@ -1,5 +1,4 @@
 using FSM;
-using System.Collections;
 using UnityEngine;
 
 public class SkillFilm  : SkillController
@@ -13,8 +12,6 @@ public class SkillFilm  : SkillController
     {
         if (collision.TryGetComponent(out IDamageable target))
         {
-            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
-            //PlayerManager.instance.transform 넣으면 되는거임?
             EntityStat modifyingStat = collision.GetComponent<Enemy>().Stat;
 
             if (modifyingStat == null) return;

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkillWheel : SkillController
@@ -32,7 +31,6 @@ public class SkillWheel : SkillController
     {
         if (collision.CompareTag("Ground"))
         {
-            print("아이");
             _rigid2d.gravityScale = 0;
             _rigid2d.velocity = Vector2.zero;
             StartCoroutine(MoveRoutine(transform));
@@ -43,7 +41,6 @@ public class SkillWheel : SkillController
     protected override IEnumerator MoveRoutine(Transform startTrm)
     {
         _rigid2d.AddForce(_force * directionSign, ForceMode2D.Impulse);
-
         yield return base.MoveRoutine(startTrm);
     }
 }
