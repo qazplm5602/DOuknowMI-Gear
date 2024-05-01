@@ -1,0 +1,35 @@
+using FSM;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class SkillLens : SkillController
+{
+    public List<Enemy> _enemies = new List<Enemy>();
+    [SerializeField] private LayerMask _weaponLayerMask;
+    [SerializeField] private LayerMask _enemyLayerMask;
+    private void Start()
+    {
+        StartCoroutine(MoveRoutine(transform));
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PlayerWeapon"))
+        {
+            _enemies = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
+
+            if (_enemies.Count > 0)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    int idx = Random.Range(0, _enemies.Count);
+                    if (_enemies[idx].TryGetComponent(out IDamageable target))
+                    {
+                        target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+                    }
+                }
+            }
+        }
+    }
+}
