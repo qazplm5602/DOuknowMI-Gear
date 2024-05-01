@@ -27,8 +27,7 @@ public class PororoAttackState : EnemyState<CommonEnemyStateEnum>
         bulletObject.transform.position = _enemyPororo.attackTransform.position;
 
         Vector2 direction = (PlayerManager.instance.playerTrm.position - _enemyPororo.attackTransform.position).normalized;
-        bulletObject.GetComponent<EnemyProjectile>().Init(15f, 4f, direction, (int)_enemy.Stat.attack.GetValue());
-        Debug.Log("탕!!");
+        bulletObject.GetComponent<EnemyProjectile>().Init(15f, 9f, direction, (int)_enemy.Stat.attack.GetValue());
     }
 
     public override void Exit() {

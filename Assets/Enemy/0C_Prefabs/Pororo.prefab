@@ -273,11 +273,12 @@ MonoBehaviour:
   HealthCompo: {fileID: 0}
   _downJumpable: 0
   _downJumpDistance: 0
-  _whatIsPlatform:
+  whatIsPlatform:
     serializedVersion: 2
     m_Bits: 0
   downJumpTimer: 0
-  nearDistance: 4
+  jumpPower: 11
+  nearDistance: 5
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
@@ -291,8 +292,9 @@ MonoBehaviour:
   healthBarTransform: {fileID: 2422519451827221764}
   healthBarScale: 0.3
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
+  healthBar: {fileID: 0}
   attackTransform: {fileID: 6038389054882032460}
-  attackDistance: 8
+  attackDistance: 10
 --- !u!114 &8576981758092312913
 MonoBehaviour:
   m_ObjectHideFlags: 0

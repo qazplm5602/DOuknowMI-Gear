@@ -1,5 +1,6 @@
 using UnityEngine;
 using FSM;
+using Unity.VisualScripting;
 
 public class BT_KAttackState : EnemyState<CommonEnemyStateEnum>
 {
@@ -12,6 +13,7 @@ public class BT_KAttackState : EnemyState<CommonEnemyStateEnum>
         base.Enter();
 
         _enemyBT_K = _enemy as EnemyBT_K;
+        direction = (PlayerManager.instance.playerTrm.position - _enemyBT_K.attackTransform.position).normalized;
     }
 
     public override void UpdateState() {
@@ -25,12 +27,15 @@ public class BT_KAttackState : EnemyState<CommonEnemyStateEnum>
     }
 
     public override void AnimationAttackTrigger() {
-        direction = (PlayerManager.instance.playerTrm.position - _enemyBT_K.attackTransform.position).normalized;
+        Vector2 currentDirection = (PlayerManager.instance.playerTrm.position - _enemyBT_K.attackTransform.position).normalized;
+        float angle = Mathf.Acos(Vector2.Dot(direction, currentDirection)) * Mathf.Rad2Deg;
+        float t = 20f / angle;
+        t = Mathf.Clamp01(t);
+        direction = Vector2.Lerp(direction, currentDirection, t);
 
         GameObject bulletObject = PoolManager.Instance.Pop(PoolingType.Bullet).gameObject;
         bulletObject.transform.position = _enemyBT_K.attackTransform.position;
         bulletObject.GetComponent<EnemyProjectile>().Init(3, 5.5f, direction, (int)_enemy.Stat.attack.GetValue());
-        Debug.Log("탕!!");
     }
 
     public override void Exit() {
