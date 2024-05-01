@@ -102,7 +102,6 @@ namespace FSM {
             yield return new WaitForSeconds(0.65f);
             ColliderCompo.forceSendLayers = -1;
             ColliderCompo.forceReceiveLayers = -1;
-
         }
 
         public virtual void DropItems() {

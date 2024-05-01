@@ -152,15 +152,16 @@ MonoBehaviour:
   healthBarTransform: {fileID: 6046048002064193806}
   healthBarScale: 0.4
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
+  healthBar: {fileID: 0}
   rangeAttackRange: 7
   combatAttackRange: 3.5
   attackTransform: {fileID: 2587780147585795374}
   punchOffset: {x: 1.7, y: 0}
   punchRange: {x: 2.8, y: 1.6}
-  punchDamage: 0
+  punchDamage: 7
   hookOffset: {x: 0.6, y: -0.2}
   hookRange: {x: 4.4, y: 2.5}
-  hookDamage: 0
+  hookDamage: 7
 --- !u!114 &6704798054494108474
 MonoBehaviour:
   m_ObjectHideFlags: 0
