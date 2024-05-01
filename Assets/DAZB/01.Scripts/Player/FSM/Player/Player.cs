@@ -34,6 +34,7 @@ public class Player : Agent
     public float lastAttackTime;
     public float lastDashTime;
     public bool isAttack;
+    public bool isUnderJumpping = false;
 
     protected override void Awake() {
         SetStat();
