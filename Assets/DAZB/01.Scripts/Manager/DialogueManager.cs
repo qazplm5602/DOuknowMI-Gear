@@ -10,6 +10,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
 {    public InputReader inputReader;
     public GameObject ExcuseMeUI;
     public GameObject DotTwinkleUi;
+    public GameObject NameTag;
     public float charPrintTime;
     public GameObject DialoguePanel;
     public GameObject SelectionPanel;
@@ -56,6 +57,8 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         this.npc = npc;
         nameText.text = npc.name;
         interactionText.text = npc.GetNpcData().NpcInteractionName;
+        ConversationBtn.gameObject.SetActive(npc.GetNpcData().CanConversate);
+        InteractionBtn.gameObject.SetActive(npc.GetNpcData().CanInteract);
     }
 
     public void ActiveDialoguePanel(bool isActive) {
