@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: b7637d350f8c12c4a90f9ab75d401ca5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5817,6 +5817,7 @@ MonoBehaviour:
   _section: {fileID: 1657995895}
   _gearPrefab: {fileID: 5365953020322553694, guid: d6d6c03ca7d2088478a621ea8de254ee, type: 3}
   _tooltip: {fileID: 1247865238}
+  _selectBtn: {fileID: 338350928}
 --- !u!1 &1093339958
 GameObject:
   m_ObjectHideFlags: 0
@@ -9669,13 +9670,14 @@ GameObject:
   - component: {fileID: 2014014508}
   - component: {fileID: 2014014510}
   - component: {fileID: 2014014509}
+  - component: {fileID: 2014014511}
   m_Layer: 5
   m_Name: GearChest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2014014508
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9737,6 +9739,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2014014507}
   m_CullTransparentMesh: 1
+--- !u!225 &2014014511
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014014507}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2022222062
 GameObject:
   m_ObjectHideFlags: 0
