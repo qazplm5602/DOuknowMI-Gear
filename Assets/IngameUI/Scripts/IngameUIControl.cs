@@ -15,6 +15,8 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
     [Header("Scripts")]
     [SerializeField] GearChangeUI _gearChangeUI;
     [SerializeField] GearPauseUI _gearPauseUI;
+    [SerializeField] StatueUI _statueUI;
+    [SerializeField] ChestUI _chestUI;
     public GearChangeUI gearChangeUI => _gearChangeUI;
 
     TextMeshProUGUI locationT;
@@ -116,5 +118,32 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
         });
 
         coinCoroutine = null;
+    }
+
+    ///////////// TEST CODE
+    [SerializeField] GearSO[] test_gears;
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.P)) {
+            // _statueUI.Show("title", "subtitle", null, new() {
+            //     title = "밍",
+            //     desc = "아무거나 텍스트 임니다.",
+            //     color = Color.red,
+            //     OnSelect = () => {
+            //         print("ming");
+            //     }
+            // }, new() {
+            //     title = "오른쪽ㅁㄴㅇ",
+            //     desc = "ㅁ야ㅐㅓ댝랴ㅓ랴ㅐㅓ",
+            //     color = Color.yellow,
+            //     OnSelect = () => {
+            //         print("right");
+            //     }
+            // });
+
+            _chestUI.Show(test_gears);
+        } else if (Input.GetKeyDown(KeyCode.O)) {
+            // _statueUI.Hide();
+            _chestUI.Hide();
+        }
     }
 }
