@@ -30,7 +30,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ApplyDamage(int damage, Transform dealer) {
         if(owner.isDead || owner.isInvincibility) return;
-        damage = Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
+        if (Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f) >= 1) {
+            damage = 1;
+        }
+        else {
+            damage = Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
+        }
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }

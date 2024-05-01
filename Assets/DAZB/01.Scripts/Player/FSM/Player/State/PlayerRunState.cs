@@ -13,7 +13,7 @@ public class PlayerRunState : PlayerCanDashState
     public override void Enter()
     {
         base.Enter();
-        coroutine = player.StartCoroutine(GenarateSmokeRoutine());
+        player.StartDelayCallback(0.05f, () => PoolManager.Instance.Pop(PoolingType.MoveStartSmoke));
     }
 
     public override void UpdateState()
@@ -25,32 +25,12 @@ public class PlayerRunState : PlayerCanDashState
 
     }
 
-    public override void Exit()
-    {
-        player.StopCoroutine(coroutine);
-        base.Exit();
-    }
-
     private void HandleMovementEvent() {
         if (player.InputReader._xMovement.sqrMagnitude < Mathf.Epsilon) {
             player.StateMachine.ChangeState(PlayerStateEnum.Idle);
         }
         else {
             movementDirection = player.InputReader._xMovement.normalized;
-        }
-    }
-
-    private IEnumerator GenarateSmokeRoutine() {
-        float currentTime = 0.0f;
-        float delay = 0.2f;
-        PoolManager.Instance.Pop(PoolingType.MoveStartSmoke);
-        while (true) {
-            currentTime += Time.deltaTime;
-            if (currentTime >= delay) {
-                currentTime = 0;
-                PoolManager.Instance.Pop(PoolingType.MoveSmoke);
-            }
-            yield return null;
         }
     }
 }

@@ -34,7 +34,13 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             }
         }
         else {
-            DialogueManager.Instance.checkInteractiveObejct = false;
+            if (DialogueManager.Instance.npc != null) {
+                DialogueManager.Instance.checkInteractiveObejct = false;
+            }
+            else {
+                DialogueManager.Instance.checkInteractiveObejct = false;
+                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+            }
         }
     }
 
@@ -43,7 +49,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
         isCheck = Physics2D.OverlapBox(transform.position + offset, checkSize, 0, playerLayer);
     }
 
-    private void OnDrawGizmos() {
+    protected virtual void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position + offset, checkSize);
     }
