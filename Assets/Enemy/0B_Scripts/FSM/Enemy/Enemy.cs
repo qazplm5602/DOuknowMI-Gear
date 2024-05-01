@@ -35,7 +35,7 @@ namespace FSM {
         public DropTableSO dropTable;
 
         protected int _lastAnimationBoolHash;
-        protected EnemyHealthBar _healthBar;
+        protected EnemyHealthBar healthBar;
 
         protected override void Awake() {
             base.Awake();
@@ -45,10 +45,10 @@ namespace FSM {
 
             lastAttackTime = -Stat.attackCooldown.GetValue();
 
-            _healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
-            _healthBar.Init(healthBarTransform, healthBarScale);
-            HealthCompo.healthFilled = _healthBar.transform.Find("Filled").GetComponent<Image>();
-            _healthBar.gameObject.SetActive(GameManager.Instance.ShowHealthBar);
+            healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
+            healthBar.Init(healthBarTransform, healthBarScale);
+            HealthCompo.healthFilled = healthBar.transform.Find("Filled").GetComponent<Image>();
+            healthBar.gameObject.SetActive(GameManager.Instance.ShowHealthBar);
         }
 
         protected virtual void Update() {
@@ -88,7 +88,6 @@ namespace FSM {
         }
 
         public virtual void SetDead() {
-            PoolManager.Instance.Push(_healthBar);
             DropItems();
         }
 

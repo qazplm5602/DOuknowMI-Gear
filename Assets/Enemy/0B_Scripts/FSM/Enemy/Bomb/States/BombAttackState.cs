@@ -17,6 +17,10 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
         _enemy.StartDelayCallback(2, () => _stateMachine.ChangeState(CommonEnemyStateEnum.Dead));
 
         _playerTrm = PlayerManager.instance.playerTrm;
+
+        _enemy.HealthCompo.enabled = false;
+        
+        PoolManager.Instance.Push(_enemy.healthBar);
     }
 
     public override void UpdateState() {
