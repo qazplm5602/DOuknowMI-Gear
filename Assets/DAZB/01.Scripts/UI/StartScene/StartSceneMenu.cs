@@ -8,6 +8,8 @@ public class StartSceneMenu : MonoBehaviour
 {
     [SerializeField] private GameObject exitUI;
     [SerializeField] private GameObject newGameUI;
+    [SerializeField] private GameObject LoadGameUI;
+    [SerializeField] private GameObject SettingUI;
     [SerializeField] private GameObject menuObj;
     private bool isExitUiOpen = false;
     private CanvasGroup menuObjCanvasGroup;
@@ -41,11 +43,13 @@ public class StartSceneMenu : MonoBehaviour
     public void Setting() {
         if (isExitUiOpen) return;
         newSelectButton.transform.DOScale(1, 0.2f);
+        SettingUI.SetActive(true);
     }
 
     public void LoadSave() {
         if (isExitUiOpen) return;
         newSelectButton.transform.DOScale(1, 0.2f);
+        LoadGameUI.SetActive(true);
     }
 
     public void Exit() {
@@ -60,10 +64,10 @@ public class StartSceneMenu : MonoBehaviour
             StartCoroutine(NewGameCloseRoutine());
         }
         else if (type == "LoadGame") {
-
+            LoadGameUI.SetActive(false);
         }
         else if (type == "Setting") {
-
+            SettingUI.SetActive(false);
         }
         else if (type == "Exit" ) {
             isExitUiOpen = false;

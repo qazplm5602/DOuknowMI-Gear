@@ -6,7 +6,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private Transform test;
     
     public event Action OnDead;
 
@@ -31,12 +30,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ApplyDamage(int damage, Transform dealer) {
         if(owner.isDead || owner.isInvincibility) return;
+        damage = Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
-        owner.MovementCompo.Knockback(dealer, 10f);
-/*         if(currentHealth == 0) {
-            owner.isDead = true;
-            OnDead?.Invoke();
-        } */
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }
