@@ -10,9 +10,13 @@ public class NormalStage : BaseStage
 {
     [Header("FUCKING ENEMIES WEIGHT")]
     public Enemy[] Enemies;
-    [Tooltip("이게 무엇인가? 가중치인데 클수록 ㅈㄴ쌔고 덜나옴 ㅋㅋ")]
+    [Header("무게, 스폰 확률인. 적배열의 크기와 같아야한다.")]
     public int[] Weights;
+    [Header("무게, 방의 총 적들의 크기를 알기 위함 (약한 몹은 가볍고 높은 몹은 높다). 적배열의 크기와 같아야한다.")]
+    public int[] WeightsFromPower;
+    [Header("스폰 포인트들인.")]
     [SerializeField] private Transform[] _spawnPoints;
+    [Header("방상태 ㅅㅂ")]
     public int TotalWeight = 0;
     public int MaxWeight;
     public int HighestWeight = 0;
@@ -36,7 +40,11 @@ public class NormalStage : BaseStage
     public override void Enter()
     {
         base.Enter();
-        SpawnEnemy();
+        if (CurrentWave <= MaxWave)
+        {
+            Cleared = false;
+            SpawnEnemy();
+        }
     }
 
     public override void NextWave()
@@ -81,7 +89,7 @@ public class NormalStage : BaseStage
         List<Enemy> enemies = new();
         int index = GetRandomEnemyIndex();
         int sum = 0;
-        int inversedWeight = HighestWeight + 1 - Weights[index];
+        int inversedWeight = WeightsFromPower[index];
         while (sum + inversedWeight < MaxWeight)
         {
             enemies.Add(Enemies[index]);
@@ -102,6 +110,7 @@ public class NormalStage : BaseStage
         int curr = 0, amountSpawnPoint = _spawnPoints.Length;
         var spawnDelay = new WaitForSeconds(.2f);
         Enemy[] _enemies = GetRandomEnemies();
+        print(_enemies.Length);
         foreach (var _enemy in _enemies)
         {
             Transform spawnPoint = _spawnPoints[curr];
@@ -112,7 +121,7 @@ public class NormalStage : BaseStage
             CurrentEnemies.Add(enemy);
 
             ++curr;
-            if (curr > amountSpawnPoint) curr = 0;
+            if (curr >= amountSpawnPoint) curr = 0;
 
             yield return spawnDelay;
         }
