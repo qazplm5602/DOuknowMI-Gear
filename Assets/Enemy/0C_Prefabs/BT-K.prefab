@@ -164,7 +164,7 @@ MonoBehaviour:
   HealthCompo: {fileID: 0}
   _downJumpable: 0
   _downJumpDistance: 0
-  _whatIsPlatform:
+  whatIsPlatform:
     serializedVersion: 2
     m_Bits: 0
   downJumpTimer: 0
