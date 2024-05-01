@@ -14,7 +14,8 @@ public class PauseSettingSoundEvent : MonoBehaviour
     SoundManager soundManager;
     
     private void Awake() {
-        _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        // _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        _menu = FindObjectOfType<PauseSettingMenu>();
         soundManager = SoundManager.Instance;
     }
 
