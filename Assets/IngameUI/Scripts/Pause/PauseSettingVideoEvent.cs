@@ -8,7 +8,8 @@ public class PauseSettingVideoEvent : MonoBehaviour
     PauseSettingMenu _menu;
     
     private void Awake() {
-        _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        // _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        _menu = FindObjectOfType<PauseSettingMenu>();
     }
 
     readonly string RESOLUTION_EVENT = "video.resolution";
