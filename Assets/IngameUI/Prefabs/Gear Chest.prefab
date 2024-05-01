@@ -134,108 +134,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1001 &2842729723900086417
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 3142955080349861147}
-    m_Modifications:
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_Pivot.y
-      value: -0.000000020489097
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 28.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 33.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5657474403025271194, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-      propertyPath: m_Name
-      value: Cog Variant
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
---- !u!224 &1981096219906860941 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4327153417402756892, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
-  m_PrefabInstance: {fileID: 2842729723900086417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7188755484814290598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,7 +144,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
       propertyPath: m_Name
-      value: Gear Variant 1
+      value: Gear Chest
       objectReference: {fileID: 0}
     - target: {fileID: 5214486640352586685, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
       propertyPath: m_Pivot.x
@@ -334,9 +232,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5214486640352586685, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1981096219906860941}
-    - targetCorrespondingSourceObject: {fileID: 5214486640352586685, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8726033027849646646}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
@@ -380,7 +275,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ed0105baa649b94dad9444871419ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _group: {fileID: 8902004933793369798}
   cogPrefab: {fileID: 5657474403025271194, guid: 054ee743c38636e47b6fd8b3dadd2db7, type: 3}
   _name: {fileID: 1618227120623682628}
+  _group: {fileID: 8902004933793369798}
   _gear: {fileID: 0}
+  _master: {fileID: 0}
+  active: 0

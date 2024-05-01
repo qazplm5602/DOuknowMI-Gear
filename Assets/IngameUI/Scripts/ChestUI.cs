@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -26,6 +27,7 @@ public class ChestUI : MonoBehaviour
             _gears.Add(gear);
 
             gear._gear = item;
+            gear._master = this;
             gear.Init();
         }
 
@@ -33,7 +35,6 @@ public class ChestUI : MonoBehaviour
         sequence = DOTween.Sequence();
         foreach (var item in _gears)
         {
-            print(i);
             sequence.Join(item._group.DOFade(0.3f, 0.5f).SetDelay(i * 0.02f));
             i++;
         }
@@ -45,5 +46,16 @@ public class ChestUI : MonoBehaviour
 
     void Clear() {
 
+    }
+
+    public void SelectCancel()
+    {
+        foreach (var item in _gears)
+        {
+            if (item.active) {
+                item.active = false;
+                item.SetFocus(false);
+            }
+        }
     }
 }
