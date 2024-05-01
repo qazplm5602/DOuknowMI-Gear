@@ -9,6 +9,7 @@ public class ChestUI : MonoBehaviour
     [SerializeField] RectTransform _screen;
     [SerializeField] Transform _section;
     [SerializeField] ChestGearUI _gearPrefab;
+    [SerializeField] ChestTooltipUI _tooltip;
 
     CanvasGroup _group;
     List<ChestGearUI> _gears;
@@ -46,6 +47,14 @@ public class ChestUI : MonoBehaviour
 
     void Clear() {
 
+    }
+
+    public void Hover(GearSO data) {
+        _tooltip.Show(data);
+    }
+
+    public void UnHover() {
+        _tooltip.Hide();
     }
 
     public void SelectCancel()
