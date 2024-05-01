@@ -20,7 +20,7 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
 
         _enemy.HealthCompo.enabled = false;
         
-        PoolManager.Instance.Push(_enemy.helathBar);
+        PoolManager.Instance.Push(_enemy.healthBar);
     }
 
     public override void UpdateState() {
