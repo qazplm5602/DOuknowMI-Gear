@@ -64,7 +64,7 @@ namespace FSM {
         public abstract void AnimationFinishTrigger();
 
         public bool CanAttack() {
-            return Time.time >= lastAttackTime + Stat.attackCooldown.GetValue() - 1.5f;
+            return Time.time >= lastAttackTime + Stat.attackCooldown.GetValue();
         }
 
         public override void ReturnDefaultSpeed() {
