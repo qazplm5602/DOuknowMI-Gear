@@ -14,7 +14,7 @@ public class SaveUI : MonoBehaviour
 
     private GameObject _questionPanel;
 
-    private void Awake() {
+    private void Awake() {;
         _questionPanel = _savePanel.transform.Find("QuestionBackground").gameObject;
 
         for(int i = 1; i <= 3; ++i) {
@@ -24,6 +24,10 @@ public class SaveUI : MonoBehaviour
             _saveInfos[i - 1] = savedData;
             SaveAndOverwrite(i);
         }
+    }
+
+    private void Start() {
+        Load(1); Load(2); Load(3);
     }
 
     private void Update() {

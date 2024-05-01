@@ -39,6 +39,14 @@ public class InputReader : ScriptableObject, IPlayerActions, IUIActions
         _controls.UI.Enable();
     }
 
+    public void InputEnable() {
+        _controls.Player.Enable();
+    }
+
+    public void InputDisable() {
+        _controls.Player.Disable();
+    }
+
     public void OnMovement(InputAction.CallbackContext context)
     {
         _xMovement = context.ReadValue<Vector2>();

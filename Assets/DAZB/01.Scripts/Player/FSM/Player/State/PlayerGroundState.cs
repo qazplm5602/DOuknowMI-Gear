@@ -1,3 +1,6 @@
+using Unity.VisualScripting;
+using UnityEngine.InputSystem;
+
 public abstract class PlayerGroundState : PlayerState
 {
     public PlayerGroundState(Player player, PlayerStateMachine stateMachine, string animBoolName) : base(player, stateMachine, animBoolName)
@@ -41,8 +44,8 @@ public abstract class PlayerGroundState : PlayerState
         }
         else {
             if (player.MovementCompo.isGround && DialogueManager.Instance.isEnd && !player.isDead && !player.ishurt) {
-            stateMachine.ChangeState(PlayerStateEnum.Jump);
-        }
+                stateMachine.ChangeState(PlayerStateEnum.Jump);
+            }
         }
     }
 }
