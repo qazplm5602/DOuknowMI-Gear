@@ -249,7 +249,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4e8d5e80f72238c4584460be6621c836, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -259,7 +259,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8280177398908878517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,13 +280,20 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: 65adc5bd4f4000543a31d17471d13bad, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
+  _downJumpable: 1
+  _downJumpDistance: 1.7
+  whatIsPlatform:
+    serializedVersion: 2
+    m_Bits: 2048
+  downJumpTimer: 0
+  jumpPower: 7.5
   nearDistance: 2.5
   _whatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
   whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   attackRange: {x: 0, y: 0}
   attackOffset: {x: 0, y: 0}
   attackDamage: 0

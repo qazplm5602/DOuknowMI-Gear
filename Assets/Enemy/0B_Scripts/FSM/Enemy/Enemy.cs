@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,9 @@ namespace FSM {
         [Header("Movement Settings")]
         public bool _downJumpable = true;
         [SerializeField] private float _downJumpDistance;
-        [SerializeField] private LayerMask _whatIsPlatform;
-        public float downJumpTimer = 0f;
+        public LayerMask whatIsPlatform;
+        [HideInInspector] public float downJumpTimer = 0f;
+        public float jumpPower = 11f;
 
         [Header("Check Settings")]
         public float nearDistance;
@@ -33,7 +35,7 @@ namespace FSM {
         public DropTableSO dropTable;
 
         protected int _lastAnimationBoolHash;
-        protected EnemyHealthBar _healthBar;
+        public EnemyHealthBar healthBar;
 
         protected override void Awake() {
             base.Awake();
@@ -43,10 +45,10 @@ namespace FSM {
 
             lastAttackTime = -Stat.attackCooldown.GetValue();
 
-            _healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
-            _healthBar.Init(healthBarTransform, healthBarScale);
-            HealthCompo.healthFilled = _healthBar.transform.Find("Filled").GetComponent<Image>();
-            _healthBar.gameObject.SetActive(GameManager.Instance.ShowHealthBar);
+            healthBar = PoolManager.Instance.Pop(PoolingType.HealthBar) as EnemyHealthBar;
+            healthBar.Init(healthBarTransform, healthBarScale);
+            HealthCompo.healthFilled = healthBar.transform.Find("Filled").GetComponent<Image>();
+            healthBar.gameObject.SetActive(GameManager.Instance.ShowHealthBar);
         }
 
         protected virtual void Update() {
@@ -62,7 +64,7 @@ namespace FSM {
         public abstract void AnimationFinishTrigger();
 
         public bool CanAttack() {
-            return Time.time >= lastAttackTime + Stat.attackCooldown.GetValue() - 1.5f;
+            return Time.time >= lastAttackTime + Stat.attackCooldown.GetValue();
         }
 
         public override void ReturnDefaultSpeed() {
@@ -78,12 +80,29 @@ namespace FSM {
         }
 
         public virtual bool IsOnPlatform() {
-            return Physics2D.Raycast(transform.position, Vector2.down, _downJumpDistance, _whatIsPlatform);
+            return Physics2D.Raycast(transform.position, Vector2.down, _downJumpDistance, whatIsPlatform);
+        }
+
+        public virtual bool IsUnderPlatform() {
+            return Physics2D.Raycast(transform.position, Vector2.up, 4f, whatIsPlatform);
         }
 
         public virtual void SetDead() {
-            PoolManager.Instance.Push(_healthBar);
             DropItems();
+        }
+
+        public void DownJump() {
+            StartCoroutine(DownJumpRoutine());
+        }
+
+        private IEnumerator DownJumpRoutine() {
+            SetVelocity(RigidbodyCompo.velocity.x, 5f);
+            ColliderCompo.forceSendLayers = ~whatIsPlatform;
+            ColliderCompo.forceReceiveLayers = ~whatIsPlatform;
+            yield return new WaitForSeconds(0.65f);
+            ColliderCompo.forceSendLayers = -1;
+            ColliderCompo.forceReceiveLayers = -1;
+
         }
 
         public virtual void DropItems() {
@@ -107,7 +126,8 @@ namespace FSM {
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, Vector2.down * _downJumpDistance);
+            Vector2 downJump = new Vector2(0.2f, -1 * _downJumpDistance);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, downJump.y / 2f), downJump);
         }
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private InputReader inputReader;
-    [SerializeField] private float groundCheckRadius;
+    [SerializeField] private Vector2 groundCheckSize;
+    [SerializeField] private Vector3 offset;
     [SerializeField] private LayerMask groundLayer;
     private Player agent;
 
@@ -81,7 +82,7 @@ public class AgentMovement : MonoBehaviour
 
 
     private bool IsGround() {
-        if (Physics2D.Raycast(transform.position, Vector2.down, groundCheckRadius, groundLayer)) {
+        if (Physics2D.OverlapBox(transform.position + offset, groundCheckSize, 0, groundLayer)) {
             return true;
         }
         else {
@@ -89,8 +90,24 @@ public class AgentMovement : MonoBehaviour
         }
     }
 
+    public bool CanUnderJump() {
+        Collider2D hit = Physics2D.OverlapBox(transform.position  + offset, groundCheckSize, 0, groundLayer);
+        if (hit != null) {
+            print(hit.gameObject.layer);
+            if (hit.gameObject.layer == LayerMask.NameToLayer("Platform")) {
+                print("아래점프 가느,ㅇ");
+                return true;
+            }
+            else {
+                print("아래점프 bool가느,ㅇ");
+                return false;
+            }
+        }
+        return false;
+    }
+
     private void OnDrawGizmos() {
         Gizmos.color = Color.red;
-        Gizmos.DrawRay(transform.position, Vector3.down * groundCheckRadius);
+        Gizmos.DrawWireCube(transform.position + offset, groundCheckSize);
     }
 }

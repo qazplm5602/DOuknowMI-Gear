@@ -7895,7 +7895,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 0
   currentHealth: 0
-  test: {fileID: 0}
 --- !u!114 &986396552
 MonoBehaviour:
   m_ObjectHideFlags: 0

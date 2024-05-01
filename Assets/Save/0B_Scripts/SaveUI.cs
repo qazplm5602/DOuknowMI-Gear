@@ -10,9 +10,11 @@ public class SaveUI : MonoBehaviour
     [SerializeField] private SaveInfo[] _saveInfos = new SaveInfo[3];
     [SerializeField] private Sprite _defaultSkillIcon;
 
+    [SerializeField] private GearDatabase _gearDatabase;
+
     private GameObject _questionPanel;
 
-    private void Awake() {
+    private void Awake() {;
         _questionPanel = _savePanel.transform.Find("QuestionBackground").gameObject;
 
         for(int i = 1; i <= 3; ++i) {
@@ -20,13 +22,12 @@ public class SaveUI : MonoBehaviour
             SaveInfo savedData = JsonMapper.ToObject<SaveInfo>(jsonData);
 
             _saveInfos[i - 1] = savedData;
-            if(savedData.level == -1234 && savedData.parts == -1234) {
-                Delete(i);
-            }
-            else {
-                SaveAndOverwrite(i);
-            }
+            SaveAndOverwrite(i);
         }
+    }
+
+    private void Start() {
+        Load(1); Load(2); Load(3);
     }
 
     private void Update() {
@@ -38,6 +39,11 @@ public class SaveUI : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.L)) {
             Delete(1);
+        }
+        if(Input.GetKeyDown(KeyCode.K)) {
+            for(int i = 1; i <= 3; ++i) {
+                Load(i);
+            }
         }
     }
 
@@ -52,9 +58,10 @@ public class SaveUI : MonoBehaviour
     private void RenderSaveUI(int index, string buttonName) {
         SaveInfo saveInfo = _saveInfos[index - 1];
 
-        saveInfo.date = DateTime.Now;
-        saveInfo.level = 1;
-        saveInfo.parts = 10;
+        if(saveInfo.level == -1234 && saveInfo.parts == -1234) {
+            Delete(index);
+            return;
+        }
 
         string contentPath = $"Content/Save{index}/SaveInfo/Content";
         string bottomBtnPath = $"Content/Save{index}/BottomBtn";
@@ -85,7 +92,10 @@ public class SaveUI : MonoBehaviour
         Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = buttonName;
         Button saveNOverwriteButton = Find($"{bottomBtnPath}/SaveNOverwriteBtn").GetComponent<Button>();
         saveNOverwriteButton.onClick.RemoveAllListeners();
-        saveNOverwriteButton.onClick.AddListener(() => LoadQuestion(index));
+        if(buttonName == "덮어쓰기")
+            saveNOverwriteButton.onClick.AddListener(() => OverwriteQuestion(index));
+        else
+            saveNOverwriteButton.onClick.AddListener(() => LoadQuestion(index));
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = true;
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = Color.black;
     }
@@ -102,7 +112,7 @@ public class SaveUI : MonoBehaviour
         Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "저장";
         Button saveNOverwriteButton = Find($"{bottomBtnPath}/SaveNOverwriteBtn").GetComponent<Button>();
         saveNOverwriteButton.onClick.RemoveAllListeners();
-        saveNOverwriteButton.onClick.AddListener(() => SaveQuestion(index));
+        saveNOverwriteButton.onClick.AddListener(() => DeleteQuestion(index));
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = false;
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = new Color(0.41f, 0.41f, 0.41f);
     }
@@ -115,7 +125,9 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
-            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 2, 20);
+            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 
+                PlayerManager.instance.playerExperience.level, PlayerManager.instance.playerExperience.currentExp, PlayerManager.instance.stats.statPoint,
+                new PlayerSaveStat(PlayerManager.instance.stats), PlayerManager.instance.playerPart.Part);
             SaveData newData = new SaveData($"Save{index}", newInfo);
             SaveManager.Instance.Save(newData);
             _saveInfos[index - 1] = newInfo;
@@ -138,7 +150,9 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
-            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 2, 20);
+            SaveInfo newInfo = new SaveInfo(DateTime.Now, GearManager.Instance.GetSlotGearSO(), 
+                PlayerManager.instance.playerExperience.level, PlayerManager.instance.playerExperience.currentExp, PlayerManager.instance.stats.statPoint,
+                new PlayerSaveStat(PlayerManager.instance.stats), PlayerManager.instance.playerPart.Part);
             SaveData newData = new SaveData($"Save{index}", newInfo);
             SaveManager.Instance.Save(newData);
             _saveInfos[index - 1] = newInfo;
@@ -160,7 +174,7 @@ public class SaveUI : MonoBehaviour
         Button yesBtn = Find($"{questionPanelPath}/Btns/YesBtn").GetComponent<Button>();
         yesBtn.onClick.RemoveAllListeners();
         yesBtn.onClick.AddListener(() => {
-            //Load
+            LoadData(index);
             Load(index);
             _questionPanel.SetActive(false);
         });
@@ -190,6 +204,33 @@ public class SaveUI : MonoBehaviour
         Button noBtn = Find($"{questionPanelPath}/Btns/NoBtn").GetComponent<Button>();
         noBtn.onClick.RemoveAllListeners();
         noBtn.onClick.AddListener(() => _questionPanel.SetActive(false));
+    }
+
+    private void LoadData(int index) {
+        string jsonData = SaveManager.Instance.Load($"Save{index}")["info"].ToJson();
+        SaveInfo savedData = JsonMapper.ToObject<SaveInfo>(jsonData);
+
+        int oldGearLength = GearManager.Instance.GetSlotGearSO().Length;
+        for(int i = 0; i < oldGearLength; ++i) {
+            GearManager.Instance.GearRemove(i);
+        }
+
+        for(int i = 0; i < savedData.gearInfos.Length; ++i) {
+            GearManager.Instance.GearAdd(_gearDatabase.GetGearById(savedData.gearInfos[i].id), savedData.gearInfos[i].gearStat.GetGearStat());
+        }
+
+        PlayerManager.instance.playerExperience.level = savedData.level;
+        PlayerManager.instance.playerExperience.currentExp = savedData.exp;
+
+        PlayerStat playerStat = PlayerManager.instance.stats;
+        playerStat.statPoint = savedData.statPoint;
+        playerStat.Atk = savedData.stat.atk;
+        playerStat.Health = savedData.stat.health;
+        playerStat.Defence = savedData.stat.defence;
+        playerStat.Speed = savedData.stat.speed;
+        playerStat.CriticalChance = savedData.stat.criticalChance;
+
+        PlayerManager.instance.playerPart.InitPart(savedData.parts);
     }
 
     private Transform Find(string path) {
