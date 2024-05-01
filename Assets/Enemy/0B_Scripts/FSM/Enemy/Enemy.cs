@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,8 +12,9 @@ namespace FSM {
         [Header("Movement Settings")]
         public bool _downJumpable = true;
         [SerializeField] private float _downJumpDistance;
-        [SerializeField] private LayerMask _whatIsPlatform;
-        public float downJumpTimer = 0f;
+        public LayerMask whatIsPlatform;
+        [HideInInspector] public float downJumpTimer = 0f;
+        public float jumpPower = 11f;
 
         [Header("Check Settings")]
         public float nearDistance;
@@ -78,12 +80,30 @@ namespace FSM {
         }
 
         public virtual bool IsOnPlatform() {
-            return Physics2D.Raycast(transform.position, Vector2.down, _downJumpDistance, _whatIsPlatform);
+            return Physics2D.Raycast(transform.position, Vector2.down, _downJumpDistance, whatIsPlatform);
+        }
+
+        public virtual bool IsUnderPlatform() {
+            return Physics2D.Raycast(transform.position, Vector2.up, 4f, whatIsPlatform);
         }
 
         public virtual void SetDead() {
             PoolManager.Instance.Push(_healthBar);
             DropItems();
+        }
+
+        public void DownJump() {
+            StartCoroutine(DownJumpRoutine());
+        }
+
+        private IEnumerator DownJumpRoutine() {
+            SetVelocity(RigidbodyCompo.velocity.x, 5f);
+            ColliderCompo.forceSendLayers = ~whatIsPlatform;
+            ColliderCompo.forceReceiveLayers = ~whatIsPlatform;
+            yield return new WaitForSeconds(0.65f);
+            ColliderCompo.forceSendLayers = -1;
+            ColliderCompo.forceReceiveLayers = -1;
+
         }
 
         public virtual void DropItems() {
@@ -107,7 +127,8 @@ namespace FSM {
             Gizmos.color = Color.magenta;
             Gizmos.DrawWireCube(healthBarTransform.position, new Vector2(4.173373f, 0.5711204f) * healthBarScale);
             Gizmos.color = Color.blue;
-            Gizmos.DrawLine(transform.position, Vector2.down * _downJumpDistance);
+            Vector2 downJump = new Vector2(0.2f, -1 * _downJumpDistance);
+            Gizmos.DrawWireCube(transform.position + new Vector3(0, downJump.y / 2f), downJump);
         }
     }
 }
