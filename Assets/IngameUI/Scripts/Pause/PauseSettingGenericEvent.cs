@@ -16,7 +16,9 @@ public class PauseSettingGenericEvent : MonoBehaviour
     GameManager gameManager;
     
     private void Awake() {
-        _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        // _menu = transform.parent.GetComponent<PauseSettingMenu>();
+        _menu = FindObjectOfType<PauseSettingMenu>();
+        print(_menu);
         gameManager = GameManager.Instance;
     }
 
@@ -37,7 +39,7 @@ public class PauseSettingGenericEvent : MonoBehaviour
 
         if (!init) {
             init = true;
-            transform.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
+            transform.parent.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
         }
     }
 
