@@ -17,12 +17,8 @@ public class BombDeadState : EnemyState<CommonEnemyStateEnum>
 
     public override void UpdateState() {
         if(_triggerCalled) {
-            _enemy.StartDelayCallback(0.5f, Dead);
+            _enemy.SetDead();
+            GameObject.Destroy(_enemy.gameObject);
         }
-    }
-
-    private void Dead() {
-        _enemy.SetDead();
-        GameObject.Destroy(_enemy.gameObject);
     }
 }

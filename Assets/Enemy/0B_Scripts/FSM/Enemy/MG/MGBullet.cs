@@ -10,7 +10,9 @@ public class MGBullet : EnemyProjectile
     }
 
     private void Boom() {
-        PoolManager.Instance.Pop(PoolingType.Boom).transform.position = transform.position;
+        EnemyBoom boom = PoolManager.Instance.Pop(PoolingType.Boom) as EnemyBoom;
+        boom.transform.position = transform.position;
+        boom.Init(2, 5);
 
         PoolManager.Instance.Push(this);
     }

@@ -23,7 +23,7 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   moveSpeed:
-    _baseValue: 11
+    _baseValue: 9
     defaultValue: 0
     modifiers: []
     isPercent: 0
