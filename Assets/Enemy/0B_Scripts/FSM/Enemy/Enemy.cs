@@ -88,6 +88,7 @@ namespace FSM {
         }
 
         public virtual void SetDead() {
+            PoolManager.Instance.Push(healthBar);
             DropItems();
         }
 
