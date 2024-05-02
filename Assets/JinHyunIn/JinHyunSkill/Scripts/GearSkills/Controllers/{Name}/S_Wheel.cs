@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillWheel : SkillController
@@ -10,9 +11,13 @@ public class SkillWheel : SkillController
     [SerializeField] Vector2 _force = new Vector2(10, 0);
     [SerializeField] private LayerMask _groundLayerMask;
 
+    Vector2 _lastVelocity;
+    int _layerMaskValue;
+
     private void Start()
     {
         directionSign = CheckDirection();
+        _layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
     }
 
     public int CheckDirection()
@@ -26,17 +31,27 @@ public class SkillWheel : SkillController
     private void Update()
     {
         rotateImageTrm.transform.Rotate(0, 0, 160 * Time.deltaTime);
+        if (Physics2D.Raycast(transform.position, Vector2.down,0.1f, _groundLayerMask))
+        {
+            
+            KillRigidByBool();
+            StartCoroutine(MoveRoutine(transform));
+        }
+        else
+        {
+            KillRigidByBool(false);
+        }
+    }
+
+    private void KillRigidByBool(bool kill = true)
+    {
+        _lastVelocity = _rigid2d.velocity;
+        _rigid2d.gravityScale = kill == true ? 0: 1;
+        _rigid2d.velocity = kill == true ? Vector2.zero : _lastVelocity;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        int layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
-        if (collision.gameObject.layer== layerMaskValue)
-        {
-            _rigid2d.gravityScale = 0;
-            _rigid2d.velocity = Vector2.zero;
-            StartCoroutine(MoveRoutine(transform));
-        }
         base.OnTriggerEnter2D(collision);
     }
 
