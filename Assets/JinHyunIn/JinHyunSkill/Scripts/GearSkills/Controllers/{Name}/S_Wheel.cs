@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SkillWheel : SkillController
@@ -9,10 +10,15 @@ public class SkillWheel : SkillController
     [SerializeField] Rigidbody2D _rigid2d;
     [SerializeField] Vector2 _force = new Vector2(10, 0);
     [SerializeField] private LayerMask _groundLayerMask;
+    [SerializeField] private LayerMask _wallLayerMask;
+
+    Vector2 _lastVelocity;
+    int _layerMaskValue;
 
     private void Start()
     {
         directionSign = CheckDirection();
+        _layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
     }
 
     public int CheckDirection()
@@ -26,17 +32,33 @@ public class SkillWheel : SkillController
     private void Update()
     {
         rotateImageTrm.transform.Rotate(0, 0, 160 * Time.deltaTime);
+        if (Physics2D.Raycast(transform.position, Vector2.down,0.35f, _groundLayerMask))
+        {
+            KillRigidByBool();
+            StartCoroutine(MoveRoutine(transform));
+        }
+        else
+        {
+            KillRigidByBool(false);
+        }
+
+        if(Physics2D.Raycast(transform.position, Vector2.right, 0.7f, _wallLayerMask)
+        || Physics2D.Raycast(transform.position, Vector2.left, 0.7f, _wallLayerMask))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void KillRigidByBool(bool kill = true)
+    {
+        _lastVelocity = kill == true ? Vector2.zero : _rigid2d.velocity;
+        _rigid2d.gravityScale = kill == true ? 0: 1;
+        _rigid2d.velocity = kill == true ? Vector2.zero : _lastVelocity;
+        print(_rigid2d.velocity);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        int layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
-        if (collision.gameObject.layer== layerMaskValue)
-        {
-            _rigid2d.gravityScale = 0;
-            _rigid2d.velocity = Vector2.zero;
-            StartCoroutine(MoveRoutine(transform));
-        }
         base.OnTriggerEnter2D(collision);
     }
 
@@ -44,5 +66,13 @@ public class SkillWheel : SkillController
     {
         _rigid2d.AddForce(_force * directionSign, ForceMode2D.Impulse);
         yield return base.MoveRoutine(startTrm);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0,-0.7f, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(-0.7f, 0, 0));
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0.7f, 0, 0));
     }
 }

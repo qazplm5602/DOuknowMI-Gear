@@ -51,7 +51,7 @@ public abstract class SkillController : MonoBehaviour
 
 protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
-        _damage += PlayerManager.instance.player.stat.attack.GetValue();
+        //_damage += PlayerManager.instance.player.stat.attack.GetValue();
         if (_destroyByTime)
         {
             yield return new WaitForSeconds(_destroyTime);
@@ -66,12 +66,6 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
 
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
-
-            if (_canPierce && _pierceCount <= 0)
-            {
-                Destroy(gameObject);
-                yield break;
-            }
 
             yield return null;
         }
@@ -105,6 +99,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
             if (_canPierce)
             {
+                if (_pierceCount <= 0) Destroy(gameObject);
                 --_pierceCount;
             }
         }
