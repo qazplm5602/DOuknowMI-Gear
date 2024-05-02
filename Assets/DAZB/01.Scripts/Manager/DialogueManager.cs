@@ -28,6 +28,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     [Tooltip("대사가 끝나면 true, 시작하면 false")]
     public bool isEnd = true;
     public bool checkInteractiveObejct;
+    [HideInInspector] public string nowInteractiveObjectName;
     private TMP_Text interactionText;
 /*     private IEnumerator _dialogue; */
     private void Awake() {

@@ -12,7 +12,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     [SerializeField] private Transform excuseMeUiPos;
     [SerializeField] private Transform nameTagPos;
     [SerializeField] private string objectName;
-    [SerializeField] private string interactionName;
+    public   string interactionName;
     private bool isCheck;
     private Vector2 ecUiPos;
     private Vector2 nTPos;
@@ -38,6 +38,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             nameTagText.text= objectName;
             DialogueManager.Instance.NameTag.SetActive(true);
             DialogueManager.Instance.NameTag.transform.position = nTPos;
+            DialogueManager.Instance.nowInteractiveObjectName = gameObject.name;
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 Interaction();
             }
@@ -47,9 +48,11 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
                 DialogueManager.Instance.checkInteractiveObejct = false;
             }
             else {
-                DialogueManager.Instance.checkInteractiveObejct = false;
-                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
-                DialogueManager.Instance.NameTag.SetActive(false);
+                if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                    DialogueManager.Instance.checkInteractiveObejct = false;
+                    DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                    DialogueManager.Instance.NameTag.SetActive(false);
+                }
             }
         }
     }
