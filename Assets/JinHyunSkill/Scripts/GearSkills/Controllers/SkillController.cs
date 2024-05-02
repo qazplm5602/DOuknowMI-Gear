@@ -104,7 +104,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         {
             Debug.Log($"{collision.gameObject.name}(이)가 맞음");
             //PlayerManager.instance.transform 넣으면 되는거임?
-            target.ApplyDamage(Mathf.FloorToInt(_damage), null);
+            target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
             --_pierceCount;
         }
     }
