@@ -4,6 +4,11 @@ public class EnemyHealthBar : PoolableMono
 {
     private Transform _healthBarTransform;
 
+    public void Init() {
+        _healthBarTransform = null;
+        GameManager.Instance.ShowHealthBarEvent -= ShowAndHide;
+    }
+
     public void Init(Transform healthBarTransform, float scale) {
         _healthBarTransform = healthBarTransform;
         transform.localScale = Vector3.one * scale;

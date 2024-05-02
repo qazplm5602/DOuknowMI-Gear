@@ -158,10 +158,10 @@ MonoBehaviour:
   attackTransform: {fileID: 2587780147585795374}
   punchOffset: {x: 1.7, y: 0}
   punchRange: {x: 2.8, y: 1.6}
-  punchDamage: 7
+  punchDamage: 5
   hookOffset: {x: 0.6, y: -0.2}
   hookRange: {x: 4.4, y: 2.5}
-  hookDamage: 7
+  hookDamage: 5
 --- !u!114 &6704798054494108474
 MonoBehaviour:
   m_ObjectHideFlags: 0
