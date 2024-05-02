@@ -17,7 +17,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         v_perlin.m_AmplitudeGain = amplitude;
         v_perlin.m_FrequencyGain = frequency;
         StartCoroutine(ShakeRoutine(time));
-    }
+    } 
 
     private IEnumerator ShakeRoutine(float time) {
         yield return new WaitForSeconds(time);

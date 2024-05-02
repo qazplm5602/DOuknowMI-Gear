@@ -51,7 +51,7 @@ public abstract class SkillController : MonoBehaviour
 
 protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
-        _damage += PlayerManager.instance.player.stat.attack.GetValue();
+        //_damage += PlayerManager.instance.player.stat.attack.GetValue();
         if (_destroyByTime)
         {
             yield return new WaitForSeconds(_destroyTime);
@@ -66,12 +66,6 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
 
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
-
-            if (_canPierce && _pierceCount <= 0)
-            {
-                Destroy(gameObject);
-                yield break;
-            }
 
             yield return null;
         }
@@ -102,10 +96,12 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         if (collision.TryGetComponent(out IDamageable target))
         {
-            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
-            //PlayerManager.instance.transform 넣으면 되는거임?
-            target.ApplyDamage(Mathf.FloorToInt(_damage), null);
-            --_pierceCount;
+            target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+            if (_canPierce)
+            {
+                if (_pierceCount <= 0) Destroy(gameObject);
+                --_pierceCount;
+            }
         }
     }
 
@@ -113,9 +109,11 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         if (collision.collider.TryGetComponent(out IDamageable target))
         {
-            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
-            //PlayerManager.instance.transform 넣으면 되는거임?
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+            if (_canPierce)
+            {
+                --_pierceCount;
+            }
         }
     }
 
