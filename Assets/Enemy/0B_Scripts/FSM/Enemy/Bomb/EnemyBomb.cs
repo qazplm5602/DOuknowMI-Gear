@@ -6,10 +6,6 @@ public class EnemyBomb : Enemy
 {
     public EnemyStateMachine<CommonEnemyStateEnum> StateMachine { get; private set; }
 
-    [Space]
-    
-    public GameObject boomPrefab;
-
     protected override void Awake() {
         base.Awake();
 
@@ -42,7 +38,9 @@ public class EnemyBomb : Enemy
     }
 
     public override void Attack() {
-        Instantiate(boomPrefab, transform.position, Quaternion.identity);
+        EnemyBoom boom = PoolManager.Instance.Pop(PoolingType.Boom) as EnemyBoom;
+        boom.transform.position = transform.position;
+        boom.Init(3f, attackDamage);
         
         StateMachine.CurrentState.AnimationAttackTrigger();
     }
