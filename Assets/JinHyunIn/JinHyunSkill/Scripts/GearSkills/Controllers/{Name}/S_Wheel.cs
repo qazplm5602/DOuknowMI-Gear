@@ -9,8 +9,7 @@ public class SkillWheel : SkillController
     [SerializeField] Transform rotateImageTrm;
     [SerializeField] Rigidbody2D _rigid2d;
     [SerializeField] Vector2 _force = new Vector2(10, 0);
-    [SerializeField] private LayerMask _groundLayerMask;
-    [SerializeField] private LayerMask _wallLayerMask;
+    
 
     Vector2 _lastVelocity;
     int _layerMaskValue;
