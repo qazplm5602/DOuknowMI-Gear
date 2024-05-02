@@ -54,11 +54,13 @@ public class GuideBoxUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandl
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-
+        if (isActive) return;
+        background.color = new Color32(255,255,255,5);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
+        if (isActive) return;
+        background.color = new Color(0,0,0,0);
     }
 }

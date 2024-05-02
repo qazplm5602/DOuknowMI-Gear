@@ -29,9 +29,9 @@ public class GuideUI : MonoBehaviour
         scrollRect = _viewport.parent.GetComponent<ScrollRect>();
     }
 
-    public void Show() {
+    // public void Show() {
 
-    }
+    // }
 
     public void ShowContent(GameObject content)
     {
