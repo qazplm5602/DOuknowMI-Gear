@@ -241,10 +241,10 @@ MonoBehaviour:
   - {fileID: 4143770235450300818, guid: 8f2cb6d18d14bd1408aa9bf3ad1cb9c5, type: 3}
   PrayRoom: {fileID: 878025332417020420, guid: a8377d28433699d43bbd93c1314de0c3, type: 3}
   SmallRoom:
-  - {fileID: 7242360341026066563, guid: f6ad1c74306434c4e8d764f00a791524, type: 3}
-  - {fileID: 7242360341026066563, guid: 9f6e422caa09a8b43bdf2c84068c6969, type: 3}
+  - {fileID: 633192750861526226, guid: 2be01f5fc62301b4faebb5ccbcdb5c4c, type: 3}
+  - {fileID: 7995121908209194049, guid: df2d7b2e5e528644292b8ad02761e806, type: 3}
   MediumRoom:
-  - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
+  - {fileID: 638187597355408434, guid: 184a2fc4cff5f044fb6df54eab2ceee3, type: 3}
   LargeRoom:
   - {fileID: 7242360341026066563, guid: b0d730cfe8ae31b41b6050ad839b0298, type: 3}
   EliteRoom:
@@ -556,6 +556,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8518959170600832236, guid: f55ff482a8388f646b6d6ab11ac1abaa, type: 3}
   m_PrefabInstance: {fileID: 636851472}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &755846917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 755846918}
+  m_Layer: 0
+  m_Name: (::::|:::::::::::::::::>
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &755846918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755846917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 90.15677, y: -716.07526, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &813369720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 813369721}
+  m_Layer: 0
+  m_Name: (::::|:::::::::::::::::>
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &813369721
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 813369720}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 90.15677, y: -716.07526, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &858116691
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,59 +702,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &885893612
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 885893614}
-  - component: {fileID: 885893613}
-  m_Layer: 0
-  m_Name: Weapons
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &885893613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885893612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd1b80068ebfa89438aff6305efb6a01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerWeapon: 5
-  playerWeaponPrefab:
-  - {fileID: 5663472254907384932, guid: d535d49a98e023c47a65d0001ed045eb, type: 3}
-  - {fileID: 5663472254907384932, guid: 826ee242a2a94d144a2e411cabadd15f, type: 3}
-  - {fileID: 5663472254907384932, guid: 5eb82ff43ab959a4ab5a029a3a6f0d47, type: 3}
-  - {fileID: 7586237168387870120, guid: 48773dea6e9868642a60766b5d8b3a6a, type: 3}
-  - {fileID: 5538814230761157233, guid: 03ef740d262e13f478c8415f07c49289, type: 3}
-  - {fileID: 5538814230761157233, guid: ef0e2c2471c0c2f42a87f3c012d5ab03, type: 3}
-  - {fileID: 5538814230761157233, guid: 6a935f35438aeb548868ab789b33fe48, type: 3}
---- !u!4 &885893614
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885893612}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &888572927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4652433731470952968, guid: 19303002e3bf57f4aa705b556d6f83cc, type: 3}
@@ -715,7 +724,7 @@ GameObject:
   - component: {fileID: 961433636}
   - component: {fileID: 961433635}
   m_Layer: 0
-  m_Name: Weapons (1)
+  m_Name: Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -954,7 +963,7 @@ GameObject:
   - component: {fileID: 1642329952}
   - component: {fileID: 1642329951}
   m_Layer: 0
-  m_Name: Virtual Camera (1)
+  m_Name: Virtual Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1026,7 +1035,7 @@ GameObject:
   - component: {fileID: 1688932462}
   - component: {fileID: 1688932463}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GayManater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1154,12 +1163,13 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 602362558}
-  - {fileID: 573908937}
   - {fileID: 1898817628}
+  - {fileID: 755846918}
+  - {fileID: 573908937}
   - {fileID: 1688932462}
-  - {fileID: 885893614}
+  - {fileID: 1311195690}
+  - {fileID: 813369721}
   - {fileID: 2144721490}
   - {fileID: 961433636}
   - {fileID: 1642329952}
-  - {fileID: 1311195690}
   - {fileID: 1488484955}

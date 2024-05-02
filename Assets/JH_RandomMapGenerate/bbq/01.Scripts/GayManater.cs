@@ -31,23 +31,9 @@ namespace bbqCode
         private void Start()
         {
             mapSpawner = FindObjectOfType<MapSpawner>();
-            print("its working!");
+            plr = FindObjectOfType<Player>();
             Ming();
         }
-
-        //private void Update()
-        //{
-        //    if (CurrentRoom != null && Input.anyKey)
-        //    {
-        //        BaseStage canMoveRoom = IsCanMoveRoom(new Vector2Int((int)Input.GetAxisRaw("Horizontal")
-        //         , (int)Input.GetAxisRaw("Vertical")));
-        //        if ((bool)canMoveRoom)
-        //        {
-        //            print("ming u moved room");
-        //            MoveRoom(canMoveRoom);
-        //        }
-        //    }
-        //}
 
         [ContextMenu("자위중")]
         public void Ming()

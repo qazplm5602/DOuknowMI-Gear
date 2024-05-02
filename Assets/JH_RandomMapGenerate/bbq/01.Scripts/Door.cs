@@ -29,8 +29,8 @@ public class Door : MonoBehaviour
     [SerializeField] private Door nextDoor;
 
     [Space(10)]
-    [Header("애니메이션시발")]
-    [SerializeField] private Animator animator;
+    //[Header("애니메이션시발")]
+    private Animator animator;
 
     private void OnEnable()
     {

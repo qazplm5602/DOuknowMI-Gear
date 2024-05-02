@@ -9,7 +9,7 @@ public abstract class BaseStage : MonoBehaviour
     public event Action<자지> OnClearChanged;
 
     [Header("UP DOWN RIGHT LEFT")]
-    [HideInInspector] public Door[] door;
+    public Door[] door;
     public ROOMTYPE type;
 
     public int StageNum;

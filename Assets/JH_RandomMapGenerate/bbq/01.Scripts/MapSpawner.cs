@@ -63,6 +63,9 @@ public class MapSpawner : MonoBehaviour
 
         public int StatueCount;
         public int EliteRoomCount;
+
+        //작은방이 나올수 있는지를 검사하기 위한 작은 방들의 문 위치 데이터
+        public List<Vector4> SmallRoomDoorDatas;
     }
 
     public MapSettings jajiOption = new MapSettings();
@@ -87,6 +90,15 @@ public class MapSpawner : MonoBehaviour
         {
             current.Maplist[i] = null;
             current.MapObjList[i] = null;
+        }
+
+        foreach(NormalStage stage in Map.Instance.SmallRoom)
+        {
+            current.SmallRoomDoorDatas.Add(new Vector4(
+                stage.door[0] != null ? 1 : 0,
+                stage.door[1] != null ? 1 : 0,
+                stage.door[2] != null ? 1 : 0,
+                stage.door[3] != null ? 1 : 0));
         }
     }
 
@@ -418,24 +430,23 @@ public class MapSpawner : MonoBehaviour
                 }
 
                 ROOMSIZE roomSize = ROOMSIZE.Small;
-                if (countDoor <= 2)//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
+
+                if (countDoor <= 2 )//길이 하나 또는 두개인 방은 무조건 작은방이나 기도방이 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ 된다.
                 {
                     //print($"{countDoor} {i}");
                     //진짜입니까??
                 }
                 else
                 {
-                    print("Spawning Large Or Medium...");
-                    if (50 >= Random.Range(1, 101))
+                    if (70 >= Random.Range(1,101)) //(50 >= Random.Range(1, 101))
                     {
                         roomSize = ROOMSIZE.Medium;
                     }
-                    else if (35 >= Random.Range(1, 101))
+                    else// if (35 >= Random.Range(1, 101))
                     {
                         roomSize = ROOMSIZE.Large;
                     }
                 }
-
 
                 current.EliteRoomCandidates.Add(i);
                 BaseStage obj = map.StageLoad(ROOMTYPE.Normal, roomSize);
