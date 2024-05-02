@@ -8,6 +8,7 @@ public class SkillWheel : SkillController
     [SerializeField] Transform rotateImageTrm;
     [SerializeField] Rigidbody2D _rigid2d;
     [SerializeField] Vector2 _force = new Vector2(10, 0);
+    [SerializeField] private LayerMask _groundLayerMask;
 
     private void Start()
     {
@@ -29,7 +30,8 @@ public class SkillWheel : SkillController
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground"))
+        int layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
+        if (collision.gameObject.layer== layerMaskValue)
         {
             _rigid2d.gravityScale = 0;
             _rigid2d.velocity = Vector2.zero;
