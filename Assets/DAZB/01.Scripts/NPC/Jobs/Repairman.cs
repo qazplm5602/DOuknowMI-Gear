@@ -6,6 +6,6 @@ public class Repairman : Npc
 {
     public override void Interaction()
     {
-        IngameUIControl.Instance.gearChangeUI.Open();
+        PlayerStat.Instance.Open();
     }
 }

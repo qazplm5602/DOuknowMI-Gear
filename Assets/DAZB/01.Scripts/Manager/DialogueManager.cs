@@ -55,7 +55,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
 
     public void SetNpc(Npc npc) {
         this.npc = npc;
-        nameText.text = npc.name;
+        nameText.text = npc.GetNpcData().Name;
         interactionText.text = npc.GetNpcData().NpcInteractionName;
         ConversationBtn.gameObject.SetActive(npc.GetNpcData().CanConversate);
         InteractionBtn.gameObject.SetActive(npc.GetNpcData().CanInteract);
@@ -173,13 +173,13 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
-            sentence = selectSentence.Dequeue();
-            contentText.text = sentence.Content;
-            yield return StartCoroutine(TypeText(contentText));
             if (selectSentence.Count == 0) {
                 yield return new WaitForSeconds(1f);
                 break;
             }
+            sentence = selectSentence.Dequeue();
+            contentText.text = sentence.Content;
+            yield return StartCoroutine(TypeText(contentText));
             yield return StartCoroutine(DotTwinkle());
             yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
             yield return new WaitForSeconds(0.2f);
