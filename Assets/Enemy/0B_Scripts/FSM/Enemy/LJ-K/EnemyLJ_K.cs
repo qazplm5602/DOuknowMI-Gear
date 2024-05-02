@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using FSM;
 
 public enum LJ_KStateEnum {
@@ -51,6 +52,9 @@ public class EnemyLJ_K : Enemy
     protected override void Awake() {
         base.Awake();
         healthBar.gameObject.SetActive(false);
+        healthBar = transform.Find("Canvas/HealthBar").GetComponent<EnemyHealthBar>();
+        healthBar.Init();
+        HealthCompo.healthFilled = healthBar.transform.Find("Image").GetComponent<Image>();
 
         StateMachine = new EnemyStateMachine<LJ_KStateEnum>();
         
