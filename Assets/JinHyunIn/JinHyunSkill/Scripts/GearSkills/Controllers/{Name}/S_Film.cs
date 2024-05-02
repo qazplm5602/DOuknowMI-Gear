@@ -19,9 +19,13 @@ public class SkillFilm  : SkillController
             {
                 modifyingStat.AddModifierByTime(_debuffValue, t, _debuffTime);
             }
-            --_pierceCount;
-
+            
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+            if (_canPierce)
+            {
+                --_pierceCount;
+            }
         }
     }
+
 }

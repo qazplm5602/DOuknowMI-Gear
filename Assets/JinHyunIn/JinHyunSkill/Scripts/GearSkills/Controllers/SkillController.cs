@@ -102,10 +102,11 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         if (collision.TryGetComponent(out IDamageable target))
         {
-            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
-            //PlayerManager.instance.transform 넣으면 되는거임?
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
-            --_pierceCount;
+            if (_canPierce)
+            {
+                --_pierceCount;
+            }
         }
     }
 
@@ -113,9 +114,11 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         if (collision.collider.TryGetComponent(out IDamageable target))
         {
-            Debug.Log($"{collision.gameObject.name}(이)가 맞음");
-            //PlayerManager.instance.transform 넣으면 되는거임?
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+            if (_canPierce)
+            {
+                --_pierceCount;
+            }
         }
     }
 
