@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ChestGearUI : MonoBehaviour, IPointerDownHandler
+public class ChestGearUI : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] GameObject cogPrefab;
     [SerializeField] TextMeshProUGUI _name;
@@ -46,5 +46,15 @@ public class ChestGearUI : MonoBehaviour, IPointerDownHandler
     public void SetFocus(bool value) {
         _group.DOFade(value ? 1f : 0.3f, 0.3f);
         _name.DOFade(value ? 1f : 0, 0.3f);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _master.Hover(_gear);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _master.UnHover();
     }
 }
