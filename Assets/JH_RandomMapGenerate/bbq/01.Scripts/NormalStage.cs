@@ -21,6 +21,10 @@ public class NormalStage : BaseStage
     public int MaxWeight;
     public int HighestWeight = 0;
 
+    public Transform RewardPosition;
+    public InteractiveObject RewardChest;
+    private bool isRewarded = false;
+
     public List<Enemy> CurrentEnemies;
 
     public override void Init()
@@ -60,6 +64,12 @@ public class NormalStage : BaseStage
     public void OnEnable()
     {
         CaculateWeight();
+        OnClearChanged += HandleClearEvent;
+    }
+
+    public void OnDisable()
+    {
+        OnClearChanged -= HandleClearEvent;
     }
 
     private void CaculateWeight()
@@ -134,5 +144,22 @@ public class NormalStage : BaseStage
         {
             NextWave();
         }
+    }
+
+    private void HandleClearEvent(bool _)
+    {
+        if (Cleared == true && _)
+        {
+            SpawnReward();
+        }
+    }
+
+    public void SpawnReward()
+    {
+        if (RewardChest == null) return;
+        if (isRewarded) return;
+        isRewarded = true;
+        CurrencyChest dick = Instantiate(RewardChest, transform) as CurrencyChest;
+        dick.transform.position = RewardPosition.position;
     }
 }

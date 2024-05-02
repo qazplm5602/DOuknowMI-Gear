@@ -34680,7 +34680,7 @@ MonoBehaviour:
     indexX: 0
     indexY: 0
   Arena: {fileID: 0}
-  MaxWave: 3
+  MaxWave: 2
   CurrentWave: 0
   RoomActive: 0
   _spawnPoints:

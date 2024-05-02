@@ -469,7 +469,7 @@ public class MapSpawner : MonoBehaviour
                         {
                             flag = true;
                             current.PrayRoomCandidates.Remove(i);
-                            Destroy(current.MapObjList[i]);
+                            Destroy(current.MapObjList[i].gameObject);
                             break;
                         }
                     }
@@ -499,7 +499,7 @@ public class MapSpawner : MonoBehaviour
             current.PrayRoomCandidates.Remove(randomIndex);
             current.EliteRoomCandidates.Remove(randomIndex);
 
-            GameObject.Destroy(current.MapObjList[prayRoomIndex].gameObject);
+            Destroy(current.MapObjList[prayRoomIndex].gameObject);
             BaseStage prayRoom = map.StageLoad(ROOMTYPE.Statue);
             current.MapObjList[prayRoomIndex] = GameObject.Instantiate(prayRoom);
             current.StatueCount++;
@@ -522,7 +522,7 @@ public class MapSpawner : MonoBehaviour
             current.EliteRoomCandidates.Remove(randomIndex);
             current.EliteRoomCount++;
 
-            GameObject.Destroy(current.MapObjList[eliteRoomIndex].gameObject);
+            Destroy(current.MapObjList[eliteRoomIndex].gameObject);
             BaseStage eliteRoom = map.StageLoad(ROOMTYPE.Elite);
             current.MapObjList[eliteRoomIndex] = GameObject.Instantiate(eliteRoom);
 

@@ -26,7 +26,7 @@ public class Door : MonoBehaviour
     public bool IsCooldown = false;
 
     [SerializeField] private BaseStage nextRoom;
-    [SerializeField] private Door nextDoor;
+    [SerializeField] public Door nextDoor;
 
     [Space(10)]
     //[Header("애니메이션시발")]
@@ -79,6 +79,8 @@ public class Door : MonoBehaviour
             //UnityEngine.Debug.Log(e);
         }
 
+        print(nextDoor);
+
         stageData.OnClearChanged += ACTIVE_PORTAL;
     }
 
@@ -127,8 +129,11 @@ public class Door : MonoBehaviour
 
     private IEnumerator TPCooldown()
     {
-        nextDoor.IsCooldown = true;
-        yield return new WaitForSeconds(.5f);
-        nextDoor.IsCooldown = false;
+        if (nextDoor != null)
+        {
+            nextDoor.IsCooldown = true;
+            yield return new WaitForSeconds(.5f);
+            nextDoor.IsCooldown = false;
+        }
     }
 }

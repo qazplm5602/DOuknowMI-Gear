@@ -20,18 +20,21 @@ namespace bbqCode
         public Image BlackScreen;
         
         public GameObject MobSpawnEffect ;//{ get; private set; }
+        public Tween cock;
 
         protected override void Awake()
         {
             base.Awake();
             //MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
-           // print(MobSpawnEffect);
+            // print(MobSpawnEffect);
         }
 
         private void Start()
         {
+            BlackScreen.color = new Color(0, 0, 0, 1);
             mapSpawner = FindObjectOfType<MapSpawner>();
             plr = FindObjectOfType<Player>();
+            cock = BlackScreen.DOColor(new Color(0, 0, 0, 0), .5f);
             Ming();
         }
 
@@ -52,9 +55,13 @@ namespace bbqCode
         public void MoveRoom(BaseStage targetRoom, Door door = null, bool transition = true)
         {
             //BlackScreen.color
-            transition = false;
+            //transition = false;
             if (transition == true)
             {
+                if (cock != null && cock.IsPlaying())
+                {
+                    cock.Kill();
+                }
                 BlackScreen.DOColor(new Color(0, 0, 0, 1), .5f).OnComplete(() =>
                 {
 
