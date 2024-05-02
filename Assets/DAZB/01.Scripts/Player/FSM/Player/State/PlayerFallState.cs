@@ -12,13 +12,23 @@ public class PlayerFallState : PlayerCanDashState
         base.UpdateState();
         HandleMovementEvent();
         if (DialogueManager.Instance == null) {
+            if (player.MovementCompo.CanUnderJump() && player.isUnderJumpping) {
+                return;
+            }
             if (player.MovementCompo.isGround) {
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
+                /* player.isUnderJumpping = false; */
+                player.gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }
         else {
+            if (player.MovementCompo.CanUnderJump() && player.isUnderJumpping) {
+                return;
+            }
             if (player.MovementCompo.isGround || DialogueManager.Instance.isEnd == false) {
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
+                /* player.isUnderJumpping = false; */
+                player.gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }
     }

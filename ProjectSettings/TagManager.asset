@@ -24,9 +24,9 @@ TagManager:
   - PlayerWeapon
   - EnemyAttack
   - Platform
-  - 
-  - 
-  - 
+  - Wall
+  - PlayerUnderJumpping
+  - PlayerDash
   - 
   - 
   - 

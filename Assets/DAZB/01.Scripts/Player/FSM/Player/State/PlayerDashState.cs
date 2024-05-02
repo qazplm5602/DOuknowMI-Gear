@@ -12,6 +12,11 @@ public class PlayerDashState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        if (player.isUnderJumpping) {
+            player.isUnderJumpping = false;
+        }
+        player.gameObject.layer = LayerMask.NameToLayer("PlayerDash");
+        player.InputReader.InputDisable();
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
         dashDir = (mousePosition - player.transform.position).normalized;
         //player.MovementCompo.Flip(mousePosition);   
@@ -32,6 +37,8 @@ public class PlayerDashState : PlayerState
     public override void Exit()
     {
         player.isInvincibility = false;
+        player.gameObject.layer = LayerMask.NameToLayer("Player");
+        player.StartDelayCallback(0.1f, () => player.InputReader.InputEnable());
         base.Exit();
     }
 

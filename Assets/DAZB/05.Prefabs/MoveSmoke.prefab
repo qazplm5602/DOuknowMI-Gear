@@ -119,5 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8eea74cbe69e0c45b58b2f19f55cf64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 8
+  poolingType: 10
   pos: {fileID: 0}

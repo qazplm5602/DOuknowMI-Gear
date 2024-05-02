@@ -21,7 +21,7 @@ public class EnemyBoom : PoolableMono
 
         Collider2D cols = Physics2D.OverlapCircle(transform.position, _attackRadius, _whatIsEnemy);
 
-        if(cols && cols.TryGetComponent<IDamageable>(out IDamageable health)) {
+        if(cols && cols.TryGetComponent(out PlayerHealth health)) {
             health.ApplyDamage(_damage, transform);
         }
     }
