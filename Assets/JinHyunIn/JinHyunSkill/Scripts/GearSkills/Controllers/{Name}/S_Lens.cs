@@ -15,7 +15,8 @@ public class SkillLens : SkillController
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("PlayerWeapon"))
+        int layerMaskValue = (int)Mathf.Log(_weaponLayerMask.value, 2);
+        if (collision.gameObject.layer == layerMaskValue)
         {
             _enemies = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
 
