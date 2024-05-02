@@ -124,7 +124,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
 
     protected virtual void ModifyEnemyStat(float value, StatType statType, float time) 
     {
-        foreach (Entity item in StageManager.Instance._enemies)
+        foreach (Entity item in (Map.Instance.CurrentStage as NormalStage).CurrentEnemies)
         {
             EntityStat modifyingStat = item.Stat;
 

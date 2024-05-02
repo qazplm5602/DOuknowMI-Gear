@@ -25,7 +25,10 @@ public class BombAttackState : EnemyState<CommonEnemyStateEnum>
 
     public override void UpdateState() {
         Vector2 direction = _playerTrm.position - _enemy.transform.position;
-        _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
+
+        if(Mathf.Abs(direction.x) >= 0.1f)
+            _enemy.SetVelocity(Mathf.Sign(direction.x) * _enemy.Stat.moveSpeed.GetValue(), _rigidbody.velocity.y);
+        else _enemy.StopImmediately(false);
     }
 
     private IEnumerator Blink() {

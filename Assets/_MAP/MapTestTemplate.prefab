@@ -1138,7 +1138,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
@@ -2100,7 +2100,7 @@ GameObject:
   - component: {fileID: 3172251443009360954}
   - component: {fileID: 678677411012058605}
   - component: {fileID: 7827620174384457849}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall Col
   m_TagString: Untagged
   m_Icon: {fileID: 0}

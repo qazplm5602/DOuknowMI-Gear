@@ -296,12 +296,12 @@ MonoBehaviour:
     m_Bits: 4160
   attackRange: {x: 0, y: 0}
   attackOffset: {x: 0, y: 0}
-  attackDamage: 0
+  attackDamage: 10
   lastAttackTime: 0
   healthBarTransform: {fileID: 7464966540434669349}
   healthBarScale: 0.3
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
-  boomPrefab: {fileID: 2119766694198961146, guid: bb10397d5f314d54f9f5db464688c5d1, type: 3}
+  healthBar: {fileID: 0}
 --- !u!114 &4396419443951866148
 MonoBehaviour:
   m_ObjectHideFlags: 0

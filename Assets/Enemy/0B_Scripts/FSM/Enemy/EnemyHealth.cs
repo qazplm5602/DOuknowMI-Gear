@@ -6,6 +6,7 @@ using FSM;
 public class EnemyHealth : MonoBehaviour, IDamageable
 {
     public event Action OnDead;
+    public event Action OnHit;
 
     [SerializeField] private int _currentHealth;
     private int _maxHealth;
@@ -13,7 +14,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
     [SerializeField] private Material _whiteMat;
     private Material _originMat;
 
-    public Image healthFilled;
+    [HideInInspector] public Image healthFilled;
 
     private Transform _playerTrm;
     private Enemy _owner;
@@ -35,6 +36,8 @@ public class EnemyHealth : MonoBehaviour, IDamageable
 
         _currentHealth = Mathf.Clamp(_currentHealth - damage, 0, _maxHealth);
         healthFilled.fillAmount = (float)_currentHealth / _maxHealth;
+
+        OnHit?.Invoke();
 
         if(GameManager.Instance.showDamageText)
             ShowDamageText(damage);
