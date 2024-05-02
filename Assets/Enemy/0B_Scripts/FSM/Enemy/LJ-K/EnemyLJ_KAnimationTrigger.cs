@@ -42,32 +42,37 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
     private void ShowAttackRange(float time) {
         _attackRangeObject.transform.localScale = _enemyLJ_K.currentAttackRange;
         _attackRangeObject.transform.localPosition = _enemyLJ_K.currentAttackOffset;
+        
+        if(_coroutine != null) StopCoroutine(_coroutine);
+
         _coroutine = StartCoroutine(ShowRoutine(time));
     }
 
     private void HideAttackRange(float time) {
         if(_coroutine != null) StopCoroutine(_coroutine);
 
-        StartCoroutine(HideRoutine(time));
+        _coroutine = StartCoroutine(HideRoutine(time));
     }
 
     private IEnumerator ShowRoutine(float time) {
         float timer = 0f;
-        while(timer < time) {
+        while(timer <= time) {
             timer += Time.deltaTime;
             attackObjSR.color = new Color(1, 0, 0, timer / time);
             yield return null;
         }
+        attackObjSR.color = new Color(1, 0, 0, 1f);
     }
 
     private IEnumerator HideRoutine(float time) {
         float timer = time;
-        while(timer > 0) {
+        while(timer >= 0) {
             timer -= Time.deltaTime;
             timer = Mathf.Max(timer, 0f);
             attackObjSR.color = new Color(1, 0, 0, timer / time);
             yield return null;
         }
+        attackObjSR.color = new Color(1, 0, 0, 0f);
     }
 
     #endregion
