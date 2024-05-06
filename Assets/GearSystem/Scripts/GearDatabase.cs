@@ -20,4 +20,9 @@ public class GearDatabase : ScriptableObject
 
         return indexing[id];
     }
+
+    public GearSO GetRandomGear()
+    {
+        return list[UnityEngine.Random.Range(0,list.Length)];
+    }
 }

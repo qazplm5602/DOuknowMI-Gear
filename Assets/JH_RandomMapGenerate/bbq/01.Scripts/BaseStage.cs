@@ -1,3 +1,4 @@
+using bbqCode;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -155,7 +156,11 @@ public abstract class BaseStage : MonoBehaviour
         Cleared = true;
     }
 
-   
+    [ContextMenu("자살버튼")]
+    public void MoveToHere()
+    {
+        GayManater.Instance.MoveRoom(this);
+    }
 
     ///////적이 스폰하는 아레나 안에 넣을것
     //private void OnTransformChildrenChanged()

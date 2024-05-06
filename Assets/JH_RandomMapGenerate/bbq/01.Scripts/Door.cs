@@ -80,7 +80,7 @@ public class Door : MonoBehaviour
             //UnityEngine.Debug.Log(e);
         }
 
-        print(nextDoor);
+        //print(nextDoor);
 
         stageData.OnClearChanged += ACTIVE_PORTAL;
     }
@@ -120,12 +120,21 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (IsCooldown) return;
+        var 죽음 = true;
+        var 노무현 = true;
+        var 로무핸 = 노무현 == 죽음;
+        var 진실 = 로무핸;
+        if (IsCooldown == 진실) return;
         if (!col.CompareTag("Player")) return;
         if (!stageData.Cleared) return;
-        print(bbqCode.GayManater.Instance);
-        StartCoroutine(TPCooldown());
+        _______________________________ㅇㅇㅇㅇㅇㅇㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ__ㅇ_ㅇ();
+        nextDoor._______________________________ㅇㅇㅇㅇㅇㅇㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ__ㅇ_ㅇ();
         bbqCode.GayManater.Instance.MoveRoom(nextRoom,nextDoor);
+    }
+
+    public void _______________________________ㅇㅇㅇㅇㅇㅇㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ__ㅇ_ㅇ()
+    {
+        StartCoroutine(TPCooldown());
     }
 
     private IEnumerator TPCooldown()
@@ -133,7 +142,7 @@ public class Door : MonoBehaviour
         if (nextDoor != null)
         {
             nextDoor.IsCooldown = true;
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(1f);
             nextDoor.IsCooldown = false;
         }
     }

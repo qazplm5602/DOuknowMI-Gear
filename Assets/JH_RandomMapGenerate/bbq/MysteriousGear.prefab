@@ -105,3 +105,5 @@ MonoBehaviour:
   excuseMeUiPos: {fileID: 0}
   interactionName: MysteriousGear
   stage: {fileID: 0}
+  database: {fileID: 11400000, guid: 0c9dd3929d680be42b4a294bfacbdf52, type: 2}
+  "\uC790\uC9C0": {fileID: 9203836776404412255, guid: c53db880ff7571a4fb05c075d6179a0c, type: 3}
