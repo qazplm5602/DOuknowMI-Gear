@@ -54,6 +54,15 @@ public abstract class BaseStage : MonoBehaviour
         }
     }
 
+    [ContextMenu("놈ㅜ현생성ㄴ러ㅐㅏㅏㅂ 류시발 섹스 응디 후장자위하는 선한마음영준")]
+    public void 자지주()
+    {
+        Door[] gg = FindObjectsOfType<Door>();
+        foreach(Door g in gg)
+        {
+            door[(int)g.Type] = g;
+        }
+    }
 
     public virtual void Initialize()
     {
