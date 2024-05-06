@@ -8,18 +8,22 @@ using Random = UnityEngine.Random;
 
 public class NormalStage : BaseStage
 {
+    [Header("스폰 포인트들인.")]
+    [SerializeField] private Transform[] _spawnPoints;
     [Header("FUCKING ENEMIES WEIGHT")]
     public Enemy[] Enemies;
     [Header("무게, 스폰 확률인. 적배열의 크기와 같아야한다.")]
     public int[] Weights;
     [Header("무게, 방의 총 적들의 크기를 알기 위함 (약한 몹은 가볍고 높은 몹은 높다). 적배열의 크기와 같아야한다.")]
     public int[] WeightsFromPower;
-    [Header("스폰 포인트들인.")]
-    [SerializeField] private Transform[] _spawnPoints;
     [Header("방상태 ㅅㅂ")]
     public int TotalWeight = 0;
     public int MaxWeight;
     public int HighestWeight = 0;
+
+    public Transform RewardPosition;
+    public InteractiveObject RewardChest;
+    private bool isRewarded = false;
 
     public List<Enemy> CurrentEnemies;
 
@@ -60,6 +64,12 @@ public class NormalStage : BaseStage
     public void OnEnable()
     {
         CaculateWeight();
+        OnClearChanged += HandleClearEvent;
+    }
+
+    public void OnDisable()
+    {
+        OnClearChanged -= HandleClearEvent;
     }
 
     private void CaculateWeight()
@@ -134,5 +144,22 @@ public class NormalStage : BaseStage
         {
             NextWave();
         }
+    }
+
+    private void HandleClearEvent(bool _)
+    {
+        if (Cleared == true && _)
+        {
+            SpawnReward();
+        }
+    }
+
+    public void SpawnReward()
+    {
+        if (RewardChest == null) return;
+        if (isRewarded) return;
+        isRewarded = true;
+        CurrencyChest dick = Instantiate(RewardChest, transform) as CurrencyChest;
+        dick.transform.position = RewardPosition.position;
     }
 }

@@ -8,13 +8,13 @@ using Random = UnityEngine.Random;
 
 public class EliteMobStage : BaseStage
 {
+    [SerializeField] private Transform[] _spawnPoints;
     [Header("FUCKING ENEMIES WEIGHT")]
     public Enemy[] Enemies;
     [Header("무게, 스폰 확률인.")]
     public int[] Weights;
     [Header("무게, 방의 총 적들의 크기를 알기 위함 (약한 몹은 가볍고 높은 몹은 높다)")]
     public int[] WeightsFromPower;
-    [SerializeField] private Transform[] _spawnPoints;
     public int TotalWeight = 0;
     public int MaxWeight;
     public int HighestWeight = 0;
