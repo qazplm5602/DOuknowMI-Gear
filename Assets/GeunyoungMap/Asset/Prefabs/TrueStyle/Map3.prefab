@@ -30383,12 +30383,14 @@ MonoBehaviour:
   - {fileID: 2574894427246699608}
   Enemies:
   - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
-  - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
-  Weights: 0400000001000000
-  WeightsFromPower: 0400000003000000
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  Weights: 1e00000046000000
+  WeightsFromPower: 0300000003000000
   TotalWeight: 0
-  MaxWeight: 25
+  MaxWeight: 21
   HighestWeight: 0
+  RewardPosition: {fileID: 0}
+  RewardChest: {fileID: 0}
   CurrentEnemies: []
 --- !u!1 &2805384512026693722
 GameObject:
