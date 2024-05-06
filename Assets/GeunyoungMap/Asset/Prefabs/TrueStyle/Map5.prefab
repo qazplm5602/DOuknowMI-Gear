@@ -1536,14 +1536,17 @@ MonoBehaviour:
   RoomActive: 0
   _spawnPoints:
   - {fileID: 4777463584259686317}
-  - {fileID: 520988788960849686}
+  - {fileID: 0}
   - {fileID: 3940453056268305585}
   - {fileID: 1939922012090347306}
   - {fileID: 3393719193440446412}
-  Enemies: []
-  Weights: 
+  Enemies:
+  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
+  Weights: 320000001e00000014000000
   WeightsFromPower: 
-  TotalWeight: 0
+  TotalWeight: 42
   MaxWeight: 0
   HighestWeight: 0
   RewardPosition: {fileID: 2079297271852138122}
@@ -24043,37 +24046,6 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 6021300335970549352}
---- !u!1 &6880429921064023928
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 520988788960849686}
-  m_Layer: 0
-  m_Name: SpawnPoint (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &520988788960849686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6880429921064023928}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: 3.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7382196808393188875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7077189426235775663
 GameObject:
   m_ObjectHideFlags: 0
@@ -25436,7 +25408,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4777463584259686317}
-  - {fileID: 520988788960849686}
   - {fileID: 3940453056268305585}
   - {fileID: 1939922012090347306}
   - {fileID: 3393719193440446412}

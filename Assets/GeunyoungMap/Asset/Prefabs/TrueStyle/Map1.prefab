@@ -34245,13 +34245,13 @@ MonoBehaviour:
   - {fileID: 494589373304724611}
   - {fileID: 9004284334720682300}
   Enemies:
-  - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
   - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
   - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
-  Weights: 0c0000001100000008000000
-  WeightsFromPower: 060000000500000005000000
-  TotalWeight: 0
-  MaxWeight: 40
+  - {fileID: 6073386756807436646, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
+  Weights: 32000000280000000a000000
+  WeightsFromPower: 04000000050000000a000000
+  TotalWeight: 63
+  MaxWeight: 6
   HighestWeight: 0
   RewardPosition: {fileID: 9124346770869332490}
   RewardChest: {fileID: 7414049878827287056, guid: 3d58018c11bd4a9438b3856d35f9ff4d, type: 3}

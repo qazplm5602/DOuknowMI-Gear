@@ -7447,37 +7447,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1998176826543823923}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3141676371627651344
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4307671892251648511}
-  m_Layer: 0
-  m_Name: SpawnPoint (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4307671892251648511
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3141676371627651344}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26, y: 6.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1998176826543823923}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3475732092362748269
 GameObject:
   m_ObjectHideFlags: 0
@@ -34117,7 +34086,6 @@ Transform:
   - {fileID: 3435536380554024452}
   - {fileID: 6533228603060221739}
   - {fileID: 211503642918202408}
-  - {fileID: 4307671892251648511}
   m_Father: {fileID: 2235936138771444443}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5584547571634976086
@@ -34689,15 +34657,17 @@ MonoBehaviour:
   - {fileID: 3435536380554024452}
   - {fileID: 6533228603060221739}
   - {fileID: 211503642918202408}
-  - {fileID: 4307671892251648511}
   Enemies:
   - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
-  - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
-  Weights: 0400000001000000
-  WeightsFromPower: 0400000003000000
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  - {fileID: 6073386756807436646, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
+  Weights: 37000000230000000a000000
+  WeightsFromPower: 04000000050000000a000000
   TotalWeight: 0
-  MaxWeight: 25
+  MaxWeight: 42
   HighestWeight: 0
+  RewardPosition: {fileID: 0}
+  RewardChest: {fileID: 0}
   CurrentEnemies: []
 --- !u!1 &7228391049939218695
 GameObject:
