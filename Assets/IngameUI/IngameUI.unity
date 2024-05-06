@@ -545,7 +545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00036621094}
+  m_AnchoredPosition: {x: 0, y: 0.00048828125}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &90351336
@@ -7986,6 +7986,9 @@ MonoBehaviour:
   - title: "\uD50C\uB808\uC774\uC5B4 \uC870\uC791"
     sub: "\uD50C\uB808\uC774\uC5B4 \uC870\uC791\uD558\uB294 \uBC29\uBC95\uC744 \uC124\uBA85\uD569\uB2C8\uB2E4."
     content: {fileID: 7694231424291386399, guid: ec7cb4b7d3f41c34e86b75b072aedd07, type: 3}
+  - title: NPC
+    sub: "NPC \uD2B9\uC131\uC5D0 \uB300\uD574 \uC124\uBA85\uD569\uB2C8\uB2E4."
+    content: {fileID: 1168523054672465081, guid: 364d98c524c70c44c9822fa9d3d0f783, type: 3}
 --- !u!1 &1411176237
 GameObject:
   m_ObjectHideFlags: 0
