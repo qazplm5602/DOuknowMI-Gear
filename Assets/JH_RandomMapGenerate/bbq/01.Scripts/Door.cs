@@ -21,15 +21,16 @@ public class Door : MonoBehaviour
     public DoorType Type;
     
     private BaseStage stageData;
+    private bool _active = false;
 
     public bool IsCooldown = false;
 
     [SerializeField] private BaseStage nextRoom;
-    [SerializeField] private Door nextDoor;
+    [SerializeField] public Door nextDoor;
 
     [Space(10)]
-    [Header("애니메이션시발")]
-    [SerializeField] private Animator animator;
+    //[Header("애니메이션시발")]
+    private Animator animator;
 
     private void OnEnable()
     {
@@ -67,7 +68,8 @@ public class Door : MonoBehaviour
 
         try
         {
-            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}");
+            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}")
+            //print($"{gameObject} {nextRoom} {nextRoom?.door}");
             if (nextRoom.door[(int)OppoDir[Type]])
             {
                 nextDoor = nextRoom.door[(int)OppoDir[Type]];
@@ -77,6 +79,8 @@ public class Door : MonoBehaviour
         {
             //UnityEngine.Debug.Log(e);
         }
+
+        print(nextDoor);
 
         stageData.OnClearChanged += ACTIVE_PORTAL;
     }
@@ -88,8 +92,22 @@ public class Door : MonoBehaviour
 
     private void ACTIVE_PORTAL(bool isActive)
     {
-        print(isActive);
-        animator.SetBool("Activate", isActive);
+        _active = isActive;
+        if (isActive == false)
+        {
+            StartCoroutine(sibal());
+        }
+        else
+        {
+            animator.SetBool("Activate", _active);
+        }
+    }
+
+    private IEnumerator sibal()
+    {
+        yield return new WaitForSeconds(.7f);
+        if (_active == false)
+            animator.SetBool("Activate", _active);
     }
 
     public void Teleport()
@@ -112,8 +130,11 @@ public class Door : MonoBehaviour
 
     private IEnumerator TPCooldown()
     {
-        nextDoor.IsCooldown = true;
-        yield return new WaitForSeconds(.5f);
-        nextDoor.IsCooldown = false;
+        if (nextDoor != null)
+        {
+            nextDoor.IsCooldown = true;
+            yield return new WaitForSeconds(.5f);
+            nextDoor.IsCooldown = false;
+        }
     }
 }
