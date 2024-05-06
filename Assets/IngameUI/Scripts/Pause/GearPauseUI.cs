@@ -8,15 +8,20 @@ public class GearPauseUI : MonoBehaviour
     [SerializeField] GameObject _pauseScreen;
     [SerializeField] GameObject _Home;
     [SerializeField] GameObject _Setting;
+    [SerializeField] GameObject _guide;
 
     [SerializeField] Button resumeBtn;
     [SerializeField] Button settingBtn;
     [SerializeField] Button settingExitBtn;
+    [SerializeField] Button guideBtn;
+    [SerializeField] Button guideExitBtn;
 
     private void Awake() {
         resumeBtn.onClick.AddListener(Hide);
         settingBtn.onClick.AddListener(() => ScreenChange("setting"));
         settingExitBtn.onClick.AddListener(() => ScreenChange("home"));
+        guideBtn.onClick.AddListener(() => ScreenChange("guide"));
+        guideExitBtn.onClick.AddListener(() => ScreenChange("home"));
     }
 
     private void Update() {
@@ -43,6 +48,7 @@ public class GearPauseUI : MonoBehaviour
         _Home.SetActive(type.Equals("home"));
 
         _Setting.SetActive(type.Equals("setting"));
+        _guide.SetActive(type.Equals("guide"));
     }
 
     void GearPauseTooltipClear() {

@@ -344,7 +344,7 @@ Transform:
   m_GameObject: {fileID: 1077925688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.91, y: 1.49, z: -10}
+  m_LocalPosition: {x: 14.99, y: 2.3899999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -444,7 +444,7 @@ Transform:
   m_GameObject: {fileID: 1276312774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.91, y: 1.49, z: -10}
+  m_LocalPosition: {x: 14.99, y: 2.3899999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
   m_FrequencyGain: 0
-  mNoiseOffsets: {x: 0, y: 0, z: 0}
+  mNoiseOffsets: {x: 636.83795, y: 734.6892, z: -324.03577}
 --- !u!224 &1522193850 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6940766071068661990, guid: 54205f32a4ba91448864aba2b690719c, type: 3}
@@ -1377,8 +1377,8 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: f381fe0e589bd764ca7a019a93c08eb7, type: 2}
   moveSpeed: 0
   dashPower: 25
-  jumpPower: 10
-  dashCool: 2
+  jumpPower: 15
+  dashCool: 1
   atk: 0
   atkCool: 0
   defense: 0
@@ -8337,63 +8337,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -222.00002}
   m_SizeDelta: {x: 133, y: 133}
   m_Pivot: {x: 0.5, y: 1}
---- !u!1001 &4574483360024362697
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2810516126604168729, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7117199414866340332, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
-      propertyPath: m_Name
-      value: VillageMap
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7c4cb1c25bfd0be4ba2e43fddbf34a32, type: 3}
 --- !u!224 &4580385969705421460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11057,9 +11000,12 @@ MonoBehaviour:
   _pauseScreen: {fileID: 4874856002627133135}
   _Home: {fileID: 4516109476241527211}
   _Setting: {fileID: 8715006602211157166}
+  _guide: {fileID: 0}
   resumeBtn: {fileID: 1354817558}
   settingBtn: {fileID: 1527896916}
   settingExitBtn: {fileID: 6749633972293326755}
+  guideBtn: {fileID: 0}
+  guideExitBtn: {fileID: 0}
 --- !u!1 &6111963084259517432
 GameObject:
   m_ObjectHideFlags: 0
@@ -14073,7 +14019,7 @@ Transform:
   m_GameObject: {fileID: 7420975970338741398}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.91, y: -1.51, z: 0}
+  m_LocalPosition: {x: 14.99, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16743,4 +16689,3 @@ SceneRoots:
   - {fileID: 1187136973224537985}
   - {fileID: 8949081436819682144}
   - {fileID: 7126795470824719634}
-  - {fileID: 4574483360024362697}

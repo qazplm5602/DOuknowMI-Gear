@@ -6,13 +6,13 @@ using UnityEngine;
 public abstract class SkillController : MonoBehaviour
 {
     #region 스킬 정보
-    [SerializeField] 
+    [SerializeField]
     protected float _damage;
-    [SerializeField] 
+    [SerializeField]
     protected CastingType castType = CastingType.None;
     [SerializeField]
     protected float _moveSpeed;
-    [SerializeField] 
+    [SerializeField]
     protected float _maxRange;
     [SerializeField]
     protected bool _destroyByTime = false;
@@ -22,10 +22,17 @@ public abstract class SkillController : MonoBehaviour
     protected int _pierceCount;
     [SerializeField]
     protected bool _canPierce = false;
+    [SerializeField]
+    protected LayerMask _groundLayerMask;
+    [SerializeField]
+    protected LayerMask _wallLayerMask;
+
+    protected int _wallLayerInfo;
+    protected int _groundLayerInfo;
     #endregion
 
     #region 캐스팅 관련 정보
-    [SerializeField] 
+    [SerializeField]
     private Vector2 _castPos;
     [SerializeField]
     private Vector2 _castSize;
@@ -33,7 +40,7 @@ public abstract class SkillController : MonoBehaviour
     private float _castAngle;
     [SerializeField]
     private float _castRadius;
-    [SerializeField] 
+    [SerializeField]
     private bool isDamageCasting;
     #endregion
 
@@ -45,11 +52,16 @@ public abstract class SkillController : MonoBehaviour
     protected List<StatType> _willModify = new();
     [SerializeField]
     protected float _debuffTime;
-    [Tooltip("0.5를 넣으면 현재 스탯의 50%만큼 감소시킴. *-1 된 값으로 적용")][SerializeField]
+    [Tooltip("0.5를 넣으면 현재 스탯의 50%만큼 감소시킴. *-1 된 값으로 적용")]
+    [SerializeField]
     protected float _debuffValue = 0f;
     #endregion
-
-protected virtual IEnumerator MoveRoutine(Transform startTrm)
+    private void Awake()
+    {
+        _wallLayerInfo = (int)Mathf.Log(_wallLayerMask.value, 2);
+        _groundLayerInfo = (int)Mathf.Log(_groundLayerMask.value, 2);
+    }
+    protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
         //_damage += PlayerManager.instance.player.stat.attack.GetValue();
         if (_destroyByTime)
@@ -59,10 +71,10 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
             yield break;
         }
         Vector3 firstPos = startTrm.position;
-        bool notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
-        while (notMaxDistance)  
+        bool notMaxDistance = IsInRange(firstPos, currentPos: transform.position);
+        while (notMaxDistance)
         {
-            notMaxDistance = IsInRange(firstPos, currentPos : transform.position);
+            notMaxDistance = IsInRange(firstPos, currentPos: transform.position);
 
             transform.position += _moveSpeed * Time.deltaTime * startTrm.right;
             if (isDamageCasting && _attackTriggerCalled) DamageCasting();
@@ -94,6 +106,12 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
+        if ((collision.gameObject.layer == _wallLayerInfo)
+            || (collision.gameObject.layer == _groundLayerInfo))
+        {
+            Destroy(gameObject);
+        }
+
         if (collision.TryGetComponent(out IDamageable target))
         {
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
@@ -107,6 +125,11 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
+        if ((collision.gameObject.layer == _wallLayerInfo)
+            || (collision.gameObject.layer == _groundLayerInfo))
+        {
+            Destroy(gameObject);
+        }
         if (collision.collider.TryGetComponent(out IDamageable target))
         {
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
@@ -117,7 +140,7 @@ protected virtual IEnumerator MoveRoutine(Transform startTrm)
         }
     }
 
-    protected virtual void ModifyEnemyStat(float value, StatType statType, float time) 
+    protected virtual void ModifyEnemyStat(float value, StatType statType, float time)
     {
         foreach (Entity item in (Map.Instance.CurrentStage as NormalStage).CurrentEnemies)
         {
