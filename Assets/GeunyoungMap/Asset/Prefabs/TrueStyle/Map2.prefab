@@ -3599,6 +3599,7 @@ GameObject:
   - component: {fileID: 640468805284401284}
   - component: {fileID: 6235949721640350426}
   - component: {fileID: 7518460316735038572}
+  - component: {fileID: 2482100778514431800}
   m_Layer: 0
   m_Name: _Portal
   m_TagString: Untagged
@@ -3729,6 +3730,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &2482100778514431800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3002261884929192550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 3
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
+  nextDoor: {fileID: 0}
 --- !u!1 &3104707556961686398
 GameObject:
   m_ObjectHideFlags: 0
@@ -9109,7 +9126,7 @@ Transform:
   m_GameObject: {fileID: 5003444186569511945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: -3, z: 0}
+  m_LocalPosition: {x: 20, y: -7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9147,7 +9164,6 @@ Transform:
   - {fileID: 505732731217987403}
   - {fileID: 8818122940576899693}
   - {fileID: 5239062521985596586}
-  - {fileID: 4618583145225536099}
   - {fileID: 370373954897730235}
   m_Father: {fileID: 3923428274887527822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9482,6 +9498,7 @@ GameObject:
   - component: {fileID: 8143582195361025195}
   - component: {fileID: 1480665285165602985}
   - component: {fileID: 1037764655625724359}
+  - component: {fileID: 4937824290900446559}
   m_Layer: 0
   m_Name: _Portal (1)
   m_TagString: Untagged
@@ -9612,6 +9629,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &4937824290900446559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6236780283035390454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: 2
+  IsCooldown: 0
+  nextRoom: {fileID: 0}
+  nextDoor: {fileID: 0}
 --- !u!1 &6522216075236726674
 GameObject:
   m_ObjectHideFlags: 0
@@ -22031,9 +22064,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3923428274887527822}
   - component: {fileID: 1853170285308656265}
+  - component: {fileID: 633192750861526226}
   m_Layer: 0
   m_Name: Map2
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22072,6 +22106,54 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &633192750861526226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8624286368409809563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d047c6a9e4cc9524b844ff39061574c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 4937824290900446559}
+  - {fileID: 2482100778514431800}
+  type: 1
+  StageNum: 0
+  StageLinkedData:
+    RightMap: {fileID: 0}
+    LeftMap: {fileID: 0}
+    UpMap: {fileID: 0}
+    DownMap: {fileID: 0}
+    Num: 0
+    indexX: 0
+    indexY: 0
+  Arena: {fileID: 0}
+  MaxWave: 2
+  CurrentWave: 0
+  RoomActive: 0
+  _spawnPoints:
+  - {fileID: 505732731217987403}
+  - {fileID: 8818122940576899693}
+  - {fileID: 5239062521985596586}
+  - {fileID: 370373954897730235}
+  Enemies:
+  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
+  Weights: 320000001900000019000000
+  WeightsFromPower: 030000000300000004000000
+  TotalWeight: 0
+  MaxWeight: 21
+  HighestWeight: 0
+  RewardPosition: {fileID: 0}
+  RewardChest: {fileID: 0}
+  CurrentEnemies: []
 --- !u!1 &8652725575867965718
 GameObject:
   m_ObjectHideFlags: 0
@@ -24893,34 +24975,3 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!1 &9118114670683555501
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4618583145225536099}
-  m_Layer: 0
-  m_Name: SpawnPoint (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4618583145225536099
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9118114670683555501}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: -2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8568872074434473987}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
