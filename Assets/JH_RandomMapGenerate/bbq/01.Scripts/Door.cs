@@ -68,7 +68,8 @@ public class Door : MonoBehaviour
 
         try
         {
-            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}");
+            //print($"{transform.parent.name}, {nextRoom}, {nextDoor}, {Type}, {stageData.StageLinkedData}")
+            //print($"{gameObject} {nextRoom} {nextRoom?.door}");
             if (nextRoom.door[(int)OppoDir[Type]])
             {
                 nextDoor = nextRoom.door[(int)OppoDir[Type]];
