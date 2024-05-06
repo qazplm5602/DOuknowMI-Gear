@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealthBar : PoolableMono
 {
@@ -33,5 +34,6 @@ public class EnemyHealthBar : PoolableMono
     public override void ResetItem() {
         transform.SetParent(PoolManager.Instance._poolingCanvas.transform);
         _healthBarTransform = null;
+        transform.GetChild(0).GetComponent<Image>().fillAmount = 1f;
     }
 }
