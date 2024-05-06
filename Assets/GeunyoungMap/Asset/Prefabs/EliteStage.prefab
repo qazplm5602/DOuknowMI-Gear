@@ -12993,7 +12993,9 @@ PrefabInstance:
       propertyPath: excuseMeUiPos
       value: 
       objectReference: {fileID: 5276720608551732827}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7705129465268855106, guid: daeebcef1ae45534eac577f2d0dddbde, type: 3}
+    - {fileID: 7786417925714371487, guid: daeebcef1ae45534eac577f2d0dddbde, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

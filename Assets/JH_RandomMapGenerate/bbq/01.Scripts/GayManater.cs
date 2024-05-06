@@ -58,7 +58,7 @@ namespace bbqCode
             //transition = false;
             if (transition == true)
             {
-                if (cock != null && cock.IsPlaying())
+                if (cock != null)
                 {
                     cock.Kill();
                 }
