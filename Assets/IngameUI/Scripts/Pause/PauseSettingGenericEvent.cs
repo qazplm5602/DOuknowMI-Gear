@@ -24,7 +24,7 @@ public class PauseSettingGenericEvent : MonoBehaviour
 
     private void OnEnable() {
         if (!init) return;
-        transform.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
+        transform.parent.Find("Categorys").GetChild(0).GetComponent<Button>().onClick?.Invoke();
     }
 
     private void Start() {

@@ -191,10 +191,10 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -218,6 +218,7 @@ MonoBehaviour:
   _destroyByTime: 1
   _destroyTime: 5
   _pierceCount: 0
+  _canPierce: 0
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
@@ -229,6 +230,12 @@ MonoBehaviour:
   rotateImageTrm: {fileID: 3802719296657816280}
   _rigid2d: {fileID: 7703011849892642698}
   _force: {x: 7, y: 0}
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!58 &8492415021059837911
 CircleCollider2D:
   m_ObjectHideFlags: 0
