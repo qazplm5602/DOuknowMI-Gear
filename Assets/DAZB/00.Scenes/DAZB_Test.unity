@@ -1627,6 +1627,7 @@ MonoBehaviour:
   inputReader: {fileID: 11400000, guid: 9e4fbaec0e5813540ae0c35831f0b700, type: 2}
   ExcuseMeUI: {fileID: 665095246}
   DotTwinkleUi: {fileID: 534203815}
+  NameTag: {fileID: 0}
   charPrintTime: 0.1
   DialoguePanel: {fileID: 1193847237}
   SelectionPanel: {fileID: 1900983885}
@@ -1642,6 +1643,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   isEnd: 1
   checkInteractiveObejct: 0
+  nowInteractiveObjectName: 
 --- !u!1 &282942321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4823,6 +4825,9 @@ MonoBehaviour:
   _coinBox: {fileID: 1885228625}
   _gearChangeUI: {fileID: 695706426}
   _gearPauseUI: {fileID: 0}
+  _statueUI: {fileID: 0}
+  _chestUI: {fileID: 0}
+  test_gears: []
 --- !u!114 &695706424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7742,7 +7747,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 523
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 6bd1f7cf788d7634dabc07b8c32f2350, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
