@@ -2643,6 +2643,7 @@ MonoBehaviour:
   npc: {fileID: 0}
   isEnd: 1
   checkInteractiveObejct: 0
+  nowInteractiveObjectName: 
 --- !u!1 &282942321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4353,7 +4354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04dd6e216c63744db2f3b8f59fe8b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueDataFile: {fileID: 4900000, guid: 2520293150b9de242b3bd0b4ae776115, type: 3}
+  dialogueDataFile: {fileID: 4900000, guid: c7914eefde5f0c242a933cae94800f54, type: 3}
 --- !u!114 &425070573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7247,9 +7248,12 @@ MonoBehaviour:
   _pauseScreen: {fileID: 420336848}
   _Home: {fileID: 2092055375}
   _Setting: {fileID: 1493130143}
+  _guide: {fileID: 0}
   resumeBtn: {fileID: 346518038}
   settingBtn: {fileID: 1020746364}
   settingExitBtn: {fileID: 87500632}
+  guideBtn: {fileID: 0}
+  guideExitBtn: {fileID: 0}
 --- !u!114 &695706425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8848,7 +8852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04dd6e216c63744db2f3b8f59fe8b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueDataFile: {fileID: 4900000, guid: 2520293150b9de242b3bd0b4ae776115, type: 3}
+  dialogueDataFile: {fileID: 4900000, guid: 61fc1e2b8e01948499a79d2e28387f1e, type: 3}
 --- !u!61 &824454626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12016,7 +12020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04dd6e216c63744db2f3b8f59fe8b4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueDataFile: {fileID: 4900000, guid: 2520293150b9de242b3bd0b4ae776115, type: 3}
+  dialogueDataFile: {fileID: 4900000, guid: dd40b6688d0f6d84398f9b72af574c1a, type: 3}
 --- !u!114 &1022118455
 MonoBehaviour:
   m_ObjectHideFlags: 0
