@@ -2,10 +2,10 @@ using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
-public class AngleManager : MonoBehaviour
+public class AngleManager : MonoSingleton<AngleManager>
 {
-    public static Camera orthographicCam = Camera.main.transform.GetChild(0).GetComponent<Camera>();
-    public static Quaternion GetTargetDirection(Vector3 playerPos, Vector3 mousePos)
+    public Camera orthographicCam;
+    public Quaternion GetTargetDirection(Vector3 playerPos, Vector3 mousePos)
     {
         if (orthographicCam == null) print("Maincamera's child require orthograpic camera");
         Vector3 pPos = playerPos;
