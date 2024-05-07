@@ -109,11 +109,14 @@ public abstract class SkillController : MonoBehaviour
         if ((collision.gameObject.layer == _wallLayerInfo)
             || (collision.gameObject.layer == _groundLayerInfo))
         {
+            print("부딪힘");
+            PoolManager.Instance.Pop(PoolingType.Effect_Wall, true, transform);
             Destroy(gameObject);
         }
 
         if (collision.TryGetComponent(out IDamageable target))
         {
+            PoolManager.Instance.Pop(PoolingType.Effect_Impact, true, collision.transform);
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
             if (_canPierce)
             {
@@ -128,10 +131,12 @@ public abstract class SkillController : MonoBehaviour
         if ((collision.gameObject.layer == _wallLayerInfo)
             || (collision.gameObject.layer == _groundLayerInfo))
         {
+            PoolManager.Instance.Pop(PoolingType.Effect_Wall, true, transform);
             Destroy(gameObject);
         }
         if (collision.collider.TryGetComponent(out IDamageable target))
         {
+            PoolManager.Instance.Pop(PoolingType.Effect_Impact, true, collision.transform);
             target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
             if (_canPierce)
             {
