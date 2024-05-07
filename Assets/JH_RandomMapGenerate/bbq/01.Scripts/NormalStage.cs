@@ -119,31 +119,40 @@ public class NormalStage : BaseStage
     {
         int curr = 0, amountSpawnPoint = _spawnPoints.Length;
         var spawnDelay = new WaitForSeconds(.2f);
-        Enemy[] _enemies = GetRandomEnemies();
-        print(_enemies.Length);
-        foreach (var _enemy in _enemies)
+        if(!(Enemies.Length <= 0))
         {
-            Transform spawnPoint = _spawnPoints[curr];
+            Enemy[] _enemies = GetRandomEnemies();
+            print(_enemies.Length);
+            foreach (var _enemy in _enemies)
+            {
+                Transform spawnPoint = _spawnPoints[curr];
 
-            Enemy enemy = Instantiate(_enemy, transform);
-            enemy.transform.position = spawnPoint.position;
+                Enemy enemy = Instantiate(_enemy, transform);
+                enemy.transform.position = spawnPoint.position;
 
-            CurrentEnemies.Add(enemy);
+                CurrentEnemies.Add(enemy);
 
-            ++curr;
-            if (curr >= amountSpawnPoint) curr = 0;
+                ++curr;
+                if (curr >= amountSpawnPoint) curr = 0;
 
-            yield return spawnDelay;
+                yield return spawnDelay;
+            }
         }
+        Check엄마가있나없나();
     }
 
-    private void OnTransformChildrenChanged()
+    private void Check엄마가있나없나()
     {
         var enemy = GetComponentInChildren<Enemy>();
         if (enemy == null)
         {
             NextWave();
         }
+    }
+
+    private void OnTransformChildrenChanged()
+    {
+        Check엄마가있나없나();
     }
 
     private void HandleClearEvent(bool _)
@@ -153,6 +162,8 @@ public class NormalStage : BaseStage
             SpawnReward();
         }
     }
+
+
 
     public void SpawnReward()
     {
