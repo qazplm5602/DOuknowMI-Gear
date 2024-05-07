@@ -12,7 +12,7 @@ public class SkillWheel : SkillController
     
 
     Vector2 _lastVelocity;
-    int _layerMaskValue;
+    private int _layerMaskValue;
 
     private void Start()
     {
