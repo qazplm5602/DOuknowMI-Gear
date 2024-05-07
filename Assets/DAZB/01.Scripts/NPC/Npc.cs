@@ -39,7 +39,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
             DialogueManager.Instance.ExcuseMeUI.SetActive(true);
             DialogueManager.Instance.ExcuseMeUI.transform.position = ecUiPos;
             DialogueManager.Instance.SetNpc(this);
-            nameTagText.text= npcData.Name;
+            nameTagText.text= npcData.Name + "\n" + npcData.Job;
             DialogueManager.Instance.NameTag.SetActive(true);
             DialogueManager.Instance.NameTag.transform.position = nTPos;
             if (Keyboard.current.fKey.wasPressedThisFrame) {
