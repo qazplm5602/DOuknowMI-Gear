@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069b53b6e16f7654c9612608d6d352ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolingType: 11
+  poolingType: 13
