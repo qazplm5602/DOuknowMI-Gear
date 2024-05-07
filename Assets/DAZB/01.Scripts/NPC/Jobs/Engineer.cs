@@ -6,6 +6,6 @@ public class Engineer : Npc
 {
     public override void Interaction()
     {
-        PlayerStat.Instance.Open();
+        IngameUIControl.Instance.gearChangeUI.Open();
     }
 }

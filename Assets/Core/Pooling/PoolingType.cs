@@ -12,5 +12,6 @@ public enum PoolingType
     MoveStartSmoke,
     MoveSmoke,
     Effect_Impact,
-    Effect_Wall
+    Effect_Wall,
+    PlayerLanding
 }

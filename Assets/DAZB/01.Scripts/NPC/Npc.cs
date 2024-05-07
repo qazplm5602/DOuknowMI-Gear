@@ -9,19 +9,23 @@ public abstract class Npc : MonoBehaviour, IInteraction
     [SerializeField] private Vector2 checkBoxSize;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Transform excuseMeUiPos;
+    [SerializeField] private Transform nameTagPos;
     [SerializeField] private string interactionName;
 
     protected bool isCheck;
     private Dialogue dialogue;
-    private Vector2 pos;
+    private Vector2 ecUiPos;
+    private Vector2 nTPos;
     private bool isDialogue;
     private TMP_Text excuseMeText;
+    private TMP_Text nameTagText;
 
     public NpcData GetNpcData() => npcData;
     public abstract void Interaction();
     private void Awake() {
         dialogue = GetComponent<Dialogue>();
         excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false); 
+        nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
     }
 
     private void Update() {
@@ -30,10 +34,14 @@ public abstract class Npc : MonoBehaviour, IInteraction
             if (excuseMeText != null) {
                 excuseMeText.text = interactionName;
             }
-            pos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
+            ecUiPos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
+            nTPos = Camera.main.WorldToScreenPoint(nameTagPos.position);
             DialogueManager.Instance.ExcuseMeUI.SetActive(true);
-            DialogueManager.Instance.ExcuseMeUI.transform.position = pos;
+            DialogueManager.Instance.ExcuseMeUI.transform.position = ecUiPos;
             DialogueManager.Instance.SetNpc(this);
+            nameTagText.text= npcData.Name;
+            DialogueManager.Instance.NameTag.SetActive(true);
+            DialogueManager.Instance.NameTag.transform.position = nTPos;
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 ExcuseMe();
             }
@@ -42,6 +50,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
             if (DialogueManager.Instance.npc == null || DialogueManager.Instance.checkInteractiveObejct) return;
             if (DialogueManager.Instance.npc.name == gameObject.name) {
                 DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                DialogueManager.Instance.NameTag.SetActive(false);
             }
         }
     }
