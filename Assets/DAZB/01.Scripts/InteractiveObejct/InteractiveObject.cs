@@ -10,13 +10,18 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     [SerializeField] private Vector3 checkSize;
     [SerializeField] private Vector3 offset;
     [SerializeField] private Transform excuseMeUiPos;
-    [SerializeField] private string interactionName;
+    [SerializeField] private Transform nameTagPos;
+    [SerializeField] private string objectName;
+    public   string interactionName;
     private bool isCheck;
-    private Vector2 pos; // screen Pos
+    private Vector2 ecUiPos;
+    private Vector2 nTPos;
     private TMP_Text excuseMeText;
+    private TMP_Text nameTagText;
 
     private void Awake() {
-        excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false); 
+        excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false);
+        nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
     }
 
     private void Update() {
@@ -25,10 +30,15 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             if (excuseMeText != null) {
                 excuseMeText.text = interactionName;
             }
-            pos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
+            ecUiPos = Camera.main.WorldToScreenPoint(excuseMeUiPos.position);
+            nTPos = Camera.main.WorldToScreenPoint(nameTagPos.position);
             DialogueManager.Instance.checkInteractiveObejct = true;
             DialogueManager.Instance.ExcuseMeUI.SetActive(true);
-            DialogueManager.Instance.ExcuseMeUI.transform.position = pos;
+            DialogueManager.Instance.ExcuseMeUI.transform.position = ecUiPos;
+            nameTagText.text= objectName;
+            DialogueManager.Instance.NameTag.SetActive(true);
+            DialogueManager.Instance.NameTag.transform.position = nTPos;
+            DialogueManager.Instance.nowInteractiveObjectName = gameObject.name;
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 Interaction();
             }
@@ -38,8 +48,11 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
                 DialogueManager.Instance.checkInteractiveObejct = false;
             }
             else {
-                DialogueManager.Instance.checkInteractiveObejct = false;
-                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                    DialogueManager.Instance.checkInteractiveObejct = false;
+                    DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                    DialogueManager.Instance.NameTag.SetActive(false);
+                }
             }
         }
     }

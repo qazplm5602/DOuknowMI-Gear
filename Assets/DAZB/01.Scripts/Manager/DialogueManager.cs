@@ -10,6 +10,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
 {    public InputReader inputReader;
     public GameObject ExcuseMeUI;
     public GameObject DotTwinkleUi;
+    public GameObject NameTag;
     public float charPrintTime;
     public GameObject DialoguePanel;
     public GameObject SelectionPanel;
@@ -27,6 +28,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     [Tooltip("대사가 끝나면 true, 시작하면 false")]
     public bool isEnd = true;
     public bool checkInteractiveObejct;
+    [HideInInspector] public string nowInteractiveObjectName;
     private TMP_Text interactionText;
 /*     private IEnumerator _dialogue; */
     private void Awake() {
@@ -54,8 +56,10 @@ public class DialogueManager : MonoSingleton<DialogueManager>
 
     public void SetNpc(Npc npc) {
         this.npc = npc;
-        nameText.text = npc.name;
+        nameText.text = npc.GetNpcData().Name;
         interactionText.text = npc.GetNpcData().NpcInteractionName;
+        ConversationBtn.gameObject.SetActive(npc.GetNpcData().CanConversate);
+        InteractionBtn.gameObject.SetActive(npc.GetNpcData().CanInteract);
     }
 
     public void ActiveDialoguePanel(bool isActive) {
@@ -170,13 +174,13 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         ActiveSelectionPanel(false);
         DialogueData sentence;
         while (true) {
-            sentence = selectSentence.Dequeue();
-            contentText.text = sentence.Content;
-            yield return StartCoroutine(TypeText(contentText));
             if (selectSentence.Count == 0) {
                 yield return new WaitForSeconds(1f);
                 break;
             }
+            sentence = selectSentence.Dequeue();
+            contentText.text = sentence.Content;
+            yield return StartCoroutine(TypeText(contentText));
             yield return StartCoroutine(DotTwinkle());
             yield return new WaitUntil(() => Keyboard.current.spaceKey.wasPressedThisFrame);
             yield return new WaitForSeconds(0.2f);

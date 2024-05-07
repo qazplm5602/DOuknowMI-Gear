@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+public enum SoundType {
+    // 알아서 넣으면 됨
+}
+
 public class SoundManager : MonoSingleton<SoundManager>
 {
     [SerializeField] private AudioClip[] _audios;
@@ -31,13 +35,13 @@ public class SoundManager : MonoSingleton<SoundManager>
         _audioMixer.SetFloat(name, -((100 - value) * 0.8f));
     }
 
-    public void PlaySound(string clipName) {
-        if(!_audioClipDictionary.ContainsKey(clipName)) {
-            Debug.LogError($"[SoundManager] {clipName} Clip Not Found");
+    public void PlaySound(SoundType type) {
+        if(!_audioClipDictionary.ContainsKey(type.ToString())) {
+            Debug.LogError($"[SoundManager] {type} Clip Not Found");
             return;
         }
 
-        _audioSource.PlayOneShot(_audioClipDictionary[clipName]);
+        _audioSource.PlayOneShot(_audioClipDictionary[type.ToString()]);
     }
 
     private void PlayBGM(string clipName) {
