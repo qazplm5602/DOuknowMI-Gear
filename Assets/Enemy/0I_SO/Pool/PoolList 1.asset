@@ -43,6 +43,12 @@ MonoBehaviour:
   - type: 7
     prefab: {fileID: 5229729143776453791, guid: 4af930c086c26234ab24a0f7adfe4c0b, type: 3}
     count: 10
-  - type: 11
+  - type: 13
     prefab: {fileID: 936634492557973573, guid: e0192999a3e2a7f409aafa89cf7b8ca6, type: 3}
+    count: 10
+  - type: 12
+    prefab: {fileID: -6696503796497638217, guid: 2bf506abeb4aa6047b887d4c7e74673f, type: 3}
+    count: 10
+  - type: 11
+    prefab: {fileID: -7643488025783776581, guid: 7f8eb515056632e46a1ee2c679885d01, type: 3}
     count: 10
