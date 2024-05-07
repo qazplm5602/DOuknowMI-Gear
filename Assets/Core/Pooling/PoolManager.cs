@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PoolManager : MonoSingleton<PoolManager>
@@ -19,7 +20,7 @@ public class PoolManager : MonoSingleton<PoolManager>
         _pools.Add(poolingType, pool);
     }
 
-    public PoolableMono Pop(PoolingType type) {
+    public PoolableMono Pop(PoolingType type, bool usePosition = false, Transform spawnTrm = null) {
         if(_pools.ContainsKey(type) == false) {
             Debug.LogError($"Prefab does not Exist on Pool : {type}");
             return null;
@@ -27,6 +28,10 @@ public class PoolManager : MonoSingleton<PoolManager>
 
         PoolableMono item = _pools[type].Pop();
         item.ResetItem();
+        if(usePosition)
+        {
+            item.transform.position = spawnTrm.position;
+        }
         return item;
     }
 

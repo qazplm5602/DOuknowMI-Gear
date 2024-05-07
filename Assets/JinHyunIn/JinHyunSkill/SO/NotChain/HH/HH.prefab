@@ -262,6 +262,14 @@ MonoBehaviour:
   _maxRange: 10
   _destroyByTime: 0
   _destroyTime: 0
+  _pierceCount: 0
+  _canPierce: 0
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _wallLayerMask:
+    serializedVersion: 2
+    m_Bits: 4096
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
