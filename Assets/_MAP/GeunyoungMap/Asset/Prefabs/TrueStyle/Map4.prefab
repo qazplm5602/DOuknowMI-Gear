@@ -34662,7 +34662,7 @@ MonoBehaviour:
   - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
   - {fileID: 6073386756807436646, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
   Weights: 37000000230000000a000000
-  WeightsFromPower: 04000000050000000a000000
+  WeightsFromPower: 05000000060000000a000000
   TotalWeight: 0
   MaxWeight: 42
   HighestWeight: 0
