@@ -22361,7 +22361,7 @@ GameObject:
   - component: {fileID: 1638756094856954073}
   m_Layer: 0
   m_Name: BossMap
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

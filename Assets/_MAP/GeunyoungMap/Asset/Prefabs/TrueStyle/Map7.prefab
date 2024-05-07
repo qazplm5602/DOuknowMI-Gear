@@ -15103,7 +15103,7 @@ GameObject:
   - component: {fileID: 3632317573404015405}
   m_Layer: 0
   m_Name: Map7
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15177,11 +15177,13 @@ MonoBehaviour:
   - {fileID: 1051127652749531651}
   - {fileID: 2474766811527945415}
   - {fileID: 2625155732428761044}
-  Enemies: []
-  Weights: 
-  WeightsFromPower: 
+  Enemies:
+  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
+  Weights: 5000000014000000
+  WeightsFromPower: 0700000008000000
   TotalWeight: 0
-  MaxWeight: 0
+  MaxWeight: 42
   HighestWeight: 0
   RewardPosition: {fileID: 2304192052669052890}
   RewardChest: {fileID: 0}
