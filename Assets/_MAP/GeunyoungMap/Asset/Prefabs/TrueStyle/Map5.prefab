@@ -1464,7 +1464,7 @@ GameObject:
   - component: {fileID: 6115988801028580559}
   m_Layer: 0
   m_Name: Map5
-  m_TagString: Untagged
+  m_TagString: Stage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1545,9 +1545,9 @@ MonoBehaviour:
   - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
   - {fileID: 8280177398908878517, guid: 24f9fcc81dfba754fa269dd3af5bbccc, type: 3}
   Weights: 320000001e00000014000000
-  WeightsFromPower: 
-  TotalWeight: 42
-  MaxWeight: 0
+  WeightsFromPower: 050000000600000008000000
+  TotalWeight: 0
+  MaxWeight: 42
   HighestWeight: 0
   RewardPosition: {fileID: 2079297271852138122}
   RewardChest: {fileID: 0}
