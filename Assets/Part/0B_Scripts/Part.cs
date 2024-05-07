@@ -5,23 +5,14 @@ public enum PartSize {
     Big
 }
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Part : PoolableMono
 {
+    public Transform playerTrm;
+
     [SerializeField] private PartSize _partSize;
-
-    [Header("Magnet Settings")]
-    [SerializeField] private float _magnetRadius;
     [SerializeField] private float _magnetSpeed;
-    [SerializeField] private LayerMask _whatIsPlayer;
-
-    [Header("Ground Check Settings")]
-    [SerializeField] private Vector2 _groundCheckBox;
-    [SerializeField] private Vector2 _groundCheckOffset;
-    [SerializeField] private LayerMask _whatIsGround;
 
     private Rigidbody2D _rigidbody;
-    private Transform _playerTrm;
 
     private void Awake() {
         _rigidbody = GetComponent<Rigidbody2D>();
@@ -33,33 +24,14 @@ public class Part : PoolableMono
         _rigidbody.AddForce(direction.normalized * 5f, ForceMode2D.Impulse);
     }
 
-    private void FixedUpdate() {
-        if(Physics2D.OverlapBox((Vector2)transform.position + _groundCheckOffset, _groundCheckBox, 0, _whatIsGround)) {
-            _rigidbody.gravityScale = 0f;
-            _rigidbody.velocity = Vector2.zero;
-        }
-        else _rigidbody.gravityScale = 1f;
-    }
-
     private void Update() {
-        if(_playerTrm) {
-            Vector3 direction = _playerTrm.position - transform.position;
+        if(playerTrm != null) {
+            Vector3 direction = playerTrm.position - transform.position;
             transform.position += direction.normalized * Time.deltaTime * _magnetSpeed;
-        }
-        else {
-            if(Physics2D.OverlapCircle(transform.position, _magnetRadius, _whatIsPlayer)) {
-                _playerTrm = PlayerManager.instance.playerTrm;
-            }
-        }
-    }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.TryGetComponent(out PlayerPart playerPart)) {
-            try {
-                playerPart.IncreasePart(GetPartAmount());
-            }
-            finally {
-                gameObject.SetActive(false);
+            if(direction.magnitude < 0.05f) {
+                GetPartAmount();
+                PlayerManager.instance.playerPart.IncreasePart(GetPartAmount());
                 PoolManager.Instance.Push(this);
             }
         }
@@ -78,13 +50,7 @@ public class Part : PoolableMono
     }
 
     public override void ResetItem() {
+        playerTrm = null;
         gameObject.SetActive(true);
-    }
-
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube((Vector2)transform.position + _groundCheckOffset, _groundCheckBox);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, _magnetRadius);
     }
 }
