@@ -181,18 +181,18 @@ MonoBehaviour:
   _canPierce: 0
   _groundLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   _wallLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4096
   _castPos: {x: 0, y: 0}
   _castSize: {x: 0, y: 0}
   _castAngle: 0
-  _castRadius: 0
+  _castRadius: 0.02
   isDamageCasting: 0
   _willModify: 
   _debuffTime: 0
   _debuffValue: 0
   _enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128

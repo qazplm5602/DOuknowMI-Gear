@@ -154,7 +154,6 @@ public abstract class SkillController : MonoBehaviour
             if (modifyingStat == null) return;
 
             modifyingStat.AddModifierByTime(value, statType, time);
-            print($"Add : {statType}");
         }
     }
 }

@@ -983,6 +983,10 @@ PrefabInstance:
       propertyPath: scriptModule
       value: 
       objectReference: {fileID: 5637715022567805541}
+    - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
+      propertyPath: cameraImagePrefab
+      value: 
+      objectReference: {fileID: 531748553387375438, guid: 5fd9d3efd2c77544e9a87d3489a3bc3a, type: 3}
     - target: {fileID: 9118780588895367020, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
