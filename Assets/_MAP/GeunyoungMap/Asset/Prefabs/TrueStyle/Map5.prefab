@@ -1550,7 +1550,7 @@ MonoBehaviour:
   MaxWeight: 42
   HighestWeight: 0
   RewardPosition: {fileID: 2079297271852138122}
-  RewardChest: {fileID: 0}
+  RewardChest: {fileID: 7414049878827287056, guid: 3d58018c11bd4a9438b3856d35f9ff4d, type: 3}
   CurrentEnemies: []
 --- !u!1 &2356890971657022708
 GameObject:

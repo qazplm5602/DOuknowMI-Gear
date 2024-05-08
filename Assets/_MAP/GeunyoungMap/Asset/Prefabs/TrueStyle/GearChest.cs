@@ -8,6 +8,8 @@ public class GearChest : InteractiveObject
     public GearSO[] so = new GearSO[3];
     public GearDatabase GEAR_DB;
 
+    private readonly int _openAnimHash = Animator.StringToHash("Open");
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
@@ -24,6 +26,9 @@ public class GearChest : InteractiveObject
 
     public override void Interaction()
     {
+        _animator.SetTrigger(_openAnimHash);
+
         IngameUIControl.Instance.CHESTUI.Show(so);
+        Destroy(gameObject, 2f);
     }
 }
