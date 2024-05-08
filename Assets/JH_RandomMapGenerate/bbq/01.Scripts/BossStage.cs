@@ -12,5 +12,6 @@ public class BossStage : BaseStage
     {
         TIMELINE.SetActive(true);
         base.Enter();
+        Cleared = false;
     }
 }
