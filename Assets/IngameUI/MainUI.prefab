@@ -4196,7 +4196,6 @@ RectTransform:
   - {fileID: 1357681410455141104}
   - {fileID: 5062988586301030095}
   - {fileID: 7989658706844441166}
-  - {fileID: 8540648888293938127}
   - {fileID: 5504764055619381644}
   - {fileID: 4417888092987455420}
   - {fileID: 7960975078822652909}
@@ -4207,6 +4206,7 @@ RectTransform:
   - {fileID: 6315593629722421623}
   - {fileID: 1137304470755931148}
   - {fileID: 6809379951497352545}
+  - {fileID: 8540648888293938127}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4292,15 +4292,18 @@ MonoBehaviour:
   section: {fileID: 5504764055619381644}
   scriptModule: {fileID: 0}
   spawnGears:
-  - {fileID: 11400000, guid: 704689f42372e5b47a8023be2b1d12ef, type: 2}
-  - {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
-  - {fileID: 11400000, guid: 7269f1ea60bc06f4aaa3e469a76da22b, type: 2}
+  - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
+  - {fileID: 11400000, guid: 5d8dbb8d2d2214b46abe0a3ab59d766b, type: 2}
+  - {fileID: 11400000, guid: 8c7cbbd9fa5de6c46b5be9c7be05125d, type: 2}
+  - {fileID: 11400000, guid: 00637fdfa72238347b8b5e60d88b2de4, type: 2}
   spawnGearCoords:
   - {x: 50, y: 50}
   - {x: 177.6, y: 65.5}
   - {x: 306, y: 50}
   - {x: 433.7, y: 65.5}
-  loadLinkData: []
+  loadLinkData:
+  - {fileID: 11400000, guid: a73886985bd404b40a3686090fe8aead, type: 2}
+  - {fileID: 11400000, guid: 2e6d0f28fc098c14ebbe03033f48d2ad, type: 2}
   gearCircle: {fileID: 901342818541541551, guid: e9af201a1e4c8a14dad2e27e50544e26, type: 3}
   _player: {fileID: 0}
 --- !u!114 &5820407671990454762
