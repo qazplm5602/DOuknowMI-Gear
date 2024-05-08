@@ -58,7 +58,16 @@ public class SkillWheel : SkillController
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        base.OnTriggerEnter2D(collision);
+        if (collision.TryGetComponent(out IDamageable target))
+        {
+            PoolManager.Instance.Pop(PoolingType.Effect_Impact, true, collision.transform);
+            target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
+            if (_canPierce)
+            {
+                if (_pierceCount <= 0) Destroy(gameObject);
+                --_pierceCount;
+            }
+        }
     }
 
     protected override IEnumerator MoveRoutine(Transform startTrm)
