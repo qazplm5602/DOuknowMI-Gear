@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WheelGear
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  name: Bolt and Nut
+  name: "\uBC14\uD034"
   desc: 
   defaultDamage: 0
   defaultRange: 0
