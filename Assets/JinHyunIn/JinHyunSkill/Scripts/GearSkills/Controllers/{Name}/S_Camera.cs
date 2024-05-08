@@ -28,7 +28,7 @@ public class SkillCamera : SkillController
         colls = Physics2D.OverlapBoxAll(transform.position, new Vector2(18, 10), 0, _enemyLayerMask).ToList();
         if(colls.Count == 0)
         {
-            Debug.Log("적이없dma");
+            yield break;
         }
         yield return new WaitForSeconds(0.15f);
 

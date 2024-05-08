@@ -99,6 +99,7 @@ public class GearManager : MonoSingleton<GearManager>
     {
         Image imgObj = Instantiate(cameraImagePrefab, section.parent);
         imgObj.sprite = sprite;
+        Destroy(imgObj.gameObject, 2f);
     }
 
 
