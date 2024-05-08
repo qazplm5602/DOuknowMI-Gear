@@ -307,10 +307,4 @@ public class GearManager : MonoSingleton<GearManager>
 
         return result.ToArray();
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(PlayerManager.instance.playerTrm.position, new Vector2(18, 10));
-    }
 }
