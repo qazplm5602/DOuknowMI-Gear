@@ -25,7 +25,7 @@ public class SkillCamera : SkillController
         string filePath = $"C:/Develop/GitHubDesktop/DOuknowMI-Gear/Screenshots/{fileName}";
         ScreenCapture.CaptureScreenshot($"Screenshots/{fileName}");
 
-        colls = Physics2D.OverlapBoxAll(transform.position, new Vector2(Screen.width, Screen.height), 0, _enemyLayerMask).ToList();
+        colls = Physics2D.OverlapBoxAll(transform.position, new Vector2(18, 10), 0, _enemyLayerMask).ToList();
         if(colls.Count == 0)
         {
             Debug.Log("적이없dma");
@@ -35,8 +35,7 @@ public class SkillCamera : SkillController
         Texture2D texture = LoadTextureFromFile(filePath);
         Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.one * 0.5f);
 
-        StageManager.Instance._screenshotImage.gameObject.SetActive(true);
-        StageManager.Instance._screenshotImage.sprite = sprite;
+        GearManager.Instance.MakeImage(sprite);
 
         for (int i = 0; i < 3; ++i)
         {
@@ -50,9 +49,6 @@ public class SkillCamera : SkillController
             }
         }
         yield return new WaitForSeconds(_destroyTime - (_destroyTime * 0.3f));
-
-        StageManager.Instance._screenshotImage.gameObject.SetActive(false);
-        StageManager.Instance._screenshotImage.sprite = null;
     }
 
     Texture2D LoadTextureFromFile(string filePath)
