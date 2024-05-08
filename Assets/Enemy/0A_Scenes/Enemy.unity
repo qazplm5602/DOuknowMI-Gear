@@ -1367,16 +1367,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Timeline
       objectReference: {fileID: 0}
-    - target: {fileID: 6310199655099620912, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_Priority
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8167212335116450331, guid: f259087f861766b468530976a24747e3, type: 3}
-    - {fileID: 245154518250900163, guid: f259087f861766b468530976a24747e3, type: 3}
-    - {fileID: 9063826129517837006, guid: f259087f861766b468530976a24747e3, type: 3}
-    - {fileID: 4951789842282197974, guid: f259087f861766b468530976a24747e3, type: 3}
-    - {fileID: 8698308172468100821, guid: f259087f861766b468530976a24747e3, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1786,9 +1777,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 14
+  field of view: 60
   orthographic: 0
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1813,7 +1804,7 @@ Transform:
   m_GameObject: {fileID: 1726027112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.55, y: -1.04, z: -28.059801}
+  m_LocalPosition: {x: -1.15, y: 0.52, z: -28.059801}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
