@@ -46,12 +46,11 @@ public class EnemyProjectile : PoolableMono
     }
     
     protected virtual void OnCollisionEnter2D(Collision2D other) {
-        if(other.transform.TryGetComponent(out IDamageable health)) {
-            health.ApplyDamage(_damage, transform);
-        }
-
         int otherLayer = 1 << other.gameObject.layer;
         if((otherLayer & _whatIsEnemy.value) > 0) {
+            if(other.transform.TryGetComponent(out IDamageable health)) {
+                health.ApplyDamage(_damage, transform);
+            }
             gameObject.SetActive(false);
             Destroy(Instantiate(_impactPrefab, transform.position, Quaternion.identity), 1f);
         }

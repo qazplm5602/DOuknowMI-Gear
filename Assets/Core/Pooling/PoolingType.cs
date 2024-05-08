@@ -10,5 +10,8 @@ public enum PoolingType
     DamageText,
     Afterimage,
     MoveStartSmoke,
-    MoveSmoke
+    MoveSmoke,
+    Effect_Impact,
+    Effect_Wall,
+    PlayerLanding
 }

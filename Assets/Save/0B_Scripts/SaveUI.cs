@@ -26,10 +26,6 @@ public class SaveUI : MonoBehaviour
         }
     }
 
-    private void Start() {
-        Load(1); Load(2); Load(3);
-    }
-
     private void Update() {
         if(Input.GetKeyDown(KeyCode.P)) {
             _savePanel.SetActive(true);
@@ -53,6 +49,10 @@ public class SaveUI : MonoBehaviour
 
     private void Load(int index) {
         RenderSaveUI(index, "불러오기");
+    }
+
+    public void TitleSetting() {
+        Load(1); Load(2); Load(3);
     }
 
     private void RenderSaveUI(int index, string buttonName) {

@@ -10,7 +10,6 @@ namespace FSM {
         [HideInInspector] public EnemyHealth HealthCompo;
 
         [Header("Movement Settings")]
-        public bool _downJumpable = true;
         [SerializeField] private float _downJumpDistance;
         public LayerMask whatIsPlatform;
         [HideInInspector] public float downJumpTimer = 0f;

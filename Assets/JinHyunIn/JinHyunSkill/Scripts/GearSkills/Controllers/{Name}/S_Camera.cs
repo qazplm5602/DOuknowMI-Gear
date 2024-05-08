@@ -43,6 +43,7 @@ public class SkillCamera : SkillController
             {
                 if (enemy.TryGetComponent(out IDamageable health))
                 {
+                    PoolManager.Instance.Pop(PoolingType.Effect_Impact, true, enemy.transform);
                     health.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
                 }
             }
