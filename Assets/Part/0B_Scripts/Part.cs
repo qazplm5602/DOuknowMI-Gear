@@ -11,10 +11,13 @@ public class Part : PoolableMono
 
     [SerializeField] private PartSize _partSize;
     [SerializeField] private float _magnetSpeed;
+    [SerializeField] private Sprite[] _sprites;
 
+    private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rigidbody;
 
     private void Awake() {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -51,6 +54,7 @@ public class Part : PoolableMono
 
     public override void ResetItem() {
         playerTrm = null;
+        _spriteRenderer.sprite = _sprites[Random.Range(0, _sprites.Length)];
         gameObject.SetActive(true);
     }
 }

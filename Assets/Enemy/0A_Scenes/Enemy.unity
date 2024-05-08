@@ -596,6 +596,10 @@ PrefabInstance:
       propertyPath: v_cam
       value: 
       objectReference: {fileID: 224262205}
+    - target: {fileID: 5477958551422665857, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0007324219
+      objectReference: {fileID: 0}
     - target: {fileID: 6067767125979725696, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 23.149864
@@ -1315,63 +1319,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8538114693556196785, guid: 67760d55cdbf1ca478b8b896f58bd0cc, type: 3}
   m_PrefabInstance: {fileID: 891446588}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &948421165
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3867870020328575462, guid: f259087f861766b468530976a24747e3, type: 3}
-      propertyPath: m_Name
-      value: Timeline
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f259087f861766b468530976a24747e3, type: 3}
 --- !u!1 &1139898543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,8 +1395,8 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -1779,7 +1726,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1804,7 +1751,7 @@ Transform:
   m_GameObject: {fileID: 1726027112}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.15, y: 0.52, z: -28.059801}
+  m_LocalPosition: {x: 3.5298634, y: 4.6783733, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2178,4 +2125,3 @@ SceneRoots:
   - {fileID: 98860842}
   - {fileID: 698134369}
   - {fileID: 56059438}
-  - {fileID: 948421165}
