@@ -1480,6 +1480,9 @@ MonoBehaviour:
     sub: "\uAE30\uBCF8\uC801\uC778 \uBC29\uACFC \uB2E4\uB978 \uD2B9\uBCC4\uD55C \uACF5\uAC04\uC744
       \uC124\uBA85\uD569\uB2C8\uB2E4."
     content: {fileID: 1194641486512475325, guid: 4dcecc48d285ab34fa7a0090ee16ab67, type: 3}
+  - title: Gear
+    sub: "\uAE30\uC5B4 \uBC29\uC2DD\uC5D0 \uB300\uD574 \uC124\uBA85\uD569\uB2C8\uB2E4."
+    content: {fileID: 5023009607645936981, guid: d10c6fa13ae91f94da44a9087ee304c6, type: 3}
 --- !u!1 &1359358330840982463
 GameObject:
   m_ObjectHideFlags: 0
