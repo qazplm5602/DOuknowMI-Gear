@@ -95,11 +95,9 @@ public class AgentMovement : MonoBehaviour
         if (hit != null) {
             print(hit.gameObject.layer);
             if (hit.gameObject.layer == LayerMask.NameToLayer("Platform")) {
-                print("아래점프 가느,ㅇ");
                 return true;
             }
             else {
-                print("아래점프 bool가느,ㅇ");
                 return false;
             }
         }

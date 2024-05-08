@@ -4370,7 +4370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   npcData:
     Name: "\uC8E0\uB098\uB2E8 \uC8E0\uC2A4\uD0C0"
-    Job: "\uC218\uB9AC\uACF5\uC758 \uC544"
+    Job: "\uC218\uB9AC\uACF5\uC758 \uC544\uB4E4"
     NpcInteractionName: 
     CanInteract: 0
     CanConversate: 1

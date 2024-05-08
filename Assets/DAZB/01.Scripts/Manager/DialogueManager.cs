@@ -49,7 +49,6 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         for (int i = 0; i < list.Count; ++i) {
             if (list[i].RandomType == randNum.ToString()) {
                 selectSentence.Enqueue(list[i]);
-                print(list[i].Content);
             }
         }
     }
@@ -86,18 +85,15 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     }
 
     public void Conversation() {
-        print("인");
         StartCoroutine(ConversationRoutine());
     }
 
     public void Cancle() {
-        print("캔");
         StartCoroutine(CancleRoutine());
     }
 
     public void Interaction() {
         //npc.Interaction();
-        print("상");
         StartCoroutine(InteractionRoutine());
     }
 
