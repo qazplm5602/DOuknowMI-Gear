@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fe45d1fcdc21f4a980463a3bd22782, type: 3}
   m_Name: FilmGear
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  name: Bolt and Nut
+  icon: {fileID: 21300000, guid: 8f5181893b81d2b4f8ab7f2bdcb479ba, type: 3}
+  name: Film
   desc: 
   defaultDamage: 0
   defaultRange: 0

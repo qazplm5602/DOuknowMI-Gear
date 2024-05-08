@@ -99,6 +99,7 @@ public class GearManager : MonoSingleton<GearManager>
     {
         Image imgObj = Instantiate(cameraImagePrefab, section.parent);
         imgObj.sprite = sprite;
+        Destroy(imgObj.gameObject, 2f);
     }
 
 
@@ -306,11 +307,5 @@ public class GearManager : MonoSingleton<GearManager>
             });
 
         return result.ToArray();
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(PlayerManager.instance.playerTrm.position, new Vector2(18, 10));
     }
 }
