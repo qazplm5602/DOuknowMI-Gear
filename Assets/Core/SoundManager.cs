@@ -35,6 +35,15 @@ public class SoundManager : MonoSingleton<SoundManager>
         _audioMixer.SetFloat(name, -((100 - value) * 0.8f));
     }
 
+    public void PlaySound(string clipName) {
+        if(!_audioClipDictionary.ContainsKey(clipName)) {
+            Debug.LogError($"[SoundManager] {clipName} Clip Not Found");
+            return;
+        }
+
+        _audioSource.PlayOneShot(_audioClipDictionary[clipName]);
+    }
+
     public void PlaySound(SoundType type) {
         if(!_audioClipDictionary.ContainsKey(type.ToString())) {
             Debug.LogError($"[SoundManager] {type} Clip Not Found");

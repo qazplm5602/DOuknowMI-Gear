@@ -38,6 +38,7 @@ public class EnemyHealth : MonoBehaviour, IDamageable
         healthFilled.fillAmount = (float)_currentHealth / _maxHealth;
 
         OnHit?.Invoke();
+        SoundManager.Instance.PlaySound("Metal impact 5");
 
         if(GameManager.Instance.showDamageText)
             ShowDamageText(damage);
