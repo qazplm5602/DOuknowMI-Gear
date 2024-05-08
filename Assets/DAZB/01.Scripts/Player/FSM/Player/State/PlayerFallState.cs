@@ -16,9 +16,10 @@ public class PlayerFallState : PlayerCanDashState
                 return;
             }
             if (player.MovementCompo.isGround) {
+                PoolManager.Instance.Pop(PoolingType.PlayerLanding);
+                player.gameObject.layer = LayerMask.NameToLayer("Player");
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
                 /* player.isUnderJumpping = false; */
-                player.gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }
         else {
@@ -26,9 +27,10 @@ public class PlayerFallState : PlayerCanDashState
                 return;
             }
             if (player.MovementCompo.isGround || DialogueManager.Instance.isEnd == false) {
+                PoolManager.Instance.Pop(PoolingType.PlayerLanding);
+                player.gameObject.layer = LayerMask.NameToLayer("Player");
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
                 /* player.isUnderJumpping = false; */
-                player.gameObject.layer = LayerMask.NameToLayer("Player");
             }
         }
     }

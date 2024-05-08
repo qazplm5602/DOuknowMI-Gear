@@ -12,7 +12,7 @@ public class ChainMHSkill : GearCogEvent
         Vector3 playerPos = _player.transform.position;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-        Quaternion look = AngleManager.GetTargetDirection(playerPos, mousePos);
+        Quaternion look = AngleManager.Instance.GetTargetDirection(playerPos, mousePos);
 
         GameObject parent = Instantiate(_prefab, playerPos, look);
         GameObject sh = Instantiate(_shPrefab, parent.transform);

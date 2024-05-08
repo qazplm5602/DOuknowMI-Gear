@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6602812862168620807}
   - component: {fileID: 2919154681792094679}
   - component: {fileID: 4239717273273284781}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SmallPart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 2425545763062066348}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2556727, y: 0.33027038, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -116,7 +116,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -172,14 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 0
+  _playerTrm: {fileID: 0}
   _partSize: 0
-  _magnetRadius: 2
   _magnetSpeed: 10
-  _whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 8
-  _groundCheckBox: {x: 1, y: 0.5}
-  _groundCheckOffset: {x: 0, y: 0}
-  _whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
