@@ -28,7 +28,7 @@ public class EnemyLJ_KTimeline : MonoBehaviour
     }
 
     private void EndTimeline(PlayableDirector director) {
-        Instantiate(_enemyLJ_KPrefab, _spawnTransform.position, Quaternion.identity);
+        Instantiate(_enemyLJ_KPrefab, _spawnTransform.position, Quaternion.identity).GetComponent<EnemyLJ_K>().bossStage = transform.parent.GetComponent<BossStage>();
         Destroy(gameObject);
     }
 }
