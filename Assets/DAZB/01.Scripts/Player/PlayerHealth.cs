@@ -13,18 +13,21 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Awake() {
         owner = GetComponent<Player>();
-        print(owner);
     }
 
     private void Start() {
         maxHealth = (int)owner.stat.maxHealth.GetValue();
         currentHealth = maxHealth;
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
     }
 
     private void Update() {
         if(currentHealth == 0 && !owner.isDead) {
             owner.isDead = true;
             OnDead?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.T)) {
+            ApplyDamage(100, null);
         }
     }
 
@@ -37,6 +40,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             damage = Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
         }
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }

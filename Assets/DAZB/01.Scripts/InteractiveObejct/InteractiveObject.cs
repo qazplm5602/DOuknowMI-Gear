@@ -18,10 +18,12 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     private Vector2 nTPos;
     private TMP_Text excuseMeText;
     private TMP_Text nameTagText;
+    private ExeuseMeUI exeuseMeUI;
 
     private void Awake() {
         excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false);
         nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
+        exeuseMeUI = DialogueManager.Instance.ExcuseMeUI.GetComponent<ExeuseMeUI>();
     }
 
     private void Update() {
@@ -36,6 +38,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             DialogueManager.Instance.ExcuseMeUI.SetActive(true);
             DialogueManager.Instance.ExcuseMeUI.transform.position = ecUiPos;
             nameTagText.text= objectName;
+            exeuseMeUI.SetPosition();
             DialogueManager.Instance.NameTag.SetActive(true);
             DialogueManager.Instance.NameTag.transform.position = nTPos;
             DialogueManager.Instance.nowInteractiveObjectName = gameObject.name;

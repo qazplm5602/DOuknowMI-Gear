@@ -5,10 +5,10 @@ using UnityEngine.Audio;
 public enum SoundType {
     PlayerWalk,
     PlayerJump,
-    PlayerLending,
+    PlayerLanding,
+    PlayerDash,
     PlayerTakeDamage,
     LampTurnOnAndOff,
-    DialogueType
 }
 
 public class SoundManager : MonoSingleton<SoundManager>

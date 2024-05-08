@@ -21,7 +21,6 @@ public class PlayerRunState : PlayerCanDashState
         base.UpdateState();
         Vector2 velocity = movementDirection;
         player.MovementCompo.SetMovement(velocity * player.moveSpeed, true);
-        //SoundManager.Instance.PlaySound(SoundType.PlayerWalk);
         HandleMovementEvent();
 
     }
