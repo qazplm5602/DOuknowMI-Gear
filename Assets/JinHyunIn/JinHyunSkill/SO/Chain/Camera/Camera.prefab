@@ -171,10 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c608d7103230222469a60e9c872ff6b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 50
   castType: 2
-  _moveSpeed: 0
-  _maxRange: 0
+  _moveSpeed: 10
+  _maxRange: 30
   _destroyByTime: 1
   _destroyTime: 1
   _pierceCount: 0

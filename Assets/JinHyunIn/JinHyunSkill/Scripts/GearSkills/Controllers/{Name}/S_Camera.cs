@@ -3,12 +3,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class SkillCamera : SkillController
 {
     [SerializeField] private LayerMask _enemyLayerMask;
-    List<Enemy> _targets;
+    List<Collider2D> colls;
 
     private void Start()
     {
@@ -24,10 +25,10 @@ public class SkillCamera : SkillController
         string filePath = $"C:/Develop/GitHubDesktop/DOuknowMI-Gear/Screenshots/{fileName}";
         ScreenCapture.CaptureScreenshot($"Screenshots/{fileName}");
 
-        _targets = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
-        if(_targets.Count == 0)
+        colls = Physics2D.OverlapBoxAll(transform.position, new Vector2(Screen.width, Screen.height), 0, _enemyLayerMask).ToList();
+        if(colls.Count == 0)
         {
-            Debug.Log("적이없거나 맵매니저가없음");
+            Debug.Log("적이없dma");
         }
         yield return new WaitForSeconds(0.15f);
 
@@ -39,7 +40,7 @@ public class SkillCamera : SkillController
 
         for (int i = 0; i < 3; ++i)
         {
-            foreach (Enemy enemy in _targets)
+            foreach (Collider2D enemy in colls)
             {
                 if (enemy.TryGetComponent(out IDamageable health))
                 {
