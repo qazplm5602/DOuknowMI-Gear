@@ -3,7 +3,12 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public enum SoundType {
-    // 알아서 넣으면 됨
+    PlayerWalk,
+    PlayerJump,
+    PlayerLending,
+    PlayerTakeDamage,
+    LampTurnOnAndOff,
+    DialogueType
 }
 
 public class SoundManager : MonoSingleton<SoundManager>

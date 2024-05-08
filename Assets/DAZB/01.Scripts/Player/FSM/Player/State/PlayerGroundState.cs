@@ -21,11 +21,13 @@ public abstract class PlayerGroundState : PlayerState
         base.UpdateState();
         if (DialogueManager.Instance == null) {
             if (player.MovementCompo.isGround == false) {
+                //SoundManager.Instance.PlaySound(SoundType.PlayerLending);
                 stateMachine.ChangeState(PlayerStateEnum.Fall);
             }
         }
         else {
             if (player.MovementCompo.isGround == false && DialogueManager.Instance.isEnd == true) {
+                //SoundManager.Instance.PlaySound(SoundType.PlayerLending);
                 stateMachine.ChangeState(PlayerStateEnum.Fall);
             }
         }

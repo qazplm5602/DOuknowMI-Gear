@@ -27,6 +27,7 @@ public class PlayerJumpState : PlayerCanDashState
         else {
             player.RigidCompo.AddForce(Vector2.up * player.jumpPower, ForceMode2D.Impulse);
         }
+        //SoundManager.Instance.PlaySound(SoundType.PlayerJump);
     }
 
     public override void UpdateState()

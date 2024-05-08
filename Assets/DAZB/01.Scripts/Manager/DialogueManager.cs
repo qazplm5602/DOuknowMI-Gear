@@ -57,8 +57,12 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         this.npc = npc;
         nameText.text = npc.GetNpcData().Name;
         interactionText.text = npc.GetNpcData().NpcInteractionName;
-        ConversationBtn.gameObject.SetActive(npc.GetNpcData().CanConversate);
-        InteractionBtn.gameObject.SetActive(npc.GetNpcData().CanInteract);
+        SetChoice(npc.GetNpcData().CanConversate, npc.GetNpcData().CanInteract);
+    }
+
+    public void SetChoice(bool CanConversate, bool CanInteract) {
+        ConversationBtn.gameObject.SetActive(CanConversate);
+        InteractionBtn.gameObject.SetActive(CanInteract);
     }
 
     public void ActiveDialoguePanel(bool isActive) {
@@ -66,6 +70,9 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         PlayerManager.instance.player.enabled = !!!isActive;
         //isEnd = !!!isActive;
         npc.SetIsDialogue(isActive);
+        if (isActive == false) {
+            npc = null;
+        }
     }
 
     public void SetEnd(bool value) {
@@ -165,6 +172,11 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     }
 
     private IEnumerator CancleRoutine() {
+        if (cancleList.Count == 0) {
+            ActiveDialoguePanel(false);
+            SetEnd(true);
+            yield break;
+        }
         int randNum = Random.Range(1, int.Parse(cancleList[cancleList.Count - 1].RandomType) + 1);
         SetSentence(cancleList, randNum);
         ActiveSelectionPanel(false);
@@ -185,7 +197,6 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         SetEnd(true);
         yield return null;
     } 
-
     private IEnumerator TypeText(TMP_Text text) {
         Tween tween;
         text.maxVisibleCharacters = 0;

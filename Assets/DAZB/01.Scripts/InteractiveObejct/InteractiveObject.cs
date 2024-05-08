@@ -44,8 +44,12 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             }
         }
         else {
-            if (DialogueManager.Instance.npc != null) {
-                DialogueManager.Instance.checkInteractiveObejct = false;
+/*             if (DialogueManager.Instance.npc != null) {
+                if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                    DialogueManager.Instance.checkInteractiveObejct = false;
+                    DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                    DialogueManager.Instance.NameTag.SetActive(false);
+                }
             }
             else {
                 if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
@@ -53,6 +57,11 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
                     DialogueManager.Instance.ExcuseMeUI.SetActive(false);
                     DialogueManager.Instance.NameTag.SetActive(false);
                 }
+            } */
+            if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                DialogueManager.Instance.checkInteractiveObejct = false;
+                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                DialogueManager.Instance.NameTag.SetActive(false);
             }
         }
     }
