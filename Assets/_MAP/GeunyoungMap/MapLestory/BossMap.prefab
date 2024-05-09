@@ -22358,6 +22358,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3153419121339304029}
   - component: {fileID: 2169455613058212990}
+  - component: {fileID: 1615562418223604144}
   m_Layer: 0
   m_Name: BossMap
   m_TagString: Untagged
@@ -22398,6 +22399,39 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1615562418223604144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8636311835607571794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e15d3487335f1419bbfd62ba07dc13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 2287551708358291068}
+  type: 0
+  StageNum: 0
+  StageLinkedData:
+    RightMap: {fileID: 0}
+    LeftMap: {fileID: 0}
+    UpMap: {fileID: 0}
+    DownMap: {fileID: 0}
+    Num: 0
+    indexX: 0
+    indexY: 0
+  Arena: {fileID: 0}
+  MaxWave: 3
+  CurrentWave: 0
+  RoomActive: 0
+  Boss: {fileID: 0}
+  TIMELINE: {fileID: 0}
 --- !u!1 &8711887831242150094
 GameObject:
   m_ObjectHideFlags: 0
@@ -22575,6 +22609,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+--- !u!114 &2287551708358291068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8138790711303691482, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}
+  m_PrefabInstance: {fileID: 8020294313370579622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d4ee6c219bda1445a4a8df8e581fb81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2998492541134428638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5102866703552883576, guid: 4c810fbe28deb614dba2c1833405b950, type: 3}

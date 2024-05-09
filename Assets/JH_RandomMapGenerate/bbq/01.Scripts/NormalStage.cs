@@ -117,6 +117,7 @@ public class NormalStage : BaseStage
 
     private IEnumerator SpawnEnemeis()
     {
+        yield return new WaitForSeconds(.75f);
         int curr = 0, amountSpawnPoint = _spawnPoints.Length;
         var spawnDelay = new WaitForSeconds(.2f);
         if(!(Enemies.Length <= 0))
