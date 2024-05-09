@@ -89,7 +89,8 @@ public class EnemyLJ_K : Enemy
     }
 
     public override void Attack() {
-        DamageCasterCompo.Damage(currentAttackDamage, currentAttackOffset, currentAttackRange);
+        DamageCasterCompo.Damage(currentAttackDamage, 
+            new Vector2(currentAttackOffset.x * FacingDirection, currentAttackOffset.y), currentAttackRange);
     }
 
     public override void SetDead()
