@@ -10,8 +10,9 @@ public class GearChest : InteractiveObject
 
     private readonly int _openAnimHash = Animator.StringToHash("Open");
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         _animator = GetComponent<Animator>();
         so[0] = GEAR_DB.GetRandomGear();
         while (so[1] == null || so[0] == so[1])
