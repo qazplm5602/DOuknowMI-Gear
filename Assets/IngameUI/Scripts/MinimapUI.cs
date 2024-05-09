@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MinimapUI : MonoBehaviour
 {
@@ -22,6 +23,22 @@ public class MinimapUI : MonoBehaviour
     private void Start() {
         CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
 
+        // 중간으로 이동
+        Vector2 sumPos = Vector2.zero;
+        foreach (var item in stages)
+        {
+            // sumPos += (Vector2)item.Value.transform.localPosition;
+            sumPos += (item.Value.transform as RectTransform).anchoredPosition;
+        }
+
+        sumPos /= stages.Count;
+        (_mapSection as RectTransform).anchoredPosition = -sumPos;
+
+        // 선 연결
+        _alreadyMap.Clear();
+
+        CreateLine(_mapSpawn.current.StartRoom);
+
         print($"map created: {_alreadyMap.Count}");
         foreach (var item in _alreadyMap)
         {
@@ -35,9 +52,6 @@ public class MinimapUI : MonoBehaviour
         Vector2 createPos = beforeState == null ? Vector2.zero : beforeState.transform.localPosition;
 
         if (beforeState != null) {
-            print(beforeState);
-            print(beforeState.transform);
-            print(beforeState.transform as RectTransform);
             Vector2 beforeRoomSize = (beforeState.transform as RectTransform).rect.size;
             switch (dir)
             {
@@ -66,8 +80,6 @@ public class MinimapUI : MonoBehaviour
         
         stages[stage.StageNum] = boxTrm.gameObject; // 혹시 모르니 저장
 
-        // boxTrm.rect.
-
         _alreadyMap.Add(stage.StageNum);
         
         if (stage.StageLinkedData.UpMap) {
@@ -82,5 +94,48 @@ public class MinimapUI : MonoBehaviour
          if (stage.StageLinkedData.RightMap) {
             CreateRoom(stage.StageLinkedData.RightMap, boxTrm, Door.DoorType.Right);
         }
+    }
+
+    void CreateLine(BaseStage stageSys) {
+        // RectTransform trm = stage.transform as RectTransform;
+        RectTransform trm = stages[stageSys.StageNum].transform as RectTransform;
+        // BaseStage stageSys = stage.GetComponent<BaseStage>();
+        
+        // if (_alreadyMap.Contains(stageSys.StageNum)) return;
+        _alreadyMap.Add(stageSys.StageNum);
+
+        if (stageSys.StageLinkedData.UpMap && !_alreadyMap.Contains(stageSys.StageLinkedData.UpMap.StageNum)) {
+        }
+        if (stageSys.StageLinkedData.DownMap && !_alreadyMap.Contains(stageSys.StageLinkedData.DownMap.StageNum)) {
+        }
+        if (stageSys.StageLinkedData.LeftMap && !_alreadyMap.Contains(stageSys.StageLinkedData.LeftMap.StageNum)) {
+        }
+        if (stageSys.StageLinkedData.RightMap && !_alreadyMap.Contains(stageSys.StageLinkedData.RightMap.StageNum)) {
+            RectTransform targetTrm = stages[stageSys.StageLinkedData.RightMap.StageNum].transform as RectTransform;
+            RectTransform line = CreateLineUI();
+            
+            Vector2 myEnd = (Vector2)trm.localPosition + new Vector2(trm.rect.xMax, 0);
+            Vector2 targetEnd = (Vector2)targetTrm.localPosition + new Vector2(targetTrm.rect.xMin, 0);
+            // myEnd.y -= line.rect.height / 2f;
+            // targetEnd.y -= line.rect.height / 2f;
+
+            Vector2 center = (targetEnd + myEnd) / 2f;
+            line.localPosition = center;
+            line.sizeDelta = new Vector2((targetEnd.x - myEnd.x) / 2f, 3);
+            // line.rect.width = targetEnd.x - myEnd.x;
+            // line.rect.height = 3;
+            print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
+
+            CreateLine(stageSys.StageLinkedData.RightMap);
+        }
+    }
+
+    RectTransform CreateLineUI() {
+        GameObject lineEntity = new GameObject("line");
+        lineEntity.transform.SetParent(_mapSection);
+
+        lineEntity.AddComponent<Image>();
+        
+        return lineEntity.transform as RectTransform;
     }
 }
