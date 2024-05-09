@@ -79,6 +79,7 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
 
     private void SpawnStones() {
         CameraManager.Instance.ShakeCamera(10, 10, 0.2f);
+        SoundManager.Instance.PlaySound("ShotGun Shot Single Shot Interior");
         
         int loop = Random.Range(3, 5);
         for(int i = 0; i < loop; ++i) {
@@ -147,5 +148,9 @@ public class EnemyLJ_KAnimationTrigger : EnemyAnimationTrigger
 
             yield return new WaitForSeconds(delay);
         }
+    }
+
+    private void PlaySwingSound() {
+        SoundManager.Instance.PlaySound("Magic Spell_Simple Swoosh_6");
     }
 }
