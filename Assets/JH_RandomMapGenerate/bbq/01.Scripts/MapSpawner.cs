@@ -406,7 +406,7 @@ public class MapSpawner : MonoBehaviour
             }
             else if (current.Maplist[i].Num == current.NowCount - 1) // check if last room
             {
-                current.MapObjList[i] = BOSS_ROOM; //GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
+                current.MapObjList[i] = GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss)); // BOSS_ROOM; //GameObject.Instantiate(map.StageLoad(ROOMTYPE.Boss));
             }
             else
             {

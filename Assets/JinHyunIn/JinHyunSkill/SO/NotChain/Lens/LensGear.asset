@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LensGear
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  name: Bolt and Nut
+  name: Lens
   desc: 
   defaultDamage: 0
   defaultRange: 0

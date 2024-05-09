@@ -18,6 +18,7 @@ public class SkillLens : SkillController
         int layerMaskValue = (int)Mathf.Log(_weaponLayerMask.value, 2);
         if (collision.gameObject.layer == layerMaskValue)
         {
+            if(Map.Instance == null) return;
             _enemies = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
 
             if (_enemies.Count > 0)
