@@ -3127,7 +3127,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 2543211839558890410}
   m_HorizontalScrollbar: {fileID: 4387256421308542343}
   m_VerticalScrollbar: {fileID: 1616232726044600797}
@@ -4301,6 +4301,7 @@ MonoBehaviour:
   - {x: 177.6, y: 65.5}
   - {x: 306, y: 50}
   - {x: 433.7, y: 65.5}
+  cameraImagePrefab: {fileID: 0}
   loadLinkData:
   - {fileID: 11400000, guid: a73886985bd404b40a3686090fe8aead, type: 2}
   - {fileID: 11400000, guid: 2e6d0f28fc098c14ebbe03033f48d2ad, type: 2}
