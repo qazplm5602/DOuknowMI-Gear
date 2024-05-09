@@ -14,12 +14,12 @@ public class PlayerExperience : MonoBehaviour
     private void Awake() {
         _playerStat = PlayerStat.Instance;
         IngameUIControl.Instance.SetHealthLevel(level);
-        IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp);
+        IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp[level - 1]);
     }
 
     public void GetExp(int value) {
         currentExp += value;
-        IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp);
+        IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp[level - 1]);
         CheckExp();
     }
 
@@ -28,7 +28,7 @@ public class PlayerExperience : MonoBehaviour
             currentExp -= _needExp[level - 1];
             ++level;
             _playerStat.statPoint += 3;
-            IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp);
+            IngameUIControl.Instance.SetHealthLevelBar(currentExp, _needExp[level - 1]);
             IngameUIControl.Instance.SetHealthLevel(level);
             LevelUpEvent?.Invoke();
             
