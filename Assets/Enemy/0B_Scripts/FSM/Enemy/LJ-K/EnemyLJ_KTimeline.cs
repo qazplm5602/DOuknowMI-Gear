@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 using Cinemachine;
-using System;
 
 public class EnemyLJ_KTimeline : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyLJ_KPrefab;
     [SerializeField] private Transform _spawnTransform;
 
+    private bool _flag = false;
     private PlayableDirector _playableDirector;
 
     private void Awake() {
@@ -25,6 +25,13 @@ public class EnemyLJ_KTimeline : MonoBehaviour
         }
 
         _playableDirector.stopped += EndTimeline;
+    }
+
+    private void Update() {
+        if(!_flag && _playableDirector.time >= 10f) {
+            SoundManager.Instance.PlaySound("Gun5");
+            _flag = true;
+        }
     }
 
     private void EndTimeline(PlayableDirector director) {

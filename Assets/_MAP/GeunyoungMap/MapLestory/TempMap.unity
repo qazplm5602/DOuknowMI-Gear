@@ -767,7 +767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7711140491226596511, guid: f55ff482a8388f646b6d6ab11ac1abaa, type: 3}
       propertyPath: m_Depth
-      value: -0.06
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8518959170600832236, guid: f55ff482a8388f646b6d6ab11ac1abaa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4719,6 +4719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   v_cam: {fileID: 1077925689}
+  globalVolume: {fileID: 0}
 --- !u!114 &2299161971227495452
 MonoBehaviour:
   m_ObjectHideFlags: 0

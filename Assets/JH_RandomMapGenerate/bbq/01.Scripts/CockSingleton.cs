@@ -13,7 +13,7 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
         if(instance == null)
         {
             instance = this as T;
-            DontDestroyOnLoad(instance.gameObject);
+            //DontDestroyOnLoad(instance.gameObject);
         }
         else
         {

@@ -20,6 +20,7 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
     [SerializeField] ChestUI _chestUI;
     public GearChangeUI gearChangeUI => _gearChangeUI;
     public ChestUI CHESTUI => _chestUI;
+    public StatueUI STATUEUI => _statueUI;
 
     TextMeshProUGUI locationT;
     Image healthRed;

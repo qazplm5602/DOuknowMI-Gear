@@ -8,14 +8,23 @@ public class CurrencyChest : InteractiveObject
     private readonly int _openAnimHash = Animator.StringToHash("Open");
 
     private Animator _animator;
+    private bool isOpened;
 
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake();
         _animator = GetComponent<Animator>();
+    }
+
+    protected override void Update()
+    {
+        if (isOpened) return;
+        base.Update();
     }
 
     public override void Interaction() {
         _animator.SetTrigger(_openAnimHash);
-
+        isOpened = true;
+        DialogueManager.Instance.ExcuseMeUI.SetActive(false);
         Destroy(gameObject, 2f);
     }
 
