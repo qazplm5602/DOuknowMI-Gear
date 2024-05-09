@@ -95,6 +95,7 @@ public class EnemyLJ_K : Enemy
     public override void SetDead()
     {
         base.SetDead();
+        Debug.Log("Dead");
         bossStage.Clear();
     }
 

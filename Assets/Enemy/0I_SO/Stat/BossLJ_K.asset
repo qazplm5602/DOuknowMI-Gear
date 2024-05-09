@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BossLJ_K
   m_EditorClassIdentifier: 
   maxHealth:
-    _baseValue: 300
+    _baseValue: 10
     defaultValue: 0
     modifiers: []
     isPercent: 0
