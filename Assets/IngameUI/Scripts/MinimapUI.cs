@@ -20,7 +20,7 @@ public class MinimapUI : MonoBehaviour
     }
 
     private void Start() {
-        CreateRoom(_mapSpawn.current.StartRoom, Vector2.zero);
+        CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
 
         print($"map created: {_alreadyMap.Count}");
         foreach (var item in _alreadyMap)
@@ -29,13 +29,39 @@ public class MinimapUI : MonoBehaviour
         }
     }
 
-    void CreateRoom(BaseStage stage, Vector2 nowPos) {
-        print(nowPos);
+    void CreateRoom(BaseStage stage, RectTransform beforeState, Door.DoorType dir) {
         if (_alreadyMap.Contains(stage.StageNum)) return;
+
+        Vector2 createPos = beforeState == null ? Vector2.zero : beforeState.transform.localPosition;
+
+        if (beforeState != null) {
+            print(beforeState);
+            print(beforeState.transform);
+            print(beforeState.transform as RectTransform);
+            Vector2 beforeRoomSize = (beforeState.transform as RectTransform).rect.size;
+            switch (dir)
+            {
+                case Door.DoorType.Up:
+                    createPos += (Vector2.up * beforeRoomSize.y) + (Vector2.up * gapSize);
+                    break;
+                case Door.DoorType.Down:
+                    createPos += (-Vector2.up * beforeRoomSize.y) + (-Vector2.up * gapSize);
+                    break;
+                case Door.DoorType.Right:
+                    createPos += (Vector2.right * beforeRoomSize.x) + (Vector2.right * gapSize);
+                    break;
+                case Door.DoorType.Left:
+                    createPos += (-Vector2.right * beforeRoomSize.x) + (-Vector2.right * gapSize);
+                    break;
+                case Door.DoorType.DoorMax:
+                    break;
+            }
+        }
+
 
         // 룸 만듬
         RectTransform boxTrm = Instantiate(_roomBox, _mapSection).transform as RectTransform;
-        boxTrm.localPosition = nowPos;
+        boxTrm.localPosition = createPos;
         boxTrm.gameObject.name = "room-"+stage.StageNum;
         
         stages[stage.StageNum] = boxTrm.gameObject; // 혹시 모르니 저장
@@ -44,19 +70,17 @@ public class MinimapUI : MonoBehaviour
 
         _alreadyMap.Add(stage.StageNum);
         
-        Vector2 size = boxTrm.rect.size;
-
         if (stage.StageLinkedData.UpMap) {
-            CreateRoom(stage.StageLinkedData.UpMap, nowPos + (Vector2.up * size.y) + (Vector2.up * gapSize));
+            CreateRoom(stage.StageLinkedData.UpMap, boxTrm, Door.DoorType.Up);
         }
         if (stage.StageLinkedData.DownMap) {
-            CreateRoom(stage.StageLinkedData.DownMap, nowPos + (-Vector2.up * size.y) + (-Vector2.up * gapSize));
+            CreateRoom(stage.StageLinkedData.DownMap, boxTrm, Door.DoorType.Down);
         }
         if (stage.StageLinkedData.LeftMap) {
-            CreateRoom(stage.StageLinkedData.LeftMap, nowPos + (-Vector2.right * size.x) + (-Vector2.right * gapSize));
+            CreateRoom(stage.StageLinkedData.LeftMap, boxTrm, Door.DoorType.Left);
         }
          if (stage.StageLinkedData.RightMap) {
-            CreateRoom(stage.StageLinkedData.RightMap, nowPos + (Vector2.right * size.x) + (Vector2.right * gapSize));
+            CreateRoom(stage.StageLinkedData.RightMap, boxTrm, Door.DoorType.Right);
         }
     }
 }
