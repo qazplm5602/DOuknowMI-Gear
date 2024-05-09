@@ -60,6 +60,7 @@ public abstract class SkillController : MonoBehaviour
     {
         _wallLayerInfo = (int)Mathf.Log(_wallLayerMask.value, 2);
         _groundLayerInfo = (int)Mathf.Log(_groundLayerMask.value, 2);
+        _damage += PlayerManager.instance.player.stat.attack.GetValue();
     }
     protected virtual IEnumerator MoveRoutine(Transform startTrm)
     {
