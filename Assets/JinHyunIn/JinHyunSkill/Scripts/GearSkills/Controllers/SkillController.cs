@@ -109,7 +109,6 @@ public abstract class SkillController : MonoBehaviour
         if ((collision.gameObject.layer == _wallLayerInfo)
             || (collision.gameObject.layer == _groundLayerInfo))
         {
-            print("부딪힘");
             PoolManager.Instance.Pop(PoolingType.Effect_Wall, true, transform);
             Destroy(gameObject);
         }
