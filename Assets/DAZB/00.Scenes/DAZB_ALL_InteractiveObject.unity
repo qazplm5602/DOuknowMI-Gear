@@ -6488,6 +6488,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e54af6c04cd38d84aa2560504ebe9f74, type: 3}
   - {fileID: 8300000, guid: fa0685e51afe1e944b5b8bcaba9426b9, type: 3}
   - {fileID: 8300000, guid: 307be7d51d15e9442b1458d9a5226807, type: 3}
+  - {fileID: 8300000, guid: 5d87a7677fd6d9c4f9b1ae6fa72f0d49, type: 3}
   _audioMixer: {fileID: 24100000, guid: 5aac909b660986741b1a69e95040761c, type: 2}
   _bgmMixerGroup: {fileID: 9179240181488163483, guid: 5aac909b660986741b1a69e95040761c, type: 2}
 --- !u!1 &658933263
@@ -7286,7 +7287,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 523
   m_TargetDisplay: 0
 --- !u!224 &695706431
 RectTransform:
@@ -7755,7 +7756,7 @@ Transform:
   m_GameObject: {fileID: 737675652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.21, y: 3.1469047, z: -10}
+  m_LocalPosition: {x: 5.56, y: 3.1469047, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11153,7 +11154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   currentExp: 0
-  _needExp: 100
+  _needExp: 6400000096000000e100000045010000c20100005802000007030000e8030000dc050000
 --- !u!114 &986396551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11338,7 +11339,7 @@ Transform:
   m_GameObject: {fileID: 986396547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.21, y: -0.083095364, z: 0}
+  m_LocalPosition: {x: 5.56, y: -0.083095364, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -18308,7 +18309,7 @@ Transform:
   m_GameObject: {fileID: 1479345743}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.21, y: 3.1469047, z: -10}
+  m_LocalPosition: {x: 5.56, y: 3.1469047, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23430,7 +23431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950659148838336722, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8897103450679849129, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
       propertyPath: m_LocalPosition.x
