@@ -69,11 +69,11 @@ public class GearChangeUI : MonoBehaviour, IPointerDownHandler
     }
 
     ////////////////////// TEST
-    private void Update() {
-        if (Input.GetKeyUp(KeyCode.E)) {
-            Open();
-        }
-    }
+    // private void Update() {
+    //     if (Input.GetKeyUp(KeyCode.E)) {
+    //         Open();
+    //     }
+    // }
     ////////////////////// TEST END
 
     // 메뉴 오픈

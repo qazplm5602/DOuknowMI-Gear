@@ -16,6 +16,7 @@ public class Lamp : InteractiveObject
         else {
             interactionName = "끄기";
         }
+        SoundManager.Instance.PlaySound(SoundType.LampTurnOnAndOff);
         LightObject.SetActive(isTurn);
     }
 }

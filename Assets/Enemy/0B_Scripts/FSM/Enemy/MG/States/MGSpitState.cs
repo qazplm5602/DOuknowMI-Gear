@@ -29,5 +29,7 @@ public class MGSpitState : EnemyState<MGStateEnum>
         EnemyProjectile obj = PoolManager.Instance.Pop(PoolingType.MGBullet) as MGBullet;
         obj.transform.position = (_enemy as EnemyMG).attackTransform.position;
         obj.Init(15, 8, direction, (int)_enemy.Stat.attack.GetValue());
+
+        SoundManager.Instance.PlaySound("Monster Bite");
     }
 }

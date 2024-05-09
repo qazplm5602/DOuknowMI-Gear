@@ -35,6 +35,8 @@ public class EnemyBoom : PoolableMono
 
         Collider2D col = Physics2D.OverlapCircle(transform.position, _attackRadius, _whatIsEnemy);
 
+        SoundManager.Instance.PlaySound("Explosion 1");
+
         if(col && col.TryGetComponent(out PlayerHealth health)) {
             health.ApplyDamage(_damage, transform);
         }

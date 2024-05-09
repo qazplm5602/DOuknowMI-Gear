@@ -19,6 +19,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
     private bool isDialogue;
     private TMP_Text excuseMeText;
     private TMP_Text nameTagText;
+    private ExeuseMeUI exeuseMeUI;
 
     public NpcData GetNpcData() => npcData;
     public abstract void Interaction();
@@ -26,6 +27,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
         dialogue = GetComponent<Dialogue>();
         excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false); 
         nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
+        exeuseMeUI = DialogueManager.Instance.ExcuseMeUI.GetComponent<ExeuseMeUI>();
     }
 
     private void Update() {
@@ -42,6 +44,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
             nameTagText.text= npcData.Name + "\n" + npcData.Job;
             DialogueManager.Instance.NameTag.SetActive(true);
             DialogueManager.Instance.NameTag.transform.position = nTPos;
+            exeuseMeUI.SetPosition();
             if (Keyboard.current.fKey.wasPressedThisFrame) {
                 ExcuseMe();
             }

@@ -93,13 +93,10 @@ public class AgentMovement : MonoBehaviour
     public bool CanUnderJump() {
         Collider2D hit = Physics2D.OverlapBox(transform.position  + offset, groundCheckSize, 0, groundLayer);
         if (hit != null) {
-            print(hit.gameObject.layer);
             if (hit.gameObject.layer == LayerMask.NameToLayer("Platform")) {
-                print("아래점프 가느,ㅇ");
                 return true;
             }
             else {
-                print("아래점프 bool가느,ㅇ");
                 return false;
             }
         }

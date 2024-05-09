@@ -18,10 +18,12 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     private Vector2 nTPos;
     private TMP_Text excuseMeText;
     private TMP_Text nameTagText;
+    private ExeuseMeUI exeuseMeUI;
 
     protected virtual void Awake() {
         excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false);
         nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
+        exeuseMeUI = DialogueManager.Instance.ExcuseMeUI.GetComponent<ExeuseMeUI>();
     }
 
     private void Update() {
@@ -36,6 +38,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             DialogueManager.Instance.ExcuseMeUI.SetActive(true);
             DialogueManager.Instance.ExcuseMeUI.transform.position = ecUiPos;
             nameTagText.text= objectName;
+            exeuseMeUI.SetPosition();
             DialogueManager.Instance.NameTag.SetActive(true);
             DialogueManager.Instance.NameTag.transform.position = nTPos;
             DialogueManager.Instance.nowInteractiveObjectName = gameObject.name;
@@ -44,8 +47,12 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
             }
         }
         else {
-            if (DialogueManager.Instance.npc != null) {
-                DialogueManager.Instance.checkInteractiveObejct = false;
+/*             if (DialogueManager.Instance.npc != null) {
+                if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                    DialogueManager.Instance.checkInteractiveObejct = false;
+                    DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                    DialogueManager.Instance.NameTag.SetActive(false);
+                }
             }
             else {
                 if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
@@ -53,6 +60,11 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
                     DialogueManager.Instance.ExcuseMeUI.SetActive(false);
                     DialogueManager.Instance.NameTag.SetActive(false);
                 }
+            } */
+            if (DialogueManager.Instance.nowInteractiveObjectName == gameObject.name) {
+                DialogueManager.Instance.checkInteractiveObejct = false;
+                DialogueManager.Instance.ExcuseMeUI.SetActive(false);
+                DialogueManager.Instance.NameTag.SetActive(false);
             }
         }
     }
