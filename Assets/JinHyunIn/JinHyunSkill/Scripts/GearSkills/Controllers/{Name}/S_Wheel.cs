@@ -53,7 +53,6 @@ public class SkillWheel : SkillController
         _lastVelocity = kill == true ? Vector2.zero : _rigid2d.velocity;
         _rigid2d.gravityScale = kill == true ? 0: 1;
         _rigid2d.velocity = kill == true ? Vector2.zero : _lastVelocity;
-        print(_rigid2d.velocity);
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)

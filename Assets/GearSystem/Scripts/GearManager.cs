@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public struct GearStat {
     public int level;
@@ -50,6 +51,7 @@ public class GearManager : MonoSingleton<GearManager>
     [SerializeField] GearScriptModule scriptModule;
     [SerializeField] GearSO[] spawnGears;
     [SerializeField] Vector2[] spawnGearCoords;
+    [SerializeField] Image cameraImagePrefab;
     
     [SerializeField] GearLinkSO[] loadLinkData;
     Dictionary<string, GearLinkSO> linkDataSO; // id -> 기어연계SO 가져오는 용도
@@ -93,6 +95,13 @@ public class GearManager : MonoSingleton<GearManager>
         }
     }
         
+    public void MakeImage(Sprite sprite)
+    {
+        Image imgObj = Instantiate(cameraImagePrefab, section.parent);
+        imgObj.sprite = sprite;
+        Destroy(imgObj.gameObject, 2f);
+    }
+
 
     public void GearAdd(GearSO data, GearStat stat) {
         var myIdx = gears.Count;
