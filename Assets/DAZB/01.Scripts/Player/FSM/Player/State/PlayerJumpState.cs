@@ -19,6 +19,7 @@ public class PlayerJumpState : PlayerCanDashState
                 player.RigidCompo.AddForce(Vector2.up * player.jumpPower * 0.2f, ForceMode2D.Impulse);
                 player.gameObject.layer = LayerMask.NameToLayer("PlayerUnderJumpping");
                 player.StartDelayCallback(0.5f, () => player.isUnderJumpping = false);
+                SoundManager.Instance.PlaySound(SoundType.PlayerJump);
             }
             else {
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
@@ -26,6 +27,7 @@ public class PlayerJumpState : PlayerCanDashState
         }
         else {
             player.RigidCompo.AddForce(Vector2.up * player.jumpPower, ForceMode2D.Impulse);
+            SoundManager.Instance.PlaySound(SoundType.PlayerJump);
         }
     }
 

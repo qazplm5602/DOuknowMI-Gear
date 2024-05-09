@@ -13,12 +13,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Awake() {
         owner = GetComponent<Player>();
-        print(owner);
     }
 
     private void Start() {
         maxHealth = (int)owner.stat.maxHealth.GetValue();
         currentHealth = maxHealth;
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
     }
 
     private void Update() {
@@ -26,17 +26,22 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             owner.isDead = true;
             OnDead?.Invoke();
         }
+/*         if (Input.GetKeyDown(KeyCode.T)) {
+            ApplyDamage(10, null);
+        } */
     }
 
     public void ApplyDamage(int damage, Transform dealer) {
         if(owner.isDead || owner.isInvincibility) return;
-        if (Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f) >= 1) {
+        if (Mathf.RoundToInt(damage - PlayerManager.instance.player.stat.defense.GetValue() * 0.5f) <= 1) {
             damage = 1;
         }
         else {
-            damage = Mathf.RoundToInt(damage * PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
+            damage = Mathf.RoundToInt(damage - PlayerManager.instance.player.stat.defense.GetValue() * 0.5f);
+            print(damage);
         }
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }

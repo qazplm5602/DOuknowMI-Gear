@@ -14,6 +14,7 @@ public class MysteriousGear : InteractiveObject
         var gear = database.GetRandomGear();
         IngameUIControl.Instance.gearChangeUI.GiveInventory(gear);
         stage.StartEliteStage();
-        Destroy(gameObject);
+        GetComponent<SpriteRenderer>().enabled = false;
+        Destroy(gameObject,2);
     }
 }

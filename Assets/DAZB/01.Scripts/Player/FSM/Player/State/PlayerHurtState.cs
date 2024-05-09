@@ -12,6 +12,7 @@ public class PlayerHurtState : PlayerState
         base.Enter();
         player.isInvincibility = true;
         player.MovementCompo.StopImmediately();
+        SoundManager.Instance.PlaySound(SoundType.PlayerTakeDamage);
     }
 
     public override void UpdateState()

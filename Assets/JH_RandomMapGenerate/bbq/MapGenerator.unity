@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GearChest
       objectReference: {fileID: 0}
+    - target: {fileID: 971152590008113818, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1418608408398681504, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.3
@@ -175,16 +179,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2047006162695596535, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
+      propertyPath: objectName
+      value: kjqdjashj
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047006162695596535, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
+      propertyPath: checkSize.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2047006162695596535, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
+      propertyPath: checkSize.y
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1418608408398681504, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
       insertIndex: -1
       addedObject: {fileID: 725903440}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 971152590008113818, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1886849524}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
 --- !u!1 &377773384
 GameObject:
@@ -197,6 +210,7 @@ GameObject:
   - component: {fileID: 377773385}
   - component: {fileID: 377773387}
   - component: {fileID: 377773386}
+  - component: {fileID: 377773388}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -253,6 +267,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &377773388
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377773384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &567983216
 GameObject:
   m_ObjectHideFlags: 0
@@ -1241,37 +1272,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1886849523 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 971152590008113818, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
-  m_PrefabInstance: {fileID: 24769424}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1886849524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886849523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66a0562ff52ed544aa626d4c789685cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  checkSize: {x: 5, y: 5, z: 1}
-  offset: {x: 0, y: 0, z: 0}
-  excuseMeUiPos: {fileID: 725903440}
-  nameTagPos: {fileID: 725903440}
-  objectName: GearChest
-  interactionName: "F \uC5F4\uAE30"
-  so:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  GEAR_DB: {fileID: 11400000, guid: 0c9dd3929d680be42b4a294bfacbdf52, type: 2}
 --- !u!4 &1886849527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1418608408398681504, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
