@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: BNNGear
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: 6a2dbc60380166744a5482f6b76f97cd, type: 3}
-  name: Bolt and Nut
-  desc: 
+  name: "\uBCFC\uD2B8 \uC564 \uB108\uD2B8"
+  desc: "\uBAA8\uB4E0 \uAE30\uACC4 \uC7A5\uCE58\uC5D0 \uAE30\uBCF8\uC774 \uB418\uB294
+    \uBD80\uD488\uC774\uB2E4. \uD574\uC81C\uD560 \uC218 \uC5C6\uC73C\uBA70 \uBAA8\uB4E0
+    \uC5F0\uACC4\uC5D0 \uD3EC\uD568\uB41C\uB2E4. \uAE30\uBCF8 \uACF5\uACA9\uACFC\uB3C4
+    \uAC19\uC740 \uC2A4\uD0AC."
   defaultDamage: 0
   defaultRange: 0
   activeDamage: 1
