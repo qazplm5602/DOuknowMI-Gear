@@ -6431,6 +6431,7 @@ MonoBehaviour:
   - {fileID: 3012879251497680245}
   type: 1
   StageNum: 0
+  Size: 0
   StageLinkedData:
     RightMap: {fileID: 0}
     LeftMap: {fileID: 0}
@@ -6451,15 +6452,14 @@ MonoBehaviour:
   - {fileID: 44676237524599330}
   Enemies:
   - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
-  - {fileID: 3980459699171738975, guid: afdcad1974ac12243914bd958018079f, type: 3}
+  - {fileID: 2962360447626800037, guid: 0a0408e50bed4e94e9e1aebed9760ea0, type: 3}
   Weights: 0a00000005000000
   WeightsFromPower: 0300000005000000
   TotalWeight: 0
   MaxWeight: 23
   HighestWeight: 0
   EliteEnemies:
-  - {fileID: 8729570074732286787, guid: 66d74d5317b581947b7ea58c49d7d01e, type: 3}
-  - {fileID: 5457438731711327377, guid: 467ca2c91ba2b6b41a2bfe1ddf28ad8a, type: 3}
+  - {fileID: 1654401717239364482, guid: 9c0bb8d773041bc49b89fce7ff1726d5, type: 3}
 --- !u!1 &7995048015980371134
 GameObject:
   m_ObjectHideFlags: 0
