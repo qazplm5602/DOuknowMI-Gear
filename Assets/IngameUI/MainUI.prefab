@@ -4334,13 +4334,7 @@ MonoBehaviour:
   _gearManager: {fileID: 8465894248305660871}
   _contextUI: {fileID: 3182034363160834422}
   _enforceUI: {fileID: 770709647208542445}
-  _gearDatas:
-  - {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
-  - {fileID: 11400000, guid: 704689f42372e5b47a8023be2b1d12ef, type: 2}
-  - {fileID: 11400000, guid: 3fd8dd0a9fc2e6b4bbce757ae20d1bf8, type: 2}
-  - {fileID: 11400000, guid: bf501d50d45dde74abe98830ce3fcdac, type: 2}
-  - {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
-  - {fileID: 11400000, guid: f35782c5b4f64184a9c4aab804e2d0d7, type: 2}
+  _gearDatas: []
 --- !u!114 &770709647208542445
 MonoBehaviour:
   m_ObjectHideFlags: 0
