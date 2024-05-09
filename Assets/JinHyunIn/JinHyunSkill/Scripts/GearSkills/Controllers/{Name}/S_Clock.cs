@@ -6,6 +6,7 @@ public class SkillClock : SkillController
 {
     private void Start()
     {
+        SoundManager.Instance.PlaySound(SoundType.ClockTicSound);
         StartCoroutine(MoveRoutine(transform));
     }
 
