@@ -170,3 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d9ac371ee621d40971193f50023486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipName: Step

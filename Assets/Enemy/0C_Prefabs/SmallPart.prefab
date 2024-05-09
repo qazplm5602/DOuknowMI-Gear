@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
+  m_Sprite: {fileID: -753265407, guid: ceda26ba516252a419b52e358c67ef36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,18 +119,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.021057606, y: -0.014740527}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.69676995, y: 0.6726725}
   m_EdgeRadius: 0
 --- !u!50 &2919154681792094679
 Rigidbody2D:
@@ -172,6 +172,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolingType: 0
-  _playerTrm: {fileID: 0}
+  playerTrm: {fileID: 0}
   _partSize: 0
   _magnetSpeed: 10
+  _sprites:
+  - {fileID: -753265407, guid: ceda26ba516252a419b52e358c67ef36, type: 3}
+  - {fileID: -1873087289, guid: ceda26ba516252a419b52e358c67ef36, type: 3}
+  - {fileID: -1988980578, guid: ceda26ba516252a419b52e358c67ef36, type: 3}
+  - {fileID: -107101941, guid: ceda26ba516252a419b52e358c67ef36, type: 3}

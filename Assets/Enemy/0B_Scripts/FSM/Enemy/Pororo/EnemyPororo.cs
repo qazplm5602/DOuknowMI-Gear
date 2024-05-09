@@ -49,6 +49,8 @@ public class EnemyPororo : Enemy
         Muzzle muz = obj.GetComponent<Muzzle>();
         muz.Init(FacingDirection);
 
+        SoundManager.Instance.PlaySound("Railgun - Shot 6");
+
         StateMachine.CurrentState.AnimationAttackTrigger();
     }
 

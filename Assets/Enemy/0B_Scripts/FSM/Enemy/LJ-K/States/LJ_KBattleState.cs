@@ -38,7 +38,7 @@ public class LJ_KBattleState : EnemyState<LJ_KStateEnum>
         }
         else if(distance > _enemyLJ_K.rangeAttackDistance) {
             if(_enemy.CanAttack()) {
-                _stateMachine.ChangeState((LJ_KStateEnum)Random.Range(4, 6));
+                _stateMachine.ChangeState(LJ_KStateEnum.Earthquake/*(LJ_KStateEnum)Random.Range(4, 6)*/);
                 return;
             }
         }
