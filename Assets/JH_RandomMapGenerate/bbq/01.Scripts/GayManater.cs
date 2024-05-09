@@ -2,6 +2,7 @@ using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ namespace bbqCode
     {
         [SerializeField] private CinemachineVirtualCamera vcam;
         [SerializeField] private MapSpawner mapSpawner;
+
+        private CinemachineConfiner2D confiner2d;
 
         public BaseStage CurrentRoom;
         public Player plr;
@@ -25,6 +28,7 @@ namespace bbqCode
         protected override void Awake()
         {
             base.Awake();
+            confiner2d = vcam.GetComponent<CinemachineConfiner2D>();
             //MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
             // print(MobSpawnEffect);
         }
@@ -64,10 +68,10 @@ namespace bbqCode
                 }
                 BlackScreen.DOColor(new Color(0, 0, 0, 1), .5f).OnComplete(() =>
                 {
-
                     if (CurrentRoom != null)
                         CurrentRoom.Exit();
                     CurrentRoom = targetRoom;
+                    confiner2d.m_BoundingShape2D = CurrentRoom.transform.Find("Collider").GetComponentInChildren<PolygonCollider2D>();
                     CurrentRoom.Enter();
                     Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                     plr.transform.position = doorToGo.position;

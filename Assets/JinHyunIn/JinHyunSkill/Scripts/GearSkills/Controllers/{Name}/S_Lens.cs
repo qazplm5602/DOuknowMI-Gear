@@ -16,6 +16,7 @@ public class SkillLens : SkillController
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         int layerMaskValue = (int)Mathf.Log(_weaponLayerMask.value, 2);
+        if (collision.gameObject.layer == (int)Mathf.Log(_enemyLayerMask, 2)) return;
         if (collision.gameObject.layer == layerMaskValue)
         {
             if(Map.Instance == null) return;
@@ -26,7 +27,7 @@ public class SkillLens : SkillController
                 for (int i = 0; i < 3; i++)
                 {
                     int idx = Random.Range(0, _enemies.Count);
-                    if (_enemies[idx].TryGetComponent(out IDamageable target))
+                    if (_enemies.Count != 0 && _enemies[idx].TryGetComponent(out IDamageable target))
                     {
                         target.ApplyDamage(Mathf.FloorToInt(_damage), PlayerManager.instance.playerTrm);
                     }
