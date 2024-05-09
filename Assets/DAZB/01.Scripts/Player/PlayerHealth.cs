@@ -26,13 +26,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             owner.isDead = true;
             OnDead?.Invoke();
         }
-/*         if (Input.GetKeyDown(KeyCode.T)) {
-            ApplyDamage(1, null);
-        } */
+        if (Input.GetKeyDown(KeyCode.T)) {
+            Healing(1);
+        }
     }
 
     public void Healing(int value) {
-        currentHealth = Mathf.Clamp(value, 0, maxHealth);
+        currentHealth += Mathf.Clamp(value, 0, maxHealth);
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
         if ((float)currentHealth / maxHealth > 0.4) {
             CameraManager.Instance.ResetChromaticAberration();
         }
