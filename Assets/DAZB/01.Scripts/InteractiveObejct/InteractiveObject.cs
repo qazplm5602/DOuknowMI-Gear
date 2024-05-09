@@ -20,7 +20,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     private TMP_Text nameTagText;
     private ExeuseMeUI exeuseMeUI;
 
-    private void Awake() {
+    protected virtual void Awake() {
         excuseMeText = DialogueManager.Instance.ExcuseMeUI.GetComponentInChildren<TMP_Text>(false);
         nameTagText = DialogueManager.Instance.NameTag.GetComponentInChildren<TMP_Text>(false);
         exeuseMeUI = DialogueManager.Instance.ExcuseMeUI.GetComponent<ExeuseMeUI>();

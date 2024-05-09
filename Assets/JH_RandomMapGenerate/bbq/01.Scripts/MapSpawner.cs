@@ -109,7 +109,7 @@ public class MapSpawner : MonoBehaviour
     {
         InitSetting();
       
-        MapSpawn(0, jajiOption.MaxListSize/2, null, 0);
+        MapSpawn(0, 5, null, 0);
         SetBossRoom();
         MakeMapMotherfuker();
         MakeStatueRoom();
@@ -222,67 +222,77 @@ public class MapSpawner : MonoBehaviour
                 return new Vector2Int(x + 1, y);
             }
 
-            //왼쪽
-            RandNum = Random.Range(0, 100);
-            //Debug.Log($"랜덤{RandNum}");
-            if (RandNum <= 50)
+            bool 고무현 = false;
+            do
             {
-                if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
+
+                //왼쪽
+                RandNum = Random.Range(0, 100);
+                //Debug.Log($"랜덤{RandNum}");
+                if (RandNum <= 80)
                 {
-                    MapSpawn(x - 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                    if (x - 1 >= 1 && current.Maplist[(x - 1) + (y * yval)] == null)
+                    {
+                        MapSpawn(x - 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                        고무현 = true;
+                    }
                 }
-            }
 
-            //오른쪽
-            RandNum = Random.Range(0, 100);
+                //오른쪽
+                RandNum = Random.Range(0, 100);
 
-            if (RandNum <= 70)
-            {
-                if (x + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[(x + 1) + (y * yval)] == null)
+                if (RandNum <= 80)
                 {
-                    MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                    if (x + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[(x + 1) + (y * yval)] == null)
+                    {
+                        MapSpawn(x + 1, y, current.Maplist[(x) + (y * yval)], depth + 1);
+                        고무현 = true;
+                    }
                 }
-            }
 
-            //위쪽
-            RandNum = Random.Range(0, 100);
-            if (RandNum <= 50)
-            {
-                if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
+                //위쪽
+                RandNum = Random.Range(0, 100);
+                if (RandNum <= 80)
                 {
-                    MapSpawn(x, y - 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                    if (y - 1 >= 0 && current.Maplist[x + ((y - 1) * yval)] == null)
+                    {
+                        MapSpawn(x, y - 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                        고무현 = true;
+                    }
                 }
-            }
 
-            //아래쪽
-            RandNum = Random.Range(0, 100);
+                //아래쪽
+                RandNum = Random.Range(0, 100);
 
-            if (RandNum <= 50)
-            {
-                if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
+                if (RandNum <= 80)
                 {
-                    MapSpawn(x, y + 1, current.Maplist[(x) + (y * yval)], depth + 1);
+
+                    if (y + 1 <= jajiOption.MaxListSize - 1 && current.Maplist[x + ((y + 1) * yval)] == null)
+                    {
+                        MapSpawn(x, y + 1, current.Maplist[(x) + (y * yval)], depth + 1);
+                        고무현 = true;
+                    }
                 }
-            }
+            } while (!고무현 || current.NowCount < jajiOption.MinCnt);
         }
 
         //이렇게 확률로 움직이도록 하면 최소개수가 만들어 지지 않을수 있기 때문에 최소 개수가 채워지지 않으면 4 방향중 비어있는 곳을 찾아서 강제로 생성시켜 줍니다.
-        if (current.NowCount < jajiOption.MinCnt)
-        { 
-            for (int i = 3; i >= 0; i--)
-            {
-                if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
-                int tempx = x + dirIndex[(DIRECTION)i].x;
-                int tempy = y + dirIndex[(DIRECTION)i].y;
-                if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
-                {
-                    if (current.Maplist[tempx + ((tempy) * yval)] == null)
-                    {
-                        MapSpawn(tempx, tempy, current.Maplist[(x) + (y * yval)], depth + 1, true);
-                    }
-                }
-            }
-        }
+        //if (current.NowCount < jajiOption.MinCnt)
+        //{ 
+        //    for (int i = 3; i >= 0; i--)
+        //    {
+        //        if (!dirIndex.ContainsKey((DIRECTION)i)) continue;
+        //        int tempx = x + dirIndex[(DIRECTION)i].x;
+        //        int tempy = y + dirIndex[(DIRECTION)i].y;
+        //        if (tempx >= 0 && tempx < jajiOption.MaxListSize - 1 && tempy >= 0 && tempy < jajiOption.MaxListSize - 1)
+        //        {
+        //            if (current.Maplist[tempx + ((tempy) * yval)] == null)
+        //            {
+        //                MapSpawn(tempx, tempy, current.Maplist[(x) + (y * yval)], depth + 1, true);
+        //            }
+        //        }
+        //    }
+        //}
 
         return new Vector2Int(x, y);
     }
@@ -302,7 +312,7 @@ public class MapSpawner : MonoBehaviour
                     stageData.transform.position = new Vector3(transform.position.x + (x * interval), transform.position.y + ((y * interval) * -1));
 
                     int num = stageData.StageLinkedData.Num;
-                    stageData.gameObject.name = $"Room_{num}";
+                    stageData.gameObject.name = $"Room_{num} {stageData.type} {(stageData.type == ROOMTYPE.Normal ? stageData.Size.ToString() : ' ')}";
 
                     stageData.Init();
                     stageData.StageNum = num;
@@ -336,7 +346,7 @@ public class MapSpawner : MonoBehaviour
                 linkeddata.LeftMap = mapObj;
                 if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.StageLinkedData.RightMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.RightMap = current.MapObjList[index];
                 }
             }
         }
@@ -349,7 +359,7 @@ public class MapSpawner : MonoBehaviour
 
                 if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.StageLinkedData.LeftMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.LeftMap = current.MapObjList[index];
                 }
             }
         }
@@ -362,7 +372,7 @@ public class MapSpawner : MonoBehaviour
 
                 if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.StageLinkedData.DownMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.DownMap = current.MapObjList[index];
                 }
             }
         }
@@ -375,7 +385,7 @@ public class MapSpawner : MonoBehaviour
 
                 if (mapObj.StageLinkedData != null)
                 {
-                    mapObj.StageLinkedData.UpMap = current.MapObjList[(x) + (y * yval)];
+                    mapObj.StageLinkedData.UpMap = current.MapObjList[index];
                 }
             }
         }
@@ -437,10 +447,15 @@ public class MapSpawner : MonoBehaviour
                 {
                     //print($"{countDoor} {i}");
                     //진짜입니까??
+                    if (20 >= Random.Range(1, 101)) //(50 >= Random.Range(1, 101))
+                    {
+                        roomSize = ROOMSIZE.Medium;
+                    }
                 }
                 else
                 {
-                    if (70 >= Random.Range(1,101)) //(50 >= Random.Range(1, 101))
+                    Debug.LogWarning("시발 떴따~!!!");
+                    if (60 >= Random.Range(1,101)) //(50 >= Random.Range(1, 101))
                     {
                         roomSize = ROOMSIZE.Medium;
                     }
@@ -450,9 +465,12 @@ public class MapSpawner : MonoBehaviour
                     }
                 }
 
+                //print(countDoor);
+
                 current.EliteRoomCandidates.Add(i);
                 BaseStage obj = map.StageLoad(ROOMTYPE.Normal, roomSize);
                 current.MapObjList[i] = Instantiate(obj, mapParent.transform);
+                obj.Size = roomSize;
 
                 if (roomSize == ROOMSIZE.Small)
                 {
