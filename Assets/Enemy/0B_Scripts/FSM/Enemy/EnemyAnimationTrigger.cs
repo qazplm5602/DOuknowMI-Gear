@@ -3,6 +3,8 @@ using UnityEngine;
 namespace FSM {
     public class EnemyAnimationTrigger : MonoBehaviour
     {
+        [SerializeField] private string clipName;
+
         protected Enemy _enemy;
 
         protected virtual void Awake() {
@@ -15,6 +17,10 @@ namespace FSM {
 
         private void AnimationAttackTrigger() {
             _enemy.Attack();
+        }
+
+        private void AnimationStepTrigger() {
+            SoundManager.Instance.PlaySound(clipName);  
         }
     }
 }

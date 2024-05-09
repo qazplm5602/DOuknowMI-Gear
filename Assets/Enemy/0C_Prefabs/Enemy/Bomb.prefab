@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6214c6dcad9198040986ca1ab9cea705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipName: Step
 --- !u!1 &8315139390086269478
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +281,6 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: 65adc5bd4f4000543a31d17471d13bad, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  _downJumpable: 1
   _downJumpDistance: 1.7
   whatIsPlatform:
     serializedVersion: 2
