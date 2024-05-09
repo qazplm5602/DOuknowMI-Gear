@@ -32,6 +32,7 @@ public class PlayerDashState : PlayerState
         player.StartCoroutine(GenerateAfterimageRoutine());
         player.isInvincibility = true;
         player.lastDashTime = Time.time;
+        SoundManager.Instance.PlaySound(SoundType.PlayerDash);
     }
 
     public override void Exit()

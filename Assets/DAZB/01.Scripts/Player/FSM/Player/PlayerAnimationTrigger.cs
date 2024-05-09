@@ -8,4 +8,8 @@ public class PlayerAnimationTrigger : MonoBehaviour
     private void AnimationEnd() {
         player.StateMachine.CurrentState.AnimationFinishTrigger();
     }
+
+    private void PlaySound(SoundType type) {
+        SoundManager.Instance.PlaySound(type);
+    }
 }

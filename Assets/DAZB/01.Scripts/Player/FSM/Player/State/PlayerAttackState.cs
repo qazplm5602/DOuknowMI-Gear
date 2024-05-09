@@ -15,8 +15,17 @@ public class PlayerAttackState : PlayerState
         player.isAttack = true;
         player.lastAttackTime = Time.time;
         var gearList = GearManager.Instance.GetGearResult();
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        player.MovementCompo.Flip(mousePosition);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));  
+        Vector3 playerPos = player.transform.position;
+        float angle = Mathf.Atan2(mousePosition.y - playerPos.y, mousePosition.x - playerPos.x) * Mathf.Rad2Deg;
+        if (player.MovementCompo.Velocity.magnitude <= 0) {
+            if (angle < 90) {
+                player.MovementCompo.Flip(Vector2.zero, true, true);  
+            }
+            else {
+                player.MovementCompo.Flip(Vector3.zero, true, false);
+            }
+        }
         foreach (var iter in gearList) {
             iter.script.Use();
         }
