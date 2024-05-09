@@ -906,6 +906,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 56276274}
   m_CullTransparentMesh: 1
+--- !u!1 &58321557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 58321559}
+  - component: {fileID: 58321558}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &58321558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58321557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 41a61d69508f6b64e8a8100597550435, type: 2}
+--- !u!4 &58321559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58321557}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &81620999
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   v_cam: {fileID: 737675653}
+  globalVolume: {fileID: 58321558}
 --- !u!1 &262442292
 GameObject:
   m_ObjectHideFlags: 0
@@ -11103,8 +11153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   currentExp: 0
-  _needExp: 1
-  _playerStat: {fileID: 0}
+  _needExp: 100
 --- !u!114 &986396551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18722,6 +18771,7 @@ MonoBehaviour:
   - {x: 177.6, y: 65.5}
   - {x: 306, y: 50}
   - {x: 433.7, y: 65.5}
+  cameraImagePrefab: {fileID: 0}
   loadLinkData:
   - {fileID: 11400000, guid: 203ad99f81672e1458399714574fdddf, type: 2}
   - {fileID: 11400000, guid: a73886985bd404b40a3686090fe8aead, type: 2}
@@ -23380,7 +23430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4950659148838336722, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897103450679849129, guid: 21de611d815439a40a5519cda5bb27dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27918,3 +27968,4 @@ SceneRoots:
   - {fileID: 1649270775103385731}
   - {fileID: 81621002}
   - {fileID: 1208670895}
+  - {fileID: 58321559}
