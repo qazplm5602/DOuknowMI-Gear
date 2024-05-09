@@ -17,7 +17,7 @@ public abstract class BaseStage : MonoBehaviour
 
     public ROOMSIZE Size;
 
-    [HideInInspector] public LinkedStage StageLinkedData;
+    public LinkedStage StageLinkedData;
 
     [HideInInspector] public GameObject Arena; //적의 스폰 Parent
 
