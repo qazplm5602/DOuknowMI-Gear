@@ -103,7 +103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "NPC \uB300\uD654"
+  m_text: "NPC \uB300\uD654, \uC0C1\uC790 \uC5F4\uAE30, \uB4F1\uB4F1.."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b5faf4576151ad445a0e9664daba795f, type: 2}
   m_sharedMaterial: {fileID: -2142376122066357172, guid: b5faf4576151ad445a0e9664daba795f, type: 2}
