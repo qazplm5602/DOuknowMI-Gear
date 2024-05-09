@@ -13,6 +13,7 @@ public class SkillCamera : SkillController
 
     private void Start()
     {
+        SoundManager.Instance.PlaySound(SoundType.CamShutter);
         StartCoroutine(CaptureAndCastScreen());
         StartCoroutine(MoveRoutine(transform));
     }

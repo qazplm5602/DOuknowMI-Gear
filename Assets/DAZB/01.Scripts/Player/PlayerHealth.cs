@@ -26,9 +26,17 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             owner.isDead = true;
             OnDead?.Invoke();
         }
-/*         if (Input.GetKeyDown(KeyCode.T)) {
-            ApplyDamage(10, null);
-        } */
+        if (Input.GetKeyDown(KeyCode.T)) {
+            Healing(1);
+        }
+    }
+
+    public void Healing(int value) {
+        currentHealth += Mathf.Clamp(value, 0, maxHealth);
+        IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
+        if ((float)currentHealth / maxHealth > 0.4) {
+            CameraManager.Instance.ResetChromaticAberration();
+        }
     }
 
     public void ApplyDamage(int damage, Transform dealer) {
@@ -43,7 +51,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
         IngameUIControl.Instance.SetHealthBar(currentHealth, maxHealth);
-        CameraManager.Instance.BloodScreen(damage / 15);
+        if ((float)currentHealth / maxHealth <= 0.4f) {
+            CameraManager.Instance.SetChromaticAberration(currentHealth, maxHealth);
+        }
+        CameraManager.Instance.HitMethod(damage / 15);
+        float perlinAmplitude  = Mathf.Clamp(damage * 1.25f, 6, 20);
+        CameraManager.Instance.ShakeCamera(perlinAmplitude, 10f, 0.1f);
         owner.StateMachine.ChangeState(PlayerStateEnum.Hurt);
     }
 }

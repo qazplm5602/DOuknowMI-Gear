@@ -5,6 +5,7 @@ public class SkillFilm  : SkillController
 {
     private void Start()
     {
+        SoundManager.Instance.PlaySound(SoundType.FilmRolling);
         StartCoroutine(MoveRoutine(transform));
     }
 

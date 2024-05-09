@@ -9,6 +9,11 @@ public enum SoundType {
     PlayerDash,
     PlayerTakeDamage,
     LampTurnOnAndOff,
+    ThrowBNN,
+    FilmRolling,
+    LensBling,
+    ClockTicSound,
+    CamShutter
 }
 
 public class SoundManager : MonoSingleton<SoundManager>

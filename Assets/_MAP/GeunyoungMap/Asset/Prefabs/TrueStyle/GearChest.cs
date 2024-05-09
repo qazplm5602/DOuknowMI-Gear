@@ -7,6 +7,7 @@ public class GearChest : InteractiveObject
     private Animator _animator;
     public GearSO[] so = new GearSO[3];
     public GearDatabase GEAR_DB;
+    private bool isOpened;
 
     private readonly int _openAnimHash = Animator.StringToHash("Open");
 
@@ -25,10 +26,16 @@ public class GearChest : InteractiveObject
         }
     }
 
+    protected override void Update() {
+        if (isOpened) return;
+        base.Update();
+    }
+
     public override void Interaction()
 
     {
-        
+        isOpened = true;
+        DialogueManager.Instance.ExcuseMeUI.SetActive(false);
         _animator.SetTrigger(_openAnimHash);
 
         IngameUIControl.Instance.CHESTUI.Show(so);

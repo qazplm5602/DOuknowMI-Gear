@@ -26,7 +26,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
         exeuseMeUI = DialogueManager.Instance.ExcuseMeUI.GetComponent<ExeuseMeUI>();
     }
 
-    private void Update() {
+    protected virtual void Update() {
         CheckPlayer();
         if (isCheck) {
             if (excuseMeText != null) {
