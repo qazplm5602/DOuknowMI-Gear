@@ -46,6 +46,8 @@ public class EnemyGuni : Enemy
         Muzzle muz = obj.GetComponent<Muzzle>();
         muz.Init(FacingDirection);
 
+        SoundManager.Instance.PlaySound("Hand Gun 3");
+
         StateMachine.CurrentState.AnimationAttackTrigger();
     }
 

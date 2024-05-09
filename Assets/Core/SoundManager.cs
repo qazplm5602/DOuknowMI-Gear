@@ -3,7 +3,12 @@ using UnityEngine;
 using UnityEngine.Audio;
 
 public enum SoundType {
-    // 알아서 넣으면 됨
+    PlayerWalk,
+    PlayerJump,
+    PlayerLanding,
+    PlayerDash,
+    PlayerTakeDamage,
+    LampTurnOnAndOff,
 }
 
 public class SoundManager : MonoSingleton<SoundManager>
@@ -33,6 +38,15 @@ public class SoundManager : MonoSingleton<SoundManager>
     public void SetVolume(string name, int value /* 0 ~ 100 */) {
         // print($"{name} {-((100 - value) * 0.8f)}");
         _audioMixer.SetFloat(name, -((100 - value) * 0.8f));
+    }
+
+    public void PlaySound(string clipName) {
+        if(!_audioClipDictionary.ContainsKey(clipName)) {
+            Debug.LogError($"[SoundManager] {clipName} Clip Not Found");
+            return;
+        }
+
+        _audioSource.PlayOneShot(_audioClipDictionary[clipName]);
     }
 
     public void PlaySound(SoundType type) {

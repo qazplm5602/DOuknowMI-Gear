@@ -162,7 +162,6 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: b107bcbd21dbeef408a1065c7518b263, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  _downJumpable: 1
   _downJumpDistance: 1.2
   whatIsPlatform:
     serializedVersion: 2
@@ -176,13 +175,14 @@ MonoBehaviour:
   whatIsObstacle:
     serializedVersion: 2
     m_Bits: 4160
-  attackRange: {x: 4, y: 0.2}
+  attackRange: {x: 4, y: 0.4}
   attackOffset: {x: 2, y: -0.36}
   attackDamage: 2
   lastAttackTime: 0
   healthBarTransform: {fileID: 8899532595701357591}
   healthBarScale: 0.3
   dropTable: {fileID: 11400000, guid: 787cb9add3a889b46a92b72bc12da600, type: 2}
+  healthBar: {fileID: 0}
   attackTransform: {fileID: 7130382085490325220}
 --- !u!114 &3042940509989342945
 MonoBehaviour:
@@ -364,3 +364,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6214c6dcad9198040986ca1ab9cea705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipName: Step

@@ -131,7 +131,6 @@ MonoBehaviour:
   Stat: {fileID: 11400000, guid: 3ca928dcaa1af0d4e8b89d8296ac9be6, type: 2}
   DamageCasterCompo: {fileID: 0}
   HealthCompo: {fileID: 0}
-  _downJumpable: 1
   _downJumpDistance: 2.5
   whatIsPlatform:
     serializedVersion: 2
@@ -373,3 +372,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6214c6dcad9198040986ca1ab9cea705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clipName: Tank_Movement_Jump_2

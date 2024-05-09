@@ -18,6 +18,7 @@ public class PlayerFallState : PlayerCanDashState
             if (player.MovementCompo.isGround) {
                 PoolManager.Instance.Pop(PoolingType.PlayerLanding);
                 player.gameObject.layer = LayerMask.NameToLayer("Player");
+                SoundManager.Instance.PlaySound(SoundType.PlayerLanding);
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
                 /* player.isUnderJumpping = false; */
             }
@@ -29,6 +30,7 @@ public class PlayerFallState : PlayerCanDashState
             if (player.MovementCompo.isGround || DialogueManager.Instance.isEnd == false) {
                 PoolManager.Instance.Pop(PoolingType.PlayerLanding);
                 player.gameObject.layer = LayerMask.NameToLayer("Player");
+                SoundManager.Instance.PlaySound(SoundType.PlayerLanding);
                 stateMachine.ChangeState(PlayerStateEnum.Idle);
                 /* player.isUnderJumpping = false; */
             }
