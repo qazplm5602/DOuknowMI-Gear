@@ -177,7 +177,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
     m_Bits: 8
   whatIsObstacle:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 4160
   attackRange: {x: 0, y: 0}
   attackOffset: {x: 0, y: 0}
   attackDamage: 0
