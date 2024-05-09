@@ -49,6 +49,10 @@ public class EnemyLJ_K : Enemy
 
     public GameObject stoneColumnPrefab;
 
+    [Space]
+
+    public BossStage bossStage;
+
     protected override void Awake() {
         base.Awake();
         healthBar.gameObject.SetActive(false);
@@ -86,6 +90,12 @@ public class EnemyLJ_K : Enemy
 
     public override void Attack() {
         DamageCasterCompo.Damage(currentAttackDamage, (Vector2)transform.position + currentAttackOffset, currentAttackRange);
+    }
+
+    public override void SetDead()
+    {
+        base.SetDead();
+        bossStage.Clear();
     }
 
     public override void AnimationFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
