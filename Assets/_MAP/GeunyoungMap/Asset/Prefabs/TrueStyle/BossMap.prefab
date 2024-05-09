@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &51573449147470744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8528832329853629651}
+  m_Layer: 0
+  m_Name: RewardPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8528832329853629651
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51573449147470744}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20, y: -2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3153419121339304029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &868478209942313405
 GameObject:
   m_ObjectHideFlags: 0
@@ -22386,6 +22417,7 @@ Transform:
   - {fileID: 67182045444289114}
   - {fileID: 6801952467026938245}
   - {fileID: 1531268746225873847}
+  - {fileID: 8528832329853629651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2169455613058212990
@@ -22433,6 +22465,8 @@ MonoBehaviour:
   RoomActive: 0
   Boss: {fileID: 5457438731711327377, guid: 467ca2c91ba2b6b41a2bfe1ddf28ad8a, type: 3}
   TIMELINE: {fileID: 3891515349713220974}
+  RewardPosition: {fileID: 8528832329853629651}
+  RewardChest: {fileID: 2047006162695596535, guid: fb3563b251f8429488fbe84ca4a28a30, type: 3}
 --- !u!1 &8711887831242150094
 GameObject:
   m_ObjectHideFlags: 0
@@ -22563,11 +22597,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 27.52
       objectReference: {fileID: 0}
     - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 565679399594365612, guid: f259087f861766b468530976a24747e3, type: 3}
       propertyPath: m_LocalPosition.z
