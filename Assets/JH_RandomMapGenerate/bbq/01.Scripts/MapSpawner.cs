@@ -72,7 +72,7 @@ public class MapSpawner : MonoBehaviour
     public CurrentMapState current = new CurrentMapState();
     public void InitSetting()
     {
-        Map.Instance.Init();
+        map.Init();
         current.PrayRoomCandidates = new List<int>();
         jajiOption.MaxListSize = jajiOption.MaxCnt + 2;
         current.Maplist = new StageData[jajiOption.MaxListSize * jajiOption.MaxListSize];
@@ -92,7 +92,7 @@ public class MapSpawner : MonoBehaviour
             current.MapObjList[i] = null;
         }
 
-        foreach(NormalStage stage in Map.Instance.SmallRoom)
+        foreach(NormalStage stage in map.SmallRoom)
         {
             current.SmallRoomDoorDatas.Add(new Vector4(
                 stage.door[0] != null ? 1 : 0,
@@ -105,7 +105,7 @@ public class MapSpawner : MonoBehaviour
     public BaseStage BOSS_ROOM;
 
 
-    private void Awake()
+    private void Start()
     {
         InitSetting();
       
