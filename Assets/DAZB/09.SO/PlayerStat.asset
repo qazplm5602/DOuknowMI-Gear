@@ -28,8 +28,8 @@ MonoBehaviour:
     modifiers: []
     isPercent: 0
   attackSpeed:
-    _baseValue: 1000
-    defaultValue: 1000
+    _baseValue: 700
+    defaultValue: 700
     modifiers: []
     isPercent: 0
   defense:

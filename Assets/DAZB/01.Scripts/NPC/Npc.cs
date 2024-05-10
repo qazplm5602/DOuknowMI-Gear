@@ -11,6 +11,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
     [SerializeField] private Transform excuseMeUiPos;
     [SerializeField] private Transform nameTagPos;
     [SerializeField] private string interactionName;
+    [field:SerializeField] public SoundType talkSoundType {get; private set;}
 
     protected bool isCheck;
     private Dialogue dialogue;
