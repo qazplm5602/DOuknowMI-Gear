@@ -1256,6 +1256,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1902161707122201789, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2802049627456381927, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
       propertyPath: spawnGears.Array.size
       value: 2
@@ -1368,6 +1372,10 @@ PrefabInstance:
       propertyPath: playerExperience
       value: 
       objectReference: {fileID: 1740215892}
+    - target: {fileID: 8636901361229314749, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 821864904797358744, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}

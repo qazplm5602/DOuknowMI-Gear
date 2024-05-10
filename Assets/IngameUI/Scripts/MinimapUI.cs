@@ -39,28 +39,15 @@ public class MinimapUI : MonoBehaviour
     }
 
     private void Start() {
+        // 방 만듬
         CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
 
         // 중간으로 이동
-        Vector2 sumPos = Vector2.zero;
-        foreach (var item in stages)
-        {
-            // sumPos += (Vector2)item.Value.transform.localPosition;
-            sumPos += (item.Value.transform as RectTransform).anchoredPosition;
-        }
-
-        sumPos /= stages.Count;
-        (_mapSection as RectTransform).anchoredPosition = -sumPos;
+        SetSectionCenter();
 
         // 선 연결
         _alreadyMap.Clear();
         CreateLine(_mapSpawn.current.StartRoom);
-
-        // print($"map created: {_alreadyMap.Count}");
-        // foreach (var item in _alreadyMap)
-        // {
-        //     print(item);
-        // }
     }
 
     void CreateRoom(BaseStage stage, RectTransform beforeState, Door.DoorType dir) {
@@ -196,6 +183,40 @@ public class MinimapUI : MonoBehaviour
         }
     }
 
+    void SetSectionCenter() {
+        bool init = false;
+
+        Vector2 minPos = Vector2.zero;
+        Vector2 maxPos = Vector2.zero;
+        
+        foreach (var item in stages)
+        {
+            if (!init) {
+                init = true;
+                
+                minPos = item.Value.transform.localPosition;
+                maxPos = item.Value.transform.localPosition;
+                continue;
+            }
+
+            Vector2 pos = item.Value.transform.localPosition;
+            if (pos.x < minPos.x)
+                minPos.x = pos.x;
+
+            if (pos.y < minPos.y)
+                minPos.y = pos.y;
+
+            if (pos.x > maxPos.x)
+                maxPos.x = pos.x;
+
+            if (pos.y > maxPos.y)
+                maxPos.y = pos.y;
+        }
+
+        Vector2 centerPos = (minPos + maxPos) / 2;
+        _mapSection.localPosition -= (Vector3)centerPos;
+    }
+    
     RectTransform CreateLineUI() {
         GameObject lineEntity = new GameObject("line");
         lineEntity.transform.SetParent(_mapSection);
