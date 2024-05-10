@@ -34,6 +34,11 @@ public class PlayerStat : MonoSingleton<PlayerStat>
 
     private void Start() {
         player = PlayerManager.instance.player;
+        Atk = StatManager.Instance.Attack;
+        Health = StatManager.Instance.health;
+        Defence = StatManager.Instance.defence;
+        Speed = StatManager.Instance.speed;
+        CriticalChance = StatManager.Instance.criticalChance;
     }
 
     [HideInInspector] public int Atk {
@@ -43,6 +48,7 @@ public class PlayerStat : MonoSingleton<PlayerStat>
             player.stat.attack.SetDefaultValue((int)(player.stat.attack.GetDefaultValue() + value * atkPerPointInc));
             _atkText.text = _atk.ToString();
             OnUpdateStat?.Invoke();
+            StatManager.Instance.SaveStat(PlayerStatEnum.Atk, value);
         }
     }
     [HideInInspector] public int Health {
@@ -52,6 +58,7 @@ public class PlayerStat : MonoSingleton<PlayerStat>
             player.stat.maxHealth.SetDefaultValue((int)(player.stat.maxHealth.GetDefaultValue() + value * healthPerPointInc));
             _healthText.text = _health.ToString();
             OnUpdateStat?.Invoke();
+            StatManager.Instance.SaveStat(PlayerStatEnum.Health, value);
         }
     }
     [HideInInspector] public int Speed {
@@ -62,6 +69,7 @@ public class PlayerStat : MonoSingleton<PlayerStat>
             player.stat.attackSpeed.SetDefaultValue((int)(player.stat.attackSpeed.GetDefaultValue() - value * attackCoolPerPointInc * 1000));
             _speedText.text = _speed.ToString();
             OnUpdateStat?.Invoke();
+            StatManager.Instance.SaveStat(PlayerStatEnum.Speed, value);
         }
     }
 
@@ -72,6 +80,7 @@ public class PlayerStat : MonoSingleton<PlayerStat>
             player.stat.defense.SetDefaultValue((int)(player.stat.defense.GetDefaultValue() + value * defencePerPointInc));
             _defenceText.text = _defence.ToString();
             OnUpdateStat?.Invoke();
+            StatManager.Instance.SaveStat(PlayerStatEnum.Defence, value);
         }
     }
 
@@ -83,6 +92,7 @@ public class PlayerStat : MonoSingleton<PlayerStat>
                 (player.stat.criticalChance.GetDefaultValue() + value * criticalChancePerPointInc * 1000) * 1000);
             _criticalChanceText.text = _criticalChance.ToString();
             OnUpdateStat?.Invoke();
+            StatManager.Instance.SaveStat(PlayerStatEnum.CriticalChance, value);
         }
     }
 
