@@ -38,6 +38,7 @@ public class PlayerFallState : PlayerCanDashState
     }
 
     private void HandleMovementEvent() {
+        if (Time.timeScale == 0) return;
         player.MovementCompo.SetMovement(player.InputReader._xMovement * player.moveSpeed, true);
     }
 } 
