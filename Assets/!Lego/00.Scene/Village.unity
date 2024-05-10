@@ -34771,7 +34771,7 @@ MonoBehaviour:
   _animScreen: {fileID: 6368154692547580012}
   AnimBoxBefore: {fileID: 1209817901468624866}
   AnimBoxAfter: {fileID: 4576304202479980197}
-  _playerMoney: {fileID: 0}
+  _playerMoney: {fileID: 5541241071072675373}
 --- !u!4 &6427043214341521343
 Transform:
   m_ObjectHideFlags: 0
