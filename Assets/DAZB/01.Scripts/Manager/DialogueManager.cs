@@ -250,6 +250,7 @@ public class DialogueManager : MonoSingleton<DialogueManager>
     }
 
     public void SkipTween(Tween tween) {
+        StopCoroutine(coroutine);
         tween.Complete();
         tween.Kill();
     }
