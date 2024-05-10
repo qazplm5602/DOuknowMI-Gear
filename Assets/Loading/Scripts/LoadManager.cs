@@ -52,7 +52,7 @@ public class LoadManager : MonoBehaviour
         float curveTime = 0;
         while (curveTime < 1) {
             yield return null;
-            curveTime += Time.deltaTime / 8;
+            curveTime += Time.deltaTime / 4;
             progress = Mathf.Clamp(_curve.Evaluate(curveTime), 0, 0.9f);
             
             UpdateUI(progress);

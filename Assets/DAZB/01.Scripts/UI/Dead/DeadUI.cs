@@ -39,7 +39,7 @@ public class DeadUI : MonoBehaviour
         yield return new WaitForSeconds(durations[2]);
         DOTween.To(size => maskObject.sizeDelta = new Vector2(size, size), 500, 0, durations[1]).SetEase(Ease.Linear);
         yield return new WaitForSeconds(durations[1]);
-        SceneManager.LoadScene("Village");
+        LoadManager.LoadScene("Village");
         yield return null;
     }
 }
