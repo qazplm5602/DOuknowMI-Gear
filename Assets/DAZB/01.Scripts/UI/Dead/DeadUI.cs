@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DeadUI : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class DeadUI : MonoBehaviour
 
     private void Start() {
         PlayerManager.instance.player.HealthCompo.OnDead += HadleDeadEvent;
+        PlayerManager.instance.player.HealthCompo.OnDead += ToVillage;
     }
 
     private void OnDisable() {
         PlayerManager.instance.player.HealthCompo.OnDead -= HadleDeadEvent;
+        PlayerManager.instance.player.HealthCompo.OnDead -= ToVillage;
     }
 
     private void HadleDeadEvent()
@@ -30,11 +33,17 @@ public class DeadUI : MonoBehaviour
         text.gameObject.SetActive(true);
         DOTween.To(alpha => text.color = new Color(1, 1, 1,alpha), 0, 1, durations[2]);
         yield return new WaitForSeconds(durations[2]);
+
         yield return new WaitUntil(() => Keyboard.current.anyKey.wasPressedThisFrame);
         DOTween.To(alpha => text.color = new Color(1, 1, 1,alpha), 1, 0, durations[2]);
         yield return new WaitForSeconds(durations[2]);
         DOTween.To(size => maskObject.sizeDelta = new Vector2(size, size), 500, 0, durations[1]).SetEase(Ease.Linear);
         yield return new WaitForSeconds(durations[1]);
         yield return null;
+    }
+
+    private void ToVillage()
+    {
+        SceneManager.LoadScene("Village");
     }
 }
