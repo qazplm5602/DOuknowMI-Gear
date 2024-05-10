@@ -8,14 +8,14 @@ using System.Net.WebSockets;
 
 public class CameraManager : MonoSingleton<CameraManager>
 {
-    [SerializeField] private CinemachineVirtualCamera v_cam;
-    [SerializeField] private Volume globalVolume;
+    public CinemachineVirtualCamera v_cam;
+    public Volume globalVolume;
     private CinemachineBasicMultiChannelPerlin v_perlin;
     private Vignette vg;
     private DepthOfField depth;
     private ChromaticAberration chromaticAberration;
 
-    private void Awake() {
+    private void Start() {
         v_perlin = v_cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         globalVolume.profile.TryGet(out vg);
         globalVolume.profile.TryGet(out depth);

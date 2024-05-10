@@ -13,7 +13,12 @@ public enum SoundType {
     FilmRolling,
     LensBling,
     ClockTicSound,
-    CamShutter
+    CamShutter,
+    EngineerTalkSound,
+    HeadTalkSound,
+    RepairmanTalkSound,
+    SonTalkSound,
+    NONE,
 }
 
 public class SoundManager : MonoSingleton<SoundManager>

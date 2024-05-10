@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607090704378377384}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.35, y: 0.58, z: -0.14810665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -241,6 +241,7 @@ MonoBehaviour:
   excuseMeUiPos: {fileID: 8014926781110155877}
   nameTagPos: {fileID: 2273061694406073057}
   interactionName: "\uB300\uD654\uD558\uAE30"
+  <talkSoundType>k__BackingField: 12
   saveUI: {fileID: 0}
 --- !u!114 &4615569484759362629
 MonoBehaviour:
