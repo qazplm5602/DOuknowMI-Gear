@@ -26,6 +26,7 @@ public class PlayerRunState : PlayerCanDashState
     }
 
     private void HandleMovementEvent() {
+        if (Time.timeScale == 0) return;
         if (player.InputReader._xMovement.sqrMagnitude < Mathf.Epsilon) {
             player.StateMachine.ChangeState(PlayerStateEnum.Idle);
         }

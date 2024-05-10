@@ -8254,7 +8254,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1738803900}
         m_TargetAssemblyTypeName: SaveUI, Assembly-CSharp
         m_MethodName: Exit
         m_Mode: 1
@@ -8265,6 +8265,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 894015494457789888}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: SetEnd
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1904488531
 MonoBehaviour:
@@ -21946,8 +21958,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -43310,7 +43322,6 @@ RectTransform:
   m_Children:
   - {fileID: 6230421994233937558}
   - {fileID: 7728846877779752341}
-  - {fileID: 4704415189086892908}
   - {fileID: 1575518762461427539}
   - {fileID: 2304397163949826064}
   - {fileID: 4431257258130428882}
@@ -43321,6 +43332,7 @@ RectTransform:
   - {fileID: 2699266802810593998}
   - {fileID: 4139437167447601712}
   - {fileID: 456227855}
+  - {fileID: 4704415189086892908}
   - {fileID: 304971871118336235}
   - {fileID: 6653647195389263248}
   - {fileID: 1000294173133708541}
