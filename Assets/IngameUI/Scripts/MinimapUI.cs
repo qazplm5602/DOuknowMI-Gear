@@ -44,7 +44,7 @@ public class MinimapUI : MonoBehaviour
 
         // 중간으로 이동
         // SetSectionCenter();
-        SetSectionFocus(0);
+        SetSectionFocus(0); // 초기 처음 위치 (비활해도 됨)
 
         // 선 연결
         _alreadyMap.Clear();
@@ -184,7 +184,7 @@ public class MinimapUI : MonoBehaviour
         }
     }
 
-    void SetSectionCenter() {
+    public void SetSectionCenter() {
         bool init = false;
 
         Vector2 minPos = Vector2.zero;
@@ -218,7 +218,7 @@ public class MinimapUI : MonoBehaviour
         _mapSection.localPosition -= (Vector3)centerPos;
     }
     
-    void SetSectionFocus(int stageNum) {
+    public void SetSectionFocus(int stageNum) {
         // 다시 중간으로 옮겨주고~~~
         (_mapSection as RectTransform).anchoredPosition = Vector3.zero;
         
