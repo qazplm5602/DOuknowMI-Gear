@@ -8,6 +8,6 @@ public class Head : Npc
     public override void Interaction()
     {
         // 세이브 창 켜야함
-        saveUI.SetActive(true);
+        SaveManager.Instance.saveUI.Open();
     }
 }

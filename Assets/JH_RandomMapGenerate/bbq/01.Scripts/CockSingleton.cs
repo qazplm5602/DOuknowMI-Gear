@@ -23,26 +23,23 @@ public class CockSingleton<T> : MonoBehaviour where T : MonoBehaviour
 
     public static T Instance
     {
-        // 쓰래드 안전화 - Thread-Safe
         get
         {
-            // 한번에 한 스래드만 lock블럭 실행
-            lock (lockObject)
+            
+            // 비활성화 됐다면 기존꺼 내비두고 새로 만든다.
+            if (IsQuitting)
             {
-                // 비활성화 됐다면 기존꺼 내비두고 새로 만든다.
-                if (IsQuitting)
-                {
-                    return null;
-                }
-
-                // instance가 NULL일때 새로 생성한다.
-                //if (instance == null)
-                //{
-                //    //instance = GameObject.Instantiate(Resources.Load<T>("MonoSingleton/" + typeof(T).Name));
-                //    DontDestroyOnLoad(instance.gameObject);
-                //}
-                return instance;
+                return null;
             }
+
+            // instance가 NULL일때 새로 생성한다.
+            //if (instance == null)
+            //{
+            //    //instance = GameObject.Instantiate(Resources.Load<T>("MonoSingleton/" + typeof(T).Name));
+            //    DontDestroyOnLoad(instance.gameObject);
+            //}
+            return instance;
+           
         }
     }
 

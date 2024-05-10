@@ -434,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapParent: {fileID: 1093184853}
+  minimapUI: {fileID: 1740215889}
   tries: 0
   map: {fileID: 573908938}
   jajiOption:
@@ -1086,6 +1087,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
+--- !u!114 &1740215889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4734139392410905593, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
+  m_PrefabInstance: {fileID: 1740215888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c761cded3c149346a01a4f1c4f51565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1740215892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5936824778841722773, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}
