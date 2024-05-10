@@ -87,7 +87,7 @@ namespace bbqCode
                 Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                 plr.transform.position = doorToGo.position;
             }
-           
+            IngameUIControl.Instance.MinimapUI.SetSectionFocus(stageNum: CurrentRoom.StageNum);
         } 
 
         public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
