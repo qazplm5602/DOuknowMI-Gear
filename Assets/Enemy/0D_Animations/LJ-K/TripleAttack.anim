@@ -117,6 +117,13 @@ AnimationClip:
     floatParameter: 0.5
     intParameter: 0
     messageOptions: 0
+  - time: 0.2
+    functionName: PlaySwingSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.3
     functionName: AnimationAttackTrigger
     data: 
@@ -143,6 +150,13 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0.5
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.9
+    functionName: PlaySwingSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1

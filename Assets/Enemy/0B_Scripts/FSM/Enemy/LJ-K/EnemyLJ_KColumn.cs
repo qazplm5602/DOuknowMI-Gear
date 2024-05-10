@@ -19,6 +19,8 @@ public class EnemyLJ_KColumn : MonoBehaviour
         _collider.offset = new Vector3(0, 0.5f + 0.5f * index);
         _collider.size = new Vector3(3, 5 + index);
 
+        SoundManager.Instance.PlaySound("ShotGun Shot Single Shot Interior");
+
         StartCoroutine(Appear());
     }
 
