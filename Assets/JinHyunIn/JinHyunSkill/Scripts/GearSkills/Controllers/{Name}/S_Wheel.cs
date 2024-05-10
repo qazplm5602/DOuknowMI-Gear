@@ -19,6 +19,7 @@ public class SkillWheel : SkillController
     private void Start()
     {
         directionSign = CheckDirection();
+        SoundManager.Instance.PlaySound(SoundType.WheelRolling);
         _layerMaskValue = (int)Mathf.Log(_groundAndPlatformLayerMask.value, 2);
     }
 

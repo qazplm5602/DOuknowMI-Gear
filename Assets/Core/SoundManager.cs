@@ -18,6 +18,7 @@ public enum SoundType {
     HeadTalkSound,
     RepairmanTalkSound,
     SonTalkSound,
+    WheelRolling,
     NONE,
 }
 
