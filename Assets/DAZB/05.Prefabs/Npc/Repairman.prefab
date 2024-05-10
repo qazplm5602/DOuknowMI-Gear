@@ -202,6 +202,7 @@ MonoBehaviour:
   excuseMeUiPos: {fileID: 5548668704224801750}
   nameTagPos: {fileID: 8682550072782453328}
   interactionName: "\uB300\uD654\uD558\uAE30"
+  <talkSoundType>k__BackingField: 13
 --- !u!95 &8828819258484381114
 Animator:
   serializedVersion: 5

@@ -197,12 +197,14 @@ public class DialogueManager : MonoSingleton<DialogueManager>
         SetEnd(true);
         yield return null;
     } 
+    Coroutine coroutine;
     private IEnumerator TypeText(TMP_Text text) {
-        Tween tween;
+        Tween tween = null;
         text.maxVisibleCharacters = 0;
         tween = DOTween.To(
             x => text.maxVisibleCharacters = (int)x, 0f, text.text.Length, text.text.Length * charPrintTime
         ).SetEase(Ease.Linear);
+        coroutine = StartCoroutine(TypeSoundPlayRoutine(text.text, npc.talkSoundType));
         while (true) {
             if (!tween.IsActive()|| Keyboard.current.spaceKey.wasPressedThisFrame) {
                 break;
@@ -213,6 +215,20 @@ public class DialogueManager : MonoSingleton<DialogueManager>
             SkipTween(tween);
         }
         yield return null;
+    }
+
+    private IEnumerator TypeSoundPlayRoutine(string text, SoundType type) {
+        if (type == SoundType.NONE) {
+            yield break;
+        }
+        for (int i = 0; i < text.Length; ++i) {
+            if (text[i] == ' ') {
+                yield return new WaitForSeconds(charPrintTime);
+                continue;
+            }
+            SoundManager.Instance.PlaySound(type);
+            yield return new WaitForSeconds(charPrintTime);
+        }
     }
 
     private IEnumerator DotTwinkle() {
