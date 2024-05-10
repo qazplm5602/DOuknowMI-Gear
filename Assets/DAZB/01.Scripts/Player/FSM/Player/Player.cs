@@ -29,6 +29,7 @@ public class Player : Agent
     public float criticalChance;
     public PlayerStateMachine StateMachine {get; private set;}
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private GearSO[] gearSO;
     public InputReader InputReader => inputReader;
     public bool isDash;
     public float lastAttackTime;
@@ -37,6 +38,9 @@ public class Player : Agent
     public bool isUnderJumpping = false;
 
     protected override void Awake() {
+        for (int i = 0; i < gearSO.Length; ++i) {
+            IngameUIControl.Instance.gearChangeUI.GiveInventory(gearSO[i]);
+        }
         SetStat();
         base.Awake();
         PlayerStat.Instance.OnUpdateStat += SetStat;
