@@ -11,6 +11,7 @@ public class PlayerDashState : PlayerState
 
     public override void Enter()
     {
+        if (Time.timeScale == 0) return;
         base.Enter();
         if (player.isUnderJumpping) {
             player.isUnderJumpping = false;
