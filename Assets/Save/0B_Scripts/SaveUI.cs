@@ -10,8 +10,6 @@ public class SaveUI : MonoBehaviour
     [SerializeField] private SaveInfo[] _saveInfos = new SaveInfo[3];
     [SerializeField] private Sprite _defaultSkillIcon;
 
-    [SerializeField] private GearDatabase _gearDatabase;
-
     private GameObject _questionPanel;
 
     private void Awake() {;
@@ -59,7 +57,7 @@ public class SaveUI : MonoBehaviour
         SaveInfo saveInfo = _saveInfos[index - 1];
 
         if(saveInfo.level == -1234 && saveInfo.parts == -1234) {
-            Delete(index);
+            Delete(index, buttonName == "불러오기");
             return;
         }
 
@@ -100,7 +98,7 @@ public class SaveUI : MonoBehaviour
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = Color.black;
     }
 
-    private void Delete(int index) {
+    private void Delete(int index, bool flag = false) {
         string contentPath = $"Content/Save{index}/SaveInfo/Content";
         string bottomBtnPath = $"Content/Save{index}/BottomBtn";
 
@@ -109,10 +107,13 @@ public class SaveUI : MonoBehaviour
         Find($"{contentPath}/Layout").gameObject.SetActive(false);
         Find($"{contentPath}/NullText").gameObject.SetActive(true);
 
-        Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "저장";
+        if(flag) Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "불러오기";
+        else Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "저장";
         Button saveNOverwriteButton = Find($"{bottomBtnPath}/SaveNOverwriteBtn").GetComponent<Button>();
         saveNOverwriteButton.onClick.RemoveAllListeners();
         saveNOverwriteButton.onClick.AddListener(() => DeleteQuestion(index));
+        if(flag) saveNOverwriteButton.interactable = false;
+        else saveNOverwriteButton.interactable = true;
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = false;
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = new Color(0.41f, 0.41f, 0.41f);
     }
@@ -210,27 +211,40 @@ public class SaveUI : MonoBehaviour
         string jsonData = SaveManager.Instance.Load($"Save{index}")["info"].ToJson();
         SaveInfo savedData = JsonMapper.ToObject<SaveInfo>(jsonData);
 
-        int oldGearLength = GearManager.Instance.GetSlotGearSO().Length;
-        for(int i = 0; i < oldGearLength; ++i) {
-            GearManager.Instance.GearRemove(i);
-        }
+        SaveManager.Instance.gearSaveInfo = savedData.gearInfos;
+        SaveManager.Instance.level = savedData.level;
+        SaveManager.Instance.currentExp = savedData.exp;
+        SaveManager.Instance.statPoint = savedData.statPoint;
+        SaveManager.Instance.atk = savedData.stat.atk;
+        SaveManager.Instance.health = savedData.stat.health;
+        SaveManager.Instance.defence = savedData.stat.defence;
+        SaveManager.Instance.speed = savedData.stat.speed;
+        SaveManager.Instance.criticalChance = savedData.stat.criticalChance;
+        SaveManager.Instance.parts = savedData.parts;
 
-        for(int i = 0; i < savedData.gearInfos.Length; ++i) {
-            GearManager.Instance.GearAdd(_gearDatabase.GetGearById(savedData.gearInfos[i].id), savedData.gearInfos[i].gearStat.GetGearStat());
-        }
+        SaveManager.Instance.ReadLoad();
 
-        PlayerManager.instance.playerExperience.level = savedData.level;
-        PlayerManager.instance.playerExperience.currentExp = savedData.exp;
+        // int oldGearLength = GearManager.Instance.GetSlotGearSO().Length;
+        // for(int i = 0; i < oldGearLength; ++i) {
+        //     GearManager.Instance.GearRemove(i);
+        // }
 
-        PlayerStat playerStat = PlayerManager.instance.stats;
-        playerStat.statPoint = savedData.statPoint;
-        playerStat.Atk = savedData.stat.atk;
-        playerStat.Health = savedData.stat.health;
-        playerStat.Defence = savedData.stat.defence;
-        playerStat.Speed = savedData.stat.speed;
-        playerStat.CriticalChance = savedData.stat.criticalChance;
+        // for(int i = 0; i < savedData.gearInfos.Length; ++i) {
+        //     GearManager.Instance.GearAdd(_gearDatabase.GetGearById(savedData.gearInfos[i].id), savedData.gearInfos[i].gearStat.GetGearStat());
+        // }
 
-        PlayerManager.instance.playerPart.InitPart(savedData.parts);
+        // PlayerManager.instance.playerExperience.level = savedData.level;
+        // PlayerManager.instance.playerExperience.currentExp = savedData.exp;
+
+        // PlayerStat playerStat = PlayerManager.instance.stats;
+        // playerStat.statPoint = savedData.statPoint;
+        // playerStat.Atk = savedData.stat.atk;
+        // playerStat.Health = savedData.stat.health;
+        // playerStat.Defence = savedData.stat.defence;
+        // playerStat.Speed = savedData.stat.speed;
+        // playerStat.CriticalChance = savedData.stat.criticalChance;
+
+        // PlayerManager.instance.playerPart.InitPart(savedData.parts);
     }
 
     private Transform Find(string path) {
