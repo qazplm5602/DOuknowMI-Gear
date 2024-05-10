@@ -36,14 +36,13 @@ public class MinimapUI : MonoBehaviour
 
         // 선 연결
         _alreadyMap.Clear();
-
         CreateLine(_mapSpawn.current.StartRoom);
 
-        print($"map created: {_alreadyMap.Count}");
-        foreach (var item in _alreadyMap)
-        {
-            print(item);
-        }
+        // print($"map created: {_alreadyMap.Count}");
+        // foreach (var item in _alreadyMap)
+        // {
+        //     print(item);
+        // }
     }
 
     void CreateRoom(BaseStage stage, RectTransform beforeState, Door.DoorType dir) {
@@ -102,15 +101,60 @@ public class MinimapUI : MonoBehaviour
         // BaseStage stageSys = stage.GetComponent<BaseStage>();
         
         // if (_alreadyMap.Contains(stageSys.StageNum)) return;
+        // print($"_alreadyMap add {stageSys.StageNum}");
         _alreadyMap.Add(stageSys.StageNum);
 
-        if (stageSys.StageLinkedData.UpMap && !_alreadyMap.Contains(stageSys.StageLinkedData.UpMap.StageNum)) {
+        // 세이브
+        bool upCreate = stageSys.StageLinkedData.UpMap && !_alreadyMap.Contains(stageSys.StageLinkedData.UpMap.StageNum);
+        bool downCreate = stageSys.StageLinkedData.DownMap && !_alreadyMap.Contains(stageSys.StageLinkedData.DownMap.StageNum);
+        bool leftCreate = stageSys.StageLinkedData.LeftMap && !_alreadyMap.Contains(stageSys.StageLinkedData.LeftMap.StageNum);
+        bool rightCreate = stageSys.StageLinkedData.RightMap && !_alreadyMap.Contains(stageSys.StageLinkedData.RightMap.StageNum);
+        
+        // print($"[{stageSys.StageNum}] up: {upCreate} ({stageSys.StageLinkedData?.UpMap} {!_alreadyMap.Contains(stageSys.StageLinkedData.UpMap?.StageNum ?? 0)}) down: {downCreate} ({stageSys.StageLinkedData?.DownMap} {!_alreadyMap.Contains(stageSys.StageLinkedData.DownMap?.StageNum ?? 0)}) left: {leftCreate} right: {rightCreate}");
+
+        if (upCreate) {
+            RectTransform targetTrm = stages[stageSys.StageLinkedData.UpMap.StageNum].transform as RectTransform;
+            RectTransform line = CreateLineUI();
+            
+            Vector2 myEnd = (Vector2)trm.localPosition + new Vector2(0, trm.rect.yMax);
+            Vector2 targetEnd = (Vector2)targetTrm.localPosition + new Vector2(0, targetTrm.rect.yMin);
+
+            Vector2 center = (targetEnd + myEnd) / 2f;
+            line.localPosition = center;
+            line.sizeDelta = new Vector2(2, (targetEnd.y - myEnd.y) / 2f);
+            // print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
+
+            CreateLine(stageSys.StageLinkedData.UpMap);
         }
-        if (stageSys.StageLinkedData.DownMap && !_alreadyMap.Contains(stageSys.StageLinkedData.DownMap.StageNum)) {
+        if (downCreate) {
+            RectTransform targetTrm = stages[stageSys.StageLinkedData.DownMap.StageNum].transform as RectTransform;
+            RectTransform line = CreateLineUI();
+            
+            Vector2 myEnd = (Vector2)trm.localPosition + new Vector2(0, trm.rect.yMin);
+            Vector2 targetEnd = (Vector2)targetTrm.localPosition + new Vector2(0, targetTrm.rect.yMax);
+
+            Vector2 center = (targetEnd + myEnd) / 2f;
+            line.localPosition = center;
+            line.sizeDelta = new Vector2(2, (myEnd.y - targetEnd.y) / 2f);
+            // print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
+
+            CreateLine(stageSys.StageLinkedData.DownMap);
         }
-        if (stageSys.StageLinkedData.LeftMap && !_alreadyMap.Contains(stageSys.StageLinkedData.LeftMap.StageNum)) {
+        if (leftCreate) {
+            RectTransform targetTrm = stages[stageSys.StageLinkedData.LeftMap.StageNum].transform as RectTransform;
+            RectTransform line = CreateLineUI();
+            
+            Vector2 myEnd = (Vector2)trm.localPosition + new Vector2(trm.rect.xMin, 0);
+            Vector2 targetEnd = (Vector2)targetTrm.localPosition + new Vector2(targetTrm.rect.xMax, 0);
+
+            Vector2 center = (targetEnd + myEnd) / 2f;
+            line.localPosition = center;
+            line.sizeDelta = new Vector2((myEnd.x - targetEnd.x) / 2f, 2);
+            // print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
+
+            CreateLine(stageSys.StageLinkedData.LeftMap);
         }
-        if (stageSys.StageLinkedData.RightMap && !_alreadyMap.Contains(stageSys.StageLinkedData.RightMap.StageNum)) {
+        if (rightCreate) {
             RectTransform targetTrm = stages[stageSys.StageLinkedData.RightMap.StageNum].transform as RectTransform;
             RectTransform line = CreateLineUI();
             
@@ -121,10 +165,8 @@ public class MinimapUI : MonoBehaviour
 
             Vector2 center = (targetEnd + myEnd) / 2f;
             line.localPosition = center;
-            line.sizeDelta = new Vector2((targetEnd.x - myEnd.x) / 2f, 3);
-            // line.rect.width = targetEnd.x - myEnd.x;
-            // line.rect.height = 3;
-            print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
+            line.sizeDelta = new Vector2((targetEnd.x - myEnd.x) / 2f, 2);
+            // print($"{myEnd} / {targetEnd} / {line.rect.height / 2f}");
 
             CreateLine(stageSys.StageLinkedData.RightMap);
         }
