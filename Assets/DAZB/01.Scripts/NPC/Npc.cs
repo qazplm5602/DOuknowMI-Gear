@@ -31,6 +31,7 @@ public abstract class Npc : MonoBehaviour, IInteraction
     }
 
     private void Update() {
+        if (PlayerManager.instance.player.isDead) return;
         CheckPlayer();
         if (isCheck && !isDialogue) {
             if (excuseMeText != null) {
