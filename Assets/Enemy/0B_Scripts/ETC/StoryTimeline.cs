@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class StoryTimeline : MonoBehaviour
         public Image image;
         public TextMeshProUGUI[] text;
     }
+
+    public Action OnComplete;
 
     [SerializeField] private Scene[] scenes = new Scene[10];
 
@@ -28,6 +31,13 @@ public class StoryTimeline : MonoBehaviour
         }
 
         StartScene();
+    }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            StopAllCoroutines();
+            OnComplete?.Invoke();
+        }
     }
 
     public void StartScene() {
@@ -55,5 +65,7 @@ public class StoryTimeline : MonoBehaviour
                 scenes[i].text[j].DOFade(0, 0.4f);
             }
         }
+
+        OnComplete?.Invoke();
     }
 }

@@ -987,6 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gear: {fileID: 1448520926}
   panel: {fileID: 639121520}
+  _storyCutScene: {fileID: 2828735214084781194, guid: 14f4bf95a1ed6fc42977b888c6a3e938, type: 3}
 --- !u!114 &136717882
 MonoBehaviour:
   m_ObjectHideFlags: 0
