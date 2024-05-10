@@ -2204,7 +2204,7 @@ Transform:
   m_GameObject: {fileID: 6080028512604646977}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16, y: 6.5, z: 0}
+  m_LocalPosition: {x: 29, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4600,6 +4600,7 @@ MonoBehaviour:
   - {fileID: 1259923324577818906}
   type: 1
   StageNum: 0
+  Size: 0
   StageLinkedData:
     RightMap: {fileID: 0}
     LeftMap: {fileID: 0}
