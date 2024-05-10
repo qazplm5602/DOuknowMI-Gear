@@ -1405,6 +1405,15 @@ MonoBehaviour:
   _roomBox: {fileID: 3909036459349335130, guid: 65a2079e72c803144be20607addc5bc9, type: 3}
   _mapSection: {fileID: 75493061}
   gapSize: 10
+  _mapIcons:
+  - type: 0
+    image: {fileID: 21300000, guid: 80776e4f691614d4695dc17922f49c5a, type: 3}
+  - type: 2
+    image: {fileID: 21300000, guid: e5e6c00ab1247a849bd7a1cb50624dda, type: 3}
+  - type: 4
+    image: {fileID: 21300000, guid: d1d998db1f93f1b468f2500dab68690c, type: 3}
+  - type: 3
+    image: {fileID: 21300000, guid: a246de9fef2d834418425b33674d18c1, type: 3}
 --- !u!114 &1740215892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5936824778841722773, guid: 2344d3434abe1b54499c9cb48dd7c9fa, type: 3}

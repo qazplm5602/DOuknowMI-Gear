@@ -3,21 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct MinimapIcon {
+    public ROOMTYPE type;
+    public Sprite image;
+}
+
 public class MinimapUI : MonoBehaviour
 {
     [SerializeField] GameObject _roomBox;
     [SerializeField] Transform _mapSection;
     [SerializeField] float gapSize = 2f;
+    [SerializeField] MinimapIcon[] _mapIcons;
 
     MapSpawner _mapSpawn;
     HashSet<int> _alreadyMap;
 
     Dictionary<int, GameObject> stages;
+    Dictionary<ROOMTYPE, Sprite> mapIcons;
 
     private void Awake() {
+        _mapSpawn = FindObjectOfType<MapSpawner>();
+        if (_mapSpawn == null) {
+            enabled = false; // 필수 요소가 없으므로 안함
+            return;
+        }
+        
         _alreadyMap = new();
         stages = new();
-        _mapSpawn = FindObjectOfType<MapSpawner>();
+
+        // 맵 아이콘 인덱싱
+        mapIcons = new();
+        foreach (var item in _mapIcons)
+            mapIcons[item.type] = item.image;
     }
 
     private void Start() {
@@ -76,6 +94,12 @@ public class MinimapUI : MonoBehaviour
         RectTransform boxTrm = Instantiate(_roomBox, _mapSection).transform as RectTransform;
         boxTrm.localPosition = createPos;
         boxTrm.gameObject.name = "room-"+stage.StageNum;
+
+        if (mapIcons.TryGetValue(stage.type, out var sprite)) {
+            var image = boxTrm.Find("Icon").GetComponent<Image>();
+            image.enabled = true;
+            image.sprite = sprite;
+        }
         
         stages[stage.StageNum] = boxTrm.gameObject; // 혹시 모르니 저장
 
