@@ -21,7 +21,7 @@ public class MGPunchState : EnemyState<MGStateEnum>
     }
 
     public override void AnimationAttackTrigger() {
-        _enemy.DamageCasterCompo.Damage(_enemyMG.punchDamage, (Vector2)_enemy.transform.position + _enemyMG.punchOffset * _enemy.FacingDirection, _enemyMG.punchRange);
+        _enemy.DamageCasterCompo.Damage(_enemyMG.punchDamage, _enemyMG.punchOffset * _enemy.FacingDirection, _enemyMG.punchRange);
         SoundManager.Instance.PlaySound("Magic Spell_Simple Swoosh_6");
     }
 }
