@@ -16,19 +16,13 @@ public class MinimapUI : MonoBehaviour
     [SerializeField] float gapSize = 2f;
     [SerializeField] MinimapIcon[] _mapIcons;
 
-    MapSpawner _mapSpawn;
+    
     HashSet<int> _alreadyMap;
 
     Dictionary<int, GameObject> stages;
     Dictionary<ROOMTYPE, Sprite> mapIcons;
 
     private void Awake() {
-        _mapSpawn = FindObjectOfType<MapSpawner>();
-        if (_mapSpawn == null) {
-            enabled = false; // 필수 요소가 없으므로 안함
-            return;
-        }
-        
         _alreadyMap = new();
         stages = new();
 
@@ -38,9 +32,9 @@ public class MinimapUI : MonoBehaviour
             mapIcons[item.type] = item.image;
     }
 
-    private void Start() {
+    public void MakeMinimap(MapSpawner spawner) {
         // 방 만듬
-        CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
+        CreateRoom(spawner.current.StartRoom, null, Door.DoorType.DoorMax);
 
         // 중간으로 이동
         // SetSectionCenter();
@@ -48,7 +42,7 @@ public class MinimapUI : MonoBehaviour
 
         // 선 연결
         _alreadyMap.Clear();
-        CreateLine(_mapSpawn.current.StartRoom);
+        CreateLine(spawner.current.StartRoom);
     }
 
     void CreateRoom(BaseStage stage, RectTransform beforeState, Door.DoorType dir) {
