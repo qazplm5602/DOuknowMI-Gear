@@ -11819,6 +11819,7 @@ MonoBehaviour:
   settingExitBtn: {fileID: 5712762992038753474}
   guideBtn: {fileID: 8929390290659688392}
   guideExitBtn: {fileID: 2572705944953890511}
+  leaveBtn: {fileID: 3277100159808839954}
   exitBtn: {fileID: 8658913502178761327}
 --- !u!1 &630793079432478895
 GameObject:

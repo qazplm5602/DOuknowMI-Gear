@@ -126,6 +126,7 @@ public class Door : MonoBehaviour
         if (!stageData.Cleared) return;
         _______________________________ㅇㅇㅇㅇㅇㅇㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ__ㅇ_ㅇ();
         nextDoor._______________________________ㅇㅇㅇㅇㅇㅇㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ_ㅇ__ㅇ_ㅇ();
+        print(GayManater.Instance);
         bbqCode.GayManater.Instance.MoveRoom(nextRoom,nextDoor);
     }
 

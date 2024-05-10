@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace bbqCode
 {
-    public class GayManater : CockSingleton<GayManater>
+    public class GayManater : MonoSingleton<GayManater>
     {
         [SerializeField] private CinemachineVirtualCamera vcam;
         [SerializeField] private MapSpawner mapSpawner;
@@ -25,9 +25,8 @@ namespace bbqCode
         public GameObject MobSpawnEffect ;//{ get; private set; }
         public Tween cock;
 
-        protected override void Awake()
+        private void Awake()
         {
-            base.Awake();
             confiner2d = vcam.GetComponent<CinemachineConfiner2D>();
             //MobSpawnEffect = Resources.Load("Assets/JH_RandomMapGenerate/bbq/SpawnEffect(king)") as GameObject;
             // print(MobSpawnEffect);
@@ -76,6 +75,8 @@ namespace bbqCode
                     Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                     plr.transform.position = doorToGo.position;
                     BlackScreen.DOColor(new Color(0, 0, 0, 0), .5f);
+
+                    IngameUIControl.Instance.MinimapUI.SetSectionFocus(CurrentRoom.StageNum);
                 });
             }
             else
@@ -86,8 +87,9 @@ namespace bbqCode
                 CurrentRoom.Enter();
                 Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                 plr.transform.position = doorToGo.position;
+
+                IngameUIControl.Instance.MinimapUI.SetSectionFocus(CurrentRoom.StageNum);
             }
-            IngameUIControl.Instance.MinimapUI.SetSectionFocus(stageNum: CurrentRoom.StageNum);
         } 
 
         public BaseStage IsCanMoveRoom(Vector2Int whereToMove)

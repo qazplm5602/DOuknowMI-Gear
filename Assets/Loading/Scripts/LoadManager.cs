@@ -10,6 +10,7 @@ public class LoadManager : MonoBehaviour
     static string goScene = "Stage";
     
     public static void LoadScene(string scene) {
+        Time.timeScale = 1;
         goScene = scene;
 
         // 로딩 씬으로 ㄱㄱ
