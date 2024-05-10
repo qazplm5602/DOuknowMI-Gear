@@ -14,12 +14,10 @@ public class DeadUI : MonoBehaviour
 
     private void Start() {
         PlayerManager.instance.player.HealthCompo.OnDead += HadleDeadEvent;
-        PlayerManager.instance.player.HealthCompo.OnDead += ToVillage;
     }
 
     private void OnDisable() {
         PlayerManager.instance.player.HealthCompo.OnDead -= HadleDeadEvent;
-        PlayerManager.instance.player.HealthCompo.OnDead -= ToVillage;
     }
 
     private void HadleDeadEvent()
@@ -39,11 +37,7 @@ public class DeadUI : MonoBehaviour
         yield return new WaitForSeconds(durations[2]);
         DOTween.To(size => maskObject.sizeDelta = new Vector2(size, size), 500, 0, durations[1]).SetEase(Ease.Linear);
         yield return new WaitForSeconds(durations[1]);
-        yield return null;
-    }
-
-    private void ToVillage()
-    {
         SceneManager.LoadScene("Village");
+        yield return null;
     }
 }
