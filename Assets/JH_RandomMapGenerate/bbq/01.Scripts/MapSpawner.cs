@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 public class MapSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject mapParent;
+    [SerializeField] private MinimapUI minimapUI;
     private Stack<int> mapIndexStackByNum = new();
     public int tries = 0;
     public enum DIRECTION { NODATA = -1, UP, RIGHT, DOWN, LEFT, MAX };
@@ -100,6 +101,8 @@ public class MapSpawner : MonoBehaviour
                 stage.door[2] != null ? 1 : 0,
                 stage.door[3] != null ? 1 : 0));
         }
+
+        minimapUI.MakeMinimap(this);
     }
 
     public BaseStage BOSS_ROOM;
