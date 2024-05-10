@@ -62,7 +62,6 @@ public class MGBattleState : EnemyState<MGStateEnum>
         if(_enemy.downJumpTimer < 0f) _enemy.downJumpTimer = 0f;
 
         if(_enemy.IsUnderPlatform()) {
-            Debug.Log(1);
             if(direction.y >= 1f && Mathf.Abs(direction.x) < 3f) {
                 _jumpTimer += Time.deltaTime;
                 Debug.Log(_jumpTimer);

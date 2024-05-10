@@ -9,6 +9,6 @@ public class TitleManager : MonoSingleton<TitleManager>
 
     public void ChangeSceneToVillage()
     {
-        SceneManager.LoadScene(_villageSceneName);
+        LoadManager.LoadScene(_villageSceneName);
     }
 }

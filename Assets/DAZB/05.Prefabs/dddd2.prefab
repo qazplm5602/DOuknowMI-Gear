@@ -410,6 +410,7 @@ GameObject:
   - component: {fileID: 2522066116978086910}
   - component: {fileID: 5412434466499921841}
   - component: {fileID: 3711949369108960037}
+  - component: {fileID: 7947825327932831704}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -514,6 +515,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &7947825327932831704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249510282595810463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &3351981261429585254
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 3526664790318396730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.16562, y: -7.506308, z: -9.943265}
+  m_LocalPosition: {x: -8.159864, y: -7.2583733, z: -9.943265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1699,8 +1717,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: _gearDatas.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
+      propertyPath: _gearDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
     - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: _gearDatas.Array.data[1]
       value: 
@@ -1751,12 +1773,12 @@ PrefabInstance:
       objectReference: {fileID: 531748553387375438, guid: 5fd9d3efd2c77544e9a87d3489a3bc3a, type: 3}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+      objectReference: {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.data[1]
       value: 
