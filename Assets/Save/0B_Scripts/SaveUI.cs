@@ -24,23 +24,6 @@ public class SaveUI : MonoBehaviour
         }
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.P)) {
-            _savePanel.SetActive(true);
-        }
-        if(Input.GetKeyDown(KeyCode.O)) {
-            SaveAndOverwrite(1);
-        }
-        if(Input.GetKeyDown(KeyCode.L)) {
-            Delete(1);
-        }
-        if(Input.GetKeyDown(KeyCode.K)) {
-            for(int i = 1; i <= 3; ++i) {
-                Load(i);
-            }
-        }
-    }
-
     private void SaveAndOverwrite(int index) {
         RenderSaveUI(index, "덮어쓰기");
     }
@@ -260,6 +243,10 @@ public class SaveUI : MonoBehaviour
             }
         }
         return parent;
+    }
+
+    public void Open() {
+        _savePanel.SetActive(true);
     }
 
     public void Exit() {

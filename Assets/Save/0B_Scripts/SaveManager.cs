@@ -107,6 +107,8 @@ public class PlayerSaveStat {
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
+    public SaveUI saveUI;
+
     public GearDatabase gearDataBase;
 
     public GearSaveInfo[] gearSaveInfo;
@@ -119,6 +121,10 @@ public class SaveManager : MonoSingleton<SaveManager>
     public int speed;
     public int criticalChance;
     public int parts;
+
+    private void Awake() {
+        saveUI = GetComponent<SaveUI>();
+    }
 
     public void Save(SaveData saveData) {
         JsonData jsonData = JsonMapper.ToJson(saveData);
