@@ -101,8 +101,6 @@ public class MapSpawner : MonoBehaviour
                 stage.door[2] != null ? 1 : 0,
                 stage.door[3] != null ? 1 : 0));
         }
-
-        minimapUI.MakeMinimap(this);
     }
 
     public BaseStage BOSS_ROOM;
@@ -118,6 +116,7 @@ public class MapSpawner : MonoBehaviour
         MakeStatueRoom();
         MakeEliteRoom();
         ShowMaps();
+        minimapUI.MakeMinimap(this);
     }
 
     private void SetBossRoom()

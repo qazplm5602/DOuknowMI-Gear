@@ -44,7 +44,6 @@ public class RotationGear : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
             gear.transform.eulerAngles = new Vector3(0, 0, 180);
             StartCoroutine(GameStartRoutine());
         }
-        print(gear.transform.eulerAngles.z);
     }
 
     private IEnumerator GameStartRoutine() {
