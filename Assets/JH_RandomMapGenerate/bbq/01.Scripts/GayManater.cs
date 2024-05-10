@@ -76,6 +76,8 @@ namespace bbqCode
                     Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                     plr.transform.position = doorToGo.position;
                     BlackScreen.DOColor(new Color(0, 0, 0, 0), .5f);
+
+                    IngameUIControl.Instance.MinimapUI.SetSectionFocus(CurrentRoom.StageNum);
                 });
             }
             else
@@ -86,8 +88,9 @@ namespace bbqCode
                 CurrentRoom.Enter();
                 Transform doorToGo = door != null ? door.transform : targetRoom.transform;
                 plr.transform.position = doorToGo.position;
+
+                IngameUIControl.Instance.MinimapUI.SetSectionFocus(CurrentRoom.StageNum);
             }
-            IngameUIControl.Instance.MinimapUI.SetSectionFocus(stageNum: CurrentRoom.StageNum);
         } 
 
         public BaseStage IsCanMoveRoom(Vector2Int whereToMove)
