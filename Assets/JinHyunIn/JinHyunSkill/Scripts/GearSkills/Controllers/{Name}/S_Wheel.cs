@@ -14,10 +14,12 @@ public class SkillWheel : SkillController
     Vector2 _lastVelocity;
     private int _layerMaskValue;
 
+    public LayerMask _groundAndPlatformLayerMask;
+
     private void Start()
     {
         directionSign = CheckDirection();
-        _layerMaskValue = (int)Mathf.Log(_groundLayerMask.value, 2);
+        _layerMaskValue = (int)Mathf.Log(_groundAndPlatformLayerMask.value, 2);
     }
 
     public int CheckDirection()
@@ -31,7 +33,7 @@ public class SkillWheel : SkillController
     private void Update()
     {
         rotateImageTrm.transform.Rotate(0, 0, 160 * Time.deltaTime);
-        if (Physics2D.Raycast(transform.position, Vector2.down,0.35f, _groundLayerMask))
+        if (Physics2D.Raycast(transform.position, Vector2.down,0.35f, _groundAndPlatformLayerMask))
         {
             KillRigidByBool();
             StartCoroutine(MoveRoutine(transform));
