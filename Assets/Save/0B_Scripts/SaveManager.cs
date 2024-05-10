@@ -107,6 +107,19 @@ public class PlayerSaveStat {
 
 public class SaveManager : MonoSingleton<SaveManager>
 {
+    public GearDatabase gearDataBase;
+
+    public GearSaveInfo[] gearSaveInfo;
+    public int level;
+    public int currentExp;
+    public int statPoint;
+    public int atk;
+    public int health;
+    public int defence;
+    public int speed;
+    public int criticalChance;
+    public int parts;
+
     public void Save(SaveData saveData) {
         JsonData jsonData = JsonMapper.ToJson(saveData);
         string path = Application.persistentDataPath + $"\\{saveData.name}.json";
@@ -126,5 +139,30 @@ public class SaveManager : MonoSingleton<SaveManager>
         }
         JsonData jsonData = JsonMapper.ToObject(jsonString);
         return jsonData;
+    }
+
+    public void ReadLoad() {
+        TitleManager.Instance.ChangeSceneToVillage();
+
+        int oldGearLength = GearManager.Instance.GetSlotGearSO().Length;
+        for(int i = 0; i < oldGearLength; ++i) {
+            GearManager.Instance.GearRemove(i);
+        }
+        for(int i = 0; i < gearSaveInfo.Length; ++i) {
+            GearManager.Instance.GearAdd(gearDataBase.GetGearById(gearSaveInfo[i].id), gearSaveInfo[i].gearStat.GetGearStat());
+        }
+
+        PlayerManager.instance.playerExperience.level = level;
+        PlayerManager.instance.playerExperience.currentExp = currentExp;
+
+        PlayerStat playerStat = PlayerManager.instance.stats;
+        playerStat.statPoint = statPoint;
+        playerStat.Atk = atk;
+        playerStat.Health = health;
+        playerStat.Defence = defence;
+        playerStat.Speed = speed;
+        playerStat.CriticalChance = criticalChance;
+
+        PlayerManager.instance.playerPart.InitPart(parts);
     }
 }

@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class RotationGear : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private GameObject gear;
     [SerializeField] private Image panel;
+    [SerializeField] private GameObject _storyCutScene;
     private bool isRotation;
     private bool isDragging;
     private bool isStart;
@@ -49,7 +51,8 @@ public class RotationGear : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
         yield return new WaitForSeconds(0.5f);
         panel.DOFade(1, 1f);
         yield return new WaitForSeconds(1.2f);
-        TitleManager.Instance.ChangeSceneToVillage();
+        GameObject obj = Instantiate(_storyCutScene);
+        obj.transform.GetChild(0).GetComponent<StoryTimeline>().OnComplete += () => TitleManager.Instance.ChangeSceneToVillage();
     }
 
     public void OnPointerUp(PointerEventData eventData)

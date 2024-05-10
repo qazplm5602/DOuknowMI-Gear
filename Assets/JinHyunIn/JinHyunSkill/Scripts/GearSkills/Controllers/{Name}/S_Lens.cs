@@ -19,7 +19,8 @@ public class SkillLens : SkillController
         if (collision.gameObject.layer == (int)Mathf.Log(_enemyLayerMask, 2)) return;
         if (collision.gameObject.layer == layerMaskValue)
         {
-            if(Map.Instance == null) return;
+            SoundManager.Instance.PlaySound(SoundType.LensBling);
+            if (Map.Instance == null) return;
             _enemies = (Map.Instance.CurrentStage as NormalStage).CurrentEnemies;
 
             if (_enemies.Count > 0)
