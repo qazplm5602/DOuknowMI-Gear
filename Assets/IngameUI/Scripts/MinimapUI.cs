@@ -43,7 +43,8 @@ public class MinimapUI : MonoBehaviour
         CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
 
         // 중간으로 이동
-        SetSectionCenter();
+        // SetSectionCenter();
+        SetSectionFocus(0);
 
         // 선 연결
         _alreadyMap.Clear();
@@ -215,6 +216,13 @@ public class MinimapUI : MonoBehaviour
 
         Vector2 centerPos = (minPos + maxPos) / 2;
         _mapSection.localPosition -= (Vector3)centerPos;
+    }
+    
+    void SetSectionFocus(int stageNum) {
+        // 다시 중간으로 옮겨주고~~~
+        (_mapSection as RectTransform).anchoredPosition = Vector3.zero;
+        
+        _mapSection.localPosition -= stages[stageNum].transform.localPosition;
     }
     
     RectTransform CreateLineUI() {
