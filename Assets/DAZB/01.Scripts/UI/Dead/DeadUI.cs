@@ -14,6 +14,8 @@ public class DeadUI : MonoBehaviour
 
     private void Start() {
         PlayerManager.instance.player.HealthCompo.OnDead += HadleDeadEvent;
+        maskObject.anchoredPosition = new Vector2(0, 200);
+        text.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 540);
     }
 
     private void OnDisable() {
