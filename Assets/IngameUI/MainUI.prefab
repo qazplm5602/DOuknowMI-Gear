@@ -4414,6 +4414,7 @@ MonoBehaviour:
   _gearPauseUI: {fileID: 6565232285877050666}
   _statueUI: {fileID: 7975304993347460374}
   _chestUI: {fileID: 4749734845916422629}
+  _minimapUI: {fileID: 1309718517210176473}
   test_gears:
   - {fileID: 11400000, guid: f35782c5b4f64184a9c4aab804e2d0d7, type: 2}
   - {fileID: 11400000, guid: bf501d50d45dde74abe98830ce3fcdac, type: 2}
@@ -8216,6 +8217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7960975078822652909}
   - component: {fileID: 2041517422762700901}
+  - component: {fileID: 1309718517210176473}
   m_Layer: 5
   m_Name: MiniMap
   m_TagString: Untagged
@@ -8252,6 +8254,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5173994598605078182}
   m_CullTransparentMesh: 1
+--- !u!114 &1309718517210176473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5173994598605078182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c761cded3c149346a01a4f1c4f51565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomBox: {fileID: 3909036459349335130, guid: 65a2079e72c803144be20607addc5bc9, type: 3}
+  _mapSection: {fileID: 1454656511174055063}
+  gapSize: 10
+  _mapIcons:
+  - type: 0
+    image: {fileID: 21300000, guid: 80776e4f691614d4695dc17922f49c5a, type: 3}
+  - type: 2
+    image: {fileID: 21300000, guid: e5e6c00ab1247a849bd7a1cb50624dda, type: 3}
+  - type: 4
+    image: {fileID: 21300000, guid: d1d998db1f93f1b468f2500dab68690c, type: 3}
+  - type: 3
+    image: {fileID: 21300000, guid: a246de9fef2d834418425b33674d18c1, type: 3}
 --- !u!1 &5197651539383090895
 GameObject:
   m_ObjectHideFlags: 0
@@ -8584,7 +8610,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1379170941929784703}
   - component: {fileID: 658288834120893505}
-  - component: {fileID: 8658734177501023580}
+  - component: {fileID: 7566678100822151460}
+  - component: {fileID: 8294640301105887297}
   m_Layer: 5
   m_Name: Cam
   m_TagString: Untagged
@@ -8603,7 +8630,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1454656511174055063}
   m_Father: {fileID: 7960975078822652909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -8619,7 +8647,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5331084665952085149}
   m_CullTransparentMesh: 1
---- !u!114 &8658734177501023580
+--- !u!114 &7566678100822151460
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8628,24 +8656,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 5331084665952085149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.95438707, g: 1, b: 0.75, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: b0e142a9d7af59d4b97f29c6ab54246c, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 4.59
+--- !u!114 &8294640301105887297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331084665952085149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &5418727325257802292
 GameObject:
   m_ObjectHideFlags: 0
@@ -9763,6 +9807,41 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &6276275264229480111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454656511174055063}
+  m_Layer: 5
+  m_Name: Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1454656511174055063
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276275264229480111}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1379170941929784703}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6288012743261880998
 GameObject:
   m_ObjectHideFlags: 0
