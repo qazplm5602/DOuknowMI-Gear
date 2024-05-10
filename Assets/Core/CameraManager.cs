@@ -20,6 +20,7 @@ public class CameraManager : MonoSingleton<CameraManager>
         globalVolume.profile.TryGet(out vg);
         globalVolume.profile.TryGet(out depth);
         globalVolume.profile.TryGet(out chromaticAberration);
+        //여기임
         PlayerManager.instance.player.HealthCompo.OnDead += DeadEvent;
     }
 
