@@ -27,6 +27,7 @@ public abstract class InteractiveObject : MonoBehaviour, IInteraction
     }
 
     protected virtual void Update() {
+        if (PlayerManager.instance.player.isDead) return;
         CheckPlayer();
         if (isCheck) {
             if (excuseMeText != null) {

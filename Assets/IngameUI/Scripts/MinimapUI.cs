@@ -3,46 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Serializable]
+public struct MinimapIcon {
+    public ROOMTYPE type;
+    public Sprite image;
+}
+
 public class MinimapUI : MonoBehaviour
 {
     [SerializeField] GameObject _roomBox;
     [SerializeField] Transform _mapSection;
     [SerializeField] float gapSize = 2f;
+    [SerializeField] MinimapIcon[] _mapIcons;
 
     MapSpawner _mapSpawn;
     HashSet<int> _alreadyMap;
 
     Dictionary<int, GameObject> stages;
+    Dictionary<ROOMTYPE, Sprite> mapIcons;
 
     private void Awake() {
+        _mapSpawn = FindObjectOfType<MapSpawner>();
+        if (_mapSpawn == null) {
+            enabled = false; // 필수 요소가 없으므로 안함
+            return;
+        }
+        
         _alreadyMap = new();
         stages = new();
-        _mapSpawn = FindObjectOfType<MapSpawner>();
+
+        // 맵 아이콘 인덱싱
+        mapIcons = new();
+        foreach (var item in _mapIcons)
+            mapIcons[item.type] = item.image;
     }
 
     private void Start() {
+        // 방 만듬
         CreateRoom(_mapSpawn.current.StartRoom, null, Door.DoorType.DoorMax);
 
         // 중간으로 이동
-        Vector2 sumPos = Vector2.zero;
-        foreach (var item in stages)
-        {
-            // sumPos += (Vector2)item.Value.transform.localPosition;
-            sumPos += (item.Value.transform as RectTransform).anchoredPosition;
-        }
-
-        sumPos /= stages.Count;
-        (_mapSection as RectTransform).anchoredPosition = -sumPos;
+        // SetSectionCenter();
+        SetSectionFocus(0); // 초기 처음 위치 (비활해도 됨)
 
         // 선 연결
         _alreadyMap.Clear();
         CreateLine(_mapSpawn.current.StartRoom);
-
-        // print($"map created: {_alreadyMap.Count}");
-        // foreach (var item in _alreadyMap)
-        // {
-        //     print(item);
-        // }
     }
 
     void CreateRoom(BaseStage stage, RectTransform beforeState, Door.DoorType dir) {
@@ -76,6 +82,12 @@ public class MinimapUI : MonoBehaviour
         RectTransform boxTrm = Instantiate(_roomBox, _mapSection).transform as RectTransform;
         boxTrm.localPosition = createPos;
         boxTrm.gameObject.name = "room-"+stage.StageNum;
+
+        if (mapIcons.TryGetValue(stage.type, out var sprite)) {
+            var image = boxTrm.Find("Icon").GetComponent<Image>();
+            image.enabled = true;
+            image.sprite = sprite;
+        }
         
         stages[stage.StageNum] = boxTrm.gameObject; // 혹시 모르니 저장
 
@@ -172,6 +184,47 @@ public class MinimapUI : MonoBehaviour
         }
     }
 
+    public void SetSectionCenter() {
+        bool init = false;
+
+        Vector2 minPos = Vector2.zero;
+        Vector2 maxPos = Vector2.zero;
+        
+        foreach (var item in stages)
+        {
+            if (!init) {
+                init = true;
+                
+                minPos = item.Value.transform.localPosition;
+                maxPos = item.Value.transform.localPosition;
+                continue;
+            }
+
+            Vector2 pos = item.Value.transform.localPosition;
+            if (pos.x < minPos.x)
+                minPos.x = pos.x;
+
+            if (pos.y < minPos.y)
+                minPos.y = pos.y;
+
+            if (pos.x > maxPos.x)
+                maxPos.x = pos.x;
+
+            if (pos.y > maxPos.y)
+                maxPos.y = pos.y;
+        }
+
+        Vector2 centerPos = (minPos + maxPos) / 2;
+        _mapSection.localPosition -= (Vector3)centerPos;
+    }
+    
+    public void SetSectionFocus(int stageNum) {
+        // 다시 중간으로 옮겨주고~~~
+        (_mapSection as RectTransform).anchoredPosition = Vector3.zero;
+        
+        _mapSection.localPosition -= stages[stageNum].transform.localPosition;
+    }
+    
     RectTransform CreateLineUI() {
         GameObject lineEntity = new GameObject("line");
         lineEntity.transform.SetParent(_mapSection);

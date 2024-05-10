@@ -18,9 +18,11 @@ public class IngameUIControl : MonoSingleton<IngameUIControl>
     [SerializeField] GearPauseUI _gearPauseUI;
     [SerializeField] StatueUI _statueUI;
     [SerializeField] ChestUI _chestUI;
+    [SerializeField] MinimapUI _minimapUI;
     public GearChangeUI gearChangeUI => _gearChangeUI;
     public ChestUI CHESTUI => _chestUI;
     public StatueUI STATUEUI => _statueUI;
+    public MinimapUI MinimapUI => _minimapUI;
 
     TextMeshProUGUI locationT;
     Image healthRed;
