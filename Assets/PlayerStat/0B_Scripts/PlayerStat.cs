@@ -154,6 +154,14 @@ public class PlayerStat : MonoSingleton<PlayerStat>
                 if(Speed > 0) --Speed;
                 else return;
                 break;
+            case PlayerStatEnum.Defence:
+                if(Defence > 0) --Defence;
+                else return;
+                break;
+            case PlayerStatEnum.CriticalChance:
+                if(CriticalChance > 0) --CriticalChance;
+                else return;
+                break;
         }
         
         ++statPoint;
