@@ -10413,8 +10413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _savePanel: {fileID: 839197983}
   _saveInfos:
-  - skillSprites: []
-    gearInfos: []
+  - gearInfos: []
     level: 0
     exp: 0
     statPoint: 0
@@ -10425,8 +10424,7 @@ MonoBehaviour:
       speed: 0
       criticalChance: 0
     parts: 0
-  - skillSprites: []
-    gearInfos: []
+  - gearInfos: []
     level: 0
     exp: 0
     statPoint: 0
@@ -10437,8 +10435,7 @@ MonoBehaviour:
       speed: 0
       criticalChance: 0
     parts: 0
-  - skillSprites: []
-    gearInfos: []
+  - gearInfos: []
     level: 0
     exp: 0
     statPoint: 0
@@ -10462,7 +10459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7064c645f286f3b458ffa17e1fbff7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveUI: {fileID: 0}
+  saveUI: {fileID: 1769086060}
   gearDataBase: {fileID: 11400000, guid: 0c9dd3929d680be42b4a294bfacbdf52, type: 2}
   gearSaveInfo: []
   level: 0

@@ -12,7 +12,7 @@ public enum CogType {
 public class GearSO : ScriptableObject
 {
     public string id => base.name.Replace(" (SO),", "");
-    [SerializeField] Sprite icon;
+    public Sprite icon;
     [SerializeField] new string name;
     [SerializeField, TextArea] string desc;
 

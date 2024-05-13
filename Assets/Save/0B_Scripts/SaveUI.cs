@@ -52,11 +52,11 @@ public class SaveUI : MonoBehaviour
         Find($"Content/Save{index}/SaveInfo/Top/Date/Text").GetComponent<TextMeshProUGUI>().text = dateString;
 
         string spriteParentPath = $"{contentPath}/Layout/Skills";
-        if(saveInfo.skillSprites != null) {
-            for(int i = 1; i <= saveInfo.skillSprites.Length; ++i) {
-                Find($"{spriteParentPath}/SkillIcon{i}").GetComponent<Image>().sprite = saveInfo.skillSprites[i - 1];
+        if(saveInfo.gearInfos.Length > 0) {
+            for(int i = 1; i <= saveInfo.gearInfos.Length; ++i) {
+                Find($"{spriteParentPath}/SkillIcon{i}").GetComponent<Image>().sprite = SaveManager.Instance.gearDataBase.GetGearById(saveInfo.gearInfos[i - 1].id).icon;
             }
-            for(int i = saveInfo.skillSprites.Length + 1; i <= 4; ++i) {
+            for(int i = saveInfo.gearInfos.Length + 1; i <= 4; ++i) {
                 Find($"{spriteParentPath}/SkillIcon{i}").GetComponent<Image>().sprite = _defaultSkillIcon;
             }
         }
@@ -94,10 +94,13 @@ public class SaveUI : MonoBehaviour
         else Find($"{bottomBtnPath}/SaveNOverwriteBtn/Text").GetComponent<TextMeshProUGUI>().text = "저장";
         Button saveNOverwriteButton = Find($"{bottomBtnPath}/SaveNOverwriteBtn").GetComponent<Button>();
         saveNOverwriteButton.onClick.RemoveAllListeners();
-        saveNOverwriteButton.onClick.AddListener(() => DeleteQuestion(index));
+        saveNOverwriteButton.onClick.AddListener(() => SaveQuestion(index));
         if(flag) saveNOverwriteButton.interactable = false;
         else saveNOverwriteButton.interactable = true;
+        Button deleteButton = Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>();
         Find($"{bottomBtnPath}/DeleteBtn").GetComponent<Button>().interactable = false;
+        deleteButton.onClick.RemoveAllListeners();
+        deleteButton.onClick.AddListener(() => DeleteQuestion(index));
         Find($"{bottomBtnPath}/DeleteBtn/Text").GetComponent<TextMeshProUGUI>().color = new Color(0.41f, 0.41f, 0.41f);
     }
 
