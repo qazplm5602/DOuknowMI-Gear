@@ -18,7 +18,6 @@ public class SaveData {
 [Serializable]
 public class SaveInfo {
     public DateTime date;
-    public Sprite[] skillSprites;
     public GearSaveInfo[] gearInfos;
     public int level;
     public int exp;
@@ -33,11 +32,9 @@ public class SaveInfo {
 
     public SaveInfo(DateTime date, GearGroupDTO[] gearGroup, int level, int exp, int statPoint, PlayerSaveStat stat, int parts) {
         this.date = date;
-        skillSprites = new Sprite[gearGroup.Length];
         gearInfos = new GearSaveInfo[gearGroup.Length];
 
         for(int i = 0; i < gearGroup.Length; ++i) {
-            skillSprites[i] = gearGroup[i].data.Icon;
             gearInfos[i] = new GearSaveInfo() {
                 id = gearGroup[i].data.id,
                 gearStat = new GearSaveStat(gearGroup[i].stat)
