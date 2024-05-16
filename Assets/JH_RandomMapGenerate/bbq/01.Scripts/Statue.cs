@@ -4,6 +4,7 @@ public class Statue : InteractiveObject
 {
     private bool Did = false;
     private Sprite sibla;
+    private Player player;
     
 
     protected override void Awake()
@@ -23,7 +24,7 @@ public class Statue : InteractiveObject
             color = new Color(.2f,1,.2f),
             OnSelect = () =>
             {
-                
+                PlayerManager.instance.player.HealthCompo.Healing(10);
             } 
         }, new StatueBtnDTO()
         {
@@ -32,7 +33,7 @@ public class Statue : InteractiveObject
             color = new Color(1, .2f, .2f),
             OnSelect = () =>
             {
-
+                PlayerManager.instance.player.stat.attack.AddModifier(3f);
             }
         }); ;
         Did = true;
