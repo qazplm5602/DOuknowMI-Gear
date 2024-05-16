@@ -16,6 +16,6 @@ public class VillageManager : MonoSingleton<VillageManager>
     }
     public void ChangeSceneToStage()
     {
-        SceneManager.LoadScene(_stageSceneName);
+        LoadManager.LoadScene(_stageSceneName);
     }
 }

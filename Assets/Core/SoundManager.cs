@@ -18,6 +18,7 @@ public enum SoundType {
     HeadTalkSound,
     RepairmanTalkSound,
     SonTalkSound,
+    WheelRolling,
     NONE,
 }
 
@@ -50,13 +51,14 @@ public class SoundManager : MonoSingleton<SoundManager>
         _audioMixer.SetFloat(name, -((100 - value) * 0.8f));
     }
 
-    public void PlaySound(string clipName) {
+    public float PlaySound(string clipName) {
         if(!_audioClipDictionary.ContainsKey(clipName)) {
             Debug.LogError($"[SoundManager] {clipName} Clip Not Found");
-            return;
+            return 0;
         }
 
         _audioSource.PlayOneShot(_audioClipDictionary[clipName]);
+        return _audioClipDictionary[clipName].length;
     }
 
     public void PlaySound(SoundType type) {

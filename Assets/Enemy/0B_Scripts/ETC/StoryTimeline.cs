@@ -14,13 +14,18 @@ public class StoryTimeline : MonoBehaviour
 
     public Action OnComplete;
 
-    [SerializeField] private Scene[] scenes = new Scene[10];
+    [SerializeField] private Scene[] scenes;
 
     [SerializeField] private float timeBetweenScenes;
 
+    private int ccount = 0;
+
     private void Start() {
         int count = transform.childCount;
+        scenes = new Scene[count];
+
         for(int i = 0; i < count; ++i) {
+            Debug.Log(i);
             scenes[i].image = transform.GetChild(i).GetComponentInChildren<Image>();
             scenes[i].text = transform.GetChild(i).GetComponentsInChildren<TextMeshProUGUI>();
 
@@ -45,8 +50,6 @@ public class StoryTimeline : MonoBehaviour
     }
 
     private IEnumerator ShowingScene() {
-        WaitForSeconds sec = new WaitForSeconds(timeBetweenScenes);
-
         for(int i = 0; i < scenes.Length; ++i) {
             scenes[i].image.DOFade(1, 1f);
 
@@ -54,10 +57,8 @@ public class StoryTimeline : MonoBehaviour
                 scenes[i].text[j].DOFade(1, 1f);
 
                 //if(j != scenes[i].text.Length - 1)
-                    yield return new WaitForSeconds(timeBetweenScenes / 2f);
+                yield return new WaitForSeconds(SoundManager.Instance.PlaySound($"N{++ccount}") + 1f);
             }
-
-            yield return sec;
 
             scenes[i].image.DOFade(0, 0.4f);
 

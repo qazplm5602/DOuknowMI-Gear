@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4244279889446869732}
   - component: {fileID: 1570423698941407262}
+  - component: {fileID: 3231161964438697362}
   m_Layer: 0
   m_Name: vcam
   m_TagString: Untagged
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 2633117583835848979}
   m_Lens:
     FieldOfView: 55
     OrthographicSize: 7
@@ -72,6 +73,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 7475630754514475897}
+--- !u!114 &3231161964438697362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811766787248270116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 0}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &987031068930197754
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +410,7 @@ GameObject:
   - component: {fileID: 2522066116978086910}
   - component: {fileID: 5412434466499921841}
   - component: {fileID: 3711949369108960037}
+  - component: {fileID: 7947825327932831704}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -498,6 +515,23 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &7947825327932831704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3249510282595810463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &3351981261429585254
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,7 +598,7 @@ Transform:
   m_GameObject: {fileID: 3526664790318396730}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 90.16562, y: -7.506308, z: -9.943265}
+  m_LocalPosition: {x: -8.159864, y: -7.2583733, z: -9.943265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -906,6 +940,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3fb3f67f5f411ba4da7b0d2a73c31149, type: 3}
   - {fileID: 8300000, guid: a4bbbb5c88b5874418c1d80c52c7f5e4, type: 3}
   - {fileID: 8300000, guid: 84fc305f75b741b4e80dbe5e9e914b33, type: 3}
+  - {fileID: 8300000, guid: 1bb2fa671f6f35342baa137a38f75563, type: 3}
   _audioMixer: {fileID: 24100000, guid: 5aac909b660986741b1a69e95040761c, type: 2}
   _bgmMixerGroup: {fileID: 9179240181488163483, guid: 5aac909b660986741b1a69e95040761c, type: 2}
 --- !u!82 &1878339336886419835
@@ -1683,8 +1718,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: _gearDatas.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
+      propertyPath: _gearDatas.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
     - target: {fileID: 5820407671990454762, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: _gearDatas.Array.data[1]
       value: 
@@ -1735,12 +1774,12 @@ PrefabInstance:
       objectReference: {fileID: 531748553387375438, guid: 5fd9d3efd2c77544e9a87d3489a3bc3a, type: 3}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 6aaf3d3821349d24b8f1bd072b177b02, type: 2}
+      objectReference: {fileID: 11400000, guid: 698b202c8aca63744a837dd407952380, type: 2}
     - target: {fileID: 8465894248305660871, guid: 31c3270c2f43fb84d86543e12a6f64af, type: 3}
       propertyPath: spawnGears.Array.data[1]
       value: 

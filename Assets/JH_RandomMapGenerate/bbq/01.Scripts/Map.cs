@@ -3,7 +3,7 @@ using UnityEngine;
 
 public enum ROOMTYPE { Start, Normal, Boss, Statue, Elite }
 public enum ROOMSIZE { NODATA = -1, Small, Medium, Large }
-public class Map : CockSingleton<Map>
+public class Map : MonoSingleton<Map>
 {
 
     public BaseStage CurrentStage;

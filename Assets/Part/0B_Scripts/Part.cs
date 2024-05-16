@@ -41,6 +41,8 @@ public class Part : PoolableMono
     }
 
     private int GetPartAmount() {
+        SoundManager.Instance.PlaySound("coins_4");
+        
         switch (_partSize) {
             case PartSize.Small:
                 return Random.Range(10, 51);

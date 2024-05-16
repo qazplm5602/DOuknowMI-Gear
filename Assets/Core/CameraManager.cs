@@ -68,6 +68,7 @@ public class CameraManager : MonoSingleton<CameraManager>
 
     private IEnumerator ShakeRoutine(float time) {
         yield return new WaitForSeconds(time);
+        v_cam.transform.localPosition = new Vector3(0, 0, -0);
         v_perlin.m_AmplitudeGain = 0;
         v_perlin.m_FrequencyGain = 0;
     }

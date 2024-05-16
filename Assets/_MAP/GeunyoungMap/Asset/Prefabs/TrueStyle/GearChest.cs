@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class GearChest : InteractiveObject
 {
     private Animator _animator;
     public GearSO[] so = new GearSO[3];
     public GearDatabase GEAR_DB;
+    public Image screen; 
     private bool isOpened;
 
     private readonly int _openAnimHash = Animator.StringToHash("Open");
@@ -39,6 +42,18 @@ public class GearChest : InteractiveObject
         _animator.SetTrigger(_openAnimHash);
 
         IngameUIControl.Instance.CHESTUI.Show(so);
-        Destroy(gameObject, 2f);
+        StartCoroutine(GOHOme());
+        
     }
+
+    private IEnumerator GOHOme()
+    {
+        screen.DOFade(1, 1f);
+        screen.transform.parent = FindObjectOfType<GearManager>().GetComponent<Canvas>().transform;
+        screen.rectTransform.anchoredPosition = new Vector2(0, 0);
+        Destroy(gameObject, 2f);
+        yield return new WaitForSeconds(3f);
+        LoadManager.LoadScene("Village");
+    }
+
 }

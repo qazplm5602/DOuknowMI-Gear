@@ -10,6 +10,7 @@ public class LoadManager : MonoBehaviour
     static string goScene = "Stage";
     
     public static void LoadScene(string scene) {
+        Time.timeScale = 1;
         goScene = scene;
 
         // 로딩 씬으로 ㄱㄱ
@@ -51,7 +52,7 @@ public class LoadManager : MonoBehaviour
         float curveTime = 0;
         while (curveTime < 1) {
             yield return null;
-            curveTime += Time.deltaTime / 8;
+            curveTime += Time.deltaTime / 4;
             progress = Mathf.Clamp(_curve.Evaluate(curveTime), 0, 0.9f);
             
             UpdateUI(progress);

@@ -15,6 +15,8 @@ public class GearPauseUI : MonoBehaviour
     [SerializeField] Button settingExitBtn;
     [SerializeField] Button guideBtn;
     [SerializeField] Button guideExitBtn;
+    [SerializeField] Button leaveBtn;
+    [SerializeField] Button exitBtn;
 
     private void Awake() {
         resumeBtn.onClick.AddListener(Hide);
@@ -22,6 +24,8 @@ public class GearPauseUI : MonoBehaviour
         settingExitBtn.onClick.AddListener(() => ScreenChange("home"));
         guideBtn.onClick.AddListener(() => ScreenChange("guide"));
         guideExitBtn.onClick.AddListener(() => ScreenChange("home"));
+        leaveBtn.onClick.AddListener(() => LoadManager.LoadScene("Title"));
+        exitBtn.onClick.AddListener(() => Application.Quit());
     }
 
     private void Update() {
@@ -34,11 +38,13 @@ public class GearPauseUI : MonoBehaviour
 
     public void Show() {
         _pauseScreen.SetActive(true);
+        Time.timeScale = 0;
     }
 
     public void Hide() {
         _pauseScreen.SetActive(false);
         GearPauseTooltipClear();
+        Time.timeScale = 1;
     }
 
     void ScreenChange(string type) {
