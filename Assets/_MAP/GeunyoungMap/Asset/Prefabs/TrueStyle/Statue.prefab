@@ -164,8 +164,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
-  checkSize: {x: 0, y: -1, z: 0}
-  offset: {x: 6, y: 7, z: 6}
+  checkSize: {x: 6, y: 7, z: 6}
+  offset: {x: 0, y: -1, z: 0}
   excuseMeUiPos: {fileID: 7280253647285755185}
   nameTagPos: {fileID: 8851332196461443522}
   objectName: "\uC2E0\uAE30\uBC29\uAE30 \uC870\uAC01\uC0C1"
