@@ -47,6 +47,8 @@ public struct GearCogResultDTO {
 
 public class GearManager : MonoSingleton<GearManager>
 {
+    static GearGroupDTO[] lastGearSO;
+
     [SerializeField] Transform section;
     [SerializeField] GearScriptModule scriptModule;
     [SerializeField] GearSO[] spawnGears;
@@ -67,12 +69,22 @@ public class GearManager : MonoSingleton<GearManager>
         Init();
     }
 
+    private void OnDestroy() {
+        // 전 기어 저장
+        lastGearSO = gears.Select(domi => new GearGroupDTO() { data = domi.data, stat = domi.stat }).ToArray();
+    }
+
     void Init() {
         /////////// 기어 소환
         gears = new();
 
-        foreach (var item in spawnGears)
-            GearAdd(item);
+        if (lastGearSO != null) { // 전 저장된거 불러오기
+            foreach (var item in lastGearSO)
+                GearAdd(item.data, item.stat);
+        } else {
+            foreach (var item in spawnGears)
+                GearAdd(item);
+        }
     
         /////////// 연계 SO 로드
         linkDataSO = new();
